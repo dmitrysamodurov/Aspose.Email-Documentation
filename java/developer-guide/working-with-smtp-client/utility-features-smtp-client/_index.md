@@ -23,6 +23,42 @@ for (String str:caps)
 ~~~
 ## **Working with Signed Message**
 Aspose.Email API provides the capability to create Signed messages using certificates. The [attachSignature](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage#attachSignature\(byte[],%20java.lang.String\)) method of the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class can be used to sign a message for saving or even sending it using the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient).
+
+{{% alert color="primary" %}} 
+
+Please note that the Aspose.Email for Java API depends on Bouncy Castle for cryptography features.
+
+{{% /alert %}} 
+
+### **Bouncy Castle Maven Dependencies**
+
+
+
+~~~
+<dependency>
+<groupId>org.bouncycastle</groupId>
+<artifactId>bcprov-jdk15on</artifactId>
+<version>1.60</version>
+</dependency>
+
+<dependency>
+<groupId>org.bouncycastle</groupId>
+<artifactId>bcpkix-jdk15on</artifactId>
+<version>1.60</version>
+</dependency>
+~~~
+### **Enable Bouncy Castle Security Provider**
+
+
+
+~~~java
+import java.security.Security;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
+if (Security.getProvider("BC") == null)
+    Security.addProvider(new BouncyCastleProvider());
+~~~
+
 ### **Sign a Message**
 The following code snippet shows you how to Sign a Message.
 

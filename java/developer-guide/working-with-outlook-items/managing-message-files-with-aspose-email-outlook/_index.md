@@ -214,3 +214,20 @@ builder.setAdditionMode(OriginalMessageAdditionMode.Textpart);
 MapiMessage forwardMsg = builder.buildResponse(originalMsg);
 forwardMsg.save(dataDir + "forward_out.msg");
 ~~~
+
+## **Preserve Empty Dates when Converting a Message**
+**MapiConversionOptions.setPreserveEmptyDates(boolean)** property indicating whether it is necessary to keep empty dates when converting a message. This API appears in Aspose.Email 21.5
+The following code snippet shows you how to preserve empty dates.
+
+~~~java
+MailMessage mailMessage = MailMessage.load("message.eml");
+System.out.println(mailMessage.getDate()); // zero date
+MapiConversionOptions mco = MapiConversionOptions.getUnicodeFormat();
+// keep empty dates when converting a message
+mco.setPreserveEmptyDates(true);
+MapiMessage mapiMessage = MapiMessage.fromMailMessage(mailMessage, mco);
+System.out.println(mapiMessage.getClientSubmitTime()); // zero date
+// check zero date
+if (mapiMessage.getClientSubmitTime().equals(JavaHelper.ZERO_DATE))
+    System.out.println("ZERO DATE");
+~~~

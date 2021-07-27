@@ -68,7 +68,18 @@ Aspose.Email API can render calendar events to the output MHTML file using the 
 #### **Exporting Email to MHT with customized TimeZone**
 [MailMessage](https://apireference.aspose.com/java/email/com.aspose.email/mailmessage) class provides the [setTimeZoneOffset](https://apireference.aspose.com/java/email/com.aspose.email/MailMessage#setTimeZoneOffset\(double\)) method to set customized Timezone while exporting to MHT. The following code snippet shows you how to export the email to MHT with customized TimeZone.
 
-{{< gist "aspose-com-gists" "709d733586ce50505c3bca3f6e8bd18d" "Examples-src-main-java-com-aspose-email-examples-email-ExportToMHTWithCustomTimezone-ExportToMHTWithCustomTimezone.java" >}}
+
+~~~java
+MailMessage msg = MailMessage.load(filename, new MsgLoadOptions());
+msg.setDate(new Date());
+
+// Set the timezone offset in milliseconds
+msg.setTimeZoneOffset(5*60*60*1000);
+
+MhtSaveOptions mhtOptions = new MhtSaveOptions();
+mhtOptions.setMhtFormatOptions(MhtFormatOptions.WriteHeader);
+msg.save(dataDir + "ExportToMHTWithCustomTimezone_out.mhtml", mhtOptions);
+~~~
 ### **Exporting Email to EML**
 The following code snippet shows you how to export emails to EML.
 
