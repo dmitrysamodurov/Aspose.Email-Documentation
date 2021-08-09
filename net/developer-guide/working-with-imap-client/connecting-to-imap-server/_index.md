@@ -11,11 +11,16 @@ The [ImapClient](https://apireference.aspose.com/net/email/aspose.email.clients.
 1. Create an instance of the [ImapClient](https://apireference.aspose.com/net/email/aspose.email.clients.imap/imapclient) class.
 1. Specify the hostname, username, and password in the [ImapClient constructor](https://apireference.aspose.com/net/email/aspose.email.clients.imap/imapclient/constructors/8).
 
+**Note, password restrictions must meet the requirements of the server. The email client doesn't add password restrictions.**
+
 Once the [ImapClient](https://apireference.aspose.com/net/email/aspose.email.clients.imap/imapclient) instance is initiated, the next call to any operation using this instance will connect to the server. The following code snippet shows you how to connect to an IMAP server using the steps above.
 
+```csharp
+// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
+// Create an imapclient with host, user and password
+ImapClient client = new ImapClient("localhost", "user", "password");
+```
 
-
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-IMAP-ConnectingWithIMAPServer-ConnectingWithIMAPServer.cs" >}}
 ## **Connecting with SSL Enabled IMAP Server**
 [Connecting with IMAP Server](/email/net/connecting-to-imap-server#connecting-with-imap-server) described how to connect to an IMAP server in four simple steps:
 
@@ -34,8 +39,14 @@ The following code snippet shows how to
 1. Set security option.
 
 
-
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-IMAP-SSLEnabledIMAPServer-SSLEnabledIMAPServer.cs" >}}
+```csharp
+// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
+// Create an instance of the ImapClient class
+ImapClient client = new ImapClient("imap.domain.com", 993, "user@domain.com", "pwd");
+            
+// Set the security mode to implicit
+client.SecurityOptions = SecurityOptions.SSLImplicit;
+```
 ## **Connecting to Server via Proxy**
 Proxy servers are commonly used to communicate with the outside world. In such cases, mail clients are not able to communicate over the Internet without specifying the proxy address. Aspose.Email provides support for versions 4, 4a and 5 of the SOCKS proxy protocol. This article provides a working sample of accessing the mailbox using a proxy mail server. To access the mailbox via a proxy server:
 
@@ -45,14 +56,72 @@ Proxy servers are commonly used to communicate with the outside world. In such c
 
 The following code snippet shows you how to retrieve mailbox via a proxy server.
 
+```csharp
+// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
+// Connect and log in to IMAP and set SecurityOptions
+ImapClient client = new ImapClient("imap.domain.com", "username", "password");
+client.SecurityOptions = SecurityOptions.Auto;
+            
+string proxyAddress = "192.168.203.142"; // proxy address
+int proxyPort = 1080; // proxy port
+SocksProxy proxy = new SocksProxy(proxyAddress, proxyPort, SocksVersion.SocksV5);
 
+// Set the proxy
+client.Proxy = proxy;
+           
+try
+{
+    client.SelectFolder("Inbox");
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+```
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-IMAP-AccessMailboxViaProxyServer-AccessMailboxViaProxyServer.cs" >}}
 ## **Connecting to Server via HTTP Proxy**
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-IMAP-AccessMailboxViaHTTPProxy-AccessMailboxViaHTTPProxy.cs" >}}
+
+```csharp
+// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
+HttpProxy proxy = new HttpProxy("18.222.124.59", 8080);
+using (ImapClient client = new ImapClient("imap.domain.com", "username", "password"))
+{
+    client.Proxy = proxy;
+    client.SelectFolder("Inbox");
+}
+```
+
 ## **Connecting to Server in Read-Only mode**
 The [ImapClient](https://apireference.aspose.com/net/email/aspose.email.clients.imap/imapclient) class provides a [ReadOnly](https://apireference.aspose.com/net/email/aspose.email.clients.imap/imapclient/properties/readonly) property which when set to **true**, indicates that no changes should be made to the permanent state of the mailbox. The following code sample demonstrates the use of [ImapClient.ReadOnly](https://apireference.aspose.com/net/email/aspose.email.clients.imap/imapclient/properties/readonly) property. It gets the count of unread messages, then fetches one message and then gets the count of unread messages again in read-only mode. The count of the unread messages remains the same indicating that the permanent state of the mailbox was not changed.
 
+```csharp
+// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
+ImapClient imapClient = new ImapClient();
+imapClient.Host = "<HOST>";
+imapClient.Port = 993;
+imapClient.Username = "<USERNAME>";
+imapClient.Password = "<PASSWORD>";
+imapClient.SupportedEncryption = EncryptionProtocols.Tls;
+imapClient.SecurityOptions = SecurityOptions.SSLImplicit;
 
+ImapQueryBuilder imapQueryBuilder = new ImapQueryBuilder();
+imapQueryBuilder.HasNoFlags(ImapMessageFlags.IsRead); /* get unread messages. */
+MailQuery query = imapQueryBuilder.GetQuery();
 
-{{< gist "aspose-com-gists" "522d47278b8ca448dc1d7eb97193322c" "Examples-CSharp-IMAP-ImapReadOnlyMode-1.cs" >}}
+imapClient.ReadOnly = true;
+imapClient.SelectFolder("Inbox");
+ImapMessageInfoCollection messageInfoCol = imapClient.ListMessages(query);
+Console.WriteLine("Initial Unread Count: " + messageInfoCol.Count());
+if (messageInfoCol.Count() > 0)
+{
+    imapClient.FetchMessage(messageInfoCol[0].SequenceNumber);
+
+    messageInfoCol = imapClient.ListMessages(query);
+    // This count will be equal to the initial count
+    Console.WriteLine("Updated Unread Count: " + messageInfoCol.Count());
+}
+else
+{
+    Console.WriteLine("No unread messages found");
+}
+```
