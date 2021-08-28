@@ -72,7 +72,7 @@ Following are the links to some useful resources you may need to accomplish your
 - [Install Aspose.Email for C++ NuGet Package](https://www.nuget.org/packages/aspose.email.cpp.vc140/)
 - [Aspose.Email for C++ API Reference Guide](https://apireference.aspose.com/cpp/email)
 - [Download Examples at GitHub Repository](https://github.com/aspose-email/Aspose.Email-for-C)
-- [Aspose.Email for C++ Free Support Forum](https://forum.aspose.com/c/Email)
+- [Aspose.Email for C++ Free Support Forum](https://forum.aspose.com/c/email/12)
 - [Aspose.Email for C++ Paid Support Helpdesk](https://helpdesk.aspose.com/)
 
 
