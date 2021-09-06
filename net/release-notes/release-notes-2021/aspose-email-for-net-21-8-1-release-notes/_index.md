@@ -2,7 +2,7 @@
 title: Aspose.Email for .NET 21.8.1 Release Notes
 type: docs
 weight: 22
-url: /net/aspose-email-for-net-21-8-release-notes/
+url: /net/aspose-email-for-net-21-8-1-release-notes/
 ---
 
 {{% alert color="primary" %}} 
