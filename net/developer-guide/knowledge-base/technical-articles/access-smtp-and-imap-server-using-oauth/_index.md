@@ -26,7 +26,8 @@ using (SmtpClient client = new SmtpClient(
     587,
     "user1@gmail.com",
     "accessToken",
-    true))
+    true,
+	SecurityOptions.SSLExplicit))
 {
 
 }
@@ -65,7 +66,8 @@ using (SmtpClient client = new SmtpClient(
     "smtp.gmail.com",
     587,
     "user1@gmail.com",
-    tokenProvider))
+    tokenProvider,
+	SecurityOptions.SSLExplicit))
 {
 
 }
@@ -303,7 +305,8 @@ using (SmtpClient client = new SmtpClient(
     "smtp.office365.com",
     587,
     "Test1@test.onmicrosoft.com",
-    tokenProvider))
+    tokenProvider,
+	SecurityOptions.SSLExplicit))
 {
 
 }
