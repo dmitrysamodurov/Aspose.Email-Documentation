@@ -10,7 +10,7 @@ url: /java/parsing-outlook-message-files/
 Using Aspose.Email for Java, developers can not only load but also parse contents from Outlook message files.
 
 - To load MSG files from disk, use the [MapiMessage](https://apireference.aspose.com/java/email/com.aspose.email/MapiMessage) class' static [fromFile](https://apireference.aspose.com/java/email/com.aspose.email/MapiMessage#fromFile\(java.lang.String\)) method.
-- To parse MSG file contents, use the [MapiMessage](https://apireference.aspose.com/java/email/com.aspose.email/MapiMessage) exposes a number of methods.
+- To parse MSG file contents, the [MapiMessage](https://apireference.aspose.com/java/email/com.aspose.email/MapiMessage) exposes a number of methods.
 
 This topic shows how to loaded and then parsed and MSG file to display its contents.
 
@@ -27,7 +27,33 @@ The following sequence of steps serves this purpose:
 
 
 
-{{< gist "aspose-com-gists" "709d733586ce50505c3bca3f6e8bd18d" "Examples-src-main-java-com-aspose-email-examples-outlook-msg-ParsingOutlookMessageFiles-.java" >}}
+```java
+// The path to the resource directory.
+String dataDir = Utils.getSharedDataDir(ParsingOutlookMessageFiles.class) + "outlook/";
+
+//Instantiate an MSG file to load an MSG file from disk
+MapiMessage outlookMessageFile = MapiMessage.fromFile(dataDir + "message.msg");
+//Display sender's name
+System.out.println("Sender Name : " + outlookMessageFile.getSenderName());
+//Display Subject
+System.out.println("Subject : " + outlookMessageFile.getSubject());
+//Display Body
+System.out.println("Body : " + outlookMessageFile.getBody());
+//Display Recipient's info
+System.out.println("Recipients : \n");
+
+//Loop through the recipients collection associated with the MapiMessage object
+for (int i = 0; i < outlookMessageFile.getRecipients().size(); i++) {
+	//Set a reference to the MapiRecipient object
+	MapiRecipient rcp = (MapiRecipient) outlookMessageFile.getRecipients().get_Item(i);
+	//Display recipient email address
+	System.out.println("Email : " + rcp.getEmailAddress());
+	//Display recipient name
+	System.out.println("Name : " + rcp.getDisplayName());
+	//Display recipient type
+	System.out.println("Recipient Type : " + rcp.getRecipientType());
+}
+```
 
 {{% alert %}}
 **Try it out!**
