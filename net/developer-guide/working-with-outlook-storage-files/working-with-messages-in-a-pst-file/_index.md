@@ -547,6 +547,33 @@ using (PersonalStorage personalStorage = PersonalStorage.Create("CaseSensitivity
 }
 ```
 
+### **Searching for Message Subjects by Multiple Keywords in a PST File**
+You can use [MailQueryBuilder.Or](https://apireference.aspose.com/email/net/aspose.email.tools.search/mailquerybuilder/methods/or) method to find messages with a subject containing at least one of the specified words as shown below:
+
+```csharp
+// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
+
+var builder1 = new PersonalStorageQueryBuilder();
+builder1.Subject.Contains("Review"); // 'Review' is key word for the search
+
+var builder2 = new PersonalStorageQueryBuilder();
+builder2.Subject.Contains("Error"); // 'Error' is also key word for the search
+
+var queryBuilder = new PersonalStorageQueryBuilder();
+queryBuilder.Or(builder1.GetQuery(), builder2.GetQuery()); // message subjects must contain 'Review' or 'Error' words
+
+using (var storage = PersonalStorage.FromFile("example.pst"))
+{
+    var folderInfo = storage.RootFolder.GetSubFolder("Inbox");
+    var messageInfos = folderInfo.GetContents(queryBuilder.GetQuery());
+
+    foreach (var messageInfo in messageInfos)
+    {
+        Console.WriteLine(messageInfo.Subject);
+    }
+}
+```
+
 ## **Move Items to Other Folders of PST File**
 Aspose.Email makes it possible to move items from a source folder to another folder in the same Personal Storage (PST) file. This includes:
 
