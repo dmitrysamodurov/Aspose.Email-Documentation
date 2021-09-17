@@ -95,3 +95,14 @@ The [ImapClient](https://apireference.aspose.com/net/email/aspose.email.clients.
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-IMAP-SearchWithPagingSupport-SearchWithPagingSupport.cs" >}}
 ## **Filter Messages with Custom Flag**
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-IMAP-GetMessagesWithSpecificCriteria-GetMessagesWithCustomFlags.cs" >}}
+
+## **Filter Messages using Custom Search**
+For example, RFC 3501 standard does not allow a message search based on the existence of attachments in messages. But **Gmail** provides [IMAP Extensions](https://developers.google.com/gmail/imap/imap-extensions) that allow performing such a search. The next code snippet shows how to make a corresponding query.
+
+```csharp
+ImapQueryBuilder queryBuilder = new ImapQueryBuilder();
+queryBuilder.CustomSearch("X-GM-RAW \"has:attachment\"");
+
+MailQuery mailQuery = queryBuilder.GetQuery();
+ImapMessageInfoCollection messageInfoCollection = imapClient.ListMessages(mailQuery);
+```
