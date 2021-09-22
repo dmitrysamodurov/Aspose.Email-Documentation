@@ -66,11 +66,22 @@ The [MsgSaveOptions](https://apireference.aspose.com/net/email/aspose.email/msgs
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-SavingMSGWithPreservedDates-SavingMSGWithPreservedDates.cs" >}}
 ### **Saving MailMessage as MHTML**
-Different options of MHTML can be used to obtain the desired results. The following code snippet shows you how to loads an EML message into [MailMessage](https://apireference.aspose.com/net/email/aspose.email/mailmessage) and converts it to MHTML.
+Different options of MHTML can be used to obtain the desired results. The following code snippet shows you how to load an EML message into [MailMessage](https://apireference.aspose.com/net/email/aspose.email/mailmessage) and convert it to MHTML with a message date in the UTC system.
 
+```csharp
+// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
 
+// Set options for MHTML output
+MhtSaveOptions saveOptions = SaveOptions.DefaultMhtml;
+saveOptions.PreserveOriginalDate = false; // save a message date as UTC date
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-SaveMailMessageAsMHTML-SaveMailMessageAsMHTML.cs" >}}
+// Initialize and load an existing EML file
+using (MailMessage mailMessage = MailMessage.Load(folderPath + "Message.eml"))
+{
+    mailMessage.Save(folderPath + "Message_out.mhtml", saveOptions);
+}
+```
+
 #### **Converting to MHTML with Optional Settings**
 The [MhtSaveOptions](https://apireference.aspose.com/net/email/aspose.email/mhtsaveoptions) class provides additional options for saving email messages to MHTML format. The enumerator [MhtFormatOptions](https://apireference.aspose.com/net/email/aspose.email/mhtformatoptions) makes it possible to write additional email information to the output MHTML. The following additional fields can be written:
 
