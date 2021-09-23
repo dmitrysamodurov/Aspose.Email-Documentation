@@ -477,6 +477,32 @@ try (PersonalStorage personalStorage = PersonalStorage.create(dataDir + "CaseSen
     System.out.println(coll.size());
 }
 ~~~
+
+### **Searching for Message Subjects by Multiple Keywords in a PST File**
+You can use [MailQueryBuilder.or](https://apireference.aspose.com/email/java/com.aspose.email/MailQueryBuilder#or\(com.aspose.email.MailQuery,%20com.aspose.email.MailQuery\)) method to find messages with a subject containing at least one of the specified words as shown below:
+
+~~~java
+PersonalStorageQueryBuilder builder1 = new PersonalStorageQueryBuilder();
+builder1.getSubject().contains("Review"); // 'Review' is key word for the search
+
+PersonalStorageQueryBuilder builder2 = new PersonalStorageQueryBuilder();
+builder2.getSubject().contains("Error"); // 'Error' is also key word for the search
+
+PersonalStorageQueryBuilder queryBuilder = new PersonalStorageQueryBuilder();
+queryBuilder.or(builder1.getQuery(), builder2.getQuery()); // message subjects must contain 'Review' or 'Error' words
+
+try (PersonalStorage storage = PersonalStorage.fromFile("example.pst"))
+{
+    FolderInfo folderInfo = storage.getRootFolder().getSubFolder("Inbox");
+    MessageInfoCollection messageInfos = folderInfo.getContents(queryBuilder.getQuery());
+
+    for (MessageInfo messageInfo : messageInfos)
+    {
+        System.out.println(messageInfo.getSubject());
+    }
+}
+~~~
+
 ## **Move Items to Other Folders of PST File**
 Aspose.Email makes it possible to move items from a source folder to another folder in the same Personal Storage (PST) file. This includes:
 
