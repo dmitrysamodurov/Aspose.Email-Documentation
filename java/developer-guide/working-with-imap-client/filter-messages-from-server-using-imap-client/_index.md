@@ -252,3 +252,14 @@ queryBuilder.hasFlags(ImapMessageFlags.keyword("custom1"));
 
 queryBuilder.hasNoFlags(ImapMessageFlags.keyword("custom2"));
 ~~~
+
+## **Filter Messages using Custom Search**
+For example, RFC 3501 standard does not allow a message search based on the existence of attachments in messages. But **Gmail** provides [IMAP Extensions](https://developers.google.com/gmail/imap/imap-extensions) that allow performing such a search. The next code snippet shows how to make a corresponding query.
+
+```java
+ImapQueryBuilder queryBuilder = new ImapQueryBuilder();
+queryBuilder.customSearch("X-GM-RAW \"has:attachment\"");
+
+MailQuery mailQuery = queryBuilder.getQuery();
+ImapMessageInfoCollection messageInfoCollection = imapClient.listMessages(mailQuery);
+```
