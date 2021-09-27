@@ -148,3 +148,23 @@ using (ImapClient client = new ImapClient("localhost", 993, "username", "passwor
     client.SelectFolder(ImapFolderInfo.InBox);
 }
 ```
+
+## **Using Cryptographic Protocols with IMAP Client**
+Aspose.Email supports SSL (obsolete) and TLS cryptographic protocols to provide communications security. You can enable cryptographic encryption to protect data exchange between your application and mail servers.
+
+> **_NOTE:_**  You should set only those versions of the protocol, which are supported by .NET Framework. If some versions of the cryptographic protocol are not supported by your current version of .NET Framework, they will be ignored and skipped. In this case, exceptions won't be generated. Please use [SetSupportedEncryptionUnsafe](https://apireference.aspose.com/email/net/aspose.email.clients/emailclient/methods/setsupportedencryptionunsafe) method if you want to set the protocols without any compatibility checks.
+
+The code example below shows you how to set TLS 1.3 for [ImapClient](https://apireference.aspose.com/email/net/aspose.email.clients.imap/imapclient) class instance.
+
+```csharp
+using (ImapClient imapClient = new ImapClient("host", 993, "username", "password", SecurityOptions.SSLImplicit))
+{
+    imapClient.SupportedEncryption = EncryptionProtocols.Tls13;
+
+    // some code...
+}
+```
+
+In case of a specified encryption protocol is not supported in the current version of .NET Framework, the difference in behavior between [SetSupportedEncryptionUnsafe](https://apireference.aspose.com/email/net/aspose.email.clients/emailclient/methods/setsupportedencryptionunsafe) method and [SupportedEncryption](https://apireference.aspose.com/email/net/aspose.email.clients/emailclient/properties/supportedencryption) property is the following:
+- If [SupportedEncryption](https://apireference.aspose.com/email/net/aspose.email.clients/emailclient/properties/supportedencryption) property is used, the email client downgrades the encryption protocol to a supported level.
+- If [SetSupportedEncryptionUnsafe](https://apireference.aspose.com/email/net/aspose.email.clients/emailclient/methods/setsupportedencryptionunsafe) method is used, the email client throws exceptions.
