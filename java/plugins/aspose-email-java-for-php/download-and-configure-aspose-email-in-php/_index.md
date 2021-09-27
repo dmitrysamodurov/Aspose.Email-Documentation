@@ -8,7 +8,7 @@ url: /java/download-and-configure-aspose-email-in-php/
 ## **Download Required Libraries**
 Download required libraries mentioned below. These are the required for executing Aspose.Email Java for PHP examples.
 
-- **Aspose:** [Aspose.Email for Java Component](http://www.aspose.com/community/files/72/java-components/aspose.email-for-java/default.aspx)
+- **Aspose:** [Aspose.Email for Java Component](https://downloads.aspose.com/total)
 - [PHP/Java Bridge](http://citylan.dl.sourceforge.net/project/php-java-bridge/Binary%20package/php-java-bridge_6.2.1/php-java-bridge_6.2.1_documentation.zip)
 ## **Download Examples from Social Coding Sites**
 Following releases of running examples are available to download on below mentioned social coding sites:
@@ -19,7 +19,7 @@ Following releases of running examples are available to download on below mentio
   - [Aspose.Email Java for PHP](https://github.com/aspose-email/Aspose.Email-for-Java/tree/master/Plugins/Aspose_Email_Java_for_PHP)
 ### **CodePlex**
 - **Aspose.Email Java for PHP Examples**
-  - [Aspose.Email Java for PHP](https://asposeemailjavaphp.codeplex.com/)
+  - [Aspose.Email Java for PHP](https://archive.codeplex.com/?p=asposeemailjavaphp)
 ## **How to configure the source code on Linux Platform**
 Please follow these simple steps in order to open and extend the source code while using:
 ## **1. Install Tomcat Server**
@@ -91,14 +91,14 @@ Please follow below simple steps to configure PHP/Java Bridge on Windows Platfor
 
 3. Install Apache Tomcat 8.0. You can download it here
 
-4.Download [JavaBridge.war](http://sourceforge.net/projects/php-java-bridge/files/Binary%20package/php-java-bridge_6.2.1/JavaBridgeTemplate621.war/download). Copy this file to tomcat webapps directory.
+4.Download [JavaBridge.war](https://sourceforge.net/projects/php-java-bridge/files/Binary%20package/php-java-bridge_6.2.1/JavaBridgeTemplate621.war/download). Copy this file to tomcat webapps directory.
 (ex: C:\Program Files\Apache Software Foundation\Tomcat 8.0\webapps )
 
 5. Restart tomcat apache service.
 
 6.Go to <http://localhost:8080/JavaBridge/test.php> to check if php works. You can find other examples in there
 
-7.Copy your [Aspose.Email Java](http://www.aspose.com/community/files/72/java-components/aspose.email-for-java/default.aspx) jar file to C:\Program Files\Apache Software Foundation\Tomcat 8.0\webapps\JavaBridge\WEB-INF\lib
+7.Copy your [Aspose.Email Java](https://downloads.aspose.com/total) jar file to C:\Program Files\Apache Software Foundation\Tomcat 8.0\webapps\JavaBridge\WEB-INF\lib
 
 8. Clone [Aspose.Email Java for PHP](https://github.com/aspose-email/Aspose.Email-for-Java/tree/master/Plugins/Aspose.Email-for-Java_for_PHP) examples inside C:\Program Files\Apache Software Foundation\Tomcat 8.0\webapps\ folder.
 

@@ -82,7 +82,7 @@ Most commonly multipart/alternative is used for email with two parts, one plain 
 
 For more information, follow these links to the RFC archives.
 
-- [RFC2045](http://www.rfc-archive.org/getrfc.php?rfc=2045)
-- [RFC131](http://www.rfc-archive.org/getrfc.php?rfc=131)
+- [RFC2045](https://www.rfc-archive.org/getrfc.php?rfc=2045#gsc.tab=0)
+- [RFC131](https://www.rfc-archive.org/getrfc.php?rfc=131#gsc.tab=0)
 
 {{% /alert %}}

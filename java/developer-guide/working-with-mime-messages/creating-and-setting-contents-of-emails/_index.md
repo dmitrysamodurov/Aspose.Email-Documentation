@@ -242,7 +242,7 @@ Aspose.Email allows to sign Email with DKIM (DomainKeys Identified Mail). This l
 ## **Performing Mail Merge**
 Mail merges help you create and send a batch of similar email messages. The core of the emails are the same, but the content can be personalized. Typically, a recipient's contact details (first name, second name, company and so on) are used to personalize the email.
 
-|![todo:image_alt_text](http://i.imgur.com/D7WSp90.png)|
+|![todo:image_alt_text](https://i.imgur.com/D7WSp90.png)|
 | :- |
 |**Figure: Illustration of how a mail merge works**|
 

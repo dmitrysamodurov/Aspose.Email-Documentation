@@ -33,8 +33,8 @@ Aspose.Email makes it easy to convert any message type to another format. To dem
   and also shows how to preserver original email address
 - [Preserve Original Email Address](/email/java/loading-and-saving-message/)
 ## **Download Running Code**
-- [CodePlex](https://asposeemailjavaapachepoi.codeplex.com/releases/view/618811)
+- [CodePlex](https://archive.codeplex.com/?p=asposeemailjavaapachepoi)
 - [GitHub](https://github.com/aspose-email/Aspose.Email-for-Java/releases/tag/Aspose.Email_Java_for_Apache_POI-v1.0.0)
 ## **Download Sample Code**
-- [CodePlex](https://asposeemailjavaapachepoi.codeplex.com/SourceControl/latest#src/main/java/com/aspose/email/examples/asposefeatures/conversion/msgtootherformats/AsposeConverter.java)
-- [GitHub](https://github.com/aspose-email/Aspose.Email-for-Java/tree/master/Plugins/Aspose_Email_for_Apache_POI/src/main/java/com/aspose/email/examples/asposefeatures/conversion/msgtootherformats/AsposeConverter.java)
+- [CodePlex](https://archive.codeplex.com/?p=asposeemailjavaapachepoi#src/main/java/com/aspose/email/examples/asposefeatures/conversion/msgtootherformats/AsposeConverter.java)
+- [GitHub](https://github.com/aspose-email/Aspose.Email-for-Java/blob/master/Plugins/Aspose_Email_for_Apache_POI/src/main/java/com/aspose/email/examples/asposefeatures/conversion/msgtootherformats/AsposeConverter.java)

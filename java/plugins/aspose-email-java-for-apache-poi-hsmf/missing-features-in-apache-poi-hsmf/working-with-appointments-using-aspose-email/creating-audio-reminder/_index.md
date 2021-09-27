@@ -54,9 +54,9 @@ cal.save("data/AsposeAudioReminder.ics", AppointmentSaveFormat.Ics);
 ## **Download Running Code**
 Download **Creating Audio Reminder** form any of the below mentioned social coding sites:
 
-- [CodePlex](https://asposeapachepoi.codeplex.com/downloads/get/1381613)
-- [SourceForge](http://sourceforge.net/projects/asposeforapachepoi/files/Aspose.Email%20Features%20Not%20in%20Apache%20POI%20HSMF%20for%20Outlook/Audio%20Reminders%20%28Aspose.Email%29.zip/download)
-- [GitHub](https://github.com/asposemarketplace/Aspose_for_Apache_POI/releases/download/More-Features-in-Aspose.Email-v1.1/Audio.Reminders.Aspose.Email.zip)
+- [CodePlex](https://archive.codeplex.com/?p=asposeapachepoi)
+- [SourceForge](https://sourceforge.net/projects/asposeforapachepoi/files/Aspose.Email%20Features%20Not%20in%20Apache%20POI%20HSMF%20for%20Outlook/Audio%20Reminders%20%28Aspose.Email%29.zip/download)
+- [GitHub](https://sourceforge.net/projects/asposeforapachepoi/)
 - [BitBucket](https://bitbucket.org/asposemarketplace/aspose-for-apache-poi/downloads/Audio%20Reminders%20\(Aspose.Email\).zip)
 
 {{% alert color="primary" %}} 

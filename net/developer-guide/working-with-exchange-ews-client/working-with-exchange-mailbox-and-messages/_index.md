@@ -7,7 +7,7 @@ url: /net/working-with-exchange-mailbox-and-messages/
 
 
 ## **Getting Mailbox Information Using EWS**
-The [EWSClient](https://apireference.aspose.com/net/email/aspose.email.clients.exchange.webservice/ewsclient) class has members that can be used to get mailbox information from an Exchange Server by calling the IEWSClient.GetMailboxInfo() method. It returns an instance of type [ExchangeMailboxInfo](https://apireference.aspose.com/email/net/aspose.email.clients.exchange/exchangemailboxinfo). Get mailbox information from properties such as [MailboxUri](https://apireference.aspose.com/email/net/aspose.email.clients.exchange/exchangemailboxinfo/properties/mailboxuri), [InboxUri](https://apireference.aspose.com/email/net/aspose.email.clients.exchange/exchangemailboxinfo/properties/inboxuri) and [DraftsUri](https://apireference.aspose.com/email/net/aspose.email.clients.exchange/exchangemailboxinfo/properties/draftsuri). This article shows how to access mailbox information using Exchange Web Services.
+The [EWSClient](https://apireference.aspose.com/email/net/aspose.email.clients.exchange.webservice/ewsclient) class has members that can be used to get mailbox information from an Exchange Server by calling the IEWSClient.GetMailboxInfo() method. It returns an instance of type [ExchangeMailboxInfo](https://apireference.aspose.com/email/net/aspose.email.clients.exchange/exchangemailboxinfo). Get mailbox information from properties such as [MailboxUri](https://apireference.aspose.com/email/net/aspose.email.clients.exchange/exchangemailboxinfo/properties/mailboxuri), [InboxUri](https://apireference.aspose.com/email/net/aspose.email.clients.exchange/exchangemailboxinfo/properties/inboxuri) and [DraftsUri](https://apireference.aspose.com/email/net/aspose.email.clients.exchange/exchangemailboxinfo/properties/draftsuri). This article shows how to access mailbox information using Exchange Web Services.
 
 If you want to connect to the Exchange Server using Exchange Web Services (EWS), use the IEWSClient class in the Aspose.Email.Exchange namespace. This class uses EWS to connect to and manage items on an Exchange Server. The following code snippet shows you how to get mailbox information using the exchange web services.
 
@@ -93,7 +93,7 @@ A list of the email messages in an Exchange mailbox can be fetched by calling th
 ### **Simple Messages Listing**
 To list the messages in an Exchange mail box:
 
-1. Create an instance of the [IEWSClient](http://www.aspose.com/api/net/email/aspose.email.exchange/exchangeclient) class.
+1. Create an instance of the [IEWSClient](https://apireference.aspose.com/error/404?path=email/net/aspose.email.exchange/exchangeclient) class.
 1. Call the ListMessage method and create a message collection.
 1. Loop through the collection and display message information.
 

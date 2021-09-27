@@ -14,7 +14,7 @@ This page contains release notes information for Aspose.Email for C++ 20.5.
 Aspose.Email for C++ 20.5 is based on [Aspose.Email for .NET 20.5](/email/net/aspose-email-for-net-20-5-release-notes/).
 ## **New Features**
 ### **Email Threading Using ImapClient**
-**Email threading** is a useful feature that allows to organize emails into conversations in a hierarchical manner. It is possible by grouping all forwards, replies, and reply-all messages related to the same conversation together. Basically, the **IMAP** protocol may support the **THREAD** capability defined in [**RFC-5256**](https://tools.ietf.org/html/rfc5256). Besides, there is another **IMAP** extension provided by Gmail and described as [**X-GM-EXT-1**](https://developers.google.com/gmail/imap/imap-extensions#checking_for_the_presence_of_extensions).
+**Email threading** is a useful feature that allows to organize emails into conversations in a hierarchical manner. It is possible by grouping all forwards, replies, and reply-all messages related to the same conversation together. Basically, the **IMAP** protocol may support the **THREAD** capability defined in [**RFC-5256**](https://datatracker.ietf.org/doc/html/rfc5256). Besides, there is another **IMAP** extension provided by Gmail and described as [**X-GM-EXT-1**](https://developers.google.com/gmail/imap/imap-extensions#checking_for_the_presence_of_extensions).
 
 We have added a **GetMessageThreads** method for receiving message threads by **ImapClient**.
 
@@ -155,6 +155,6 @@ The following features are not implemented in Aspose.Email for C++ 20.5 but the
 The following API resources can be of help to you in getting started with Aspose.Email API.
 
 - [Product Documentation](/email/cpp/home/) – Provides detailed examples of working with the API
-- [API Reference Guide](https://www.aspose.com/api/cpp/email) – Details all the namespaces and classes of the API
+- [API Reference Guide](https://apireference.aspose.com/email/cpp) – Details all the namespaces and classes of the API
 - [GitHub Examples](https://github.com/aspose-email/Aspose.Email-for-C) – Provides ready to run API example
-- [Support Forum](https://forum.aspose.com/c/email) – Write to us if you have any query or inquiry about the API
+- [Support Forum](https://forum.aspose.com/c/email/12) – Write to us if you have any query or inquiry about the API

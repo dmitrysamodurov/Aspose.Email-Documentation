@@ -14,11 +14,11 @@ This is why we offer free support. Anyone who uses our product, whether they hav
 You can log any issues or suggestions related to Aspose.Email Java for Python using any of the following platforms:
 
 - [Github](https://github.com/aspose-email/Aspose.Email-for-Java/issues)
-- [CodePlex](http://asposeemailjavapython.codeplex.com/workitem/list/basic)
+- [CodePlex](https://archive.codeplex.com/?p=asposeemailjavapython)
 ## **Extend and Contribute**
 Aspose.Email Java for Python is open source and its source code is available on the major social coding websites listed below. Developers are encouraged to download the source code and contribute by suggesting or adding new feature or improving the existing ones, so that others could also benefit from it.
 ## **Source Code**
 You can get the latest source code from one of the following locations
 
 - [GitHub](https://github.com/aspose-email/Aspose.Email-for-Java/releases/tag/Aspose.Email_Java_for_Python-v1.0)
-- [CodePlex](http://asposeemailjavapython.codeplex.com/releases/)
+- [CodePlex](https://archive.codeplex.com/?p=asposeemailjavapython)

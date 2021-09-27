@@ -8,7 +8,7 @@ url: /java/aspose-email-java-for-python/
 ## **JPype**
 JPype is an effort to allow python programs full access to java class libraries. This is achieved not through re-implementing Python, as Jython/JPython has done, but rather through interfacing at the native level in both Virtual Machines.
 
-Read more at [readthedocs.org](http://jpype.readthedocs.org/en/latest/userguide.html)
+Read more at [readthedocs.org](https://jpype.readthedocs.io/en/latest/userguide.html)
 ### **Aspose.Email for Java**
 Aspose.Email for Java is a Java class library that enables Java applications to read and write email message files in various formats without Microsoft Outlook. It provides classes to read and update MSG,EML,EMLX,OFT files, add/remove attachments and recipients, update subject, body and other MSG file properties.
 ### **Aspose.Email Java for Python**

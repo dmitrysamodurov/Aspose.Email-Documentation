@@ -35,11 +35,11 @@ Aspose.Email Java for Jython is a project that demonstrates / provides the Aspos
 Following releases of running examples are available to download on all of the below mentioned social coding sites:
 
 - [GitHub](https://github.com/aspose-email/Aspose.Email-for-Java/releases/tag/Aspose.Email_Java_for_Jython-v1.0)
-- [CodePlex](https://asposeemailjavajython.codeplex.com/releases/view/620655)
+- [CodePlex](https://archive.codeplex.com/?p=asposeemailjavajython)
 
 **Download Aspose.Email for Java component**
 
-- [Aspose.Email for Java](http://www.aspose.com/community/files/72/java-components/aspose.words-for-java/default.aspx)
+- [Aspose.Email for Java](https://downloads.aspose.com/total)
 ### **Installing**
 - Place downloaded Aspose.Email for Java jar file into "lib" directory.
 - Replace "your-lib" with the downloaded jar filename in _*init*_.py file.
@@ -77,12 +77,12 @@ This is why we offer free support. Anyone who uses our product, whether they hav
 
 You can log any issues or suggestions related to Aspose.Email Java for Jython using any of the following platforms:
 
-- [CodePlex](https://asposeemailjavajython.codeplex.com/workitem/list/basic)
+- [CodePlex](https://archive.codeplex.com/?p=asposeemailjavajython)
 - [Github](https://github.com/aspose-email/Aspose.Email-for-Java/issues)
 ### **Extend and Contribute**
 Aspose.Email Java for Jython is open source and its source code is available on the major social coding websites listed below. Developers are encouraged to download the source code and contribute by suggesting or adding new feature or improving the existing ones, so that others could also benefit from it.
 ### **Source Code**
 You can get the latest source code from one of the following locations
 
-- [CodePlex](https://asposeemailjavajython.codeplex.com/SourceControl/latest)
+- [CodePlex](https://archive.codeplex.com/?p=asposeemailjavajython)
 - [Github](https://github.com/aspose-email/Aspose.Email-for-Java/tree/master/Plugins/Aspose-Email-Java-for-Jython)

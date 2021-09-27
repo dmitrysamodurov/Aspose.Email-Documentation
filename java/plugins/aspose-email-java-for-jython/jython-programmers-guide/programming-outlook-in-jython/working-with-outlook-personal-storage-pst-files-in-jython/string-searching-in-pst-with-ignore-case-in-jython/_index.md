@@ -77,4 +77,4 @@ if __name__ == '__main__':
 Download **String Searching in PST with Ignore Case (Aspose.Email)** from any of the below mentioned social coding sites:
 
 - [GitHub](https://github.com/aspose-email/Aspose.Email-for-Java/releases/tag/Aspose.Email_Java_for_Jython-v1.0)
-- [CodePlex](https://asposeemailjavajython.codeplex.com/releases/view/620655)
+- [CodePlex](https://archive.codeplex.com/?p=asposeemailjavajython)

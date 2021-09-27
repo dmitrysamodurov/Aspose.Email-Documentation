@@ -39,17 +39,17 @@ This project is helpful for developers who want to compare Apache POI HSMF with 
 You can directly include the source code of **Aspose.Email Java for Apache POI** in your own project, Following releases of running examples are available to download on all of the below mentioned social coding sites:
 ### **Releases - Maven Based**
 #### **CodePlex**
-- [Aspose.Email Java for Apache POI HSMF - v 1.0](https://asposeemailjavaapachepoi.codeplex.com/releases/view/618811)
+- [Aspose.Email Java for Apache POI HSMF - v 1.0](https://archive.codeplex.com/?p=asposeemailjavaapachepoi)
 #### **GitHub**
 - [Aspose.Email Java for Apache POI HSMF - v 1.0](https://github.com/aspose-Aspose.Email-for-Java/releases/tag/Aspose.Email_Java_for_Apache_POI-v1.0.0)
 ### **Releases - Java Based**
 Following releases of running examples are available to download on all of the below mentioned social coding sites:
 #### **CodePlex**
 - **Comparison Examples** 
-  - [Aspose.Email vs Apache POI - HSMF - v 1.0](https://asposeapachepoi.codeplex.com/releases/view/123688)
+  - [Aspose.Email vs Apache POI - HSMF - v 1.0](https://archive.codeplex.com/?p=asposeapachepoi)
 - **More Features of Aspose.Email** 
-  - [Missing Features of Apache POI - HSMF - v 1.1](https://asposeapachepoi.codeplex.com/releases/view/573976)
-  - [Missing Features of Apache POI - HSMF - v 1.0](https://asposeapachepoi.codeplex.com/releases/view/123321)
+  - [Missing Features of Apache POI - HSMF - v 1.1](https://archive.codeplex.com/?p=asposeapachepoi)
+  - [Missing Features of Apache POI - HSMF - v 1.0](https://archive.codeplex.com/?p=asposeapachepoi)
 -----
 #### **GitHub**
 - **Comparison Examples** 
@@ -60,7 +60,7 @@ Following releases of running examples are available to download on all of the b
 ### **Download Required Libraries**
 Download required libraries mentioned below. These are the required for executing comparison examples.
 
-- **Aspose:** [Aspose.Email for Java Component](http://www.aspose.com/community/files/72/java-components/aspose.email-for-java/default.aspx)
+- **Aspose:** [Aspose.Email for Java Component](https://downloads.aspose.com/)
 - **Apache POI**: [Apache POI - HSMF](http://poi.apache.org/download.html)
 ### **How to configure the source code**
 Please follow these simple steps in order to open and extend the source code while using:
@@ -128,14 +128,14 @@ This is why we offer free support. Anyone who uses our product, whether they hav
 
 You can log any issues or suggestions related to Aspose.Email Java for Apache POI HSMF using any of the following platforms:
 
-- [CodePlex](https://asposeemailjavaapachepoi.codeplex.com/workitem/list/basic)
+- [CodePlex](https://archive.codeplex.com/?p=asposeemailjavaapachepoi)
 - [Github](https://github.com/aspose-Aspose.Email-for-Java/issues)
 ### **Extend and Contribute**
 Aspose.Email Java for Apache POI HSMF is open source and its source code is available on the major social coding websites listed below. Developers are encouraged to download the source code and contribute by suggesting or adding new feature or improving the existing ones, so that others could also benefit from it.
 ### **Source Code**
 You can get the latest source code from one of the following locations
 
-- [CodePlex](https://asposeemailjavaapachepoi.codeplex.com/SourceControl/latest)
+- [CodePlex](https://archive.codeplex.com/?p=asposeemailjavaapachepoi)
 - [Github](https://github.com/aspose-Aspose.Email-for-Java/tree/master/Plugins/Aspose_Email_for_Apache_POI)
 ## **Sample Code Examples**
 This section includes the following topics

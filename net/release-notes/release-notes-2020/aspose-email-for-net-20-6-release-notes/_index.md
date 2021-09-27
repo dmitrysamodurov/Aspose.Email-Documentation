@@ -81,7 +81,7 @@ Create a search query using query builder:
 
 ```
 
-See the [syntax description](https://docs.microsoft.com/exchange/client-developer/exchange-web-services/how-to-perform-an-aqs-search-by-using-ews-in-exchange).
+See the [syntax description](https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-perform-an-aqs-search-by-using-ews-in-exchange).
 ## **Render custom icons in message attachment while HTML conversion**
 Sometimes, the message contains in-line attachments, that are shown up as icon images in a message body. Such messages may create problems while converting them to HTML, since the icon images are lost. This is because attachment's icons are not held directly in the message.
 

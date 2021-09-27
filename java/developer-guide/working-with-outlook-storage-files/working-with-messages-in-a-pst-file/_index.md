@@ -7,10 +7,10 @@ url: /java/working-with-messages-in-a-pst-file/
 
 
 ## **Adding Messages to PST Files**
-[Create a New PST File and Add Subfolders](/email/java/create-new-pst-add-sub-folders-and-messages) showed how to create a PST file and add a subfolder to it. With Aspose.Email you can add messages to subfolders of a PST file that you have created or loaded. This article adds two messages from disk to the Inbox subfolder of a PST. Use the [PersonalStorage](https://apireference.aspose.com/java/email/com.aspose.email/PersonalStorage) and [FolderInfo](https://apireference.aspose.com/java/email/com.aspose.email/folderinfo) classes to add messages to PST files. To add messages to a PST file's Inbox folder:
+[Create a New PST File and Add Subfolders](/email/java/create-new-pst-add-sub-folders-and-messages) showed how to create a PST file and add a subfolder to it. With Aspose.Email you can add messages to subfolders of a PST file that you have created or loaded. This article adds two messages from disk to the Inbox subfolder of a PST. Use the [PersonalStorage](https://apireference.aspose.com/email/java/com.aspose.email/PersonalStorage) and [FolderInfo](https://apireference.aspose.com/email/java/com.aspose.email/folderinfo) classes to add messages to PST files. To add messages to a PST file's Inbox folder:
 
 1. Create an instance of the FolderInfo class and load it with the contents of the Inbox folder.
-1. Add messages from disk to the Inbox folder by calling the [FolderInfo.addMessage()](https://apireference.aspose.com/email/java/com.aspose.email/FolderInfo#addMessages\(java.lang.Iterable\)) method. The [FolderInfo](https://apireference.aspose.com/java/email/com.aspose.email/folderinfo) class exposes the [addMessages](https://apireference.aspose.com/email/java/com.aspose.email/FolderInfo#addMessages\(java.lang.Iterable\)) method that enables to add large number of messages to the folder, reducing I/O operations to disc and improving performance. A complete example can be found below, in [Adding Bulk Messages](#adding-bulk-messages).
+1. Add messages from disk to the Inbox folder by calling the [FolderInfo.addMessage()](https://apireference.aspose.com/email/java/com.aspose.email/FolderInfo#addMessages\(java.lang.Iterable\)) method. The [FolderInfo](https://apireference.aspose.com/email/java/com.aspose.email/folderinfo) class exposes the [addMessages](https://apireference.aspose.com/email/java/com.aspose.email/FolderInfo#addMessages\(java.lang.Iterable\)) method that enables to add large number of messages to the folder, reducing I/O operations to disc and improving performance. A complete example can be found below, in [Adding Bulk Messages](#adding-bulk-messages).
 
 The code snippets below shows how to add messages to a PST subfolder called Inbox.
 
@@ -241,7 +241,7 @@ private static void extractMsgFiles(FolderInfo folderInfo, PersonalStorage pst) 
 }
 ~~~
 ### **Saving Messages Directly from PST to Stream**
-To save messages from a PST file directly to stream, without extracting the MsgInfo for messages, use the [saveMessageToStream()](https://apireference.aspose.com/java/email/com.aspose.email/PersonalStorage#saveMessageToStream\(java.lang.String,%20java.io.OutputStream\)) method. The following code snippet shows you how to save messages directly from PST to stream.
+To save messages from a PST file directly to stream, without extracting the MsgInfo for messages, use the [saveMessageToStream()](https://apireference.aspose.com/email/java/com.aspose.email/PersonalStorage#saveMessageToStream\(java.lang.String,%20java.io.OutputStream\)) method. The following code snippet shows you how to save messages directly from PST to stream.
 
 
 ~~~Java
@@ -297,9 +297,9 @@ MessageInfoCollection messages = inbox.getContents(10, 100);
 ## **Delete Items from PST Files**
 [Add Messages to PST Files](#adding-messages-to-pst-files) showed how to add messages to PST files. It is, of course, also possible to delete items (contents) from a PST file and it may also be desirable to delete messages in bulk. Items from a PST file can be deleted using the [FolderInfo.deleteChildItem()](https://apireference.aspose.com/email/java/com.aspose.email/FolderInfo#deleteChildItem\(byte[]\)) method. The API also provides [FolderInfo.deleteChildItems()](https://apireference.aspose.com/email/java/com.aspose.email/FolderInfo#deleteChildItems\(java.lang.Iterable\)) method to delete items in bulk from the PST file.
 ### **Deleting Messages from PST Files**
-This articles shows how to Use the [FolderInfo](https://apireference.aspose.com/java/email/com.aspose.email/folderinfo) class to access specific folders in a PST file. To delete messages from the Sent subfolder of a previously loaded or created PST file:
+This articles shows how to Use the [FolderInfo](https://apireference.aspose.com/email/java/com.aspose.email/folderinfo) class to access specific folders in a PST file. To delete messages from the Sent subfolder of a previously loaded or created PST file:
 
-1. Create an instance of the [FolderInfo](https://apireference.aspose.com/java/email/com.aspose.email/folderinfo) class and load it with the contents of the sent subfolder.
+1. Create an instance of the [FolderInfo](https://apireference.aspose.com/email/java/com.aspose.email/folderinfo) class and load it with the contents of the sent subfolder.
 1. Delete messages from the Sent folder by calling the [FolderInfo.deleteChildItem()](https://apireference.aspose.com/email/java/com.aspose.email/FolderInfo#deleteChildItem\(byte[]\)) method and passing the [MessageInfo.EntryId](https://apireference.aspose.com/email/java/com.aspose.email/FolderInfo#getEntryId\(\)) as a parameter. The following code snippet shows you how to delete messages from a PST file's Sent subfolder.
 
 
@@ -386,9 +386,9 @@ try (PersonalStorage personalStorage = PersonalStorage.fromFile(dataDir)) {
 }
 ~~~
 ## **Search Messages and Folders in a PST by Criterion**
-Personal Storage (PST) files can contain a huge amount of data and searching for data that meets a specific criteria in such large files needs to include multiple check points in the code to filter the information. With the [PersonalStorageQueryBuilder](https://apireference.aspose.com/java/email/com.aspose.email/PersonalStoragequerybuilder) class, Aspose.Email makes it possible to search for specific records in a PST based on a specified search criteria. A PST can be searched for messages based on search parameters such as sender, receiver, subject, message importance, presence of attachments, message size, and even message ID. The [PersonalStorageQueryBuilder](https://apireference.aspose.com/java/email/com.aspose.email/PersonalStoragequerybuilder) can also be used to search for subfolders.
+Personal Storage (PST) files can contain a huge amount of data and searching for data that meets a specific criteria in such large files needs to include multiple check points in the code to filter the information. With the [PersonalStorageQueryBuilder](https://apireference.aspose.com/email/java/com.aspose.email/PersonalStoragequerybuilder) class, Aspose.Email makes it possible to search for specific records in a PST based on a specified search criteria. A PST can be searched for messages based on search parameters such as sender, receiver, subject, message importance, presence of attachments, message size, and even message ID. The [PersonalStorageQueryBuilder](https://apireference.aspose.com/email/java/com.aspose.email/PersonalStoragequerybuilder) can also be used to search for subfolders.
 ### **Searching Messages and Folders in PST**
-The following code snippet shows you how to use the [PersonalStorageQueryBuilder](https://apireference.aspose.com/java/email/com.aspose.email/PersonalStoragequerybuilder) class to search for contents in a PST based on different search criteria. For example, it shows searching a PST based on:
+The following code snippet shows you how to use the [PersonalStorageQueryBuilder](https://apireference.aspose.com/email/java/com.aspose.email/PersonalStoragequerybuilder) class to search for contents in a PST based on different search criteria. For example, it shows searching a PST based on:
 
 - Message importance.
 - Message class.

@@ -56,5 +56,5 @@ for (ImapFolderInfo folderInfo:folderInfoColl)
 ## **Download Running Code**
 Download **Get Folders Information from IMAP Mailbox** from any of the below mentioned social coding sites:
 
-- [CodePlex](https://asposeapachepoi.codeplex.com/releases)
+- [CodePlex](https://archive.codeplex.com/?p=asposeapachepoi)
 - [GitHub](https://github.com/aspose-email/Aspose.Email-for-Java/releases)

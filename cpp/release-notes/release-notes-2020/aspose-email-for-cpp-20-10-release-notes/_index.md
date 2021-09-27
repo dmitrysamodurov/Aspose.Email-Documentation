@@ -24,7 +24,7 @@ System::SharedPtr<System::Collections::Generic::IList<System::String>> PersonalS
 // finds the identifiers of subfolders for for folder.
 System::SharedPtr<System::Collections::Generic::IList<System::String>> PersonalStorage::FindSubfolders(System::String parentEntryId);
 ```
-Find more details in [Aspose.Email for C++ documentation](https://docs.aspose.com/display/emailcpp/Home).
+Find more details in [Aspose.Email for C++ documentation](https://docs.aspose.com/email/cpp/).
 
 It should be noted that despite its advantages, there are corrupted storages that cannot be read even using these methods.
 
@@ -79,6 +79,6 @@ This release comes with 32-bit (x86 platform) Windows libraries as well as 64 b
 ---
 
 - [Product Documentation](/email/cpp/home/) – Provides detailed examples of working with the API
-- [API Reference Guide](https://www.aspose.com/api/cpp/email) – Details all the namespaces and classes of the API
+- [API Reference Guide](https://apireference.aspose.com/email/cpp) – Details all the namespaces and classes of the API
 - [GitHub Examples](https://github.com/aspose-email/Aspose.Email-for-C) – Provides ready to run API example
-- [Support Forum](https://forum.aspose.com/c/email) – Write to us if you have any query or inquiry about the API
+- [Support Forum](https://forum.aspose.com/c/email/12) – Write to us if you have any query or inquiry about the API

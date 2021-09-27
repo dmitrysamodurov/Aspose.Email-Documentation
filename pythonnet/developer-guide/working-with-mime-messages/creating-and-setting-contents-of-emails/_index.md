@@ -154,7 +154,7 @@ To customize an email header, follow these steps:
 
 - Create an instance of the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class.
 - Specify To, From, CC, Bcc, ReplyTo, Subject, Date & XMailer using an instance of the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage).
-- Create an instance of the [MimeHeader](http://www.aspose.com/api/net/email/aspose.email.mime/mimeheader) class and specify secret header.
+- Create an instance of the [MimeHeader](https://apireference.aspose.com/email/net/aspose.email.mime/mimeheader) class and specify secret header.
 - Add the secret header to the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) instance.
 
 The following code snippet shows you how to set email headers.
@@ -189,7 +189,7 @@ secret-header: mystery
 
 ```
 ### **Insert Header at Specific Location**
-The [Add](http://www.aspose.com/api/net/email/aspose.email.mime.headercollection/add/methods/1) method of [HeadersCollection](http://www.aspose.com/api/net/email/aspose.email.mime/headercollection) class inserts the header at the end of the collection. However, it may sometimes be necessary to insert a header at a specific location. In such case, the [Add](http://www.aspose.com/api/net/email/aspose.email.mime.headercollection/add/methods/1) method won't be of help. To achieve this, use the [Insert](http://www.aspose.com/api/net/email/aspose.email.mime/headercollection/methods/insert) method of the [HeadersCollection](http://www.aspose.com/api/net/email/aspose.email.mime/headercollection). If collection contains headers with the same name, this header will be inserted before other headers with the same name. The following code snippet shows you how to insert header at specific location.
+The [Add](https://apireference.aspose.com/email/net/aspose.email.mime.headercollection/add/methods/1) method of [HeadersCollection](https://apireference.aspose.com/email/net/aspose.email.mime/headercollection) class inserts the header at the end of the collection. However, it may sometimes be necessary to insert a header at a specific location. In such case, the [Add](https://apireference.aspose.com/email/net/aspose.email.mime.headercollection/add/methods/1) method won't be of help. To achieve this, use the [Insert](https://apireference.aspose.com/email/net/aspose.email.mime/headercollection/methods/insert) method of the [HeadersCollection](https://apireference.aspose.com/email/net/aspose.email.mime/headercollection). If collection contains headers with the same name, this header will be inserted before other headers with the same name. The following code snippet shows you how to insert header at specific location.
 
 
 

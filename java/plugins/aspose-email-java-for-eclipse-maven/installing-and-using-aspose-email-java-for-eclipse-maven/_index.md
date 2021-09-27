@@ -10,7 +10,7 @@ url: /java/installing-and-using-aspose-email-java-for-eclipse-maven/
 
 - To open it, select **Plugins** from the **Tools** menu in Eclipse. 
 
-![todo:image_alt_text](http://i.imgur.com/Nqb0Qul.png)
+![todo:image_alt_text](https://i.imgur.com/Nqb0Qul.png)
 
 - This adds the **Aspose.Email Maven Project** in New Project wizard and **Aspose.Email Code Example** in New File wizard of Eclipse IDE.
 ## **Using**
@@ -21,13 +21,13 @@ To create **Maven Project** by wizard for using [Aspose.Email for Java API](http
 1. Select **Aspose.Email Maven Project** in the **Maven** category.
 1. Click **Next**. 
 
-![todo:image_alt_text](http://i.imgur.com/BRKq0Oc.png)
+![todo:image_alt_text](https://i.imgur.com/BRKq0Oc.png)
 
 1. Provide **Project Name, Location, GroupId, ArtifactId** and **Version** for your Maven Project and click **Finish.** 
 
-![todo:image_alt_text](http://i.imgur.com/p4Ko9VB.png)
+![todo:image_alt_text](https://i.imgur.com/p4Ko9VB.png)
 
-1. This will retrieve the [Aspose.Email for Java](http://www.aspose.com/java/email-component.aspx) latest [Maven Dependency](http://maven.aspose.com/repository/ext-release-local/com/aspose/aspose-email/) reference from [Aspose Cloud Maven Repository](http://maven.aspose.com/artifactory/webapp/home.html?0) and configure it in **pom.xml**. If you have opted for **Also Download Code Examples,** downloading of the **Code Examples** will also begin from the [Aspose.Email for Java API Examples Repository. ](https://github.com/aspose-email/Aspose.Email-for-Java/tree/master/Examples)
+1. This will retrieve the [Aspose.Email for Java](http://www.aspose.com/java/email-component.aspx) latest [Maven Dependency](https://repository.aspose.com/webapp/#/artifacts/browse/tree/General/repo) reference from [Aspose Cloud Maven Repository](https://repository.aspose.com/webapp/#/) and configure it in **pom.xml**. If you have opted for **Also Download Code Examples,** downloading of the **Code Examples** will also begin from the [Aspose.Email for Java API Examples Repository. ](https://github.com/aspose-email/Aspose.Email-for-Java/tree/master/Examples)
 1. Following **Maven** Project will be created on your **Eclipse IDE** on completion of the wizard: 
 
 ![todo:image_alt_text](/download/thumbnails/11665891/2135011380)
@@ -49,11 +49,11 @@ To use examples, just:
 1. Choose your project and then select **Aspose.Email Code Example** in the **Java** category.
 1. Click **Next**. 
 
-![todo:image_alt_text](http://i.imgur.com/z4fpwBb.png)
+![todo:image_alt_text](https://i.imgur.com/z4fpwBb.png)
 
 1. Expand the tree to select **Code Example** category and click **Finish**. 
 
-![todo:image_alt_text](http://i.imgur.com/8MeWhSb.png)
+![todo:image_alt_text](https://i.imgur.com/8MeWhSb.png)
 
 1. This will copy the selected category **Code Examples** Java files into the project under **com.aspose.email.examples** package. Also any required resources needed by the Code Examples will be copied into **src/main/resources** folder
 1. Review the example code, compile and run.
