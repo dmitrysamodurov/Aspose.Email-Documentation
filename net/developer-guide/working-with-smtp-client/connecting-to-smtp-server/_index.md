@@ -57,3 +57,15 @@ The possibility of a host having multiple ports available for sending out emails
 
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-SMTP-SetSpecificIpAddress-SetSpecificIpAddress.cs" >}}
+
+## **How to Set Timeout for Mail Operations**
+Each mail operation takes some time depending on many factors (network delays, data size, server performance, etc.). You can set a timeout for all mail operations. The code example below shows you how to do that using the [Timeout](https://apireference.aspose.com/email/net/aspose.email.clients/emailclient/properties/timeout) property. Note: you should not set large values to avoid long waits in your application.
+
+```csharp
+using (SmtpClient smtpClient = new SmtpClient("host", 587, "username", "password", SecurityOptions.SSLExplicit))
+{
+    smtpClient.Timeout = 60000; // 60 seconds
+
+    // some code...
+}
+```

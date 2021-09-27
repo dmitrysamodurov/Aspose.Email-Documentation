@@ -46,3 +46,15 @@ The following code snippet shows you how to retrieve email via proxy server.
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-POP3-RetrieveEmailViaProxyServer-RetrieveEmailViaProxyServer.cs" >}}
 ## **Connecting to Server via HTTP Proxy**
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-POP3-AccessMailboxViaHttpProxy-AccessPOP3MailboxViaHttpProxy.cs" >}}
+
+## **How to Set Timeout for Mail Operations**
+Each mail operation takes some time depending on many factors (network delays, data size, server performance, etc.). You can set a timeout for all mail operations. The code example below shows you how to do that using the [Timeout](https://apireference.aspose.com/email/net/aspose.email.clients/emailclient/properties/timeout) property. Note: you should not set large values to avoid long waits in your application.
+
+```csharp
+using (Pop3Client pop3Client = new Pop3Client("host", 995, "username", "password", SecurityOptions.Auto))
+{
+    pop3Client.Timeout = 60000; // 60 seconds
+
+    // some code...
+}
+```
