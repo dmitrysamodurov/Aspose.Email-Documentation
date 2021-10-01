@@ -42,12 +42,6 @@ Aspose.Email API provides support of email tracking using Message Disposition No
 
 
 {{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Exchange-EmailTracking-EmailTracking.cs" >}}
-## **OAuth Support for EWS with Office 365**
-Aspose.Email API provides support for Exchange Web Service (EWS) with Office 365. The API's EWSClient interface provides overload method that provides the oAuthCredentials as input for accessing the Exchange account via OAuth. User needs to provide the Authority, Client Id, Client App Uri, and Resource parameters for this to work. The following code snippet shows OAuth Support for EWS with Office 365.
-
-
-
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Exchange-EWSWithOffice-EWSWithOffice.cs" >}}
 ## **Support for Logging in Exchange Clients**
 Aspose.Email API provides the capability to provide logging facility of Exchange Web Service client. This can be achieved by configuring the App.config file.
 ### **Logging for EWS Client**
