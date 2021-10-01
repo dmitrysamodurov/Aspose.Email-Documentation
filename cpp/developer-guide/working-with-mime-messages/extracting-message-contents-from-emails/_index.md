@@ -6,7 +6,7 @@ url: /cpp/extracting-message-contents-from-emails/
 ---
 
 ## **Displaying Email Information on Screen**
-The [MailMessage](https://apireference.aspose.com/cpp/email/class/aspose.email.mail_message/) represents an email message and allows developers to access email message properties. The header information (discussed in Extracting Email Headers) can be extracted and manipulated in different ways. This article explains how to display selected email header information and the email body on screen. To Display Email Information on the screen, follow these steps:
+The [MailMessage](https://apireference.aspose.com/email/cpp/class/aspose.email.mail_message) represents an email message and allows developers to access email message properties. The header information (discussed in Extracting Email Headers) can be extracted and manipulated in different ways. This article explains how to display selected email header information and the email body on screen. To Display Email Information on the screen, follow these steps:
 
 - Create an instance of the [MailMessage](https://apireference.aspose.com/email/cpp/class/aspose.email.mail_message) class.
 - Load an email message into the [MailMessage](https://apireference.aspose.com/email/cpp/class/aspose.email.mail_message) instance.

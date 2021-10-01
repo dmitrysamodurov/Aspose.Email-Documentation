@@ -10,7 +10,7 @@ url: /sharepoint/product-overview/
 
 ![todo:image_alt_text](product-overview_1.png)
 ## **Welcome to Aspose.Email for Sharepoint!**
-[Aspose.Email for SharePoint](http://www.aspose.com/categories/sharepoint-components/aspose.email-for-sharepoint/default.aspx) is a flexible solution for converting email files and synchronizing emails from within MicroSoft SharePoint applications.
+[Aspose.Email for SharePoint](https://www.aspose.com/categories/sharepoint-components/aspose.email-for-sharepoint/default.aspx) is a flexible solution for converting email files and synchronizing emails from within MicroSoft SharePoint applications.
 
 This manual describes Aspose.Email for SharePoint's [features](/email/sharepoint/features/), [installation](/email/sharepoint/installing-aspose-email-for-sharepoint/), [licensing](/email/sharepoint/license-aspose-email-for-sharepoint/), settings and [common uses](/email/sharepoint/overview/). 
 

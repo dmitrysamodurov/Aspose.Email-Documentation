@@ -9,7 +9,7 @@ url: /net/imap-backup-and-restore-operation/
 Aspose.Email for .NET provides the ability to backup and restore messages. For this, the API provides the following methods.
 
 - [ImapClient.Backup](https://apireference.aspose.com/email/net/aspose.email.clients.imap/imapclient/methods/backup/index)
-- [ImapClient.Restore](https://apireference.aspose.com/email/net/aspose.email.clients.imap/imapclient/methods/restore/index)
+- [ImapClient.Restore](https://apireference.aspose.com/error/404?path=email/net/aspose.email.clients.imap/imapclient/methods/restore/index)
 
 This article demonstrates how to backup and restore messages using the [ImapClient](https://apireference.aspose.com/email/net/aspose.email.clients.imap/imapclient) class.
 ## **Backup Messages**
@@ -17,7 +17,7 @@ To backup messages, use the [ImapClient.Backup](https://apireference.aspose.com
 
 {{< gist "aspose-com-gists" "522d47278b8ca448dc1d7eb97193322c" "Examples-CSharp-IMAP-ImapBackupOperation-1.cs" >}}
 ## **Restore Messages**
-To backup messages, use the [ImapClient.Restore](https://apireference.aspose.com/email/net/aspose.email.clients.imap/imapclient/methods/restore/index) method as demonstrated in the following code snippet.
+To backup messages, use the [ImapClient.Restore](https://apireference.aspose.com/error/404?path=email/net/aspose.email.clients.imap/imapclient/methods/restore/index) method as demonstrated in the following code snippet.
 
 {{< gist "aspose-com-gists" "522d47278b8ca448dc1d7eb97193322c" "Examples-CSharp-IMAP-ImapRestoreOperation-1.cs" >}}
 ## **IMAP Backup and Restore Operation with MultiConnection**

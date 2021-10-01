@@ -28,4 +28,4 @@ With the launch of this API, Android developers are able to develop applications
 - Work with Outlook storage files i.e. PST and OST
 - Working with Thunderbird storage files
 ## **Got Queries**
-If you have any queries related to the API, please feel free to write to us on [Aspose.Email forum](https://forums.aspose.com/c/email) for assistance.
+If you have any queries related to the API, please feel free to write to us on [Aspose.Email forum](https://forum.aspose.com/c/email/12) for assistance.

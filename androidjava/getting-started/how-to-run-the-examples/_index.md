@@ -6,11 +6,11 @@ url: /androidjava/how-to-run-the-examples/
 ---
 
 ## **Download from GitHub**
-All examples of Aspose.Email for Java are hosted on [Github](https://github.com/aspose-email/Aspose.Email-for-Java). You can either clone the repository using your favorite Github client or download the ZIP file from [here](https://github.com/aspose-email/Aspose.Email-for-Java/archive/master.zip).
+All examples of Aspose.Email for Java are hosted on [Github](https://github.com/aspose-email/Aspose.Email-for-Java). You can either clone the repository using your favorite Github client or download the ZIP file from [here](https://forum.aspose.com/c/email/12).
 
 Extract the contents of ZIP file to any folder on your computer. All the examples are located in the **Examples** folder.
 
-![todo:image_alt_text](http://i.imgur.com/WsQ2wrb.png)
+![todo:image_alt_text](https://i.imgur.com/WsQ2wrb.png)
 
 The project uses Maven build system. Any modern IDE can easily open or import the project and its dependencies. Below we show you how to use popular IDEs to build and run the examples.
 

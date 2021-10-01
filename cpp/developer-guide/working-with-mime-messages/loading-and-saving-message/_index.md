@@ -43,7 +43,7 @@ The following code snippet shows you how to loads an EML message and converts it
 
 {{< gist "aspose-email" "ef0db907527892c88c557bb418093cee" "Examples-EmailCPP-Email-LoadingEMLAndSavingToMSG-LoadingEMLAndSavingToMSG.cpp" >}}
 ### **Saving MailMessage as MHTML**
-Different options of MHTML can be used to obtain the desired results. The following code snippet shows you how to loads an EML message into [MailMessage](http://www.aspose.com/api/net/email/aspose.email/mailmessage) and converts it to MHTML.
+Different options of MHTML can be used to obtain the desired results. The following code snippet shows you how to loads an EML message into [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) and converts it to MHTML.
 
 
 

@@ -111,4 +111,4 @@ print "Added MapiContacts Successfully."
 Download **Adding MapiContact to PST (Aspose.Email)** from any of the below mentioned social coding sites:
 
 - [GitHub](https://github.com/aspose-email/Aspose.Email-for-Java/releases/tag/Aspose.Email_Java_for_Python-v1.0)
-- [CodePlex](http://asposeemailjavapython.codeplex.com/releases/)
+- [CodePlex](https://archive.codeplex.com/?p=asposeemailjavapython)

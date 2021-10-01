@@ -9,7 +9,7 @@ url: /net/sitefinity-exchange-sync-module/
 
 ## **Introduction**
 ### **Exchange Sync Module**
-Sitefinity Exchange Sync is an open source add-on from [Aspose](http://www.aspose.com/) that links your Sitefinity users to Microsoft Exchange Server contacts without requiring any other software. It uses powerful features of [Aspose.Email for .NET](http://www.aspose.com/.net/email-component.aspx) to allow you to easily sync your Exchange contacts and Sitefinity users.
+Sitefinity Exchange Sync is an open source add-on from [Aspose](http://www.aspose.com/) that links your Sitefinity users to Microsoft Exchange Server contacts without requiring any other software. It uses powerful features of [Aspose.Email for .NET](https://products.aspose.com/total/net) to allow you to easily sync your Exchange contacts and Sitefinity users.
 
 This initial version of the add-on is enriched with the following features to make the sync process effective, simple and easy to use.
 
@@ -31,24 +31,24 @@ This is why we offer free support. Anyone who uses our product, whether they hav
 
 You can log any issues or suggestions related to Aspose .NET Exchange/Gmail Sync for Sitefinity Module using any of the following platforms
 
-- [CodePlex ](https://asposesitefinity.codeplex.com/workitem/list/basic)
+- [CodePlex ](https://archive.codeplex.com/?p=asposesitefinity)
 - [Github ](https://github.com/asposemarketplace/Aspose_for_Sitefinity/issues)
 - [Sourceforge ](https://sourceforge.net/p/asposesitefinity/tickets/?source=navbar)
 - [Bitbucket ](https://bitbucket.org/asposemarketplace/aspose-for-sitefinity/issues?status=new&status=open)
 
 **Aspose .NET Exchange Sync for Sitefinity**
 
-- [Microsoft Developer Network - Q and A ](https://code.msdn.microsoft.com/Aspose-NET-Exchange-Sync-1741397f/view/Discussions#content)
+- [Microsoft Developer Network - Q and A ](https://docs.microsoft.com/en-us/samples/browse/?redirectedfrom=MSDN-samples#content)
 
 **Aspose .NET Google Sync for Sitefinity**
 
-- [Microsoft Developer Network - Q and A ](https://code.msdn.microsoft.com/Sync-Sitefinity-Users-with-f8edd30b/view/Discussions#content)
+- [Microsoft Developer Network - Q and A ](https://docs.microsoft.com/en-us/samples/browse/?redirectedfrom=MSDN-samples#content)
 ### **Extend and Contribute**
 Aspose .NET Exchange Sync for Sitefinity and Aspose .NET Google Sync for Sitefinity are open source and their source code is available on the major social coding websites listed below. Developers are encouraged to download the source code and extend the functionality as per their own requirements.
 ### **Source Code**
 You can get the latest source code from one of the following locations
 
-- [CodePlex ](https://asposesitefinity.codeplex.com/SourceControl/latest)
+- [CodePlex ](https://archive.codeplex.com/?p=asposesitefinity)
 - [Github ](https://github.com/asposemarketplace/Aspose_for_Sitefinity)
 - [Sourceforge ](https://sourceforge.net/p/asposesitefinity/code/ci/master/tree/)
 - [Bitbucket ](https://bitbucket.org/asposemarketplace/aspose-for-sitefinity/src)
@@ -78,10 +78,10 @@ The module is supported on all versions of
 ### **Downloading**
 You can download Aspose .NET Exchange Sync for Sitefinity from one of the following locations
 
-- [CodePlex ](https://asposesitefinity.codeplex.com/releases)
+- [CodePlex ](https://archive.codeplex.com/?p=asposesitefinity)
 - [Github ](https://github.com/asposemarketplace/Aspose_for_Sitefinity/releases)
 - [Sourceforge ](https://sourceforge.net/projects/asposesitefinity/files/)
-- [Bitbucket ](https://bitbucket.org/asposemarketplace/aspose-for-sitefinity/downloads)
+- [Bitbucket ](https://bitbucket.org/asposemarketplace/aspose-for-sitefinity/downloads/)
 ### **Installing**
 Once downloaded, please follow these steps to install the Add-on into your Sitefinity website:
 
@@ -94,7 +94,7 @@ Please extract the downloaded ZIP file. You will need FTP or direct access to th
 
 **Step 2: Register the Aspose .NET Exchange Sync for Sitefinity add-on in Sitefinity**
 
-1. Log into your Sitefinity CMS with an ‘**Administrator**’ account. The login page can be reached by <http://www.mywebsite.com/sitefinity>
+1. Log into your Sitefinity CMS with an ‘**Administrator**’ account. The login page can be reached by <https://ownwebsite.com/>
 1. Click **Administration** and then **Settings**.
    The Basic Settings page appears.
 1. **Click the Advanced** **link.** 

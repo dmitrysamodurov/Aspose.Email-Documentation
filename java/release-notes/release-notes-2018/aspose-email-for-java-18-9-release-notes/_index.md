@@ -41,8 +41,8 @@ We have rewritten algorithms, so **now** Aspose.Email for Java can be used saf
 a) Use Bouncy Castle cryptography APIs.
 You should add following reference:
 
-1. Provider - <https://www.bouncycastle.org/download/bcprov-jdk15on-159.jar>
-1. PKIX/CMS/EAC/PKCS/OCSP/TSP/OPENSSL - <https://www.bouncycastle.org/download/bcpkix-jdk15on-159.jar>
+1. Provider - <https://apireference.aspose.com/email/java/com.aspose.email/MapiDistributionList>
+1. PKIX/CMS/EAC/PKCS/OCSP/TSP/OPENSSL - <https://apireference.aspose.com/email/java/com.aspose.email/MapiDistributionList>
 1. Add BouncyCastleProvider to java security:
 
 ``` java

@@ -8,7 +8,7 @@ url: /sharepoint/installing-aspose-email-for-sharepoint/
 
 {{% alert color="primary" %}} 
 
-Aspose.Email for SharePoint is downloadable as [Aspose.Email.SharePoint2010.zip](http://www.aspose.com/community/files/73/sharepoint-components/aspose.email-for-sharepoint/default.aspx) archive. 
+Aspose.Email for SharePoint is downloadable as [Aspose.Email.SharePoint2010.zip](https://downloads.aspose.com/) archive. 
 
 {{% /alert %}} 
 ## **Installation**

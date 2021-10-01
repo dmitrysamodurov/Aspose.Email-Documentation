@@ -7,7 +7,7 @@ url: /net/dnn-gmail-sync-module/
 
 
 ## **Introduction**
-Aspose .NET Gmail Sync for DNN is an open source module from [Aspose](http://www.aspose.com/) that links your DNN users to Google or Gmail contacts without requiring any other software. It uses the powerful features of [Aspose.Email for .NET](http://www.aspose.com/.net/email-component.aspx) to allow you to easily sync your Gmail contacts and DNN users. The contact details from Gmail and DNN user profiles are smartly mapped so that all the information associated with a DNN user or Gmail contact is migrated properly from one system to the other.
+Aspose .NET Gmail Sync for DNN is an open source module from [Aspose](http://www.aspose.com/) that links your DNN users to Google or Gmail contacts without requiring any other software. It uses the powerful features of [Aspose.Email for .NET](https://products.aspose.com/total/net) to allow you to easily sync your Gmail contacts and DNN users. The contact details from Gmail and DNN user profiles are smartly mapped so that all the information associated with a DNN user or Gmail contact is migrated properly from one system to the other.
 ### **Module Features**
 This initial version of the module is enriched with the following cool features to make the sync process effective, simple and easy to use.
 
@@ -38,11 +38,11 @@ Please feel free to contact us if you wish to install this module on other versi
 ## **Downloading**
 You can download Aspose .NET Gmail Sync for DNN from one of the following locations
 
-- [CodePlex ](https://asposednn.codeplex.com/releases)
-- [DNN Store ](http://store.dnnsoftware.com/home/product-details/sync-dnn-users-with-google-contacts-using-aspose-net-gmail-sync-for-dnn)
+- [CodePlex ](https://archive.codeplex.com/?p=asposednn)
+- [DNN Store ](https://store.dnnsoftware.com/help-center/product-not-found)
 - [Github ](https://github.com/asposemarketplace/Aspose_for_DNN/releases)
 - [Sourceforge ](https://sourceforge.net/projects/asposednn/files/)
-- [Bitbucket ](https://bitbucket.org/asposemarketplace/aspose-for-dnn/downloads)
+- [Bitbucket ](https://bitbucket.org/asposemarketplace/aspose-for-dnn/downloads/)
 ## **Installing**
 Once downloaded, please follow these steps to install the module to your DNN website:
 
@@ -53,7 +53,7 @@ Once downloaded, please follow these steps to install the module to your DNN web
 1. Click **Next**, accept the license and continue through the install.
 1. When finished, click **Return**.
 
-Please check [this module installation video](http://www.dnnsoftware.com/community/learn/video-library/view-video/video/542/view/details/how-to-install-a-module-in-dotnetnuke-7) from DNN for more details.
+Please check [this module installation video](https://www.dnnsoftware.com/community/learn/video-library/view-video/video/542/view/details/how-to-install-a-module-in-dotnetnuke-7) from DNN for more details.
 
 **Note:** If you get an error while uploading the module this is due to the maxRequestLength limit in your DNN installation’s web.config. Open web.config and update maxRequestLength to 20MB by setting **maxRequestLength=”20480″** and try to upload the module again.
 ## **Using**
@@ -90,18 +90,18 @@ This is why we offer free support. Anyone who uses our product, whether they hav
 
 You can log any issues or suggestions related to Aspose .NET Exchange/Gmail Sync for DNN Module using any of the following platforms
 
-- [CodePlex ](https://asposednn.codeplex.com/workitem/list/basic)
+- [CodePlex ](https://archive.codeplex.com/?p=asposednn)
 - [Github ](https://github.com/asposemarketplace/Aspose_for_DNN/issues)
 - [Sourceforge ](https://sourceforge.net/p/asposednn/tickets/)
 - [Bitbucket ](https://bitbucket.org/asposemarketplace/aspose-for-dnn/issues?status=new&status=open)
-- [DNN Store ](http://store.dnnsoftware.com/help-center/help-desk/ticket-entry/packageid/33775)
-- [Microsoft Developer Network - Q and A ](https://code.msdn.microsoft.com/Sync-DNN-Users-with-Google-204089d1/view/Discussions#content)
+- [DNN Store ](https://store.dnnsoftware.com/help-center/help-desk/ticket-entry/packageid/33775)
+- [Microsoft Developer Network - Q and A ](https://docs.microsoft.com/en-us/samples/browse/?redirectedfrom=MSDN-samples#content)
 ### **Extend and Contribute**
 Aspose .NET Exchange Sync for DNN and Aspose .NET Gmail Sync for DNN are open source and their source code is available on the major social coding websites listed below. Developers are encouraged to download the source code and extend the functionality as per their own requirements.
 #### **Source Code**
 You can get the latest source code from one of the following locations
 
-- [CodePlex ](https://asposednn.codeplex.com/SourceControl/latest)
+- [CodePlex ](https://archive.codeplex.com/?p=asposednn)
 - [Github ](https://github.com/asposemarketplace/Aspose_for_DNN)
 - [Sourceforge ](https://sourceforge.net/p/asposednn/code/ci/master/tree/)
 - [Bitbucket ](https://bitbucket.org/asposemarketplace/aspose-for-dnn/src)
