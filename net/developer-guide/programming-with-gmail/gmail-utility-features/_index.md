@@ -19,14 +19,9 @@ This code sample demonstrates the feature of querying a calendar. Following task
 
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
-// Get access token
-GoogleTestUser User2 = new GoogleTestUser("user", "email address", "password", "clientId", "client secret");
-string accessToken;
-string refreshToken;
-GoogleOAuthHelper.GetAccessToken(User2, out accessToken, out refreshToken);
 
-// Get IGmailClient
-using (IGmailClient client = GmailClient.GetInstance(accessToken, User2.EMail))
+// Use the GoogleUser and GoogleOAuthHelper classes below to receive an access token
+using (IGmailClient client = GmailClient.GetInstance(accessToken, user.Email))
 {
     // Initialize calendar item
     Aspose.Email.Clients.Google.Calendar calendar1 = new Aspose.Email.Clients.Google.Calendar("summary - " + Guid.NewGuid().ToString(), null, null, "Europe/Kiev");
@@ -117,405 +112,263 @@ Following is a step by step tutorial for creating a project in Google Developer 
 |![todo:image_alt_text](gmail-utility-features_7.png)|
 | :- |
 ## **Helper Classes**
-Following helper classes are required to run the codes in this section. These classes GoogleOAuthHelper and GoogleTestUser are just for simplification of demonstration. The methods in these classes use non-public structure of web-pages that may change any time.
+Following helper classes are required to run the code examples in this section. These classes `GoogleOAuthHelper` and `GoogleUser` are just for simplification of demonstration. The methods in these classes use non-public structure of web-pages that may change any time.
 ### **GoogleOAuthHelper Class**
-The following code snippet shows you how to use GoogleOAuthHelper Class.
+The following code snippet shows you how to implement `GoogleOAuthHelper` class.
 
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
+
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading;
-using System.Windows.Forms;
 
-namespace Aspose.Email.Examples.CSharp.Email.Gmail
+/// <summary>
+/// Developer console:
+/// https://console.cloud.google.com/projectselector2
+/// Documentation:
+/// https://developers.google.com/identity/protocols/oauth2/native-app
+/// </summary>
+internal class GoogleOAuthHelper
 {
-    internal class GoogleOAuthHelper
+    public const string AUTHORIZATION_URL = "https://accounts.google.com/o/oauth2/v2/auth";
+    public const string TOKEN_REQUEST_URL = "https://oauth2.googleapis.com/token";
+
+    public const string REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob";
+    public const string REDIRECT_TYPE = "code";
+
+    public static string codeVerifier;
+    public static string codeChallenge;
+
+    public static CodeChallengeMethod codeChallengeMethod = CodeChallengeMethod.S256;
+
+    public const string SCOPE =
+        "https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar" + // Calendar
+        "+" +
+        "https%3A%2F%2Fwww.google.com%2Fm8%2Ffeeds%2F" + // Contacts
+        "+" +
+        "https%3A%2F%2Fmail.google.com%2F"; // IMAP & SMTP
+
+    static GoogleOAuthHelper()
     {
-        public const string TOKEN_REQUEST_URL = "https://accounts.google.com/o/oauth2/token";
-        public const string SCOPE = "https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar" + "+" + "https%3A%2F%2Fwww.google.com%2Fm8%2Ffeeds%2F" + "+" + "https%3A%2F%2Fmail.google.com%2F"; // IMAP & SMTP
-        public const string REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob";
-        public const string REDIRECT_TYPE = "code";
+        CreateCodeVerifier();
+        CreateCodeChallenge();
+    }
 
-        internal static string GetAccessToken(TestUser user)
+    internal static string CreateCodeVerifier()
+    {
+        string allowedChars = "0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz-._~";
+
+        const int minLength = 43;
+        const int maxLength = 128;
+
+        Random random = new Random();
+        int length = minLength + random.Next(maxLength - minLength);
+        List<char> codeVerifierChars = new List<char>();
+
+        for (int i = 0; i < length; i++)
         {
-            return GetAccessToken((GoogleTestUser)user);
+            int index = random.Next(allowedChars.Length);
+            codeVerifierChars.Add(allowedChars[index]);
         }
 
-        internal static string GetAccessToken(GoogleTestUser user)
-        {
-            string access_token;
-            string token_type;
-            int expires_in;
-            GetAccessToken(user, out access_token, out token_type, out expires_in);
-            return access_token;
-        }
+        return codeVerifier = string.Join("", codeVerifierChars.ToArray());
+    }
 
-        internal static void GetAccessToken(GoogleTestUser user, out string access_token, out string token_type, out int expires_in)
-        {
-            access_token = null;
-            token_type = null;
-            expires_in = 0;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(TOKEN_REQUEST_URL);
-            request.CookieContainer = new CookieContainer();
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            string encodedParameters = string.Format("client_id={0}&client_secret={1}&refresh_token={2}&grant_type={3}",
-            System.Web.HttpUtility.UrlEncode(user.ClientId), System.Web.HttpUtility.UrlEncode(user.ClientSecret), System.Web.HttpUtility.UrlEncode(user.RefreshToken), System.Web.HttpUtility.UrlEncode(GrantTypes.refresh_token.ToString()));
-            byte[] requestData = Encoding.UTF8.GetBytes(encodedParameters);
-            request.ContentLength = requestData.Length;
-            if (requestData.Length > 0)
-                using (Stream stream = request.GetRequestStream())
-                    stream.Write(requestData, 0, requestData.Length);
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            string responseText = null;
-            using (TextReader reader = new StreamReader(response.GetResponseStream(), Encoding.ASCII))
-                responseText = reader.ReadToEnd();
-            foreach (string sPair in responseText.Replace("{", "").Replace("}", "").Replace("\"", "").Split(new string[] { ",\n" }, StringSplitOptions.None))
-            {
-                string[] pair = sPair.Split(':');
-                string name = pair[0].Trim().ToLower();
-                string value = System.Web.HttpUtility.UrlDecode(pair[1].Trim());
-                switch (name)
-                {
-                    case "access_token":
-                        access_token = value;
-                        break;
-                    case "token_type":
-                        token_type = value;
-                        break;
+    internal static string CreateCodeChallenge()
+    {
+        if (codeChallengeMethod == CodeChallengeMethod.Plain)
+            return codeChallenge = codeVerifier;
 
-                    case "expires_in":
-                        expires_in = Convert.ToInt32(value);
-                        break;
-                }
-            }
-            Debug.WriteLine("");
-            Debug.WriteLine("---------------------------------------------------------");
-            Debug.WriteLine("-----------OAuth 2.0 authorization information-----------");
-            Debug.WriteLine("---------------------------------------------------------");
-            Debug.WriteLine(string.Format("Login: '{0}'", user.EMail));
-            Debug.WriteLine(string.Format("Access token: '{0}'", access_token));
-            Debug.WriteLine(string.Format("Token type: '{0}'", token_type));
-            Debug.WriteLine(string.Format("Expires in: '{0}'", expires_in));
-            Debug.WriteLine("---------------------------------------------------------");
-            Debug.WriteLine("");
-        }
+        byte[] hashValue = null;
+        using (SHA256 sha256 = SHA256.Create())
+            hashValue = sha256.ComputeHash(Encoding.ASCII.GetBytes(codeVerifier));
 
-        internal static void GetAccessToken(TestUser user, out string access_token, out string refresh_token)
-        {
-            GetAccessToken((GoogleTestUser)user, out access_token, out refresh_token);
-        }
+        string b64 = Convert.ToBase64String(hashValue);
+        b64 = b64.Split('=')[0];
+        b64 = b64.Replace('+', '-');
+        b64 = b64.Replace('/', '_');
 
-        internal static void GetAccessToken(GoogleTestUser user, out string access_token, out string refresh_token)
-        {
-            string token_type;
-            int expires_in;
-            GoogleOAuthHelper.GetAccessToken(user, out access_token, out refresh_token, out token_type, out expires_in);
-        }
+        return codeChallenge = b64;
+    }
 
-        internal static void GetAccessToken(TestUser user, out string access_token, out string refresh_token, out string token_type, out int expires_in)
-        {
-            GetAccessToken((GoogleTestUser)user, out access_token, out refresh_token, out token_type, out expires_in);
-        }
+    internal static string GetAuthorizationCodeUrl(GoogleUser user)
+    {
+        return GetAuthorizationCodeUrl(user, SCOPE, REDIRECT_URI, REDIRECT_TYPE);
+    }
 
-        internal static void GetAccessToken(GoogleTestUser user, out string access_token, out string refresh_token, out string token_type, out int expires_in)
-        {
-            string authorizationCode = GoogleOAuthHelper.GetAuthorizationCode(user, GoogleOAuthHelper.SCOPE, GoogleOAuthHelper.REDIRECT_URI, GoogleOAuthHelper.REDIRECT_TYPE);
-            GoogleOAuthHelper.GetAccessToken(authorizationCode, user, out access_token, out token_type, out expires_in, out refresh_token);
-        }
+    internal static string GetAuthorizationCodeUrl(
+        GoogleUser user, string scope, string redirectUri, string responseType)
+    {
+        string state = System.Web.HttpUtility.UrlEncode(Guid.NewGuid().ToString());
 
-        internal static void GetAccessToken(string authorizationCode, TestUser user, out string access_token, out string token_type, out int expires_in, out string refresh_token)
-        {
-            GetAccessToken(authorizationCode, (GoogleTestUser)user, out access_token, out token_type, out expires_in, out refresh_token);
-        }
+        string approveUrl = AUTHORIZATION_URL +
+            $"?client_id={user.ClientId}&redirect_uri={redirectUri}&response_type={responseType}&scope={scope}&" +
+            $"code_challenge={codeChallenge}&code_challenge_method={codeChallengeMethod.ToString()}&" +
+            $"state={state}";
 
-        internal static void GetAccessToken(string authorizationCode, GoogleTestUser user, out string access_token, out string token_type, out int expires_in, out string refresh_token)
-        {
-            access_token = null;
-            token_type = null;
-            expires_in = 0;
-            refresh_token = null;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(TOKEN_REQUEST_URL);
-            request.CookieContainer = new CookieContainer();
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-            string encodedParameters = string.Format("client_id={0}&code={1}&client_secret={2}&redirect_uri={3}&grant_type={4}", System.Web.HttpUtility.UrlEncode(user.ClientId), System.Web.HttpUtility.UrlEncode(authorizationCode), System.Web.HttpUtility.UrlEncode(user.ClientSecret), System.Web.HttpUtility.UrlEncode(REDIRECT_URI), System.Web.HttpUtility.UrlEncode(GrantTypes.authorization_code.ToString()));
-            byte[] requestData = Encoding.UTF8.GetBytes(encodedParameters);
-            request.ContentLength = requestData.Length;
-            if (requestData.Length > 0)
-                using (Stream stream = request.GetRequestStream())
-                    stream.Write(requestData, 0, requestData.Length);
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            string responseText = null;
-            using (TextReader reader = new StreamReader(response.GetResponseStream(), Encoding.ASCII))
-                responseText = reader.ReadToEnd();
-            foreach (string sPair in responseText.Replace("{", "").Replace("}", "").Replace("\"", "").Split(new string[] { ",\n" }, StringSplitOptions.None))
-            {
-                string[] pair = sPair.Split(':');
-                string name = pair[0].Trim().ToLower();
-                string value = System.Web.HttpUtility.UrlDecode(pair[1].Trim());
-                switch (name)
-                {
-                    case "access_token":
-                        access_token = value;
-                        break;
-                    case "token_type":
-                        token_type = value;
-                        break;
+        return approveUrl;
+    }
 
-                    case "expires_in":
-                        expires_in = Convert.ToInt32(value);
-                        break;
+    internal static TokenResponse GetAccessTokenByRefreshToken(GoogleUser user)
+    {
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(TOKEN_REQUEST_URL);
+        request.CookieContainer = new CookieContainer();
+        request.Method = "POST";
+        request.ContentType = "application/x-www-form-urlencoded";
 
-                    case "refresh_token":
-                        refresh_token = value;
-                        break;
-                }
-            }
+        string clientId = System.Web.HttpUtility.UrlEncode(user.ClientId);
+        string clientSecret = System.Web.HttpUtility.UrlEncode(user.ClientSecret);
+        string refreshToken = System.Web.HttpUtility.UrlEncode(user.RefreshToken);
+        string grantType = System.Web.HttpUtility.UrlEncode("refresh_token");
 
-            Debug.WriteLine(string.Format("Authorization code: '{0}'", authorizationCode));
-            Debug.WriteLine(string.Format("Access token: '{0}'", access_token));
-            Debug.WriteLine(string.Format("Refresh token: '{0}'", refresh_token));
-            Debug.WriteLine(string.Format("Token type: '{0}'", token_type));
-            Debug.WriteLine(string.Format("Expires in: '{0}'", expires_in));
-            Debug.WriteLine("---------------------------------------------------------");
-            Debug.WriteLine("");
-        }
+        string encodedParameters = $"client_id={clientId}&client_secret={clientSecret}&refresh_token={refreshToken}&grant_type={grantType}";
 
-        internal static string GetAuthorizationCode(TestUser acc, string scope, string redirectUri, string responseType)
-        {
-            return GetAuthorizationCode((GoogleTestUser)acc, scope, redirectUri, responseType);
-        }
+        byte[] requestData = Encoding.UTF8.GetBytes(encodedParameters);
+        request.ContentLength = requestData.Length;
+        if (requestData.Length > 0)
+            using (Stream stream = request.GetRequestStream())
+                stream.Write(requestData, 0, requestData.Length);
 
-        internal static string GetAuthorizationCode(GoogleTestUser acc, string scope, string redirectUri, string responseType)
-        {
-            Debug.WriteLine("");
-            Debug.WriteLine("---------------------------------------------------------");
-            Debug.WriteLine("-----------OAuth 2.0 authorization information-----------");
-            Debug.WriteLine("---------------------------------------------------------");
-            Debug.WriteLine(string.Format("Login: '{0}'", acc.EMail));
-            string authorizationCode = null;
-            string error = null;
-            string approveUrl = string.Format("https://accounts.google.com/o/oauth2/auth?redirect_uri={0}&response_type={1}&client_id={2}&scope={3}", redirectUri, responseType, acc.ClientId, scope);
+        HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+        string responseText = null;
+        using (TextReader reader = new StreamReader(response.GetResponseStream(), Encoding.ASCII))
+            responseText = reader.ReadToEnd();
 
-            AutoResetEvent are0 = new AutoResetEvent(false);
-            Thread t = new Thread(delegate()
-            {
-                bool doEvents = true;
-                WebBrowser browser = new WebBrowser();
-                browser.AllowNavigation = true;
-                browser.DocumentCompleted += delegate(object sender, WebBrowserDocumentCompletedEventArgs e) { doEvents = false; };
-                Form f = new Form();
-                f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-                f.ShowInTaskbar = false;
-                f.StartPosition = FormStartPosition.Manual;
-                f.Location = new System.Drawing.Point(-2000, -2000);
-                f.Size = new System.Drawing.Size(1, 1);
-                f.Controls.Add(browser);
-                f.Load += delegate(object sender, EventArgs e)
-                {
-                    try
-                    {
-                        browser.Navigate("https://accounts.google.com/Logout");
-                        doEvents = true;
-                        while (doEvents) Application.DoEvents();
-                        browser.Navigate("https://accounts.google.com/ServiceLogin?sacu=1");
-                        doEvents = true;
-                        while (doEvents) Application.DoEvents();
-                        HtmlElement loginForm = browser.Document.Forms["gaia_loginform"];
-                        if (loginForm != null)
-                        {
-                            HtmlElement userName = browser.Document.All["Email"];
+        TokenResponse tokensResponse = JsonConvert.DeserializeObject<TokenResponse>(responseText);
 
-                            userName.SetAttribute("value", acc.EMail);
-                            loginForm.InvokeMember("submit");
-                            doEvents = true;
-                            while (doEvents)
-                                Application.DoEvents();
+        return tokensResponse;
+    }
 
-                            loginForm = browser.Document.Forms["gaia_loginform"];
-                            HtmlElement passwd = browser.Document.All["Passwd"];
-                            passwd.SetAttribute("value", acc.Password);
+    internal static TokenResponse GetAccessTokenByAuthCode(string authorizationCode, GoogleUser user)
+    {
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(TOKEN_REQUEST_URL);
+        request.CookieContainer = new CookieContainer();
+        request.Method = "POST";
+        request.ContentType = "application/x-www-form-urlencoded";
 
-                            loginForm.InvokeMember("submit");
-                            doEvents = true;
-                            while (doEvents)
-                                Application.DoEvents();
-                        }
-                        else
-                        {
-                            error = "Login form is not found in \n" + browser.Document.Body.InnerHtml;
-                            return;
-                        }
-                        browser.Navigate(approveUrl);
-                        doEvents = true;
-                        while (doEvents) Application.DoEvents();
-                        HtmlElement approveForm = browser.Document.Forms["connect-approve"];
-                        if (approveForm != null)
-                        {
-                            HtmlElement submitAccess = browser.Document.All["submit_access"];
-                            submitAccess.SetAttribute("value", "true");
-                            approveForm.InvokeMember("submit");
-                            doEvents = true;
-                            while (doEvents)
-                                Application.DoEvents();
-                        }
-                        else
-                        {
-                            error = "Approve form is not found in \n" + browser.Document.Body.InnerHtml;
-                            return;
-                        }
-                        HtmlElement code = browser.Document.All["code"];
-                        if (code != null)
-                            authorizationCode = code.GetAttribute("value");
-                        else
-                            error = "Authorization code is not found in \n" + browser.Document.Body.InnerHtml;
-                    }
-                    catch (Exception ex)
-                    {
-                        error = ex.Message;
-                    }
-                    finally
-                    {
-                        f.Close();
-                    }
-                };
-                Application.Run(f);
-                are0.Set();
-            });
-            t.SetApartmentState(ApartmentState.STA);
-            t.Start();
-            are0.WaitOne();
-            if (error != null)
-                throw new Exception(error);
-            return authorizationCode;
-        }
+        string clientId = System.Web.HttpUtility.UrlEncode(user.ClientId);
+        string clientSecret = System.Web.HttpUtility.UrlEncode(user.ClientSecret);
+        string authCode = System.Web.HttpUtility.UrlEncode(authorizationCode);
+        string redirectUri = System.Web.HttpUtility.UrlEncode(REDIRECT_URI);
+        string grantType = System.Web.HttpUtility.UrlEncode("authorization_code");
+
+        string encodedParameters = $"client_id={clientId}&client_secret={clientSecret}&code={authCode}&code_verifier={codeVerifier}&redirect_uri={redirectUri}&grant_type={grantType}";
+
+        byte[] requestData = Encoding.UTF8.GetBytes(encodedParameters);
+        request.ContentLength = requestData.Length;
+        if (requestData.Length > 0)
+            using (Stream stream = request.GetRequestStream())
+                stream.Write(requestData, 0, requestData.Length);
+
+        HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+        string responseText = null;
+        using (TextReader reader = new StreamReader(response.GetResponseStream(), Encoding.ASCII))
+            responseText = reader.ReadToEnd();
+
+        TokenResponse tokensResponse = JsonConvert.DeserializeObject<TokenResponse>(responseText);
+
+        return tokensResponse;
+    }
+
+    public enum CodeChallengeMethod
+    {
+        S256,
+        Plain
     }
 }
 ```
 
-**Google OAuth Helper** should be used as follows.
+**Google OAuth Helper** should be used as follows:
+1. An authorization code URL has to be generated first.
+1. Open the URL in a browser and complete all operations. As a result, you will receive an authorization code.
+1. Use the authorization code to receive a refresh token.
+1. When the refresh token exists, you may use it to retrieve access tokens.
 
 ```csharp
-// The first user has to generate an authorization code URL.
+GoogleUser user = new GoogleUser(email, password, clientId, clientSecret);
+
 string authUrl = GoogleOAuthHelper.GetAuthorizationCodeUrl(user);
-// Then he has to open this url in browser and complete all operations.
-// As result he will get authorization code.
-// User has to use this authorization code to retrieve refresh token (TokenResponse.RefreshToken)
-string authorizationCode = "put your authorization code here";
+
+Console.WriteLine("Go to the following URL and get your authorization code:");
+Console.WriteLine(authUrl);
+Console.WriteLine();
+
+Console.WriteLine("Enter the authorization code:");
+string authorizationCode = Console.ReadLine();
+Console.WriteLine();
+
 TokenResponse tokenInfo = GoogleOAuthHelper.GetAccessTokenByAuthCode(authorizationCode, user);
-// When refresh token exists, user may use it to retrieve access token
+Console.WriteLine("The refresh token has been received:");
+Console.WriteLine(tokenInfo.RefreshToken);
+Console.WriteLine();
+
+user.RefreshToken = tokenInfo.RefreshToken;
 tokenInfo = GoogleOAuthHelper.GetAccessTokenByRefreshToken(user);
+Console.WriteLine("The new access token has been received:");
+Console.WriteLine(tokenInfo.AccessToken);
+Console.WriteLine();
 ```
 
-### **TestUser Class**
-The following code snippet shows you how to use TestUser Class.
+### **GoogleUser Class**
+The following code snippet shows you how to implement `GoogleUser` class.
 
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Aspose.Email.Examples.CSharp.Email.Gmail
+public class GoogleUser
 {
-    internal enum GrantTypes
+    public GoogleUser(string email, string password, string clientId, string clientSecret)
+        : this(email, password, clientId, clientSecret, null)
     {
-        authorization_code,
-        refresh_token
     }
 
-
-    public class TestUser
+    public GoogleUser(string email, string password, string clientId, string clientSecret, string refreshToken)
     {
-        internal TestUser(string name, string eMail, string password, string domain)
-        {
-            Name = name;
-            EMail = eMail;
-            Password = password;
-            Domain = domain;
-        }
-
-        public readonly string Name;
-        public readonly string EMail;
-        public readonly string Password;
-        public readonly string Domain;
-
-        public static bool operator ==(TestUser x, TestUser y)
-        {
-            if ((object)x != null)
-                return x.Equals(y);
-            if ((object)y != null)
-                return y.Equals(x);
-            return true;
-        }
-
-        public static bool operator !=(TestUser x, TestUser y)
-        {
-            return !(x == y);
-        }
-
-        public static implicit operator string(TestUser user)
-        {
-            return user == null ? null : user.Name;
-        }
-
-        public override int GetHashCode()
-        {
-            return ToString().GetHashCode();
-        }
-
-        public override bool Equals(object obj)
-        {
-            return obj != null && obj is TestUser && this.ToString().Equals(obj.ToString(), StringComparison.OrdinalIgnoreCase);
-        }
-
-        public override string ToString()
-        {
-            return string.IsNullOrEmpty(Domain) ? Name : string.Format("{0}/{1}", Domain, Name);
-        }
+        Email = email;
+        Password = password;
+        ClientId = clientId;
+        ClientSecret = clientSecret;
+        RefreshToken = refreshToken;
     }
+
+    public readonly string Email;
+    public readonly string Password;
+    public readonly string ClientId;
+    public readonly string ClientSecret;
+
+    public string RefreshToken;
 }
 ```
-### **GoogleTestUser Class**
-The following code snippet shows you how to use GoogleTestUser Class.
+
+### **TokenResponse Class**
+
+The following code snippet shows you how to implement `TokenResponse` class.
 
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Aspose.Email.Examples.CSharp.Email.Gmail
+using Newtonsoft.Json;
+
+public class TokenResponse
 {
-    public class GoogleTestUser : TestUser
-    {
-        public GoogleTestUser(string name, string eMail, string password)
-            : this(name, eMail, password, null, null, null)
-        { }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "access_token", Required = Required.Default)]
+    public string AccessToken { get; set; }
 
-        public GoogleTestUser(string name, string eMail, string password, string clientId, string clientSecret)
-            : this(name, eMail, password, clientId, clientSecret, null)
-        { }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "token_type", Required = Required.Default)]
+    public string TokenType { get; set; }
 
-        public GoogleTestUser(string name, string eMail, string password, string clientId, string clientSecret, string refreshToken)
-            : base(name, eMail, password, "gmail.com")
-        {
-            ClientId = clientId;
-            ClientSecret = clientSecret;
-            RefreshToken = refreshToken;
-        }
-        public readonly string ClientId;
-        public readonly string ClientSecret;
-        public readonly string RefreshToken;
-    }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "expires_in", Required = Required.Default)]
+    public int ExpiresIn { get; set; }
+
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "refresh_token", Required = Required.Default)]
+    public string RefreshToken { get; set; }
+
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "scope", Required = Required.Default)]
+    public string Scope { get; set; }
 }
 ```
