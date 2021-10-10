@@ -125,6 +125,57 @@ static AsyncCallback Callback = delegate(IAsyncResult ar)
     }
 };
 ```
+
+Starting with .NET Framework 4.5, you can use asynchronous methods implemented according to [TAP](https://docs.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) model. The code snippet below shows how to send email messages using the task-based asynchronous pattern method named `SendAsync` and then interrupt this process after a while.
+
+```csharp
+// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
+
+List<MailMessage> mailMessages = new List<MailMessage>();
+
+// create mail messages
+for (int i = 0; i < 100; i++)
+    mailMessages.Add(new MailMessage(senderEmail, receiverEmail, $"Message #{i}", "Text"));
+
+using (SmtpClient client = new SmtpClient(host, 587, senderEmail, password, SecurityOptions.SSLExplicit))
+{
+    CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+    AutoResetEvent autoResetEvent = new AutoResetEvent(false);
+    Exception exception = null;
+
+    ThreadPool.QueueUserWorkItem(delegate
+    {
+        try
+        {
+            // start sending the messages
+            var task = client.SendAsync(mailMessages, cancellationTokenSource.Token);
+            task.GetAwaiter().GetResult();
+            Console.WriteLine("All messages have been sent.");
+        }
+        catch (Exception e)
+        {
+            exception = e;
+        }
+        finally
+        {
+            autoResetEvent.Set();
+        }
+    });
+
+    Thread.Sleep(5000);
+
+    // stop sending the messages
+    cancellationTokenSource.Cancel();
+    autoResetEvent.WaitOne();
+
+    foreach (MailMessage mailMessage in mailMessages)
+        mailMessage.Dispose();
+
+    if (exception is OperationCanceledException)
+        Console.WriteLine("Operation has been interrupted: " + exception.Message);
+}
+```
+
 ## **Sending Stored Messages from Disc**
 EML files, (Outlook Express Electronic Mail files) contains an email's header, message body, and any attachments. Aspose.Email lets developers work with EML files in different ways. This article shows how to load EML files from disk and send them as emails with SMTP. You can load .eml files from disk or stream into the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class and send the email message using the [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class. The [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class is the main class for creating new email messages, loading email message files from disk or stream and saving the messages. The following code snippet shows how to sending stored messages from the disc.
 
