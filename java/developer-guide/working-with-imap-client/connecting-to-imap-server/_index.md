@@ -121,6 +121,17 @@ if (messageInfoCol.size() > 0) {
     System.out.println("No unread messages found");
 }
 ~~~
+## **How to Set Timeout for Mail Operations**
+Each mail operation takes some time depending on many factors (network delays, data size, server performance, etc.). You can set a timeout for all mail operations. The code example below shows you how to do that using the [Timeout](https://apireference.aspose.com/email/java/com.aspose.email/EmailClient#setTimeout\(int\)) property. Note: you should not set large values to avoid long waits in your application.
+
+~~~Java
+try (ImapClient imapClient = new ImapClient("host", 993, "username", "password", SecurityOptions.SSLImplicit))
+{
+    imapClient.setTimeout(60000); // 60 seconds
+
+    // some code...
+}
+~~~
 
 ## **How to Restrict Greeting Timeout**
 The IMAP client may use the automatic mode to establish a connection. In this mode, the IMAP client goes through all possible connection parameters until the connection is established. An IMAP server in case of the correct connection sends a greeting string to the client. Servers may use implicit or explicit (START TLS) SSL/TLS connection initiation. If connection mode is mismatched (for instance, the server waits for an implicit SSL connection but the client tries to establish a non-secured or explicit SSL connection), the server won't send a greeting string and the user will wait a long time until the timeout reaches a greeting string, and the client goes to the next connection option. To avoid this problem, the GreetingTimeout has been introduced. This property allows you to set the timeout for the greeting string, and reduce the time of automatic connection establishment.

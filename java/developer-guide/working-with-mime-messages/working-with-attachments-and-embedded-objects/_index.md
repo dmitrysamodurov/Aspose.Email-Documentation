@@ -128,6 +128,20 @@ if (eml.getAttachments().get_Item(0).isEmbeddedMessage())
 else
     System.out.println("Attachment is not an embedded message.");
 ~~~
+#### **Extracting Attachment URI if Attachment is URI-attachment**
+The following code snippet demonstrates how to extract Attachment URI.
+
+~~~Java
+MailMessage eml = MailMessage.load("fileName");
+
+Attachment attachment = eml.getAttachments().get_Item(0);
+if (attachment.isUri()) {
+    InputStream inputStream = attachment.getContentStream();
+    String uri = new String(IOUtils.toByteArray(inputStream), Charset.forName("utf-8"));
+    System.out.println("Attachment URI: " + uri);
+}
+~~~
+
 ## **Working with Embedded Objects**
 An embedded object is an object that was created with one application and enclosed within a document or file created by another application. For example, a Microsoft Excel spreadsheet can be embedded into a Microsoft Word report, or a video file can be embedded into a Microsoft PowerPoint presentation. When a file is embedded, rather than inserted or pasted into another document, it retains its original format. The embedded document can be opened in the original application and modified.
 ### **Embedding Objects into an Email**

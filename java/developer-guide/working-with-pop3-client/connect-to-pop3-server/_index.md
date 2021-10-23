@@ -93,3 +93,15 @@ try (Pop3Client client = new Pop3Client("imap.domain.com", "username", "password
     Pop3MailboxInfo mailboxInfo = client.getMailboxInfo();
 }
 ~~~
+
+## **How to Set Timeout for Mail Operations**
+Each mail operation takes some time depending on many factors (network delays, data size, server performance, etc.). You can set a timeout for all mail operations. The code example below shows you how to do that using the [Timeout](https://apireference.aspose.com/email/java/com.aspose.email/EmailClient#setTimeout\(int\)) property. Note: you should not set large values to avoid long waits in your application.
+
+~~~Java
+try (Pop3Client pop3Client = new Pop3Client("host", 995, "username", "password", SecurityOptions.Auto))
+{
+    pop3Client.setTimeout(60000); // 60 seconds
+
+    // some code...
+}
+~~~
