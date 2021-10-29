@@ -164,32 +164,6 @@ class GoogleOAuthHelper {
         String refreshToken;
     }
 
-    static void getRefreshToken() {
-        OAuthUser user = new OAuthUser();
-
-        // Set clientId, clientSecret and email 
-        user.clientId = "clientId";
-        user.clientSecret = "clientSecret";
-        user.email = "email";
-
-        // Generate AuthorizationCodeUrl
-        String authorizationCodeUrl = GoogleOAuthHelper.getAuthorizationCodeUrl(user);
-
-        // You have to retrieve AuthorizationCode manually with generated AuthorizationCodeUrl
-        // Copy "Code Verifier" from the previous step output
-        String authorizationCode = "authorizationCode";
-        String codeVerifier = "codeVerifier";
-
-        // Get "Refresh Token"
-        String refreshToken = GoogleOAuthHelper.getAccessTokenByAuthCode(authorizationCode, codeVerifier, user);
-
-        // Get "Access Token"
-        String accessToken = GoogleOAuthHelper.getAccessTokenByRefreshToken(user);
-        
-        // Use "Access Token" in API
-        IGmailClient client = GmailClient.getInstance(accessToken, user.email);
-    }
-
     static String createCodeChalange() {
         String verifierStr = UUID.randomUUID().toString() + "-" + UUID.randomUUID().toString();
         System.out.println("Code Verifier: " + verifierStr);
@@ -349,5 +323,53 @@ class GoogleOAuthHelper {
         }
         return result.toString();
     }
+}
+~~~
+
+**Google OAuth Helper** should be used as follows:
+1. An authorization code URL has to be generated first.
+1. Open the URL in a browser and complete all operations. As a result, you will receive an authorization code.
+1. Use the authorization code to receive a refresh token.
+1. When the refresh token exists, you may use it to retrieve access tokens.
+
+~~~Java
+static class OAuthUser {
+    String email;
+    String clientId;
+    String clientSecret;
+    String refreshToken;
+}
+
+static void getRefreshToken() {
+    Scanner inputReader = new Scanner(System.in);
+    OAuthUser user = new OAuthUser();
+
+    // Set clientId, clientSecret and email
+    System.out.println("Set clientId: ");
+    user.clientId = inputReader.nextLine();
+    System.out.println("Set clientSecret: ");
+    user.clientSecret = inputReader.nextLine();
+    System.out.println("Set email: ");
+    user.email = inputReader.nextLine();
+
+    // Generate AuthorizationCodeUrl
+    String authorizationCodeUrl = GoogleOAuthHelper.getAuthorizationCodeUrl(user);
+
+    System.out.println("You have to retrieve AuthorizationCode manually with generated AuthorizationCodeUrl");
+    System.out.println("Set authorizationCode: ");
+    String authorizationCode = inputReader.nextLine();
+    System.out.println("Copy Code Verifier from the previous step output");
+    System.out.println("Set codeVerifier: ");
+    String codeVerifier = inputReader.nextLine();
+
+    // Get "Refresh Token"
+    String refreshToken = GoogleOAuthHelper.getAccessTokenByAuthCode(authorizationCode, codeVerifier, user);
+    user.refreshToken = refreshToken;
+
+    // Get "Access Token"
+    String accessToken = GoogleOAuthHelper.getAccessTokenByRefreshToken(user);
+    
+    // Use "Access Token" in API
+    IGmailClient client = GmailClient.getInstance(accessToken, user.email);
 }
 ~~~

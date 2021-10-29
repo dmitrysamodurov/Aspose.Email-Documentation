@@ -394,6 +394,7 @@ The following code snippet shows you how to use the [PersonalStorageQueryBuilder
 - Message class.
 - Presence of attachments.
 - Message size.
+- Message date.
 - Unread messages.
 - Unread messages with attachments, and
 - folders with specific subfolder name.
@@ -430,6 +431,25 @@ try (PersonalStorage personalStorage = PersonalStorage.fromFile(dataDir + "Outlo
     builder.getMessageSize().greater(15000);
     messages = folder.getContents(builder.getQuery());
     System.out.println("messags size > 15Kb:" + messages.size());
+
+    java.util.Calendar c = java.util.Calendar.getInstance();
+
+    builder = new PersonalStorageQueryBuilder();
+    // Messages by Current Date
+    // (Note that queries by date are not supported for Calendar Items in the Appointments folder)
+    builder.getSentDate().on(c.getTime(), DateComparisonType.ByDate);
+    messages = folder.getContents(builder.getQuery());
+    System.out.println("Messages by Current Date: " + messages.size());
+
+    builder = new PersonalStorageQueryBuilder();
+    // Messages between Dates
+    // (Note that queries by date are not supported for Calendar Items in the Appointments folder)
+    c.set(2020,  0, 1, 0, 0, 0);
+    builder.getSentDate().since(c.getTime());
+    c.set(2021,  0, 1, 0, 0, 0);
+    builder.getSentDate().before(c.getTime());
+    messages = folder.getContents(builder.getQuery());
+    System.out.println("Messages between Dates: " + messages.size());
 
     builder = new PersonalStorageQueryBuilder();
     // Unread messages
