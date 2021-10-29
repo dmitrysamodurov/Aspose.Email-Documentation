@@ -51,11 +51,11 @@ appointment.Save(fileName + ".msg", new AppointmentMsgSaveOptions(););
 
 - `MsgLoadOptions.PreserveRtfContent` 
 
-  Gets or sets a value indicating whether need keep rtf body in MailMessage.
+  Gets or sets a value indicating whether to keep the rtf body in MailMessage.
 
 - `MailConversionOptions.PreserveRtfContent` 
 
-  Gets or sets a value indicating whether need keep rtf body in MailMessage.
+  Gets or sets a value indicating whether to keep the rtf body in MailMessage.
 
 #### **Code example**
 
