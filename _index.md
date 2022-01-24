@@ -123,4 +123,3 @@ Following are the links to some useful resources you may need to accomplish your
 - [Aspose.Email for SharePoint Getting Started](/email/sharepoint/getting-started/)
 - [Aspose.Email for SharePoint Users Guide](/email/sharepoint/user-s-guide/)
 - [Aspose.Email for SharePoint Technical Articles](/email/sharepoint/technical-articles/) 
-- [Aspose.Email for SharePoint Release Notes](/email/sharepoint/home/release-notes/)
