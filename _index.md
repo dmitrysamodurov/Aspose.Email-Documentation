@@ -111,7 +111,7 @@ Following are the links to some useful resources you may need to accomplish your
 
 - [Aspose.Email for Java Online Documentation](/email/java/) (Aspose.Email for Android via Java is very similar to Aspose.Email for Java. So, you can use the same documentation)
 - [Aspose.Email for Android via Java Features](/email/java/aspose-email-for-android-via-java-features/)
-- [Aspose.Email for Android via Java Limitations and API Differences](/email/java/aspose-email-for-android-via-java-jimitations-and-api-differences/)
+- [Aspose.Email for Android via Java Limitations and API Differences](/email/androidjava/limitations-and-api-differences/)
 - [Aspose.Email for Android via Java Release Notes](/email/java/android-via-java-release-notes)
 - [Aspose.Email for Android via Java Product Page](https://products.aspose.com/email/android-java)
 - [Aspose.Email for Android via Java API Reference Guide](https://apireference.aspose.com/email/java) 
