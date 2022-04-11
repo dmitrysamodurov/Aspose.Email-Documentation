@@ -3,6 +3,7 @@ title: System Requirements
 type: docs
 weight: 40
 url: /cpp/system-requirements/
+description: System Requirements for C++ Email Parser Library on Windows and Linux OS.
 ---
 
 ## **Supported Operating Systems**
