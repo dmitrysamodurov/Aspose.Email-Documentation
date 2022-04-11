@@ -1,8 +1,10 @@
 ---
-title: Extracting Message Contents from Emails
+title: Extracting Message Contents from Emails in C++
+linktitle: Extracting Message Contents from Emails
 type: docs
 weight: 20
 url: /cpp/extracting-message-contents-from-emails/
+description: Using C++ Email Parser Library, you can access email message properties, header information and manipulate it in different ways programmatically.
 ---
 
 ## **Displaying Email Information on Screen**
