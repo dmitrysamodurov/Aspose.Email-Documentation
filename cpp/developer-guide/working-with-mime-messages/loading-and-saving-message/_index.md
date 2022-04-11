@@ -1,8 +1,10 @@
 ---
-title: Loading and Saving Message
+title: Loading, Saving and Converting different Email Message formats in C++
+linktitle: Loading and Saving Message
 type: docs
 weight: 30
 url: /cpp/loading-and-saving-message/
+description: With C++ Email Parser Library, you can load, save, export and convert different email message formats e.g. EML, MSG, MHTML.
 ---
 
 ## **Loading a Message with Load Options**
