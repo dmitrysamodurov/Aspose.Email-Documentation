@@ -3,6 +3,7 @@ title: Supported File Formats
 type: docs
 weight: 20
 url: /cpp/supported-file-formats/
+description: Supported File Formats of Email C++ library include MSG, PST, OST, EML, MBOX, OFT, ICS and others
 ---
 
 
