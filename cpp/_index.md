@@ -4,6 +4,8 @@ type: docs
 is_root: true
 weight: 30
 url: /cpp/
+keywords: Email C++ library
+description: Email C++ library enables developers to create, manipulate and convert Outlook and other popular emailing file formats, the API is independent of Office Automation or MS Outlook.
 ---
 
 {{% alert color="primary" %}} 
