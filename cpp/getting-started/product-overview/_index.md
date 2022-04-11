@@ -3,6 +3,8 @@ title: Product Overview
 type: docs
 weight: 10
 url: /cpp/product-overview/
+keywords: Email C++ library, Email C++ API
+description: Email C++ library or API can be used to parse, open or save emails, EML, Outlook PST and OST files, MIME messages.
 ---
 
 {{% alert color="primary" %}} 
