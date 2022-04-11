@@ -3,6 +3,7 @@ title: Installation
 type: docs
 weight: 50
 url: /cpp/installation/
+description: Learn about how to install C++ Email Parser Library.
 ---
 
 ## **Installing Aspose.Email for C++**
