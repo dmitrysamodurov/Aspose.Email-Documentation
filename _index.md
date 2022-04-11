@@ -90,8 +90,8 @@ Aspose.Email implements a number of network protocols, for example SMTP, MIME, P
 
 Following are the links to some useful resources you may need to accomplish your tasks.
 
-- [Aspose.Email for Python via .NET Features](/email/pythonnet/features/)
-- [Aspose.Email for Python via .NET Release Notes](/email/pythonnet/release-notes)
+- [Aspose.Email for Python via .NET Features](/email/python-net/features/)
+- [Aspose.Email for Python via .NET Release Notes](/email/python-net/release-notes)
 - [Aspose.Email for Python via .NET Product Page](https://products.aspose.com/email/python-net)
 - [Aspose.Email for Python via .NET API Reference Guide](https://apireference.aspose.com/email/net)
 - [Aspose.Email for Python via .NET Free Support Forum](https://forum.aspose.com/)
