@@ -3,6 +3,7 @@ title: Licensing
 type: docs
 weight: 60
 url: /cpp/licensing/
+description: Evaluate Email C++ Library API and apply license using file or stream object.
 ---
 
 ## **Evaluation Version Limitations**
