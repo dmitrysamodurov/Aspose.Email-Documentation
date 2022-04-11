@@ -3,6 +3,7 @@ title: Limitations and API Differences
 type: docs
 weight: 10
 url: /cpp/limitations-and-api-differences/
+description: C++ Email Parser Library has some differences as compared to its equivalent .NET version. This page contains information about all such functionality that is not available in the API.
 ---
 
 Aspose.Email for C++ has some differences as compared to its equivalent .NET version of the API. This page contains information about all such functionality that is not available in the API.
