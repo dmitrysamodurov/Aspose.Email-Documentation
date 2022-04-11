@@ -3,6 +3,7 @@ title: Features Overview
 type: docs
 weight: 30
 url: /cpp/features-overview/
+description: Email C++ library is divided into several separate components, each with particular features. Here is a list of the features for each of the main packages.
 ---
 
 Apose.Email for C++ is divided into several separate components, each with particular features. Here is a list of the features for each of the main packages.
