@@ -3,6 +3,7 @@ title: How to Run the Examples
 type: docs
 weight: 70
 url: /cpp/how-to-run-the-examples/
+description: This section explains how to run the examples of C++ Email Parser Library from GitHub.
 ---
 
 ## **Software Requirements**
