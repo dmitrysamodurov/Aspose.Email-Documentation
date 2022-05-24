@@ -11,7 +11,7 @@ This page contains release notes information for Aspose.Email for C++ 22.5.
 
 {{% /alert %}} 
 
-Aspose.Email for C++ 22.4 is based on [Aspose.Email for .NET 22.4](https://docs.aspose.com/email/net/aspose-email-for-net-22-4-release-notes/).
+Aspose.Email for C++ 22.5 is based on [Aspose.Email for .NET 22.4](https://docs.aspose.com/email/net/aspose-email-for-net-22-4-release-notes/).
 
 
 ## **New Features**
