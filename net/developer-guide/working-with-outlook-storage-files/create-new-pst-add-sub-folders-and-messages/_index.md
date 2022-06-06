@@ -21,10 +21,10 @@ The following code snippet shows you how to create a PST file and add a subfolde
 
 ```csharp
 // Create new PST
-PersonalStorage personalStorage = PersonalStorage.Create(path, FileFormatVersion.Unicode);
+var pst = PersonalStorage.Create(path, FileFormatVersion.Unicode);
 
 // Add new folder "Test"
-personalStorage.RootFolder.AddSubFolder("Inbox");
+pst.RootFolder.AddSubFolder("Inbox");
     
 ```
 
@@ -32,16 +32,10 @@ personalStorage.RootFolder.AddSubFolder("Inbox");
 Sometimes it is necessary to change a folder's folder class. A common example is where messages of different types (appointments, messages, etc.) are added to the same folder. In such cases, the folder class needs to be changed for all elements in the folder to display properly. The following code snippet shows you how to change the container class of a folder in PST for this purpose.
 
 ```csharp
-// The path to the file directory.
-string dataDir = RunExamples.GetDataDir_Outlook();
-
-// Load the Outlook file
-string path = dataDir + "PersonalStorage1.pst";
-using(PersonalStorage personalStorage = PersonalStorage.FromFile(path))
+using(PersonalStorage personalStorage = PersonalStorage.FromFile("PersonalStorage1.pst))
 {
-    FolderInfo folder = personalStorage.RootFolder.GetSubFolder("Inbox");
+    var folder = personalStorage.RootFolder.GetSubFolder("Inbox");
     folder.ChangeContainerClass("IPF.Note");
-    personalStorage.Dispose();
 }
 ```
 
