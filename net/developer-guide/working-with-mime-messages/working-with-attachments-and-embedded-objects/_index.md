@@ -23,11 +23,28 @@ To attach an attachment to an email, please follow these steps:
 
 The following code snippet shows you how to add an attachment to an email.
 
+```csharp
+// Create an instance of MailMessage class
+var eml = new MailMessage
+{
+    From = "sender@from.com",
+    To = "receiver@to.com",
+    Subject = "This is message",
+    Body = "This is body"
+};
 
+// Load an attachment
+var attachment = new Attachment("1.txt");
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-AddEmailAttachments-AddEmailAttachments.cs" >}}
+// Add Multiple Attachment in instance of MailMessage class and Save message to disk
+eml.Attachments.Add(attachment);
 
-
+eml.AddAttachment(new Attachment("1.jpg"));
+eml.AddAttachment(new Attachment("1.doc"));
+eml.AddAttachment(new Attachment("1.rar"));
+eml.AddAttachment(new Attachment("1.pdf"));
+eml.Save("AddAttachments.eml");
+```
 
 Above, we described how to add attachments to your email message with Aspose.Email. What follows shows how to remove attachments, and display information about them on screen.
 ### **Removing an Attachment**
@@ -40,9 +57,18 @@ To remove an attachment, follow the steps given below:
 
 The following code snippet shows you how to remove an attachment.
 
+```csharp
+// Create an instance of MailMessage class
+var eml = new MailMessage {From = "sender@sender.com", To = "receiver@gmail.com"};
 
+// Load an attachment
+var attachment = new Attachment("1.txt");
+eml.Attachments.Add(attachment);
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-RemovingAttachment-RemovingAttachment.cs" >}}
+// Remove attachment from your MailMessage
+eml.Attachments.Remove(attachment);
+```
+
 ### **Displaying Attachment File Name**
 To display the attachment file name, follow these steps:
 
@@ -52,9 +78,16 @@ To display the attachment file name, follow these steps:
 
 The following code snippet shows you how to display an attachment file name on the screen.
 
+```csharp
+var eml = MailMessage.Load("Attachments.eml");
 
+foreach (var attachment in eml.Attachments)
+{
+    // Display the the attachment file name
+    Console.WriteLine(attachment.Name);
+}
+```
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-DisplayAttachmentFileName-DisplayAttachmentFileName.cs" >}}
 ### **Extracting Email Attachments**
 This topic explains how to extract an attachment from an email file. An email attachment is a file that is sent along with an email message. The file may be sent as a separate message as well as a part of the message to which it is attached. All email messages include an option to send additional files. These are sent as attachments and are represented as instances of the [Attachment](https://apireference.aspose.com/email/net/aspose.email/attachment) class. The [Attachment](https://apireference.aspose.com/email/net/aspose.email/attachment) class is used with the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class to work with attachments. To extract attachments from an email message, follow these steps:
 
@@ -68,19 +101,35 @@ This topic explains how to extract an attachment from an email file. An email at
 |![todo:image_alt_text](working-with-attachments-and-embedded-objects_1.png)|
 The following code snippet shows you how to Extract Email Attachments.
 
+```csharp
+var eml = MailMessage.Load("Message.eml", new MsgLoadOptions());
 
+foreach (var attachment in eml.Attachments)
+{
+    attachment.Save("MessageEmbedded_out.eml");
+    Console.WriteLine(attachment.Name);
+}
+```
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-ExtractEmbeddedObjectsFromEmail-ExtractEmbeddedObjectsFromEmail.cs" >}}
 #### **Retrieving Content-Description from Attachment**
 Aspose.Email API provides the capability to read attachment's Content-Description from attachment header. The following code snippet shows you how to retrieve the content description from the attachment.
 
+```csharp
+var eml = MailMessage.Load("EmailWithAttachEmbedded.eml");
+Console.WriteLine(eml.Attachments[0].Headers["Content-Description"]);
+```
 
-
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-RetrievContentDescriptionFromAttachment-RetrievContentDescriptionFromAttachment.cs" >}}
 #### **Determining if Attachment is Embedded Message**
 The following code snippet demonstrates how to determine if the attachment is an embedded message or not.
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-DetermineAttachmentEmbeddedMessage-DetermineAttachmentEmbeddedMessage.cs" >}}
+```csharp
+var eml = MailMessage.Load("EmailWithAttachEmbedded.eml");
+
+Console.WriteLine(eml.Attachments[0].IsEmbeddedMessage
+    ? "Attachment is an embedded message."
+    : "Attachment isn't an embedded message.");
+```
+
 ## **Working with Embedded Objects**
 An embedded object is an object that was created with one application and enclosed within a document or file created by another application. For example, a Microsoft Excel spreadsheet can be embedded into a Microsoft Word report, or a video file can be embedded into a Microsoft PowerPoint presentation. When a file is embedded, rather than inserted or pasted into another document, it retains its original format. The embedded document can be opened in the original application and modified.
 ### **Embedding Objects into an Email**
@@ -101,17 +150,54 @@ The code snippets below produce an email message with both plain text and HTML b
 |![todo:image_alt_text](working-with-attachments-and-embedded-objects_2.png)|
 You can send any number of embedded objects. The size of the attachment is limited by the mail server. Gmail, for example, does not support file sizes greater than 10MB. The code snippets below demonstrate how to embed objects into an Email.
 
+```csharp
+var eml = new MailMessage
+{
+    From = "AndrewIrwin@from.com",
+    To = "SusanMarc@to.com",
+    Subject = "This is an email"
+};
 
+// Create the plain text part It is viewable by those clients that don't support HTML
+var plainView =
+    AlternateView.CreateAlternateViewFromString("This is my plain text content", null, "text/plain");
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-EmbeddedObjects-EmbeddedObjects.cs" >}}
+// Create the HTML part.To embed images, we need to use the prefix 'cid' in the img src value.
+// The cid value will map to the Content-Id of a Linked resource. Thus <img src='cid:barcode'>
+// will map to a LinkedResource with a ContentId of 'barcode'.
+var htmlView =
+    AlternateView.CreateAlternateViewFromString("Here is an embedded image.<img src=cid:barcode>", null,
+        "text/html");
+
+// Create the LinkedResource (embedded image) and Add the LinkedResource to the appropriate view
+var barcode = new LinkedResource("1.jpg", MediaTypeNames.Image.Jpeg)
+{
+    ContentId = "barcode"
+};
+
+eml.LinkedResources.Add(barcode);
+eml.AlternateViews.Add(plainView);
+eml.AlternateViews.Add(htmlView);
+
+eml.Save("EmbeddedImage_out.msg", SaveOptions.DefaultMsgUnicode);
+```
+
 ### **Removing Embedded Objects from Email**
 [LinkedResourceCollection](https://apireference.aspose.com/email/net/aspose.email/linkedresourcecollection) accessed via [MailMessage.LinkedResources](https://apireference.aspose.com/email/net/aspose.email/mailmessage/properties/linkedresources) property. The [LinkedResourceCollection](https://apireference.aspose.com/email/net/aspose.email/linkedresourcecollection) collection provides a method to completely remove embedded objects added into an email message. Use the overloaded version of [LinkedResourceCollection.RemoveAt](https://apireference.aspose.com/email/net/aspose.email/linkedresourcecollection/methods/removeat/index) method to remove all traces of an embedded object from an email message.
 
 The sample code below shows how to remove embedded objects from an email message.
 
+```csharp
+//Load the test message with Linked Resources
+var eml = MailMessage.Load("EmlWithLinkedResources.eml");
 
+//Remove a LinkedResource
+eml.LinkedResources.RemoveAt(0, true);
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-RemoveLRTracesFromMessageBody-RemoveLRTracesFromMessageBody.cs" >}}
+//Now clear the Alternate View for linked Resources
+eml.AlternateViews[0].LinkedResources.Clear(true);
+```
+
 ### **Extracting Embedded Objects**
 This topic explains how to extract embedded objects from an email file. An embedded object is an object that was created with one application and enclosed within a document or file created by another application. For example, a Microsoft Excel spreadsheet can be embedded into a Microsoft Word report, or a video file can be embedded into a Microsoft PowerPoint presentation. When a file is embedded, rather than inserted or pasted into another document, it retains its original format. The embedded document can be opened in the original application and be modified. To extract an embedded object from an email message, follow these steps:
 
@@ -129,12 +215,88 @@ The code snippet below extracts embedded objects from an email.
 |![todo:image_alt_text](working-with-attachments-and-embedded-objects_3.png)|
 The following code snippet shows you how to Extracting Embedded Objects.
 
+```csharp
+var eml = MailMessage.Load("Message.msg", new MsgLoadOptions());
 
+foreach (var attachment in eml.Attachments)
+{
+    attachment.Save("MessageEmbedded_out.msg");
+    Console.WriteLine(attachment.Name);
+}
+```
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-ExtractEmbeddedObjectsFromEmail-ExtractEmbeddedObjectsFromEmail.cs" >}}
 #### **Identify and Extract embedded attachment from MSG formatted as RTF**
 For messages formatted as RTF, the following code can be used to differentiate and extract attachments that are either Inline or appear as Icon in the message body. The following code snippet shows you how to Identify and Extract embedded attachment from MSG formatted as RTF.
 
+```csharp
 
+var eml = MapiMessage.Load("MSG file with RTF Formatting.msg");
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-ExtractMSGEmbeddedAttachment-ExtractMSGEmbeddedAttachment.cs" >}}
+foreach (var attachment in eml.Attachments)
+{
+    if (IsAttachmentInline(attachment))
+    {
+        try
+        {
+            SaveAttachment(attachment, Data.Out/new Guid().ToString());
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+}
+
+static bool IsAttachmentInline(MapiAttachment attachment)
+{
+    foreach (var property in attachment.ObjectData.Properties.Values)
+    {
+        if (property.Name == "\x0003ObjInfo")
+        {
+            var odtPersist1 = BitConverter.ToUInt16(property.Data, 0);
+            return (odtPersist1 & (1 << (7 - 1))) == 0;
+        }
+    }
+    return false;
+}
+
+static void SaveAttachment(MapiAttachment attachment, string fileName)
+{
+    foreach (var property in attachment.ObjectData.Properties.Values)
+    {
+        if (property.Name == "Package")
+        {
+            using var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write);
+            fs.Write(property.Data, 0, property.Data.Length);
+        }
+    }
+}
+```
+
+## **Retrieving Attachments from Signed Email**
+
+Signed emails contain a single **smime.p7m** attachment. It is means that the email is encrypted by SMIME. 
+**Smime.p7m** file format is the digital signature. 
+To see the contents of this email use the [RemoveSignature](https://reference.aspose.com/email/net/aspose.email/mailmessage/removesignature/) method. The method returns a [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) object without a digital signature.
+
+```csharp
+var signedEml = MailMessage.Load("signed.eml");
+        
+if (signedEml.IsSigned)
+{
+    for (var i = 0; i < signedEml.Attachments.Count; i++)
+    {
+        Console.WriteLine($@"Signed email attachment{i}: {signedEml.Attachments[i].Name}");
+    }
+    
+    // The email is signed. Remove a signature.
+    var eml = signedEml.RemoveSignature();
+    
+    Console.WriteLine(@"Signature removed.");
+
+    for (var i = 0; i < eml.Attachments.Count; i++)
+    {
+        Console.WriteLine($@"Email attachment{i}: {eml.Attachments[i].Name}");
+    }
+}
+```
