@@ -37,3 +37,48 @@ The following code snippet shows you how to retrieve parent folder information f
 
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-PST-RetreivingParentFolderInformationFromMessageInfo-RetreivingParentFolderInformationFromMessageInfo.cs" >}}
+
+## **PST file traversal API**
+
+The traversal API allows extracting all PST items as far as possible, without throwing out exceptions, even if some data of the original file is corrupted.
+The following steps show how to use this API.
+
+Use [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/personalstorage/) constructor and [Load](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/load/) method instead of FromFile method.
+
+The constructor allows defining a callback method.
+
+```csharp
+using (var currentPst = new PersonalStorage((exception, itemId) => { /* Exception handling  code. */ }))
+```
+
+Loading and traversal exceptions will be available through the callback method.
+
+The [Load](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/load/) method returns 'true' if the file has been loaded successfully and further traversal is possible. If a file is corrupted and no traversal is possible, 'false' is returned.
+
+```csharp
+if (currentPst.Load(inputStream))
+```
+
+This allows to open and traverse even corrupted PST files without throwing out exceptions. And exceptions and corrupted items will be handled by the callback method.
+
+```csharp
+using (PersonalStorage pst = new PersonalStorage((exception, itemId) => { /* Exception handling  code. */ }))
+{
+    if (pst.Load(@"test.pst"))
+	{
+		GetAllMessages(pst, pst.RootFolder);
+	}
+}
+
+private static void GetAllMessages(PersonalStorage pst, FolderInfo folder)
+{
+    foreach (var messageEntryId in folder.EnumerateMessagesEntryId())
+    {
+        MapiMessage message = pst.ExtractMessage(messageEntryId);
+    }
+    foreach (var subFolder in folder.GetSubFolders())
+    {
+        GetAllMessages(pst, subFolder);
+    }
+}
+```
