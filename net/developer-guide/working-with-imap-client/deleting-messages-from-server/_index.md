@@ -36,24 +36,22 @@ Multiple emails can be deleted from mailbox using the [ImapClient](https://apire
 ```csharp
 using var client = new ImapClient("host", "username", "password");
 client.SelectFolder(ImapFolderInfo.InBox);
-
-var uidList = new List<string>();
-const int messageNumber = 5;
-
+            
 // Append test messages
-for (var i = 0; i < messageNumber; i++)
+var emlList = new List<MailMessage>();
 {
   var eml = new MailMessage("from@from.com", "to@to.com")
   {
     Subject = $"Message to delete {i}",
     Body = "Hey! This Message will be deleted!"
   };
-
-  var uid = client.AppendMessage(eml);
-  uidList.Add(uid);
+                
+  emlList.Add(eml);
 }
 
+var appendMessagesResult = client.AppendMessages(emlList);
+            
 // Bulk Delete appended Messages
-client.DeleteMessages(uidList, true);
+client.DeleteMessages(appendMessagesResult.Succeeded.Values, true);
 client.CommitDeletes();
 ```
