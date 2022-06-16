@@ -34,3 +34,10 @@ For performing other operations with OST files, please refer to the following pa
 - [Get Messages Information from an Outlook PST File](/email/net/working-with-messages-in-a-pst-file/#get-messages-information-from-an-outlook-pst-file)
 - [Extract Messages from Outlook PST File and Save to Disk or Stream in MSG Format](/email/net/working-with-messages-in-a-pst-file/#extracting-messages-form-pst-files)
 - [Access Contact Information from Outlook PST File and Save to Disk in MSG Format](/email/net/working-with-contacts-in-pst-file/#save-contacts-information-from-pst-file-in-msg-format)
+
+## **Converting PST to OST**
+
+Conversion from PST to OST is not supported by Aspose.Email because OST is always created by the Outlook when adding an account and synchronizing with the mail server.
+The difference between PST and OST files is that PST is only available locally. OST content is also available on the e-mail server.
+So there is no need to convert PST to OST for local use.
+But you can import PST into an existing account using the Import/Export wizard in Outlook.
