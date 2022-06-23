@@ -52,127 +52,17 @@ catch (Exception ex)
 }
 ```
 ## **Sending Emails Asynchronously**
-Sometimes, you may want to send mail asynchronously. For example, if you are sending a lot of mail through your application, the synchronous approach might not work. In such a scenario, you can use [BeginSend](https://apireference.aspose.com/error/404?path=email/net/aspose.email.clients.smtp/smtpclient/methods/beginsend/index). The [BeginSend](https://apireference.aspose.com/error/404?path=email/net/aspose.email.clients.smtp/smtpclient/methods/beginsend/index) method of the [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class sends an email message to an SMTP server for delivery. This method does not block the calling thread and allows the caller to pass an object to the method that is invoked when the operation completes. To send an email message asynchronously, follow these steps:
-
-1. Create an instance of [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class and use its different properties.
-1. Create an instance of [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class and specify the host, port, username, and password.
-1. Create a user-defined instance that will be passed to the method and invoked when the asynchronous operation completes.
-1. Send the message using [BeginSend](https://apireference.aspose.com/error/404?path=email/net/aspose.email.clients.smtp/smtpclient/methods/beginsend/index) method of [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class and pass the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) instance and user-defined instance in it along with a callback function to be called when the operation is completed.
-
-To receive a notification when the email has been sent or the operation has been canceled, the callback function passed to the [BeginSend](https://apireference.aspose.com/error/404?path=email/net/aspose.email.clients.smtp/smtpclient/methods/beginsend/index) method is called. After calling the [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class [BeginSend](https://apireference.aspose.com/error/404?path=email/net/aspose.email.clients.smtp/smtpclient/methods/beginsend/index) method it is not necessary to wait for an email message to be sent completely. We can call another method [BeginSend](https://apireference.aspose.com/error/404?path=email/net/aspose.email.clients.smtp/smtpclient/methods/beginsend/index) at the same time. When an email has been sent using the [BeginSend](https://apireference.aspose.com/error/404?path=email/net/aspose.email.clients.smtp/smtpclient/methods/beginsend/index) method, the code snippet prints a message ("Message Sent"). The following code snippet shows you how to send emails asynchronously.
-
-```csharp
-// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
-public static void Run()
-{
-    SendMail();
-}
-
-static SmtpClient GetSmtpClient2()
-{
-    SmtpClient client = new SmtpClient();
-    client.Host = "smtp.gmail.com";
-    //Specify your mail Username, Password, Port # and security option
-    client.Username = "user";
-    client.Password = "password";
-    client.Port = 587;
-    client.SecurityOptions = SecurityOptions.SSLExplicit;
-    return client;
-}
-static void SendMail()
-{
-    try
-    {
-
-        // Declare msg as MailMessage instance
-        MailMessage msg = new MailMessage("sender@gmail.com", "receiver@gmail.com", "Test subject", "Test body");
-        SmtpClient client = GetSmtpClient2();
-        object state = new object();
-        IAsyncResult ar = client.BeginSend(msg, Callback, state);
-
-        Console.WriteLine("Sending message... press c to cancel mail. Press any other key to exit.");
-        string answer = Console.ReadLine();
-
-        // If the user canceled the send, and mail hasn't been sent yet,
-        if (answer != null && answer.StartsWith("c"))
-        {
-            client.CancelAsyncOperation(ar);
-        }
-
-        msg.Dispose();
-        Console.WriteLine("Goodbye.");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine(ex.Message);
-    }
-}
-static AsyncCallback Callback = delegate(IAsyncResult ar)
-{
-    var task = ar as IAsyncResultExt;
-    if (task != null && task.IsCanceled)
-    {
-        Console.WriteLine("Send canceled.");
-    }
-
-    if (task != null && task.ErrorInfo != null)
-    {
-        Console.WriteLine("{0}", task.ErrorInfo);
-    }
-    else
-    {
-        Console.WriteLine("Message Sent.");
-    }
-};
-```
-
+Sometimes, you may want to send mail asynchronously. For example, if you are sending a lot of mail through your application, the synchronous approach might not work. 
 Starting with .NET Framework 4.5, you can use asynchronous methods implemented according to [TAP](https://docs.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) model. The code snippet below shows how to send email messages using the task-based asynchronous pattern method named `SendAsync` and then interrupt this process after a while.
 
 ```csharp
-// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
-
-List<MailMessage> mailMessages = new List<MailMessage>();
-
-// create mail messages
-for (int i = 0; i < 100; i++)
-    mailMessages.Add(new MailMessage(senderEmail, receiverEmail, $"Message #{i}", "Text"));
-
-using (SmtpClient client = new SmtpClient(host, 587, senderEmail, password, SecurityOptions.SSLExplicit))
+using (var client = new SmtpClient(host, smtpPort, username, password))
 {
-    CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-    AutoResetEvent autoResetEvent = new AutoResetEvent(false);
-    Exception exception = null;
-
-    ThreadPool.QueueUserWorkItem(delegate
-    {
-        try
-        {
-            // start sending the messages
-            var task = client.SendAsync(mailMessages, cancellationTokenSource.Token);
-            task.GetAwaiter().GetResult();
-            Console.WriteLine("All messages have been sent.");
-        }
-        catch (Exception e)
-        {
-            exception = e;
-        }
-        finally
-        {
-            autoResetEvent.Set();
-        }
-    });
-
-    Thread.Sleep(5000);
-
-    // stop sending the messages
-    cancellationTokenSource.Cancel();
-    autoResetEvent.WaitOne();
-
-    foreach (MailMessage mailMessage in mailMessages)
-        mailMessage.Dispose();
-
-    if (exception is OperationCanceledException)
-        Console.WriteLine("Operation has been interrupted: " + exception.Message);
+    await client.SendAsync(new MailMessage(
+        "user1@server.com",
+        "user1@server.com",
+        "Test subject",
+        "test body"));
 }
 ```
 
@@ -495,26 +385,27 @@ client.Forward("Recipient1@domain.com", "Recipient2@domain.com", message);
 The API also supports forwarding EML messages without first loading into [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage). This is useful in cases where there are limited resources in terms of system memory.
 
 ```csharp
-// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
-string dataDir = RunExamples.GetDataDir_Email();
 
-string host = "mail.server.com";
-string username = "username";
-string password = "password";
-int smtpPort = 587;
-string sender = "Sender@domain.com";
-MailAddressCollection recipients = new MailAddressCollection();
-recipients.Add("recepient1@domain.com, recepient2@domain.com");
-
-using (SmtpClient client = new SmtpClient(host, smtpPort, username, password, SecurityOptions.Auto))
+using (var client = new SmtpClient(host, smtpPort, username, password, SecurityOptions.Auto))
 {
-    string fileName = @"test.eml";
-    using (FileStream fs = File.OpenRead(dataDir + fileName))
+    using (var fs = File.OpenRead(@"test.eml"))
     {
         client.Forward(sender, recipients, fs);
     }
 }
 ```
+### **Forwarding Email without using MailMessage Asynchronously**
+
+```csharp
+using (var client = new SmtpClient(host, smtpPort, username, password))
+{
+	using (var fs = File.OpenRead(@"test.eml"))
+    {
+        await client.ForwardAsync(sender, recipients, fs);
+    }
+}
+```
+
 ## **Performing Mail Merge**
 Mail merges help you create and send a batch of similar email messages. The core of the emails are the same, but the content can be personalized. Typically, a recipient's contact details (first name, second name, company and so on) are used to personalize the email.
 
