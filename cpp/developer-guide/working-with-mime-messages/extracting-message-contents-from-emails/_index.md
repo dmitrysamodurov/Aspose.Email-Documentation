@@ -14,11 +14,10 @@ The [MailMessage](https://apireference.aspose.com/email/cpp/class/aspose.email.m
 - Load an email message into the [MailMessage](https://apireference.aspose.com/email/cpp/class/aspose.email.mail_message) instance.
 - Display the email content on the screen.
 
-The following code snippet shows you how to display email information on the screen.
-
-
+The following C++ code snippet shows you how to display email information on the screen.
 
 {{< gist "aspose-com-gists" "525dd06c8783ebb18fb75cfc4b31d1ef" "Examples-EmailCPP-Email-DisplayEmailInformation-DisplayEmailInformation.cpp" >}}
+
 ## **Extracting Email Headers**
 The email header represents an Internet and RFC defined standard set of header fields included in Internet email messages. An email header can be specified using the [MailMessage](https://apireference.aspose.com/email/cpp/class/aspose.email.mail_message) class. Common header types are defined in the HeaderType class. It is a sealed class working like normal enumeration. To extract headers from an email, follow these steps:
 
@@ -30,14 +29,11 @@ The [MailMessage](https://apireference.aspose.com/email/cpp/class/aspose.email.m
 
 1. Display the raw content.
 
-The following code snippet shows you how to extract email headers.
-
-
+The following  C++ code snippet shows you how to extract email headers.
 
 {{< gist "aspose-com-gists" "525dd06c8783ebb18fb75cfc4b31d1ef" "Examples-EmailCPP-Email-ExtractingEmailHeaders-ExtractingEmailHeaders.cpp" >}}
+
 ## **Get Decoded Header Values**
 The following code snippet shows you how to get decoded header values.
-
-
 
 {{< gist "aspose-com-gists" "525dd06c8783ebb18fb75cfc4b31d1ef" "Examples-EmailCPP-Email-GetDecodedHeaderValues-GetDecodedHeaderValue.cpp" >}}
