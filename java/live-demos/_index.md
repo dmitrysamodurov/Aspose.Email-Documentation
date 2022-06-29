@@ -2,7 +2,7 @@
 title: Live Demos
 type: docs
 weight: 100
-url: /cpp/live-demos/
+url: /java/live-demos/
 ---
 
 <div class="row">
