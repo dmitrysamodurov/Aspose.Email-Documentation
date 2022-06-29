@@ -7,7 +7,8 @@ description: Evaluate Email C++ Library API and apply license using file or stre
 ---
 
 ## **Evaluation Version Limitations**
-A free evaluation version of Aspose.Email for C++ can be downloaded from the downloads section of Aspose's web site at: https://downloads.aspose.com/cells/cpp.
+A free evaluation version of Aspose.Email for C++ can be downloaded from the downloads section of Aspose's web site at: https://releases.aspose.com/email/cpp/
+
 ## **Apply License using File or Stream Object**
 The license can be loaded from a file or stream object. Aspose.Eamil for C++ will try to find the license in the following locations:
 
