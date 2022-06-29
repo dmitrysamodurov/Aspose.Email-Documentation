@@ -1,8 +1,10 @@
 ---
-title: Working with Attachments and Embedded Objects
+title: Working with Attachments and Embedded Objects using C++ Email Parser Library
+linktitle: Working with Attachments and Embedded Objects
 type: docs
 weight: 50
 url: /cpp/working-with-attachments-and-embedded-objects/
+description: You can add and remove email attachments, display the attachment file name, and work with embedded objects using the C++ Email Parser Library API.
 ---
 
 ## **Managing Email Attachments**
@@ -22,13 +24,10 @@ To attach an attachment to an email, please follow these steps:
 
 The following code snippet shows you how to add an attachment to an email.
 
-
-
 {{< gist "aspose-email" "ef0db907527892c88c557bb418093cee" "Examples-EmailCPP-Email-AddEmailAttachments-AddEmailAttachments.cpp" >}}
 
-
-
 Above, we described how to add attachments to your email message with Aspose.Email. What follows shows how to remove attachments, and display information about them on screen.
+
 ### **Removing an Attachment**
 To remove an attachment, follow the steps given below:
 
@@ -39,9 +38,8 @@ To remove an attachment, follow the steps given below:
 
 The following code snippet shows you how to remove an attachment.
 
-
-
 {{< gist "aspose-email" "ef0db907527892c88c557bb418093cee" "Examples-EmailCPP-Email-RemoveAttachments-RemoveAttachments.cpp" >}}
+
 ### **Displaying Attachment File Name**
 To display the attachment file name, follow these steps:
 
@@ -51,9 +49,8 @@ To display the attachment file name, follow these steps:
 
 The following code snippet shows you how to display an attachment file name on the screen.
 
-
-
 {{< gist "aspose-email" "ef0db907527892c88c557bb418093cee" "Examples-EmailCPP-Email-DisplayAttachmentFileName-DisplayAttachmentFileName.cpp" >}}
+
 ### **Extracting Email Attachments**
 This topic explains how to extract an attachment from an email file. An email attachment is a computer file which is sent along with an email message. The file may be sent as a separate message as well as a part of the message to which it is attached. All emails messages includes a body. As well as the body, you might want to send additional files. These are sent as attachments and are represented as instances of the Attachment class. The Attachment class is used with the MailMessage class to work with attachments. To extract attachments from an email message, follow these steps:
 
