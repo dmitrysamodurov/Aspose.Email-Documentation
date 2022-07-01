@@ -29,8 +29,8 @@ This page contains release notes information for Aspose.Email for .NET 22.6
 
 **Changes in public API:**
 
-MapiCalendarIcsSaveOptions - Allows to specify additional options when saving MapiCalendar to Ics format.
-MapiCalendarIcsSaveOptions.KeepOriginalDateTimeStamp - Allows keep original DateTimeStamp value in output file.
+`MapiCalendarIcsSaveOptions` - Allows to specify additional options when saving MapiCalendar to Ics format.
+`MapiCalendarIcsSaveOptions.KeepOriginalDateTimeStamp` - Allows keep original DateTimeStamp value in output file.
 
 **Code samples:**
 
