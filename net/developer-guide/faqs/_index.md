@@ -1,7 +1,7 @@
 ---
 title: FAQs
 type: docs
-weight: 40
+weight: 210
 url: /net/faqs/
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Migration from Office Automation to Aspose
 type: docs
-weight: 30
+weight: 190
 url: /net/migration-from-office-automation-to-aspose/
 ---
 
