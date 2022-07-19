@@ -1,6 +1,6 @@
 ---
 title: Protocol Information
 type: docs
-weight: 10
+weight: 170
 url: /java/protocol-information/
 ---
