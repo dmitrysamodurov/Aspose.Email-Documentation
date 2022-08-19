@@ -44,23 +44,32 @@ In Read Outlook PST File and Get Folders and Subfolders Information, we discusse
 
 {{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-WorkingWithOutlookStorageFiles-GetMessagesInformation-GetMessagesInformation.py" >}}
 ## **Extracting Messages Form PST Files**
-This article shows how to read Microsoft Outlook PST files and extract messages. The messages are then saved to disk in MSG format. The article also shows how to extract a specific number of messages from a PST file. Use a recursive method to browse all the folders (including any nested folders) and call the PersonalStorage.ExtractMessage() method to get Outlook messages into an instance of the MapiMessage class. After that, call the MapiMessage.Save() method to save the message to either disk or stream in MSG format. The following code snippet shows you how to extract messages from PST file is give below.
 
+This article shows how to read Microsoft Outlook PST files and extract messages. Below is a code snippet showing how to extract messages from a PST file.
 
+```python
+from aspose.email.storage.pst import *
+from aspose.email.mapi import MapiMessage
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-WorkingWithOutlookStorageFiles-AddMessagesFromOtherPST-AddMessagesFromOtherPST.py" >}}
-### **Saving Messages Directly from PST to Stream**
-To save messages from a PST file directly to stream, without extracting the MsgInfo for messages, use the SaveMessageToStream() method. The following code snippet shows you how to save messages directly from PST to stream.
+pst = PersonalStorage.from_file("Outlook.pst")
 
+folderInfo = pst.root_folder
 
+messageInfoCollection = folderInfo.get_contents()
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Outlook-SaveMessagesDirectlyFromPSTToStream-SaveMessagesDirectlyFromPSTToStream.cs" >}}
-### **Extracting n Number of Messages from a PST File**
-The following code snippet shows you how to extract a given number of messages from a PST. Simply provide the index for the first message, and the total number of messages to be extracted.
+for messageInfo in messageInfoCollection:
+   mapi = pst.extract_message(messageInfo)
 
+   print("Subject: " + mapi.subject)
+   print("Sender name: " + mapi.sender_name)
+   print("Sender email address: " + mapi.sender_email_address)
+   print("To: ", mapi.display_to)
+   print("Cc: ", mapi.display_cc)
+   print("Bcc: ", mapi.display_bcc)
+   print("Delivery time: ", str(mapi.delivery_time))
+   print("Body: " + mapi.body)
+```
 
-
-{{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-WorkingWithOutlookStorageFiles-ExtractNumberOfMessages-ExtractNumberOfMessages.py" >}}
 ## **Delete Messages from PST Files**
 Add Messages to PST Files showed how to add messages to PST files. It is, of course, also possible to delete items (contents) from a PST file and it may also be desirable to delete messages in bulk. Items from a PST file can be deleted using the FolderInfo.DeleteChildItem() method. The API also provides FolderInfo.DeleteChildItems() method to delete items in bulk from the PST file.
 ### **Deleting Messages from PST Files**
