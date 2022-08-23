@@ -1,10 +1,11 @@
 ---
-title: Creating and setting contents of Emails in C++
+title: Creating and Setting Contents of Emails in C++ and Send Email using SmtpClient
 linktitle: Creating and setting contents of Emails
 type: docs
 weight: 10
 url: /cpp/creating-and-setting-contents-of-emails/
 description: To create and set contents of email in C++, use MailMessage class that can create and save the mail message into different formats like EML, MSG and MHTML.
+keywords: c++ send email
 ---
 
 ## **Create New Email Message**
@@ -13,6 +14,7 @@ The MailMessage class represents an email message and allows developers to creat
 - Create an instance of the MailMessage class.
 - Set mail message properties.
 - Save mail message in different formats.
+- Create an instance of the SmtpClient class and send the email using the Send method.
 
 The following C++ code snippet shows you how to create a new email with different properties.
 
