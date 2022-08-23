@@ -1,5 +1,6 @@
 ---
-title: Sending and Forwarding Messages
+title: Sending and Forwarding Messages - Send Outlook Emails using C#
+linktitle: Sending and Forwarding Messages
 type: docs
 weight: 20
 url: /net/sending-and-forwarding-messages/
@@ -23,7 +24,7 @@ An email message can be sent synchronously using the [SmtpClient](https://apiref
 1. Create an instance of [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class and specify the Host, port, username & Password.
 1. Send the Message using the [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class [Send](https://apireference.aspose.com/email/net/aspose.email.clients.smtp.smtpclient/send/methods/5) method and pass the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) instance.
 
-The following code snippet shows you how to send emails synchronously.
+The following C# code snippet shows you how to send outlook emails synchronously.
 
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
@@ -53,7 +54,7 @@ catch (Exception ex)
 ```
 ## **Sending Emails Asynchronously**
 Sometimes, you may want to send mail asynchronously. For example, if you are sending a lot of mail through your application, the synchronous approach might not work. 
-Starting with .NET Framework 4.5, you can use asynchronous methods implemented according to [TAP](https://docs.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) model. The code snippet below shows how to send email messages using the task-based asynchronous pattern method named `SendAsync` and then interrupt this process after a while.
+Starting with .NET Framework 4.5, you can use asynchronous methods implemented according to [TAP](https://docs.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) model. The C# code snippet below shows how to send outlook email messages using the task-based asynchronous pattern method named `SendAsync` and then interrupt this process after a while.
 
 ```csharp
 using (var client = new SmtpClient(host, smtpPort, username, password))
@@ -67,7 +68,7 @@ using (var client = new SmtpClient(host, smtpPort, username, password))
 ```
 
 ## **Sending Stored Messages from Disc**
-EML files, (Outlook Express Electronic Mail files) contains an email's header, message body, and any attachments. Aspose.Email lets developers work with EML files in different ways. This article shows how to load EML files from disk and send them as emails with SMTP. You can load .eml files from disk or stream into the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class and send the email message using the [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class. The [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class is the main class for creating new email messages, loading email message files from disk or stream and saving the messages. The following code snippet shows how to sending stored messages from the disc.
+EML files, (Outlook Express Electronic Mail files) contains an email's header, message body, and any attachments. Aspose.Email lets developers work with EML files in different ways. This article shows how to load EML files from disk and send them as emails with SMTP. You can load .eml files from disk or stream into the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class and send the email message using the [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class. The [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class is the main class for creating new email messages, loading email message files from disk or stream and saving the messages. The following C# code snippet shows how to sending stored messages from the disc.
 
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
