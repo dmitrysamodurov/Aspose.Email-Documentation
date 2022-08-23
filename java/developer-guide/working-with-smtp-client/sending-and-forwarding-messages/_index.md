@@ -1,5 +1,6 @@
 ---
-title: Sending and Forwarding Messages
+title: Sending and Forwarding Messages - Send Outlook Email Messages using Java Program
+linktitle: Sending and Forwarding Messages
 type: docs
 weight: 20
 url: /java/sending-and-forwarding-messages/
@@ -23,7 +24,7 @@ An email message can be sent synchronously using the [SmtpClient](https://apiref
 1. Create an instance of [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class and specify the Host, port, username & Password.
 1. Send the Message using the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class [send](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#send\(com.aspose.email.MailMessage\)) method and pass the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) instance.
 
-The following code snippet shows you how to send emails synchronously.
+The following Java code snippet shows you how to send outlook emails synchronously.
 
 
 ~~~Java
@@ -51,14 +52,14 @@ try {
 }
 ~~~
 ## **Sending Emails Asynchronously**
-Sometimes, you may want to send mail asynchronously. For example, if you are sending a lot of mail through your application, the synchronous approach might not work. In such a scenario, you can use [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)). The [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) method of the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class sends an email message to an SMTP server for delivery. This method does not block the calling thread and allows the caller to pass an object to the method that is invoked when the operation completes. To send an email message asynchronously, follow these steps:
+Sometimes, you may want to send mail asynchronously. For example, if you are sending a lot of mail through your application, the synchronous approach might not work. In such a scenario, you can use [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)). The [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) method of the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class sends an email message to an SMTP server for delivery. This method does not block the calling thread and allows the caller to pass an object to the method that is invoked when the operation completes. To send an outlook email message asynchronously in Java, follow these steps:
 
 1. Create an instance of [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class and use its different properties.
 1. Create an instance of [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class and specify the host, port, username, and password.
 1. Create a user-defined instance that will be passed to the method and invoked when the asynchronous operation completes.
 1. Send the message using [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) method of [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class and pass the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) instance and user-defined instance in it along with a callback function to be called when the operation is completed.
 
-To receive a notification when the email has been sent or the operation has been canceled, the callback function passed to the [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) method is called. After calling the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) method it is not necessary to wait for an email message to be sent completely. We can call another method [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) at the same time. When an email has been sent using the [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) method, the code snippet prints a message ("Message Sent"). The following code snippet shows you how to send emails asynchronously.
+To receive a notification when the email has been sent or the operation has been canceled, the callback function passed to the [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) method is called. After calling the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) method it is not necessary to wait for an email message to be sent completely. We can call another method [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) at the same time. When an email has been sent using the [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) method, the code snippet prints a message ("Message Sent"). The following Java program or code snippet shows you how to send emails asynchronously.
 
 
 ~~~Java
@@ -116,7 +117,7 @@ static AsyncCallback callback = new AsyncCallback() {
 };
 ~~~
 ## **Sending Stored Messages from Disc**
-EML files, (Outlook Express Electronic Mail files) contains an email's header, message body, and any attachments. Aspose.Email lets developers work with EML files in different ways. This article shows how to load EML files from disk and send them as emails with SMTP. You can load .eml files from disk or stream into the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class and send the email message using the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class. The [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class is the main class for creating new email messages, loading email message files from disk or stream and saving the messages. The following code snippet shows how to sending stored messages from the disc.
+EML files, (Outlook Express Electronic Mail files) contains an email's header, message body, and any attachments. Aspose.Email lets developers work with EML files in different ways. This article shows how to load EML files from disk and send them as emails with SMTP. You can load .eml files from disk or stream into the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class and send the email message using the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class. The [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class is the main class for creating new email messages, loading email message files from disk or stream and saving the messages. The following Java code snippet shows how to sending stored messages from the disc.
 
 
 ~~~Java
@@ -181,7 +182,7 @@ The programming samples below show how you can send a simple HTML email message.
 - Specify the [HtmlBody](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage#getHtmlBody\(\)) content.
 - Create an instance of the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class and send the email using the [send](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#send\(com.aspose.email.MailMessage\)) method.
 
-For the purposes of this article, the HTML content of the email is rudimentary: <html><body>This is the HTML body</body></html> Most HTML emails will be more complex. The following code snippet shows you how to send an email with HTML body.
+For the purposes of this article, the HTML content of the email is rudimentary: <html><body>This is the HTML body</body></html> Most HTML emails will be more complex. The following Java program snippet shows you how to send an email with HTML body.
 
 
 ~~~Java
