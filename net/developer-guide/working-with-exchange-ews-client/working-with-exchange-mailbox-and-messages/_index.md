@@ -1,15 +1,17 @@
 ---
-title: Working with Exchange Mailbox and Messages
+title: Working with Exchange Mailbox and Messages - Read Email from Exchange Server in C#
+linktitle: Working with Exchange Mailbox and Messages
 type: docs
 weight: 20
 url: /net/working-with-exchange-mailbox-and-messages/
+keywords: c# read email from exchange server
 ---
 
 
 ## **Getting Mailbox Information Using EWS**
 The [EWSClient](https://apireference.aspose.com/email/net/aspose.email.clients.exchange.webservice/ewsclient) class has members that can be used to get mailbox information from an Exchange Server by calling the IEWSClient.GetMailboxInfo() method. It returns an instance of type [ExchangeMailboxInfo](https://apireference.aspose.com/email/net/aspose.email.clients.exchange/exchangemailboxinfo). Get mailbox information from properties such as [MailboxUri](https://apireference.aspose.com/email/net/aspose.email.clients.exchange/exchangemailboxinfo/properties/mailboxuri), [InboxUri](https://apireference.aspose.com/email/net/aspose.email.clients.exchange/exchangemailboxinfo/properties/inboxuri) and [DraftsUri](https://apireference.aspose.com/email/net/aspose.email.clients.exchange/exchangemailboxinfo/properties/draftsuri). This article shows how to access mailbox information using Exchange Web Services.
 
-If you want to connect to the Exchange Server using Exchange Web Services (EWS), use the IEWSClient class in the Aspose.Email.Exchange namespace. This class uses EWS to connect to and manage items on an Exchange Server. The following code snippet shows you how to get mailbox information using the exchange web services.
+If you want to connect to the Exchange Server using Exchange Web Services (EWS), use the IEWSClient class in the Aspose.Email.Exchange namespace. This class uses EWS to connect to and manage items on an Exchange Server. The following C# code snippet shows you how to get mailbox information using the exchange web services.
 
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
@@ -27,7 +29,7 @@ Console.WriteLine("Drafts folder URI: " + mailboxInfo.DraftsUri);
 ## **Sending Email Messages**
 You can send email messages using an Exchange Server with the help of the tools in [Aspose.Email.Exchange](#working-with-exchange-mailbox-and-messages). The IEWSClient.Send() method accepts a [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) instance as a parameter and sends the email. This article explains how to send email messages using Exchange Web Services.
 
-Aspose.Email provides the IEWSClient class to connect to Microsoft Exchange Server using Exchange Web Services. The following code snippet shows you how to uses EWS to send emails using Microsoft Exchange Server. The following code snippet shows you how to sends email messages using EWS.
+Aspose.Email provides the IEWSClient class to connect to Microsoft Exchange Server using Exchange Web Services. The following code snippet shows you how to uses EWS to send emails using Microsoft Exchange Server. The following C# code snippet shows you how to sends email messages using EWS.
 
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
@@ -77,7 +79,7 @@ private static void ItemSentHandler(object sender, SentItemEventArgs e)
 ## **Reading Emails from other User’s Mailbox**
 Some accounts on Exchange Servers have the right to access multiple mailboxes, and some users have multiple email accounts on the same Exchange Server. In both cases, users can access other user's mailboxes using Aspose.Email for .NET. This API provides mechanism for accessing folders and emails from other mailboxes using the IEWSClient class. This functionality can be achieved using the overloaded [GetMailboxInfo()](https://apireference.aspose.com/email/net/aspose.email.clients.exchange.dav/exchangeclient/methods/getmailboxinfo) method and providing the user email address as a parameter.
 
-The following code snippet shows you how to reading emails using IEWSClient class.
+The following C# code snippet shows you how to reading emails using IEWSClient class.
 
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
@@ -97,7 +99,7 @@ To list the messages in an Exchange mail box:
 1. Call the ListMessage method and create a message collection.
 1. Loop through the collection and display message information.
 
-The following code snippet shows you how to connects to an exchange server using EWS and lists messages from the inbox folder.
+The following C# code snippet shows you how to connects to an exchange server using EWS and lists messages from the inbox folder.
 
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
