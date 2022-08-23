@@ -1,15 +1,17 @@
 ---
-title: Working with Exchange Mailbox and Messages
+title: Working with Exchange Mailbox and Messages - Read Email from Exchange Server in Java
+linktitle: Working with Exchange Mailbox and Messages
 type: docs
 weight: 20
 url: /java/working-with-exchange-mailbox-and-messages/
+keywords: java read email from exchange server
 ---
 
 
 ## **Getting Mailbox Information Using EWS**
 The [EWSClient](https://apireference.aspose.com/email/java/com.aspose.email/ewsclient) class has members that can be used to get mailbox information from an Exchange Server by calling the [IEWSClient.getMailboxInfo()](https://apireference.aspose.com/email/java/com.aspose.email/IEWSClient#getMailboxInfo\(\)) method. It returns an instance of type [ExchangeMailboxInfo](https://apireference.aspose.com/email/java/com.aspose.email/ExchangeMailboxInfo). Get mailbox information from properties such as [MailboxUri](https://apireference.aspose.com/email/java/com.aspose.email/ExchangeMailboxInfo#getMailboxUri\(\)), [InboxUri](https://apireference.aspose.com/email/java/com.aspose.email/ExchangeMailboxInfo#getInboxUri\(\)) and [DraftsUri](https://apireference.aspose.com/email/java/com.aspose.email/ExchangeMailboxInfo#setDraftsUri\(java.lang.String\)). This article shows how to access mailbox information using Exchange Web Services.
 
-If you want to connect to the Exchange Server using Exchange Web Services (EWS), use the [EWSClient](https://apireference.aspose.com/email/java/com.aspose.email/EWSClient) class. This class uses EWS to connect to and manage items on an Exchange Server. The following code snippet shows you how to get mailbox information using the exchange web services.
+If you want to connect to the Exchange Server using Exchange Web Services (EWS), use the [EWSClient](https://apireference.aspose.com/email/java/com.aspose.email/EWSClient) class. This class uses EWS to connect to and manage items on an Exchange Server. The following Java code snippet shows you how to get mailbox information using the exchange web services.
 
 
 
@@ -28,7 +30,7 @@ System.out.println("Drafts folder URI: " + mailboxInfo.getDraftsUri());
 ## **Sending Email Messages**
 You can send email messages using an Exchange Server with the help of the tools in [Aspose.Email.Exchange](#working-with-exchange-mailbox-and-messages). The IEWSClient.Send() method accepts a [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) instance as a parameter and sends the email. This article explains how to send email messages using Exchange Web Services.
 
-Aspose.Email provides the IEWSClient class to connect to Microsoft Exchange Server using Exchange Web Services. The following code snippet shows you how to uses EWS to send emails using Microsoft Exchange Server. The following code snippet shows you how to sends email messages using EWS.
+Aspose.Email provides the IEWSClient class to connect to Microsoft Exchange Server using Exchange Web Services. The following code snippet shows you how to uses EWS to send emails using Microsoft Exchange Server. The following Java code snippet shows you how to sends email messages using EWS.
 
 
 
@@ -69,7 +71,7 @@ To list the messages in an Exchange mail box:
 1. Call the listMessages method and create a message collection.
 1. Loop through the collection and display message information.
 
-The following code snippet shows you how to connects to an exchange server using EWS and lists messages from the inbox folder.
+The following Java code snippet shows you how to connects to an exchange server using EWS and lists messages from the inbox folder.
 
 
 
@@ -109,7 +111,7 @@ strFolderURI = client.getMailboxInfo().getSentItemsUri();
 ExchangeMessageInfoCollection msgCollection = client.listMessages(strFolderURI);
 ~~~
 ### **Listing Messages with Paging Support**
-The following code snippet shows you how to get a list of messages with paging support.
+The following Java code snippet shows you how to get a list of messages with paging support.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
