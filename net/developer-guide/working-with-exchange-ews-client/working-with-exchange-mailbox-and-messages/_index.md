@@ -346,7 +346,11 @@ foreach (ExchangeMessageInfo msgInfo in msgCollection)
 
 ### **Using the FetchItem method to fetch a message**
 
-The [FetchItem](https://apireference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/methods/fetchitem) method is more preferred if you want to fetch a [MapiMessage](https://apireference.aspose.com/email/net/aspose.email.mapi/mapimessage) and operate with MAPI properties. You can also use this method to fetching any Outlook item, such as a contact, appointment, task, etc.
+{{% alert color="primary" %}}
+Note, the [FetchItem](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/fetchitem/) method returns message without attachments. To fetch messages with attachments, use the [FetchItems] method, described in the section below. 
+{{% /alert %}}
+
+The [FetchItem](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/methods/fetchitem) method is more preferred if you want to fetch a [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage) and operate with MAPI properties. You can also use this method to fetching any Outlook item, such as a contact, appointment, task, etc.
 
 ```csharp
 IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
@@ -363,6 +367,17 @@ foreach (ExchangeMessageInfo msgInfo in msgCollection)
    // If necessary, you can cast the MapiMessage to the proper item type to simplify working with its properties.
    MapiContact contact = (MapiContact) msg.ToMapiMessageItem();
 }
+```
+
+### **Using the FetchItems method**
+
+The described above [FetchItem](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/fetchitem/) method returns message **without attachments**, in an attempt to keep performance.
+
+To fetch messages with attachments, use the more powerful [FetchItems](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/fetchitems/) method, which allows to pass the [EwsFetchItems](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice.models/ewsfetchitems/) options.
+
+```csharp
+var uriList = client.ListItems(client.MailboxInfo.InboxUri);
+var items = client.FetchItems(EwsFetchItems.Create().AddUris(uriList).WithAttachments());
 ```
 
 ## **Pre-Fetch Message Size**
