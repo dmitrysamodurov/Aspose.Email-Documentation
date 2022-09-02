@@ -348,7 +348,7 @@ foreach (ExchangeMessageInfo msgInfo in msgCollection)
 
 {{% alert color="primary" %}}
 
-Note, the [FetchItem](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/fetchitem/) method returns message without attachments. To fetch messages with attachments, use the [FetchItems] method, described in the section below. 
+Note, the [FetchItem](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/fetchitem/) method returns message without attachments. To fetch messages with attachments, use the [FetchItems](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/fetchitems/) method, described in the section below. 
 
 {{% /alert %}}
 
