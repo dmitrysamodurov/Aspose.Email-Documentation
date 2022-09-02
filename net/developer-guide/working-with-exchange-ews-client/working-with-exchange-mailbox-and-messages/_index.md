@@ -347,7 +347,9 @@ foreach (ExchangeMessageInfo msgInfo in msgCollection)
 ### **Using the FetchItem method to fetch a message**
 
 {{% alert color="primary" %}}
+
 Note, the [FetchItem](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/fetchitem/) method returns message without attachments. To fetch messages with attachments, use the [FetchItems] method, described in the section below. 
+
 {{% /alert %}}
 
 The [FetchItem](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/methods/fetchitem) method is more preferred if you want to fetch a [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage) and operate with MAPI properties. You can also use this method to fetching any Outlook item, such as a contact, appointment, task, etc.
