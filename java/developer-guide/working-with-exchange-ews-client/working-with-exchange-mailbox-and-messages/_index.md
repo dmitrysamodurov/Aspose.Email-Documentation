@@ -67,7 +67,7 @@ A list of the email messages in an Exchange mailbox can be fetched by calling th
 ### **Simple Messages Listing**
 To list the messages in an Exchange mail box:
 
-1. Create an instance of the IEWSClient class.
+1. Create an instance of the [IEWSClient](https://apireference.aspose.com/email/java/com.aspose.email/IEWSClient) class.
 1. Call the listMessages method and create a message collection.
 1. Loop through the collection and display message information.
 
@@ -93,7 +93,6 @@ for (ExchangeMessageInfo msgInfo : (Iterable<ExchangeMessageInfo>) msgCollection
 ~~~
 ### **Listing Messages From Different Folders**
 [The above code snippets](#simple-messages-listing), list all the messages in the Inbox folder. Its possible to get the list of messages from other folders as well. The [IEWSClient.listMessages()](https://apireference.aspose.com/email/java/com.aspose.email/IEWSClient#listMessages\(java.lang.String\)) method accepts a folder URI as a parameter. As long as the folder URI is valid, you can get the list of messages from that folder. Use the IEWSClient.getMailboxInfo().getXXXFolderUri property to get the URI of different folders. The rest of the code is same as for getting a list of messages. The following code snippet shows you how to listing messages from different folders using EWS.
-
 
 
 ~~~Java
@@ -301,6 +300,35 @@ for (ExchangeMessageInfo msgInfo : (Iterable<ExchangeMessageInfo>) msgCollection
     }
 }
 ~~~
+
+### **Using the FetchItem method to fetch a message**
+
+{{% alert color="primary" %}}
+
+Note, the [FetchItem](https://reference.aspose.com/email/java/com.aspose.email/IEWSClient#fetchItem\(java.lang.String\)) method returns message without attachments. To fetch messages with attachments, use the [FetchItem](https://reference.aspose.com/email/java/com.aspose.email/IEWSClient#fetchItem\(java.lang.String,%20java.lang.Iterable\)) method, described in the section below. 
+
+{{% /alert %}}
+
+The [FetchItem](https://reference.aspose.com/email/java/com.aspose.email/IEWSClient#fetchItem\(java.lang.String\))  method is more preferred if you want to fetch a [MapiMessage](https://reference.aspose.com/email/java/com.aspose.email/MapiMessage) and operate with MAPI properties. You can also use this method to fetching any Outlook item, such as a contact, appointment, task, etc.
+
+```java
+// Create instance of ExchangeWebServiceClient class by giving credentials
+IEWSClient client = EWSClient.getEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+
+// Call ListMessages method to list messages info from Inbox
+ExchangeMessageInfoCollection msgCollection = client.listMessages(client.getMailboxInfo().getInboxUri());
+
+// Loop through the collection to get Message URI
+for (ExchangeMessageInfo msgInfo : msgCollection)
+{
+    // Now get the message using FetchItem()
+    MapiMessage msg = client.fetchItem(msgInfo.getUniqueUri());
+
+    // If necessary, you can cast the MapiMessage to the proper item type to simplify working with its properties.
+    MapiContact contact = (MapiContact) msg.toMapiMessageItem();
+}
+```
+
 ## **Pre-Fetch Message Size**
 Microsoft Outlook InterOp provides the feature of retrieving message size before actually fetching the complete message from the server. In case of Aspose.Email API, the summary information retreived from Exchange server is represented by [ExchangeMessageInfo](https://apireference.aspose.com/email/java/com.aspose.email/ExchangeMessageInfo) class. It provides the same feature of retrieving message size using the Size property. In order to retrieve the message size, the standard call to IEWSClient's listMessages is used that retrieves collection of [ExchangeMessageInfo](https://apireference.aspose.com/email/java/com.aspose.email/ExchangeMessageInfo). The following code snippet shows you how to display message size using the [ExchangeMessageInfo](https://apireference.aspose.com/email/java/com.aspose.email/ExchangeMessageInfo) class.
 
