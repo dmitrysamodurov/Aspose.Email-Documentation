@@ -95,7 +95,7 @@ To configure **Aspose.Email for Java API**, include the Aspose repository URL an
 
         <name>Aspose Maven Repository</name>
 
-        <url>http://repository.aspose.com/repo/</url>
+        <url>https://releases.aspose.com/java/repo/</url>
 
     </repository>
 
