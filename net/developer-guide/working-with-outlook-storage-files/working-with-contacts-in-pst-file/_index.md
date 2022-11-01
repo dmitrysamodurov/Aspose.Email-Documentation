@@ -91,6 +91,7 @@ foreach (MessageInfo messageInfo in contactsFolder.EnumerateMessages())
         var msg = pst.ExtractMessage(messageInfo);
         
         // Save to disk in msg format
+        string contactName = msg.Subject.Replace(":", " ").Replace("\\", " ").Replace("?", " ").Replace("/", " ");
         msg.Save($"{contactName}.msg", SaveOptions.DefaultMsgUnicode);
     }
 }
