@@ -19,9 +19,122 @@ extended feature of Microsoft Graph Client by Aspose.Email, which you will learn
 Create [IGraphClient](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient) object to make requests against the service.
 After you have a [IGraphClient](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient) that is authenticated, you can begin making calls against the service.
 
-~~~csharp
-IGraphClient client = GraphClient.GetClient(tokenProvider);
-~~~
+A [GetClient](https://reference.aspose.com/email/net/aspose.email.clients.graph/graphclient/getclient/#getclient_1) method requires an [ITokenProvider](https://reference.aspose.com/email/net/aspose.email.clients/itokenprovider/) implementation instance as the first parameter.
+
+To get the token we'll use [Microsoft Authentication Library (MSAL) for .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet).
+
+The following are the steps to get authorization token.
+
+ - Create an AccessParameters class to store credentials.
+ - Add the [Microsoft.Identity.Client nuget package](https://www.nuget.org/packages/Microsoft.Identity.Client) that contains the binaries of the MSAL.NET.
+ - Implement an ITokenProvider, and create a method accepting access parameters and using MSAL.NET to get an access token.
+
+To keep the credentials add the following `AccessParameters` class:
+
+```csharp
+public class AccessParameters
+{
+    public string TenantId { get; init; }
+    public string ClientId { get; init; }
+    public string ClientSecret { get; init; }
+    public string UserId { get; init; }
+    public Uri Authority => new ($"https://login.microsoftonline.com/{TenantId}");
+    public string ApiUrl => "https://graph.microsoft.com/.default";
+}
+```
+
+Create the `GraphTokenProvider` class that implements an [ITokenProvider](https://reference.aspose.com/email/net/aspose.email.clients/itokenprovider/) interface. Use the [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) library to get a token.
+See the example of such implementation:
+
+```csharp
+using Microsoft.Identity.Client;
+using Microsoft.Identity.Web;
+using Aspose.Email.Clients;
+
+public class GraphTokenProvider : ITokenProvider
+{
+    private readonly IConfidentialClientApplication _app;
+    private readonly string[] _scopes;
+    private string? _token;
+
+    public GraphTokenProvider(AccessParameters accessParams)
+    {
+        _app = ConfidentialClientApplicationBuilder.Create(accessParams.ClientId)
+            .WithClientSecret(accessParams.ClientSecret)
+            .WithAuthority(accessParams.Authority)
+            .Build();
+
+        _app.AddInMemoryTokenCache();
+
+        _scopes = new[] { accessParams.ApiUrl };
+    }
+
+    public void Dispose()
+    {
+        throw new NotImplementedException();
+    }
+
+    public OAuthToken GetAccessToken()
+    {
+        return GetAccessToken(false);
+    }
+
+    public OAuthToken GetAccessToken(bool ignoreExistingToken)
+    {
+        if (!ignoreExistingToken && _token != null)
+        {
+            return new OAuthToken(_token);
+        }
+
+        _token = GetAccessTokenAsync().GetAwaiter().GetResult();
+        return new OAuthToken(_token);
+    }
+
+    private async Task<string?> GetAccessTokenAsync()
+    {
+        AuthenticationResult? result;
+
+        try
+        {
+            result = await _app.AcquireTokenForClient(_scopes)
+                .ExecuteAsync();
+
+            Console.WriteLine("Token acquired");
+        }
+        catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
+        {
+            Console.WriteLine("Scope provided is not supported");
+            result = null;
+        }
+
+        if (result == null) return null;
+        _token = result.AccessToken;
+        return result.AccessToken;
+    }
+```
+
+Next, create an `AccessParameters` class instance:
+
+```csharp
+var accessParams = new AccessParameters()
+{
+    TenantId = "Your Tenant ID",
+    ClientId = "Your Client ID",
+    ClientSecret = "Your Client Secret",
+    UserId = "User's Object ID"
+};
+```
+
+Finally, create an [ITokenProvider](https://reference.aspose.com/email/net/aspose.email.clients/itokenprovider/) instance and call a [GetClient](https://reference.aspose.com/email/net/aspose.email.clients.graph/graphclient/getclient/#getclient_1) method. Pass the `tokenProvider` as its first parameter and `accessParams.TenantId` as the second one:
+
+```csharp
+var tokenProvider = new GraphTokenProvider(accessParams);
+
+using var client = GraphClient.GetClient(tokenProvider, accessParams.TenantId);
+
+client.Resource = ResourceType.Users;
+client.ResourceId = accessParams.UserId;
+```
 
 
 ## **Manage Folders**
@@ -30,154 +143,52 @@ By calling [ListFolders](https://apireference.aspose.com/email/net/aspose.email.
 method from Ms Graph Client, its possible to get the list of folders. Each folder has a set of parameters like 
 DisplayName, which can be read in [FolderInfo](https://apireference.aspose.com/email/net/aspose.email.clients.activesync.transportlayer/folderinfo) type.
 
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {
-                FolderInfoCollection folders = client.ListFolders();
-                bool containsInbox = false;
-                foreach (FolderInfo folderInfo in folders)
-                    if ("Inbox".Equals(folderInfo.DisplayName, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        containsInbox = true;
-                        break;
-                    }
-            }
-~~~
+```csharp
+var folders = client.ListFolders();
+
+foreach (var folder in folders)
+{
+    Console.WriteLine(folder.DisplayName);
+}
+```
 ### **Update Folder**
 To create folder with Ms Graph Client, use [CreateFolder](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/createfolder) 
 method. You will get [FolderInfo](https://apireference.aspose.com/email/net/aspose.email.clients.activesync.transportlayer/folderinfo) object 
 and the possibility to access DisplayName, ItemId, HasSubFolders and other properties.
 
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {
-                FolderInfo folderInfo = null;
-                try
-                {
-                    string name = "EMAILNET_39343_" + Guid.NewGuid().ToString();
-                    folderInfo = client.CreateFolder(name);
-                    folderInfo.DisplayName = "EMAILNET_39343_" + Guid.NewGuid().ToString();
-                    FolderInfo folderInfo2 = client.UpdateFolder(folderInfo);
-                }
-                finally
-                {
-                    if (folderInfo != null)
-                        client.Delete(folderInfo.ItemId);
-                }
-            }
-~~~
+```csharp
+var folderInfo = client.CreateFolder("FolderName");
+folderInfo.DisplayName = "FolderAnotherName";
+client.UpdateFolder(folderInfo);
+```
 
 ### **Copy Folder**
 [CopyFolder](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/copyfolder) method is the key method to copy the folder object 
 with MS Graph.
 
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {
-                FolderInfoCollection folderInfoCol = client.ListFolders();
-                foreach (FolderInfo folderInfo in folderInfoCol)
-                    if (folderInfo.DisplayName.StartsWith("EMAILNET", StringComparison.InvariantCultureIgnoreCase))
-                        client.Delete(folderInfo.ItemId);
-                string baseName = "EMAILNET-39345";
-                try
-                {
-                    folderInfoCol = client.ListFolders();
-                    foreach (FolderInfo folderInfo in folderInfoCol)
-                        if (folderInfo.DisplayName.StartsWith("EMAILNET", StringComparison.InvariantCultureIgnoreCase))
-                            client.Delete(folderInfo.ItemId);
-                    FolderInfo folder_1 = client.CreateFolder(baseName + "_1_" + Guid.NewGuid().ToString());
-                    FolderInfo folder_2 = client.CreateFolder(baseName + "_2_" + Guid.NewGuid().ToString());
-                    folderInfoCol = client.ListFolders();
-                    FolderInfo folder_1_1 = client.CreateFolder(folder_1.ItemId, baseName + "_1_1_" + Guid.NewGuid().ToString());
-                    FolderInfo folder_1_2 = client.CreateFolder(folder_1.ItemId, baseName + "_1_2_" + Guid.NewGuid().ToString());
-                    folderInfoCol = client.ListFolders();
-                    FolderInfo newFolder = client.CopyFolder(folder_2.ItemId, folder_1.ItemId);
-                    FolderInfoCollection folderInfoCol1 = client.ListFolders();
-                    FolderInfoCollection folderInfoCol2 = client.ListFolders(folder_2.ItemId);
-                    bool folder1Exists = false;
-                    foreach (FolderInfo folderInfo in folderInfoCol1)
-                        if (folderInfo.DisplayName == folder_1.DisplayName)
-                            folder1Exists = true;
-                    folder1Exists = false;
-                    foreach (FolderInfo folderInfo in folderInfoCol2)
-                        if (folderInfo.DisplayName == folder_1.DisplayName)
-                            folder1Exists = true;
-                    bool folder11Exists = false;
-                    bool folder12Exists = false;
-                    FolderInfoCollection folderInfoCol3 = client.ListFolders(newFolder.ItemId);
-                    foreach (FolderInfo folderInfo in folderInfoCol3)
-                    {
-                        if (folderInfo.DisplayName.Equals(folder_1_1.DisplayName, StringComparison.InvariantCultureIgnoreCase))
-                            folder11Exists = true;
-                        if (folderInfo.DisplayName.Equals(folder_1_2.DisplayName, StringComparison.InvariantCultureIgnoreCase))
-                            folder12Exists = true;
-                    }
-                }
-                finally
-                {
-                    folderInfoCol = client.ListFolders();
-                    foreach (FolderInfo folderInfo in folderInfoCol)
-                        if (folderInfo.DisplayName.StartsWith("EMAILNET", StringComparison.InvariantCultureIgnoreCase))
-                            client.Delete(folderInfo.ItemId);
-                }
-            }
-~~~
+```csharp
+var folderInfo1 = client.CreateFolder("Folder1");
+var folderInfo2 = client.CreateFolder("Folder2");
+    
+// copy Folder2 to Folder1
+client.CopyFolder(folderInfo1.ItemId, folderInfo2.ItemId);
+```
+
 ### **Move and Delete Folder**
 Use [MoveFolder](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/movefolder) method is 
 used to move the folder, it accepts newParentId and itemId. [Delete](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/delete) 
 method is used to delete method by id.
 
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {
-                FolderInfoCollection folderInfoCol = client.ListFolders();
-                foreach (FolderInfo folderInfo in folderInfoCol)
-                    if (folderInfo.DisplayName.StartsWith("EMAILNET", StringComparison.InvariantCultureIgnoreCase))
-                        client.Delete(folderInfo.ItemId);
-                string baseName = "EMAILNET-39345";
-                try
-                {
-                    folderInfoCol = client.ListFolders();
-                    foreach (FolderInfo folderInfo in folderInfoCol)
-                        if (folderInfo.DisplayName.StartsWith("EMAILNET", StringComparison.InvariantCultureIgnoreCase))
-                            client.Delete(folderInfo.ItemId);
-                    FolderInfo folder_1 = client.CreateFolder(baseName + "_1_" + Guid.NewGuid().ToString());
-                    FolderInfo folder_2 = client.CreateFolder(baseName + "_2_" + Guid.NewGuid().ToString());
-                    folderInfoCol = client.ListFolders();
-                    FolderInfo folder_1_1 = client.CreateFolder(folder_1.ItemId, baseName + "_1_1_" + Guid.NewGuid().ToString());
-                    FolderInfo folder_1_2 = client.CreateFolder(folder_1.ItemId, baseName + "_1_2_" + Guid.NewGuid().ToString());
-                    folderInfoCol = client.ListFolders();
-                    FolderInfo newFolder = client.MoveFolder(folder_2.ItemId, folder_1.ItemId);
-                    FolderInfoCollection folderInfoCol1 = client.ListFolders();
-                    FolderInfoCollection folderInfoCol2 = client.ListFolders(folder_2.ItemId);
-                    bool folder1Exists = false;
-                    foreach (FolderInfo folderInfo in folderInfoCol1)
-                        if (folderInfo.DisplayName == folder_1.DisplayName)
-                            folder1Exists = true;
-                    folder1Exists = false;
-                    foreach (FolderInfo folderInfo in folderInfoCol2)
-                        if (folderInfo.DisplayName == folder_1.DisplayName)
-                            folder1Exists = true;
-                    bool folder11Exists = false;
-                    bool folder12Exists = false;
-                    FolderInfoCollection folderInfoCol3 = client.ListFolders(newFolder.ItemId);
-                    foreach (FolderInfo folderInfo in folderInfoCol3)
-                    {
-                        if (folderInfo.DisplayName.Equals(folder_1_1.DisplayName, StringComparison.InvariantCultureIgnoreCase))
-                            folder11Exists = true;
-                        if (folderInfo.DisplayName.Equals(folder_1_2.DisplayName, StringComparison.InvariantCultureIgnoreCase))
-                            folder12Exists = true;
-                    }
-                }
-                finally
-                {
-                    folderInfoCol = client.ListFolders();
-                    foreach (FolderInfo folderInfo in folderInfoCol)
-                        if (folderInfo.DisplayName.StartsWith("EMAILNET", StringComparison.InvariantCultureIgnoreCase))
-                            client.Delete(folderInfo.ItemId);
-                }
-            }
-~~~
+```csharp
+var folderInfo1 = client.CreateFolder("Folder1");
+var folderInfo2 = client.CreateFolder("Folder2");
+    
+// move Folder2 to Folder1
+client.MoveFolder(folderInfo1.ItemId, folderInfo2.ItemId);
+    
+// delete Folder1
+client.Delete(folderInfo1.ItemId)
+```
 
 ## **Manage Messages**
 MS Graph Client, implemented in Aspose.Email for .NET provides a set of methos to manage messages and attachments:
@@ -195,187 +206,134 @@ MS Graph Client, implemented in Aspose.Email for .NET provides a set of methos t
 
 ### **List Messages**
 
+```csharp
+var folders = client.ListFolders();
 
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {
-                FolderInfoCollection folderInfoCol1 = client.ListFolders();
-                FolderInfo inbox = null;
-                foreach (FolderInfo folderInfo in folderInfoCol1)
-                {
-                    if (folderInfo.DisplayName.Equals("Inbox", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        inbox = folderInfo;
-                        break;
-                    }
-                }
-                MessageInfoCollection messageInfoCol = client.ListMessages(inbox.ItemId);
+foreach (var folder in folders)
+{
+    if (folder.DisplayName.Equals("Inbox"))
+    {
+        // list messages in inbox
+        var inboxMessages = client.ListMessages(folder.ItemId);
 
-            }
-~~~
+        foreach (var messageInfo in inboxMessages)
+        {
+            Console.WriteLine(messageInfo.Subject);
+        }
+    }
+}
+```
+
 ### **Fetch Message**
 
+```csharp
+var folders = client.ListFolders();
 
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {
-                FolderInfoCollection folderInfoCol1 = client.ListFolders();
-                FolderInfo inbox = null;
-                foreach (FolderInfo folderInfo in folderInfoCol1)
-                {
-                    if (folderInfo.DisplayName.Equals("Inbox", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        inbox = folderInfo;
-                        break;
-                    }
-                }
-                MessageInfoCollection messageInfoCol = client.ListMessages(inbox.ItemId);
-                MessageInfo messageInfo = messageInfoCol[0];
-                MapiMessage message = client.FetchMessage(messageInfo.ItemId);
-            }
-~~~
+foreach (var folder in folders)
+{
+    if (folder.DisplayName.Equals("Inbox"))
+    {
+        // list messages in inbox
+        var inboxMessages = client.ListMessages(folder.ItemId);
+
+        if (inboxMessages.Count > 0)
+        {
+            // fetch the first message in inbox
+            var msg = client.FetchMessage(inboxMessages[0].ItemId);
+            
+            Console.WriteLine(msg.BodyHtml);
+        }
+        
+    }
+}
+```
+
 ### **Create Message**
 
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {
-                MapiMessage mm = new MapiMessage();
-                mm.Subject = "EMAILNET-39318 " + Guid.NewGuid().ToString();
-                mm.Body = "EMAILNET-39318 REST API v1.0 - Create Message";
-                mm.SetProperty(KnownPropertyList.DisplayTo, user.EMail);
-                int offset = 0;
-                MailAddress address = MailBnfHelper.ReadMailAddress(user.EMail, ref offset, true);                
-                mm.SetProperty(KnownPropertyList.SenderName, address.DisplayName);
-                mm.SetProperty(KnownPropertyList.SentRepresentingEmailAddress, address.Address);
-                MapiMessage createdMessage = client.CreateMessage(KnownFolders.Inbox, mm);
-                MapiProperty objectUri = createdMessage.GetProperty(KnownPropertyList.ObjectUri);
-                string uri = objectUri.GetString();
-                MapiMessage fetchedMessage = client.FetchMessage(uri);
-                fetchedMessage.Subject = "EMAILNET-39320 REST API v1.0 - Update message";
-                MapiMessage updatedMessage = client.UpdateMessage(fetchedMessage);
-                client.Delete(uri);
-            }
-~~~
+```csharp
+var msg = new MapiMessage(OutlookMessageFormat.Unicode)
+{
+    Subject = "My message",
+    Body = "Hi, it is my message"
+};
+
+msg.Recipients.Add("sam@to.com", "Sam", MapiRecipientType.MAPI_TO);
+
+// create message in inbox
+client.CreateMessage(KnownFolders.Inbox, msg);
+
+```
 ### **Send Message**
 
+```csharp
+// prepare the message
+var msg = new MapiMessage(OutlookMessageFormat.Unicode)
+{
+    Subject = "My message",
+    Body = "Hi, it is my message"
+};
 
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {
-                try
-                {
-                    MapiMessage mm = new MapiMessage();
-                    mm.Subject = "EMAILNET-39329 " + Guid.NewGuid().ToString();
-                    mm.Body = "EMAILNET-39329 REST API v1.0 - Send a message";
-                    mm.SetProperty(KnownPropertyList.DisplayTo, user.EMail);
-                    int offset = 0;
-                    MailAddress address = MailBnfHelper.ReadMailAddress(user.EMail, ref offset, true);
-                    mm.SetProperty(KnownPropertyList.SenderName, address.DisplayName);
-                    mm.SetProperty(KnownPropertyList.SentRepresentingEmailAddress, address.Address);
-                    client.Send(mm);
-                }
-                finally
-                {
-                }
-~~~
+msg.Recipients.Add("sam@to.com", "Sam", MapiRecipientType.MAPI_TO);
+msg.SetProperty(KnownPropertyList.SenderName, "John");
+msg.SetProperty(KnownPropertyList.SentRepresentingEmailAddress, "John@from.com");
+
+// send message
+client.Send(msg);
+```
 ### **Send Draft Message**
 
+```csharp
+// prepare the message
+var msg = new MapiMessage(OutlookMessageFormat.Unicode)
+{
+    Subject = "My message",
+    Body = "Hi, it is my message"
+};
 
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {
-                try
-                {
-                    MapiMessage mm = new MapiMessage();
-                    mm.Subject = "EMAILNET-39322 " + Guid.NewGuid().ToString();
-                    mm.Body = "EMAILNET-39322 REST API v1.0 - Send draft";
-                    mm.SetProperty(KnownPropertyList.DisplayTo, user.EMail);
-                    int offset = 0;
-                    MailAddress address = MailBnfHelper.ReadMailAddress(user.EMail, ref offset, true);
-                    mm.SetProperty(KnownPropertyList.SenderName, address.DisplayName);
-                    mm.SetProperty(KnownPropertyList.SentRepresentingEmailAddress, address.Address);
-                    MapiMessage draftMessage = client.CreateMessage(KnownFolders.Drafts, mm);
-                    client.Send(draftMessage.ItemId);
-                }
-                finally
-                {
-                }
-~~~
+msg.Recipients.Add("sam@to.com", "Sam", MapiRecipientType.MAPI_TO);
+msg.SetProperty(KnownPropertyList.SenderName, "John");
+msg.SetProperty(KnownPropertyList.SentRepresentingEmailAddress, "John@from.com");
+
+// add message to Draft folder
+var draftMessage = client.CreateMessage(KnownFolders.Drafts, msg);
+
+// send a draft message
+client.Send(draftMessage.ItemId);
+```
 ### **Copy Message**
 
+```csharp
 
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {
-                try
-                {
-                    MapiMessage mm = new MapiMessage();
-                    mm.Subject = "EMAILNET-39323 " + Guid.NewGuid().ToString();
-                    mm.Body = "EMAILNET-39323 REST API v1.0 - Copy messages";
-                    mm.SetProperty(KnownPropertyList.DisplayTo, user.EMail);
-                    int offset = 0;
-                    MailAddress address = MailBnfHelper.ReadMailAddress(user.EMail, ref offset, true);
-                    mm.SetProperty(KnownPropertyList.SenderName, address.DisplayName);
-                    mm.SetProperty(KnownPropertyList.SentRepresentingEmailAddress, address.Address);
-                    MapiMessage draftMessage = client.CreateMessage(KnownFolders.Drafts, mm);
-                    MapiMessage copiedMessage = client.CopyMessage(KnownFolders.Inbox, draftMessage.ItemId);
-                    MapiMessage fetchedMessage = client.FetchMessage(copiedMessage.ItemId);
-                }
-                finally
-                {
-                }
-~~~
+// copy message to Inbox folder
+var copiedMsg = client.CopyMessage(KnownFolders.Inbox, msg.ItemId);
+```
 ### **Move Message**
 
-
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {
-                try
-                {
-                    MapiMessage mm = new MapiMessage();
-                    mm.Subject = "EMAILNET-39324 " + Guid.NewGuid().ToString();
-                    mm.Body = "EMAILNET-39324 REST API v1.0 - Move messages";
-                    mm.SetProperty(KnownPropertyList.DisplayTo, user.EMail);
-                    int offset = 0;
-                    MailAddress address = MailBnfHelper.ReadMailAddress(user.EMail, ref offset, true);
-                    mm.SetProperty(KnownPropertyList.SenderName, address.DisplayName);
-                    mm.SetProperty(KnownPropertyList.SentRepresentingEmailAddress, address.Address);
-                    MapiMessage draftMessage = client.CreateMessage(KnownFolders.Drafts, mm);
-                    MapiMessage movedMessage = client.MoveMessage(KnownFolders.Inbox, draftMessage.ItemId);
-                    MapiMessage fetchedMessage = client.FetchMessage(movedMessage.ItemId);
-                }
-                finally
-                {
-                }
-~~~
+```csharp
+// move message to Inbox folder
+var movedMsg = client.MoveMessage(KnownFolders.Inbox, msg.ItemId);
+```
 ### **Manage Attachments**
 
+```csharp
 
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {
-                FolderInfoCollection folderInfoCol1 = client.ListFolders();
-                FolderInfo inbox = null;
-                foreach (FolderInfo folderInfo in folderInfoCol1)
-                {
-                    if (folderInfo.DisplayName.Equals("Inbox", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        inbox = folderInfo;
-                        break;
-                    }
-                }
-                MessageInfoCollection messageInfoCol = client.ListMessages(inbox.ItemId);
-                MessageInfo messageInfo = messageInfoCol[0];
-                MapiAttachment attachment = new MapiAttachment();
-                attachment.SetProperty(KnownPropertyList.DisplayName, "DisplayName");
-                attachment.SetProperty(KnownPropertyList.AttachDataBinary, new byte[1024]);
-                MapiAttachment createdAttachment = client.CreateAttachment(messageInfo.ItemId, attachment);
-                MapiAttachment fetchedAttachment = client.FetchAttachment(createdAttachment.ItemId);
-                client.DeleteAttachment(createdAttachment.ItemId);
-                MapiAttachmentCollection attachments = client.ListAttachments(messageInfo.ItemId);                
-            }
-~~~
+// create an attachment
+var attachment = new MapiAttachment();
+attachment.SetProperty(KnownPropertyList.DisplayName, "My Attachment");
+attachment.SetProperty(KnownPropertyList.AttachDataBinary, new byte[1024]);
+
+// add an attachment to message
+var createdAttachment = client.CreateAttachment(messageInfo.ItemId, attachment);
+
+// fetch a message attachment
+var fetchedAttachment = client.FetchAttachment(createdAttachment.ItemId);
+
+// delete a message attachment 
+client.DeleteAttachment(createdAttachment.ItemId);
+
+// list the message attachments
+var attachments = client.ListAttachments(messageInfo.ItemId);   
+```
 
 
 ## **Manage Categories**
@@ -385,62 +343,50 @@ To manage categories with MS Graph by Aspose.Email for .NET, use the following m
 * [ListCategories](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/listcategories)
 * [UpdateCategory](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/updatecategory)
 
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {
-                string categoryName = "Category - " + Guid.NewGuid().ToString();
-                CategoryPreset preset = CategoryPreset.Preset10;
-                OutlookCategory category = client.CreateCategory(categoryName, preset);
-                OutlookCategory fetchedCategory = client.FetchCategory(category.Id);
+```csharp
+// create a custom category with Orange color
+var category = client.CreateCategory("My custom category", CategoryPreset.Preset1);
 
-                List<OutlookCategory> categories = client.ListCategories();
-                OutlookCategory cat = null;
-                foreach (OutlookCategory c in categories)
-                    if (c.DisplayName == categoryName)
-                        cat = c;
-                fetchedCategory.DisplayName = "Category - " + Guid.NewGuid().ToString();
-                fetchedCategory.Preset = CategoryPreset.Preset11;
-                OutlookCategory updatedCategory = client.UpdateCategory(fetchedCategory);
+// fetch a category
+var fetchedCategory = client.FetchCategory(category.Id);
 
-                client.Delete(category.Id);
-                categories = client.ListCategories();
-                cat = null;
-                foreach (OutlookCategory c in categories)
-                    if (c.DisplayName == categoryName)
-                        cat = c;
-            }
-~~~
+// update category (change color to brown)
+fetchedCategory.Preset = CategoryPreset.Preset2;
+var updatedCategory = client.UpdateCategory(fetchedCategory);
+
+// list available categories
+var categories = client.ListCategories();
+
+foreach (var cat in categories)
+{
+    Console.WriteLine(cat.DisplayName);
+}
+
+// delete a category
+client.Delete(fetchedCategory.Id);
+```
+
 ## **Manage Overrides**
 To manage overrides with MS Graph by Aspose.Email for .NET, use the following methods:
 * [CreateOrUpdateOverride](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/createorupdateoverride) 
 * [ListOverrides](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/listoverrides)
 * [UpdateOverride](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/updateoverride)
 
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {
-                string name = user.EMail.Substring(0, user.EMail.IndexOf("@"));
-                ClassificationType focusedType = ClassificationType.Focused;
-                ClassificationOverride o = client.CreateOrUpdateOverride(new MailAddress(user.EMail, name), focusedType);
+```csharp
+// Create an user's override
+var userOverride = client.CreateOrUpdateOverride
+    (new MailAddress("JohnBrown@someorg.com", "JohnBrown"), ClassificationType.Focused);
 
-                List<ClassificationOverride> list = client.ListOverrides();
-                ClassificationOverride fo = null;
-                foreach (ClassificationOverride co in list)
-                    if (user.EMail.Equals(co.Sender.Address, StringComparison.InvariantCultureIgnoreCase))
-                        fo = co;
-                fo.ClassifyAs = ClassificationType.Other;
-                string newName = fo.Sender.DisplayName = name + "_1";
-                ClassificationOverride uo = client.CreateOrUpdateOverride(fo);
-                fo.ClassifyAs = ClassificationType.Focused;
-                uo = client.UpdateOverride(fo);
-                client.Delete(uo.Id);
-                list = client.ListOverrides();
-                fo = null;
-                foreach (ClassificationOverride co in list)
-                    if (user.EMail.Equals(co.Sender.Address, StringComparison.InvariantCultureIgnoreCase))
-                        fo = co;
-            }
-~~~
+// list the overrides
+var overrides = client.ListOverrides();
+
+// update override
+userOverride.Sender.DisplayName = "John Brown";
+var updatedOverride = client.UpdateOverride(userOverride);
+
+// delete override
+client.Delete(updatedOverride.Id);
+```
 ## **Manage Rules**
 To manage rules with MS Graph by Aspose.Email for .NET, use the following methods:
 * [CreateRule](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/createrule)
@@ -448,97 +394,45 @@ To manage rules with MS Graph by Aspose.Email for .NET, use the following method
 * [UpdateRule](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/updaterule)
 * [ListRules](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/listrules)
 
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {
-                List<InboxRule> listedRules = client.ListRules();
-                foreach(InboxRule r in  listedRules)
-                    client.Delete(r.RuleId);
-                try
-                {
-                    InboxRule rule = PrepareRule(user);
-                    InboxRule createdRule = client.CreateRule(rule);
-                    checkRule(rule, createdRule);
-                    listedRules = client.ListRules();
-                    InboxRule ruleInList = null;
-                    foreach (InboxRule r in listedRules)
-                        if (r.DisplayName == rule.DisplayName)
-                        {
-                            ruleInList = r;
-                            break;
-                        }
-                    checkRule(rule, ruleInList);
-                    InboxRule fetchedRule = client.FetchRule(createdRule.RuleId);
-                    checkRule(rule, fetchedRule);
-                    createdRule.DisplayName = "Test rule - " + Guid.NewGuid().ToString();
-                    createdRule.IsEnabled = false;
-                    InboxRule updatedRule = client.UpdateRule(createdRule);
-                    checkRule(createdRule, updatedRule);
-                    fetchedRule = client.FetchRule(createdRule.RuleId);
-                    checkRule(createdRule, fetchedRule);
-                    client.Delete(createdRule.RuleId);
-                    ruleInList = null;
-                    listedRules = client.ListRules();
-                    foreach (InboxRule r in listedRules)
-                        if (r.DisplayName == createdRule.DisplayName)
-                        {
-                            ruleInList = r;
-                            break;
-                        }
-                }
-                finally
-                {
-                    listedRules = client.ListRules();
-                    foreach (InboxRule r in listedRules)
-                        client.Delete(r.RuleId);
-                }
-            }
+```csharp
+// Create a rule
+var rule = PrepareRule("user@someorg.com", "User");
+var createdRule = client.CreateRule(rule);
 
-        private InboxRule PrepareRule(TestUser user)
-        {
-            string name = user.EMail.Substring(0, user.EMail.IndexOf("@"));
-            InboxRule rule = new InboxRule();
-            rule.DisplayName = "Test rule - " + Guid.NewGuid().ToString();
-            rule.Priority = 1;
-            rule.IsEnabled = true;
-            rule.Conditions = new RulePredicates();
-            rule.Conditions.ContainsSenderStrings = new StringCollection();
-            rule.Conditions.ContainsSenderStrings.Add(name);
-            rule.Actions = new RuleActions();
-            rule.Actions.ForwardToRecipients = new MailAddressCollection();
-            rule.Actions.ForwardToRecipients.Add(new MailAddress(user.EMail, name, true));
-            rule.Actions.StopProcessingRules = true;
-            return rule;
-        }
+// List all rules defined for Inbox
+var rules = client.ListRules();
 
+// Fetch a rule
+var fetchedRule = client.FetchRule(createdRule.RuleId);
 
-        private void checkRule(InboxRule sample, InboxRule compared)
-        {
-            Assert.AreEqual(sample.DisplayName, compared.DisplayName);
-            Assert.AreEqual(sample.Priority, compared.Priority);
-            Assert.AreEqual(sample.IsEnabled, compared.IsEnabled);
-            bool found = false;
-            foreach (string senderString in sample.Conditions.ContainsSenderStrings)
-            {
-                foreach (string comparedString in compared.Conditions.ContainsSenderStrings)
-                    if (comparedString.Equals(senderString, StringComparison.InvariantCultureIgnoreCase))
-                        found = true;
-            }
-            Assert.IsTrue(found);
-            Assert.AreEqual(sample.Actions.StopProcessingRules, compared.Actions.StopProcessingRules);
-            foreach (MailAddress sampleAddress in sample.Actions.ForwardToRecipients)
-            {
-                found = false;
-                foreach (MailAddress comparedAddress in compared.Actions.ForwardToRecipients)
-                {
-                    if (comparedAddress.DisplayName.Equals(sampleAddress.DisplayName, StringComparison.InvariantCultureIgnoreCase) &&
-                        comparedAddress.Address.Equals(sampleAddress.Address, StringComparison.InvariantCultureIgnoreCase))
-                        found = true;
-                }
-                Assert.IsTrue(found);
-            }
-        }
-~~~
+// Update a rule
+fetchedRule.DisplayName = "Renamed rule";
+fetchedRule.IsEnabled = false;
+var updatedRule = client.UpdateRule(createdRule);
+
+// Delete a rule
+client.Delete(updatedRule.RuleId);
+```
+```csharp
+InboxRule PrepareRule(string email, string displayName)
+{
+    var rule = new InboxRule()
+    {
+        DisplayName = "My rule",
+        Priority = 1,
+        IsEnabled = true,
+        Conditions = new RulePredicates(),
+        Actions = new RuleActions()
+    };
+
+    rule.Conditions.ContainsSenderStrings = new StringCollection { displayName };
+    rule.Actions.ForwardToRecipients = new MailAddressCollection
+        { new MailAddress(email, displayName, true) };
+    rule.Actions.StopProcessingRules = true;
+
+    return rule;
+}
+```
 ## **Manage Notebooks**
 To manage notebooks with MS Graph by Aspose.Email for .NET, use the following methods:
 * [CreateNotebook](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/createnotebook)
@@ -546,19 +440,17 @@ To manage notebooks with MS Graph by Aspose.Email for .NET, use the following me
 * [FetchNotebook](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/fetchnotebook)
 * [ListNotebooks](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/listnotebooks)
 
-~~~csharp
-            using (IGraphClient client = TestUtil.CreateGraphClient(user))
-            {                
-                try
-                {
-                    NotebookCollection notebooks1 = client.ListNotebooks();
-                    Notebook newNotebook = new Notebook();
-                    newNotebook.DisplayName = "EMAILNET-39390 - " + Guid.NewGuid().ToString();
-                    Notebook createdNotebook = client.CreateNotebook(newNotebook);
-                    Notebook fetchedNotebook = client.FetchNotebook(createdNotebook.Id);
-                    NotebookCollection notebooks2 = client.ListNotebooks();
-                }
-                finally
-                {                    
-                }
-~~~
+```csharp
+// create a OneNote notebook
+var newNotebook = new Notebook()
+{
+    DisplayName = "My Notebook"
+};
+var createdNotebook = client.CreateNotebook(newNotebook);
+
+// fetch a notebook
+var fetchedNotebook = client.FetchNotebook(createdNotebook.Id);
+
+// list the notebooks
+var notebooks = client.ListNotebooks();
+```
