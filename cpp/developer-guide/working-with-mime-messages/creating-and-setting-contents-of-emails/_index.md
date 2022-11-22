@@ -11,6 +11,8 @@ keywords: c++ send email
 ## **Create New Email Message**
 The MailMessage class represents an email message and allows developers to create new email message. Basic email properties like From, To, Subject and body can be easily attached with the newly created mail message. Similarly we can save the mail message into different formats like EML, MSG and MHTML.
 
+<a name="csharp-create-new-email-msg" id="csharp-create-new-email-msg"><strong>Steps: Create New Email Message in C#</strong></a>
+
 - Create an instance of the MailMessage class.
 - Set mail message properties.
 - Save mail message in different formats.
