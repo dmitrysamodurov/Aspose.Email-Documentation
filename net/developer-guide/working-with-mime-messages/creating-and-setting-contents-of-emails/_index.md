@@ -1,23 +1,64 @@
 ---
-title: Creating and setting contents of Emails
+title: Creating and Setting Contents of Emails in .NET
+linktitle: Creating and setting contents of Emails
 type: docs
 weight: 10
 url: /net/creating-and-setting-contents-of-emails/
 ---
 
+## Overview
+
+This article discusses how to create and set contents of emails using C# .NET. It covers the following topics.
+
+_Category_: **Create Email**
+- [C# Create an email message](#csharp-create-email-message)
+- [C# Create an EML email message](#csharp-create-email-eml)
+- [C# Create an Apple EML email message](#csharp-create-email-apple-eml)
+- [C# Create MSG Unicode email message](#csharp-create-email-msg-unicode)
+
+_Category_: **Email Contents**
+- [C# Specify Multiple Recipients of Email](#csharp-specify-multiple-recipients-of-email)
+- [C# Change Email Addresses to Friendly Names](#csharp-change-email-addresses-to-friendly-names)
+- [C# Set Email HTML Body](#csharp-set-email-html-body)
+- [C# Set Email Alternate Text](#csharp-set-email-alternate-text)
+
+_Category_: **Email Body Encoding**
+- [C# Specify Email Body Encoding in ANSI Code Page](#csharp-specify-email-body-encoding-in-ansi)
+- [C# Specify Email Body Encoding in ASCII](#csharp-specify-email-body-encoding-in-ascii)
+- [C# Specify Email Body Encoding in UTF-8](#csharp-specify-email-body-encoding-in-utf-8)
+
+_Category_: **Send Email**
+- [C# Send Email to Multiple Recipients](#csharp-send-email-to-multiple-recipients)
+- [C$ Send Email after Changing Email Addresses to Friendly Names](#csharp-send-email-after-changing-email-addresses-to-friendly-names)
+
+Other topics covered by this article.
+- [See Also](#see-also)
+
 ## **Create New Email Message**
+
 The [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class represents an email message and allows developers to create a new email message. Basic email properties like From, To, Subject and body can be easily attached to the newly created mail message. Similarly, we can save the mail message into different formats like EML, MSG, and MHTML.
 
-- Create an instance of the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class.
-- Set mail message properties.
-- Save the mail message in different formats.
+_Steps: Create New Email_
+- <a name="csharp-create-email-message" id="csharp-create-email-message"><strong>_Steps:_ Create an email message in C#</strong></a>
+- <a name="csharp-create-email-eml" id="csharp-create-email-eml"><strong>_Steps:_ Create an EML email message in C#</strong></a>
+- <a name="csharp-create-email-apple-eml" id="csharp-create-email-apple-eml"><strong>_Steps:_ Create an Apple EML email message in C#</strong></a>
+- <a name="csharp-create-email-msg-unicode" id="csharp-create-email-msg-unicode"><strong>_Steps:_ Create MSG Unicode email message in C#</strong></a>
+
+_Code Steps:_
+1. Create an instance of the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class.
+2. Set mail message properties.
+3. Save the mail message in different formats e.g.
+   1. **EML** using [SaveOptions.DefaultEml](https://reference.aspose.com/email/net/aspose.email/saveoptions/defaulteml/)
+   2. **EmlxFormat** (_Apple Email_) using [CreateSaveOptions](https://reference.aspose.com/email/net/aspose.email/saveoptions/) method.
+   3. **MSG Unicode** using [SaveOptions.DefaultMsgUnicode](https://reference.aspose.com/email/net/aspose.email/saveoptions/defaultmsgunicode/)
+   4. **MHTML** using [SaveOptions.DefaultMhtml](https://reference.aspose.com/email/net/aspose.email/saveoptions/defaultmhtml/)
 
 The following code snippet shows you how to create a new email with different properties.
 
-
-
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-CreateNewMailMessage-CreateNewMailMessage.cs" >}}
+
 ## **Specifying Multiple Recipients**
+
 The [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) represents an email message. Instances of the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class are used to construct email messages that are transmitted to an SMTP server using the [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class. This topic demonstrates how to specify more than one email address. Email addresses can be specified using the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class. The email addresses used in the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class are:
 
 - **To** - Recipient addresses can be specified in the 'To' field. The 'To' field recipients are the primary message audience. There can be more than one recipient address
@@ -26,38 +67,53 @@ The [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmes
 
 To specify multiple email addresses in an email message, follow these steps:
 
+<a name="csharp-specify-multiple-recipients-of-email" id="csharp-specify-multiple-recipients-of-email"><strong>_Steps:_ Specify Multiple Recipients of Email using C#</strong></a> |
+<a name="csharp-send-email-to-multiple-recipients" id="csharp-send-email-to-multiple-recipients"><strong>_Steps:_ Send Email to Multiple Recipients in C#</strong></a>
+
 1. Create an instance of the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class.
-1. Specify the From and multiple To, Cc and Bcc addresses using the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) instance.
-1. Create an instance of the [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class and send the email using the [Send](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/methods/send/index) method.
+2. Specify the From and multiple To, Cc and Bcc addresses using the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) instance.
+3. Create an instance of the [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class and send the email using the [Send](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/methods/send/index) method.
 
 The code sample below shows how multiple To, Cc, and Bcc addresses can be specified.
 
-
-
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-SpecifyRecipientAddresses-SpecifyRecipientAddresses.cs" >}}
+
 ## **Changing email addresses to a friendly name**
+
 The programming samples below demonstrate how to change email addresses to friendly names in an email message. A friendly name is a name that is more human-friendly than the email address, for example John Smith instead of [js346@domain.com](/email/net/mailto-js346@domain-com/). When sending an email, we can associate a friendly name with an email address in the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class constructor.
 
 To change email addresses to friendly names in an email message, follow these steps:
 
-- Create an instance of the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class and specify email addresses in the **To** and **From** fields along with friendly names.
-- Specify the Cc and Bcc email addresses along with friendly names by calling the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class constructor in the MailMessage instance.
-- Create an instance of the [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class and send the email using the [Send](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/methods/send/index) method.
+<a name="csharp-change-email-addresses-to-friendly-names" id="csharp-change-email-addresses-to-friendly-names"><strong>_Steps:_ Change Email Addresses to Friendly Names in C#</strong></a> | 
+<a name="csharp-send-email-after-changing-email-addresses-to-friendly-names" id="csharp-send-email-after-changing-email-addresses-to-friendly-names"><strong>_Steps:_ Send Email after Changing Email Addresses to Friendly Names in C#</strong></a>
+
+1. Create an instance of the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class and specify email addresses in the **To** and **From** fields along with friendly names.
+2. Specify the Cc and Bcc email addresses along with friendly names by calling the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class constructor in the MailMessage instance.
+3. Create an instance of the [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class and send the email using the [Send](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/methods/send/index) method.
 
 The following code snippet shows you how to display Names for email addresses.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-ChangeEmailAddress-ChangeEmailAddress.cs" >}}
+
 ## **Set Mail Body**
+
 The [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class represents an email message. Instances of the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class are used to construct email messages that are transmitted to an SMTP server for delivery using the [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class. A mail body can be specified using the [Body](https://apireference.aspose.com/email/net/aspose.email/mailmessage/properties/body) and [HtmlBody](https://apireference.aspose.com/email/net/aspose.email/mailmessage/properties/htmlbody) properties of the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class. The [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class also allows you to add alternate views to the email.
 
 This article shows how to add body and alternate views to the email.
+
 ### **Setting HTML Body**
+
 [HtmlBody](https://apireference.aspose.com/email/net/aspose.email/mailmessage/properties/htmlbody) is used to specify the HTML content of a message body. [HtmlBody](https://apireference.aspose.com/email/net/aspose.email/mailmessage/properties/htmlbody) must be enclosed between <html> </html> tags. The following code snippet shows you how to set HTML body.
 
+<a name="csharp-set-email-html-body" id="csharp-set-email-html-body"><strong>_Steps:_ Set Email HTML Body in C#</strong></a>
 
+1. Create an instance of [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class.
+2. Set email HTML body using [MailMessage.HtmlBody](https://reference.aspose.com/email/net/aspose.email/mailmessage/htmlbody/) property.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-SetHTMLBody-SetHTMLBody.cs" >}}
+
 ### **Setting Alternate Text**
+
 Use the [AlternateView](https://apireference.aspose.com/email/net/aspose.email/alternateview) class to specify copies of an email message in different formats. For example, if you send a message in HTML, you might also want to provide a plain text version in case some of the recipients use email readers that cannot display HTML content. This class has two properties, [LinkedResources](https://apireference.aspose.com/email/net/aspose.email/alternateview/properties/linkedresources) and [BaseUri](https://apireference.aspose.com/email/net/aspose.email/alternateview/properties/baseuri), which are used to resolve URLs within the content of the email.
 
 - [LinkedResources](https://apireference.aspose.com/email/net/aspose.email/alternateview/properties/linkedresources) is a collection of [LinkedResource](https://apireference.aspose.com/email/net/aspose.email/linkedresource) objects. When rendered, URLs within the email's content are first matched against the URLs in the Content Link of each [LinkedResource](https://apireference.aspose.com/email/net/aspose.email/linkedresource) object in the [LinkedResources](https://apireference.aspose.com/email/net/aspose.email/alternateview/properties/linkedresources) collection and resolved.
@@ -65,9 +121,14 @@ Use the [AlternateView](https://apireference.aspose.com/email/net/aspose.email/a
 
 The following code snippet shows you how to set alternate text.
 
+<a name="csharp-set-email-alternate-text" id="csharp-set-email-alternate-text"><strong>_Steps:_ Set Email Alternate Text in C#</strong></a>
 
+1. Create an instance of [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/htmlbody/) class.
+2. Create [AlternateView](https://reference.aspose.com/email/net/aspose.email/alternateview/createalternateviewfromstring/) to view an email message using the content specified in the string.
+3. Add alternate text using **Add** method of [MailMessage.AlternateViews](https://reference.aspose.com/email/net/aspose.email/mailmessage/alternateviews/) collection.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-AlternateText-AlternateText.cs" >}}
+
 ## **Specifying Mail Body Encoding**
 The content type defines the email content format: the character set, for example. The encoding formats provided in System.Text.Encoding are:
 
@@ -80,11 +141,22 @@ The content type defines the email content format: the character set, for exampl
 
 Aspose.Email uses the [BodyEncoding](https://apireference.aspose.com/email/net/aspose.email/mailmessage/properties/bodyencoding) property of the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class to specify the email body encoding. To encode the body of an email message, follow the steps given below:
 
+_Steps: Specifying Mail Body Encoding_
+- <a name="csharp-specify-email-body-encoding-in-ansi" id="csharp-specify-email-body-encoding-in-ansi"><strong>_Steps:_ Specify Email Body Encoding in ANSI Code Page using C#</strong></a>
+- <a name="csharp-specify-email-body-encoding-in-ascii" id="csharp-specify-email-body-encoding-in-ascii"><strong>_Steps:_ Specify Email Body Encoding in ASCII using C#</strong></a>
+- <a name="csharp-specify-email-body-encoding-in-unicode" id="csharp-specify-email-body-encoding-in-unicode"><strong>_Steps:_ Specify Email Body Encoding in Unicode using C#</strong></a>
+- <a name="csharp-specify-email-body-encoding-in-bigendianunicode" id="csharp-specify-email-body-encoding-in-bigendianunicode"><strong>_Steps:_ Specify Email Body Encoding in BigEndianUnicode using C#</strong></a>
+- <a name="csharp-specify-email-body-encoding-in-utf-7" id="csharp-specify-email-body-encoding-in-utf-7"><strong>_Steps:_ Specify Email Body Encoding in UTF-7 using C#</strong></a>
+- <a name="csharp-specify-email-body-encoding-in-utf-8" id="csharp-specify-email-body-encoding-in-utf-8"><strong>_Steps:_ Specify Email Body Encoding in UTF-8 using C#</strong></a>
+- <a name="csharp-send-email-after-setting-encoding" id="csharp-send-email-after-setting-encoding"><strong>_Steps:_ Send Email after Setting Encoding in C#</strong></a>
+
+_Code Steps:_
+
 1. Create an instance of the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) class.
 1. Specify the sender, receiver and HTML body email in the [MailMessage](https://apireference.aspose.com/email/net/aspose.email/mailmessage) instance.
 1. Specify the [BodyEncoding](https://apireference.aspose.com/email/net/aspose.email/mailmessage/properties/bodyencoding) property value.
 1. Create an instance of the [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) class and send the email using the [Send](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/methods/send/index) method.
-
+ 
 
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-SpecifyMailBodyEncoding-SpecifyMailBodyEncoding.cs" >}}
@@ -224,3 +296,15 @@ Aspose.Email allows signing Email with DKIM (DomainKeys Identified Mail). This l
 
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-SignEmailsWithDKIM-SignEmailsWithDKIM.cs" >}}
+
+## See Also
+
+This article also covers these topics. The codes are same as above.
+
+_Category_: **Email Body Encoding**
+- [C# Specify Email Body Encoding in Unicode](#csharp-specify-email-body-encoding-in-unicode)
+- [C# Specify Email Body Encoding in BigEndianUnicode](#csharp-specify-email-body-encoding-in-bigendianunicode)
+- [C# Specify Email Body Encoding in UTF-7](#csharp-specify-email-body-encoding-in-utf-7)
+
+_Category_: **Send Email**
+- [C# Send Email after Setting Encoding](#csharp-send-email-after-setting-encoding)
