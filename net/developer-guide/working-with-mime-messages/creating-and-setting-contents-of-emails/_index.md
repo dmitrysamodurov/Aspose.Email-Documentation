@@ -29,7 +29,7 @@ _Category_: **Email Body Encoding**
 
 _Category_: **Send Email**
 - [C# Send Email to Multiple Recipients](#csharp-send-email-to-multiple-recipients)
-- [C$ Send Email after Changing Email Addresses to Friendly Names](#csharp-send-email-after-changing-email-addresses-to-friendly-names)
+- [C# Send Email after Changing Email Addresses to Friendly Names](#csharp-send-email-after-changing-email-addresses-to-friendly-names)
 
 Other topics covered by this article.
 - [See Also](#see-also)
