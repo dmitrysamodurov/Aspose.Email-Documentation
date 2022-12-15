@@ -20,7 +20,7 @@ The process for reading an OST file with Aspose.Email is exactly the same as for
 
 Convert emails & message archives online with the free [**Aspose.Email Conversion App**](https://products.aspose.app/email/Conversion).
 {{% /alert %}}
-Aspose.Email makes it possible to convert an OST file to PST with a single line of code. Similarly, the OST file can be created from PST file using the same line of code with the [FileFormat](https://apireference.aspose.com/email/net/aspose.email.storage.pst/fileformat) enumerator. At present, the API supports converting OST formats to PST except OST 2013/2016. The following code snippet shows you how to Convert OST to PST.
+Aspose.Email makes it possible to convert an OST file to PST with a single line of code. Similarly, the OST file can be created from PST file using the same line of code with the [FileFormat](https://apireference.aspose.com/email/net/aspose.email.storage.pst/fileformat) enumerator. At present, the API supports converting OST formats to PST except 2013/2016/2019/2021 and future versions. The following code snippet shows you how to Convert OST to PST.
 
 
 
