@@ -17,10 +17,6 @@ Aspose.Email for C++ does not support asyncronic features of e-mail protocols
 
 ## **New Features**
 
-
-## **New Features**
-
-
 ### **Getting a MAPI item type**
 
 We have added the `MapiItemType` enum that represented an item type. It can be used for message conversion into an object of a corresponding class derived from the `IMapiMessageItem` interface.
