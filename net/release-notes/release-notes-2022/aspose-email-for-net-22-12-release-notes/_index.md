@@ -5,11 +5,12 @@ weight: 3
 url: /net/aspose-email-for-net-22-12-release-notes/
 ---
 
-{{% alert color="primary" %}} 
+{{% alert color="primary" %}}
 
 This page contains release notes information for Aspose.Email for .NET 22.12
 
-{{% /alert %}} 
+{{% /alert %}}
+
 ## **All Changes**
 
 |**Key**|**Summary**|**Category**|
@@ -31,9 +32,7 @@ This page contains release notes information for Aspose.Email for .NET 22.12
 |EMAILNET-40864|CheckBounced returns empty BounceResult properties|Bug|
 |EMAILNET-40875|Exception: Invalid cryptographic message type|Bug|
 
-
 ## **New Features**
-
 
 ### **Provide method to get Get Total Items Count of PersonalStorage**
 
@@ -90,6 +89,78 @@ if (msg.IsEncrypted);
 }
 ```
 
-### **Provide APIs to set product ID**
+### **Setting a product ID when save MapiCalendar to ICS**
 
+We have added `ProductIdentifier` property to `MapiCalendarIcsSaveOptions` class. This property specifies the identifier for the product that created the iCalendar object.
 
+**Code sample:**
+
+```csharp
+var icsSaveOptions = new MapiCalendarIcsSaveOptions
+{
+    KeepOriginalDateTimeStamp = true,
+    ProductIdentifier = "Foo Ltd"
+};
+
+mapiCalendar.Save("my.ics", icsSaveOptions);
+```
+
+### Extract messages from OLM and MBOX by identifiers
+
+Sometimes it is required to extract selected messages by identifiers. For example, your application  stores identifiers in a database and extracts a message on demand. This is the efficient way to avoid traversing through the entire storage each time to find a specific message to extract.
+This feature is now available for OLM and MBOX storages.
+
+**New API members in OLM implementation:**
+
+- Added `EntryId` property to `OlmMessageInfo` class.
+- Added overloaded `ExtractMapiMessage(string id)` method to `OlmStorage` class.
+
+Code example:
+
+```csharp
+foreach (OlmMessageInfo msgInfo in olmFolder.EnumerateMessages())
+{
+    MapiMessage msg = storage.ExtractMapiMessage(msgInfo.EntryId);
+}
+```
+
+**New API members in MBOX implementation:**
+
+- Added `MboxMessageInfo` class with the `EntryId` property.
+- Added `EnumerateMessageInfo()` method to `MboxStorageReader` class.
+- Added `ExtractMessage(string id)` method to `MboxStorageReader` class.
+
+Code example:
+
+```csharp
+MboxStorageReader reader = MboxStorageReader.CreateReader("my.mbox", new MboxLoadOptions());
+
+foreach (MboxMessageInfo msgInfo in reader.EnumerateMessageInfo())
+{
+    MailMessage eml = reader.ExtractMessage(msgInfo.EntryId, new EmlLoadOptions());
+}
+```
+
+{{% alert color="primary" %}}
+
+Note: The message ID is unique within the storage file. IDs are created by Aspose.Email and cannot be used in other third-party OLM/MBOX processing libs or apps.
+
+{{% /alert %}}
+
+### Add IsInline property in Attachment
+
+**Changes in public API:**
+
+- `MapiAttachment.IsInline` - Gets a value indicating whether the attachment is inline or regular.
+
+**Code samples:**
+
+```csharp
+
+var message = MapiMessage.Load(fileName);
+
+foreach (var attach in message.Attachments)
+{
+    Console.WriteLine($"{attach.DisplayName0} : {attach.IsInline)}");
+}
+```
