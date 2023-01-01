@@ -326,3 +326,30 @@ try (IEWSClient ewsClient = EWSClient.getEWSClient(mailboxUri, credentials)) {
 
 }
 ```
+
+## **Permissions to access Office 365 via IMAP, POP3 or SMTP**
+
+We need to apply correct API permissions and grant the admin consent to access Office 365 mail services:
+
+![todo:image_alt_text](perm_conf.png)
+
+In the API permissions / Add a permission wizard, select Microsoft Graph and then Delegated permissions to find the following permission scopes listed:
+
+```
+offline_access
+IMAP.AccessAsUser.All
+POP.AccessAsUser.All
+SMTP.Send
+```
+
+Token provider Example:
+
+```java
+ITokenProvider tokenProvider = new AzureROPCTokenProvider(OAuth.Tenant, OAuth.ClientId, OAuth.ClientSecret, User.EMail, User.Password,
+        new String[] {
+                "offline_access",
+                "https://outlook.office.com/IMAP.AccessAsUser.All", // IMAP scope
+                "https://outlook.office.com/POP.AccessAsUser.All",  // POP3 scope
+                "https://outlook.office.com/SMTP.Send"              // SMTP scope
+        });
+```
