@@ -7,7 +7,7 @@ url: /cpp/aspose-email-for-cpp-23-1-release-notes/
 
 {{% alert color="primary" %}} 
 
-This page contains release notes information for Aspose.Email for C++ 22.12.
+This page contains release notes information for Aspose.Email for C++ 23.1.
 
 {{% /alert %}} 
 
