@@ -7,12 +7,13 @@ url: /net/working-with-contacts-in-pst-file/
 
 
 ## **Adding Contact to PST**
-[Create a New PST File and Add Subfolders](/email/net/create-new-pst-file-and-add-subfolders/#creating-a-new-pst-file-and-add-subfolders) showed how to create a PST file and add a subfolder to it. With Aspose.Email you can add a MapiContact to the Contacts subfolder of a PST file that you have created or loaded. Below are the steps to add MapiContact to a PST:
 
-1. Create a [MapiContact](https://apireference.aspose.com/email/net/aspose.email.mapi/mapicontact) object.
-1. Set the [MapiContact properties](https://apireference.aspose.com/email/net/aspose.email.mapi/mapicontact/properties/index) using different constructors and methods.
-1. Create a PST using the [PersonalStorage.Create()](https://apireference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/methods/create/index) method.
-1. Create a pre-defined folder (Contacts) at the root of the PST file by accessing the root folder and then calling the [AddMapiMessageItem()](https://apireference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/methods/addmapimessageitem) method.
+The article [Create a New PST File and Add Subfolders](https://docs.aspose.com/email/net/create-new-pst-add-sub-folders-and-messages/#creating-a-new-pst-file-and-add-subfolders) shows how to create a PST file and add a subfolder to it. With Aspose.Email you can add a MapiContact to the Contacts subfolder of a PST file that you have created or loaded. Below are the steps to add MapiContact to a PST:
+
+1. Create a [MapiContact](https://reference.aspose.com/email/net/aspose.email.mapi/mapicontact/) object.
+2. Set the [MapiContact properties](https://reference.aspose.com/email/net/aspose.email.mapi/mapicontact/) using different constructors and methods.
+3. Create a PST using the [PersonalStorage.Create()](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/create/#create/) method.
+4. Create a pre-defined folder (Contacts) at the root of the PST file by accessing the root folder and then calling the [AddMapiMessageItem()](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/addmapimessageitem/#addmapimessageitem) method.
 
 The following code snippet shows you how to create a MapiContact and then add it to the contacts folder of a newly created PST file.
 
@@ -63,17 +64,17 @@ using (PersonalStorage personalStorage = PersonalStorage.Create("SampleContacts_
 ```
 
 ## **Save contacts information from PST file in MSG Format**
-This article explains how to access contact information from an Outlook PST file and save the contact to disk in MSG format. The steps to get the contact information are:
 
-1. Load the PST file in the [PersonalStorage](https://apireference.aspose.com/email/net/aspose.email.storage.pst/personalstorage) object.
+This article explains how to access contact information from an Outlook PST file and save the contact to a disk in MSG format. The steps to get the contact information are:
+
+1. Load the PST file in the [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/) object.
 1. Browse the Contacts folder.
 1. Get the contents of the Contacts folder via Loop through the messages.
 1. Verify that the [MessageInfo.MessageClass](https://reference.aspose.com/email/net/aspose.email.storage.pst/messageinfo/messageclass/) property value matches the "IPM.Contact".
-1. Call the [PersonalStorage.ExtractMessage()](https://apireference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/methods/extractmessage/index) method to get the [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) object.
-1. Call the MapiMessage.Save() method to save the contact to disk in MSG format.
+1. Call the [PersonalStorage.ExtractMessage()](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/extractmessage/#extractmessage/) method to get the [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) object.
+1. Call the MapiMessage.Save() method to save the contact to the disk in MSG format.
 
 The following code snippet shows you how to retrieve all the contact information from the PST file and save to disk in MSG format.
-
 
 ```csharp
 // Load the Outlook PST file
@@ -98,13 +99,14 @@ foreach (MessageInfo messageInfo in contactsFolder.EnumerateMessages())
 ```
 
 ## **Save Contacts information from PST file in VCF Format**
-This article shows how to access contact information from a Microsoft Outlook PST file and save the contact to disk in vCard (VCF) format. Use the [PersonalStorage](https://apireference.aspose.com/email/net/aspose.email.storage.pst/personalstorage) and [MapiContact](https://apireference.aspose.com/email/net/aspose.email.mapi/mapicontact) classes to get contact information from the PST file. To get the contact information:
 
-1. Load the PST file in the [PersonalStorage](https://apireference.aspose.com/email/net/aspose.email.storage.pst/personalstorage) class.
+This article shows how to access contact information from a Microsoft Outlook PST file and save the contact to disk in vCard (VCF) format. Use the [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/) and [MapiContact](https://reference.aspose.com/email/net/aspose.email.mapi/mapicontact/) classes to get contact information from the PST file. To get the contact information:
+
+1. Load the PST file in the [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/) class.
 1. Browse the Contacts folder.
 1. Get the contents of the Contacts folder via Loop through the messages.
 1. Verify that the [MessageInfo.MessageClass](https://reference.aspose.com/email/net/aspose.email.storage.pst/messageinfo/messageclass/) property value matches the "IPM.Contact".
-1. Call the [PersonalStorage.ExtractMessage()](https://apireference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/methods/extractmessage/index) method to get the [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) object.
+1. Call the [PersonalStorage.ExtractMessage()](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/extractmessage/#extractmessage/) method to get the [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) object.
 1. Call the [MapiMessage.ToMapiMessageItem()](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/tomapimessageitem/) and cast the [IMapiMessageItem](https://reference.aspose.com/email/net/aspose.email.mapi/imapimessageitem/) to [MapiContact](https://reference.aspose.com/email/net/aspose.email.mapi/mapicontact/) type.
 1. Call the [MapiContact.Save()](https://reference.aspose.com/email/net/aspose.email.mapi/mapicontact/save/#save_1) method to save the contact to disk in VCard format.
 
