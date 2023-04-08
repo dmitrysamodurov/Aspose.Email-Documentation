@@ -104,6 +104,7 @@ public static async Task<string> GetAccessToken(AccessParameters accessParameter
 }
 
 ```
+
 ### Using the token to authenticate
 
 After that, when we have successfully obtained a token, let’s initialize the [EwsClient](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/ewsclient/).
@@ -116,6 +117,7 @@ NetworkCredential credentials = new OAuthNetworkCredential(accessToken);
 using var client = EWSClient.GetEWSClient("https://outlook.office365.com/EWS/Exchange.asmx", credentials);
 
 ```
+
 **Using the token with app auth**
 
 ```csharp

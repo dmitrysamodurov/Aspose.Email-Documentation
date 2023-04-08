@@ -7,9 +7,12 @@ url: /net/gmail-utility-features/
 
 
 ## **Working with FreeBusy Query**
+
 Aspose.Email provides querying mechanism to check whether some appointment is due or not as per the criteria. FreebusyQuery class is provided for this purpose which allows to prepare a query for a particular calendar.
+
 ### **Querying a calendar**
-This code sample demonstrates the feature of querying a calendar. Following tasks are performed in this sample:
+
+This code sample demonstrates the feature of querying a calendar. The following tasks are performed in this sample:
 
 1. Create and insert a calendar
 1. Create an appointment
@@ -78,10 +81,14 @@ using (IGmailClient client = GmailClient.GetInstance(accessToken, user.Email))
     }
 }
 ```
+
 ## **Creating project in Google Developer Console**
+
 A Project is to be created on Google Developer Console for a user having Gmail account. In the API & auth -> Credentials page of the Google project, information is to be noted like Client ID and Client Secret. This information along with the gmail account user name and password will be required for executing the code e.g. google calendar, access control lists, appointments, contacts, settings etc. in this section.
+
 ### **Steps to create a project in Google Developer Console**
-Following is a step by step tutorial for creating a project in Google Developer Console.
+
+Below is a step by step tutorial for creating a project in Google Developer Console.
 
 1. Go to link <https://cloud.google.com/console/project> and login using your gmail credentials
 
@@ -111,9 +118,13 @@ Following is a step by step tutorial for creating a project in Google Developer 
 
 |![todo:image_alt_text](gmail-utility-features_7.png)|
 | :- |
+
 ## **Helper Classes**
-Following helper classes are required to run the code examples in this section. These classes `GoogleOAuthHelper` and `GoogleUser` are just for simplification of demonstration. The methods in these classes use non-public structure of web-pages that may change any time.
+
+Following helper classes is required to run the code examples in this section. These classes `GoogleOAuthHelper` and `GoogleUser` are just for simplification of demonstration. The methods in these classes use non-public structure of web-pages that may change any time.
+
 ### **GoogleOAuthHelper Class**
+
 The following code snippet shows you how to implement `GoogleOAuthHelper` class.
 
 ```csharp
@@ -284,6 +295,7 @@ internal class GoogleOAuthHelper
 ```
 
 **Google OAuth Helper** should be used as follows:
+
 1. An authorization code URL has to be generated first.
 1. Open the URL in a browser and complete all operations. As a result, you will receive an authorization code.
 1. Use the authorization code to receive a refresh token.

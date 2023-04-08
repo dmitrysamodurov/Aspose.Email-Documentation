@@ -7,20 +7,21 @@ url: /java/working-with-recurrences/
 
 
 ## **Working With Daily Recurrences**
-Aspose.Email supports the creation of daily recurrences using [MapiCalendarDailyRecurrencePattern](https://apireference.aspose.com/email/java/com.aspose.email/MapiCalendarDailyRecurrencePattern). Three different Mapi calendar recurrence end types can be used including *EndAfterNOccurrences*, *EndAfterDate* and *NeverEnd*. This section demonstrates the creation of different daily recurrence patterns.
+
+Aspose.Email supports the creation of daily recurrences using [MapiCalendarDailyRecurrencePattern](https://reference.aspose.com/email/java/com.aspose.email/mapicalendardailyrecurrencepattern/). Three different Mapi calendar recurrence end types can be used including *EndAfterNOccurrences*, *EndAfterDate* and *NeverEnd*. This section demonstrates the creation of different daily recurrence patterns.
+
 ### **Daily Recurrences: EndAfterNOccurrence Recurrance Type**
+
 In this type of recurrence, number of recurrences is to be set along with other information as follows:
 
 1. Set start, end and due date.
-1. Create a [MapiTask](https://apireference.aspose.com/email/java/com.aspose.email/MapiTask).
+1. Create a [MapiTask](https://reference.aspose.com/email/java/com.aspose.email/mapitask/).
 1. Set task state to *NotAssigned*.
 1. Create the daily recurrence object by setting the properties like *PatternType*, *Period*, *WeekStartDay*, *EndType* and *OccurenceCount*.
 1. Set **MapiTask.setRecurrence** property to this daily recurrence object.
 1. Save this message on disc.
 
-The following code snippet shows you how to create task with recurrence end type as *EndAfterNOccurrence*.
-
-
+The following code snippet shows you how to create a task with recurrence end type as *EndAfterNOccurrence*.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -51,10 +52,7 @@ task.setRecurrence(rec);
 task.save(dataDir + "Daily_out.msg", TaskSaveFormat.Msg);
 ~~~
 
-
-Following function can be used to calculate the number of events between the two dates:
-
-
+The following function can be used to calculate the number of events between the two dates:
 
 ~~~Java
 private static long getOccurrenceCount(Date start, Date endBy, String rrule)
@@ -65,10 +63,10 @@ private static long getOccurrenceCount(Date start, Date endBy, String rrule)
     return dates.size();
 }
 ~~~
+
 #### **Setting the Occurrences Count Value**
+
 The following code snippet shows you how to set the occurrences count value.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -82,12 +80,14 @@ record.setEndType(MapiCalendarRecurrenceEndType.EndAfterNOccurrences);
 record.setOccurrenceCount(5);
 task.setRecurrence(record);
 ~~~
+
 ### **Daily Recurrences: EndAfterDate Recurrance Type**
+
 "End By" option in the Mapi Task is achieved by setting the *OccurrenceCount* property calculated by the **getOccurrenceCount()** function. This function takes start date , end date and RRULE string.
+
 #### **Daily Recurrences: Setting the Every Day Value**
+
 The following code snippet shows you how to set the period value to 1 and INTERVAL value to 1 in the RRULE string as well.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -101,11 +101,7 @@ record.setOccurrenceCount(getOccurrenceCount(startDate, endByDate, "FREQ=DAILY;I
 record.setEndDate(endByDate);
 ~~~
 
-
-
 Every Day value can be set to any appropriate value as shown in the following example:
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -117,10 +113,10 @@ record.setPeriod(2);
 record.setEndType(MapiCalendarRecurrenceEndType.EndAfterDate);
 record.setOccurrenceCount(getOccurrenceCount(startDate, endByDate, "FREQ=DAILY;INTERVAL=2"));
 ~~~
+
 ### **Daily Recurrences: NeverEnd Recurrance Type**
+
 End type can be set by using *MapiCalendarRecurrenceEndType.NeverEnd*. Period or INTERVAL can be set to required value say 1 in the following example.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -131,21 +127,23 @@ record.setPatternType(MapiCalendarRecurrencePatternType.Day);
 record.setPeriod(1);
 record.setEndType(MapiCalendarRecurrenceEndType.NeverEnd);
 ~~~
+
 ## **Working With Weekly Recurrences**
-Aspose.Email provides rich features for creation of weekly recurrences using [MapiCalendarWeeklyRecurrencePattern](https://apireference.aspose.com/email/java/com.aspose.email/MapiCalendarWeeklyRecurrencePattern). Three different Mapi calendar recurrence end types can be used including *EndAfterNOccurrences*, *EndAfterDate* and *NeverEnd*. This section demonstrates the creation of different weekly recurrence patterns.
+
+Aspose.Email provides rich features for creation of weekly recurrences using [MapiCalendarWeeklyRecurrencePattern](https://reference.aspose.com/email/java/com.aspose.email/mapicalendarweeklyrecurrencepattern/). Three different Mapi calendar recurrence end types can be used including *EndAfterNOccurrences*, *EndAfterDate* and *NeverEnd*. This section demonstrates the creation of different weekly recurrence patterns.
+
 ### **Weekly Recurrences: EndAfterNOccurrences Recurrance Type**
+
 In this type of recurrence, number of recurrences is to be set along with other information as follows:
 
 1. Set start, end and due date.
-1. Create a [MapiTask](https://apireference.aspose.com/email/java/com.aspose.email/MapiTask).
+1. Create a [MapiTask](https://reference.aspose.com/email/java/com.aspose.email/mapitask/).
 1. Set task state to *NotAssigned*.
 1. Create the weekly recurrence object by setting the properties like *PatternType*, *Period*, *WeekStartDay*, *EndType* and *OccurenceCount*.
 1. Set **MapiTask.setRecurrence** property to this weekly recurrence object.
 1. Save this message on disc.
 
-The following code snippet shows you how to creating task with recurrence end type as *EndAfterNOccurrence*.
-
-
+The following code snippet shows you how to create a task with recurrence end type as *EndAfterNOccurrence*.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -177,11 +175,7 @@ task.setRecurrence(rec);
 task.save(dataDir + "Weekly_out.msg", TaskSaveFormat.Msg);
 ~~~
 
-
-
 Following function can be used to calculate the number of events between the two dates:
-
-
 
 ~~~Java
 private static long getOccurrenceCount(Date start, Date endBy, String rrule)
@@ -192,10 +186,10 @@ private static long getOccurrenceCount(Date start, Date endBy, String rrule)
     return dates.size();
 }
 ~~~
+
 #### **Selecting Multiple Days in a Week**
+
 The following code snippet shows you how to select multiple days in a week.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -209,10 +203,10 @@ rec.setWeekStartDay(DayOfWeek.Sunday);
 rec.setDayOfWeek(MapiCalendarDayOfWeek.Friday | MapiCalendarDayOfWeek.Monday);
 rec.setOccurrenceCount(getOccurrenceCount(startDate, endByDate, "FREQ=WEEKLY;BYDAY=FR,MO"));
 ~~~
+
 #### **Selecting Multiple Days in a Week and Setting Intervals**
-The following code snippet shows you how to Selecting multiple days in a week and setting intervals.
 
-
+The following code snippet shows you how to select multiple days in a week and set intervals.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -225,12 +219,14 @@ rec.setWeekStartDay(DayOfWeek.Sunday);
 rec.setDayOfWeek(MapiCalendarDayOfWeek.Friday | MapiCalendarDayOfWeek.Monday);
 rec.setOccurrenceCount(getOccurrenceCount(startDate, endByDate, "FREQ=WEEKLY;BYDAY=FR,MO;INTERVAL=2"));
 ~~~
+
 ### **Weekly Recurrences: EndAfterDate Recurrance Type**
-"End By" option in the Mapi Task is achieved by setting the *OccurrenceCount* property calculated by the **getOccurrenceCount()** function. This function takes start date , end date and RRULE string.
+
+"End By" option in the Mapi Task is achieved by setting the *OccurrenceCount* property calculated by the **getOccurrenceCount()** function. This function takes start date, end date and RRULE string.
+
 #### **Weekly Recurrences: Setting the Every Day Value**
+
 The following code snippet shows you how to set the period value to 1 and INTERVAL value to 1 in the RRULE string as well.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -245,11 +241,7 @@ rec.setEndDate(endByDate);
 rec.setOccurrenceCount(getOccurrenceCount(startDate, endByDate, "FREQ=WEEKLY;BYDAY=FR;INTERVAL=1"));
 ~~~
 
-
-
 Every Day value can be set to any appropriate value and multiple days can be selected as shown in the following example:
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -262,7 +254,9 @@ record.setEndDate(endByDate);
 record.setDayOfWeek(MapiCalendarDayOfWeek.Friday | MapiCalendarDayOfWeek.Monday);
 record.setOccurrenceCount(getOccurrenceCount(startDate, endByDate, "FREQ=WEEKLY;BYDAY=FR,MO;INTERVAL=2"));
 ~~~
+
 ### **Weekly Recurrences: NeverEnd Recurrance Type**
+
 End type can be set by using *MapiCalendarRecurrenceEndType.NeverEnd*. Period or INTERVAL can be set to required value say 1 in the following example.
 
 
@@ -278,21 +272,23 @@ recurrence.setWeekStartDay(DayOfWeek.Sunday);
 recurrence.setDayOfWeek(MapiCalendarDayOfWeek.Friday);
 recurrence.setOccurrenceCount(getOccurrenceCount(startDate, endByDate, "FREQ=WEEKLY;BYDAY=FR"));
 ~~~
+
 ## **Working With Monthly Recurrences**
-Aspose.Email supports creation of monthly recurrences using [MapiCalendarMonthlyRecurrencePattern](https://apireference.aspose.com/email/java/com.aspose.email/MapiCalendarMonthlyRecurrencePattern). Three different Mapi calendar recurrence end types can be used including *EndAfterNOccurrences*, *EndAfterDate* and *NeverEnd*. This section demonstrates the creation of different monthly recurrence patterns.
+
+Aspose.Email supports the creation of monthly recurrences using [MapiCalendarMonthlyRecurrencePattern](https://reference.aspose.com/email/java/com.aspose.email/mapicalendarmonthlyrecurrencepattern/). Three different Mapi calendar recurrence end types can be used including *EndAfterNOccurrences*, *EndAfterDate* and *NeverEnd*. This section demonstrates the creation of different monthly recurrence patterns.
+
 ### **Monthly Recurrences: EndAfterNOccurrences Recurrance Type**
-In this type of recurrence, number of recurrences is to be set along with other information as follows:
+
+In this type of recurrence, the number of recurrences is to be set along with other information as follows:
 
 1. Set start, end and due date.
-1. Create a [MapiTask](https://apireference.aspose.com/email/java/com.aspose.email/MapiTask).
+1. Create a [MapiTask](https://reference.aspose.com/email/java/com.aspose.email/mapitask/).
 1. Set task state to *NotAssigned*.
 1. Create the monthly recurrence object by setting the properties like *PatternType*, *Period*, *WeekStartDay*, *EndType* and *OccurenceCount*.
 1. Set **MapiTask.setRecurrence** property to this monthly recurrence object.
 1. Save this message on disc.
 
-The following code snippet shows you how to create task with recurrence end type as *EndAfterNOccurrence*.
-
-
+The following code snippet shows you how to create a task with recurrence end type as *EndAfterNOccurrence*.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
@@ -324,11 +320,7 @@ task.setRecurrence(rec);
 task.save(dataDir + "Monthly_out.msg", TaskSaveFormat.Msg);
 ~~~
 
-
-
-Following function can be used to calculate the number of events between the two dates:
-
-
+The following function can be used to calculate the number of events between two dates:
 
 ~~~Java
 private static long getOccurrenceCount(Date start, Date endBy, String rrule)
@@ -339,10 +331,10 @@ private static long getOccurrenceCount(Date start, Date endBy, String rrule)
     return dates.size();
 }
 ~~~
+
 #### **Set Fix Number of Occurrences**
-The following code snippet shows you how to set fix number of occurrences.
 
-
+The following code snippet shows you how to set a fix number of occurrences.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -355,10 +347,10 @@ records.setEndType(MapiCalendarRecurrenceEndType.EndAfterNOccurrences);
 records.setOccurrenceCount(5);
 records.setWeekStartDay(DayOfWeek.Monday);
 ~~~
+
 ### **Monthly Recurrences: EndAfterDate Recurrance Type**
-"End By" option in the Mapi Task is achieved by setting the *OccurrenceCount* property calculated by the **getOccurrenceCount()** function. This function takes start date , end date and RRULE string. The following code snippet shows you how to creates a recurrence on 15th of each month between start and end by date.
 
-
+"End By" option in the Mapi Task is achieved by setting the *OccurrenceCount* property calculated by the **getOccurrenceCount()** function. This function takes start date, end date and RRULE string. The following code snippet shows you how to create a recurrence on the 15th of each month between start and end by date.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -385,10 +377,10 @@ recurrence.setEndDate(endByDate);
 task.setRecurrence(recurrence);
 task.save(dataDir + "SetMonthlyEndAfterDateRecurrence_out.msg", TaskSaveFormat.Msg);
 ~~~
+
 ### **Monthly Recurrences: NeverEnd Recurrance Type**
-The following code snippet shows you how to end type can be set by using *MapiCalendarRecurrenceEndType.NeverEnd*.
 
-
+The following code snippet shows you how the end type can be set by using *MapiCalendarRecurrenceEndType.NeverEnd*.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -399,21 +391,23 @@ recurrence.setPatternType(MapiCalendarRecurrencePatternType.Month);
 recurrence.setEndType(MapiCalendarRecurrenceEndType.NeverEnd);
 recurrence.setWeekStartDay(DayOfWeek.Monday);
 ~~~
+
 ## **Working With Yearly Recurrences**
-Aspose.Email supports creation of yearly recurrences using [MapiCalendarMonthlyRecurrencePattern](https://apireference.aspose.com/email/java/com.aspose.email/MapiCalendarMonthlyRecurrencePattern). By setting the period property to 12, we can achieve the yearly recurrence pattern. Three different Mapi calendar recurrence end types can be used including *EndAfterNOccurrences*, *EndAfterDate* and *NeverEnd*. This section demonstrates the creation of different yearly recurrence patterns.
+
+Aspose.Email supports creation of yearly recurrences using [MapiCalendarMonthlyRecurrencePattern](https://reference.aspose.com/email/java/com.aspose.email/mapicalendarmonthlyrecurrencepattern/). By setting the period property to 12, we can achieve the yearly recurrence pattern. Three different Mapi calendar recurrence end types can be used including *EndAfterNOccurrences*, *EndAfterDate* and *NeverEnd*. This section demonstrates the creation of different yearly recurrence patterns.
+
 ### **Yearly Recurrences: EndAfterNOccurrences Recurrance Type**
-In this type of recurrence, number of recurrences is to be set along with other information as follows:
+
+In this type of recurrence, the number of recurrences is to be set along with other information as follows:
 
 1. Set start, end and due date.
-1. Create a [MapiTask](https://apireference.aspose.com/email/java/com.aspose.email/MapiTask).
+1. Create a [MapiTask](https://reference.aspose.com/email/java/com.aspose.email/mapitask/).
 1. Set task state to *NotAssigned*.
 1. Create the monthly recurrence object by setting the properties like *PatternType*, *Period*, *WeekStartDay*, *EndType* and *OccurenceCount*.
 1. Set **MapiTask.setRecurrence** property to this monthly recurrence object to achieve the yearly recurrence.
 1. Save this message on disc.
 
-The following code snippet shows you how to create task with recurrence end type as *EndAfterNOccurrence*.
-
-
+The following code snippet shows you how to create a task with recurrence end type as *EndAfterNOccurrence*.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -434,10 +428,10 @@ recurrence.setOccurrenceCount(3);
 task.setRecurrence(recurrence);
 task.save("Yearly.msg", TaskSaveFormat.Msg);
 ~~~
+
 ### **Yearly Recurrences: EndAfterDate Recurrance Type**
-"End By" option in the Mapi Task is achieved by setting the *OccurrenceCount* property calculated by the **getOccurrenceCount()** function. This function takes start date , end date and RRULE string. The following code snippet shows you how to creates a recurrence on 15th of each 7th month between start and end by date.
 
-
+"End By" option in the Mapi Task is achieved by setting the *OccurrenceCount* property calculated by the **getOccurrenceCount()** function. This function takes start date, end date and RRULE string. The following code snippet shows you how to create a recurrence on the 15th of each 7th month between start and end by date.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -450,10 +444,10 @@ rec.setEndType(MapiCalendarRecurrenceEndType.EndAfterDate);
 rec.setEndDate(endByDate);
 rec.setOccurrenceCount(getOccurrenceCount(startDate, endByDate, "FREQ=YEARLY;BYMONTHDAY=15;BYMONTH=7;INTERVAL=1"));
 ~~~
+
 ### **Yearly Recurrences: NeverEnd Recurrance Type**
-The following code snippet shows you how to end type can be set by using *MapiCalendarRecurrenceEndType.NeverEnd*.
 
-
+The following code snippet shows you how the end type can be set by using *MapiCalendarRecurrenceEndType.NeverEnd*.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -464,10 +458,10 @@ recurrence.setPeriod(12);
 recurrence.setPatternType(MapiCalendarRecurrencePatternType.Month);
 recurrence.setEndType(MapiCalendarRecurrenceEndType.NeverEnd);
 ~~~
+
 ## **Generate Recurrence from Recurrence Rule**
-Aspose.Email API provides the capability to generate Recurrence Pattern from Recurrence Rule (RRULE). It parses the information from the RRULE as per RFC 5545 iCal specifications and generates the recurrence pattern using the **MapiCalendarRecurrencePatternFactory.fromString** method. The following code snippet shows you how to generate recurrence pattern from recurrence rule.
 
-
+Aspose.Email API provides the capability to generate Recurrence Pattern from Recurrence Rule (RRULE). It parses the information from the RRULE as per RFC 5545 iCal specifications and generates the recurrence pattern using the **MapiCalendarRecurrencePatternFactory.fromString** method. The following code snippet shows you how to generate recurrence pattern from the recurrence rule.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -484,10 +478,10 @@ app1.setEndDate(endDate);
 String pattern = "DTSTART;TZID=Europe/London:20150831T080000\r\nDTEND;TZID=Europe/London:20150831T083000\r\nRRULE:FREQ=DAILY;INTERVAL=1;COUNT=7\r\nEXDATE:20150831T070000Z,20150904T070000Z";
 app1.getRecurrence().setRecurrencePattern(MapiCalendarRecurrencePatternFactory.fromString(pattern));
 ~~~
+
 ## **Add Attachment to Recurring Calendar Events**
+
 Aspose.Email API provides the capability to add attachments to recurring calendar events.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -525,7 +519,9 @@ try (PersonalStorage newPst = PersonalStorage.create(dataDir + "AddAttachmentToM
     newFolder.addMapiMessageItem(calendar);
 }
 ~~~
+
 ## **Set Calendar Event Time Zone**
+
 Aspose.Email API provides the capability to set calendar time zone:
 - time zone information for start/end date
 - time zone information for a recurring meeting

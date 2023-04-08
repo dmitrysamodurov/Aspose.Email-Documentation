@@ -7,44 +7,45 @@ url: /java/working-with-message-flags-on-server/
 
 
 ## **Changing the Message Flags**
-You can change message flags by using the [changeMessageFlags()](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient#changeMessageFlags\(com.aspose.email.IConnection,%20int,%20com.aspose.email.ImapMessageFlags\)) method. This method takes two parameters.
 
-1. The message's sequence number or unique ID.
-1. [MessageFlag](https://apireference.aspose.com/email/java/com.aspose.email/imapmessageflags).
+You can change message flags by using the [changeMessageFlags()](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#changeMessageFlags-com.aspose.email.IConnection-int-com.aspose.email.ImapMessageFlags-) method. This method takes two parameters.
+
+1. The message sequence number or unique ID.
+1. [MessageFlag](https://reference.aspose.com/email/java/com.aspose.email/imapmessageflags/).
 
 The following flags can be set:
 
-- [Answered](https://apireference.aspose.com/email/java/com.aspose.email/ImapMessageFlags#getAnswered\(\))
-- [Deleted](https://apireference.aspose.com/email/java/com.aspose.email/ImapMessageFlags#getDeleted\(\))
-- [Draft](https://apireference.aspose.com/email/java/com.aspose.email/ImapMessageFlags#getDraft\(\))
-- [Empty](https://apireference.aspose.com/email/java/com.aspose.email/ImapMessageFlags#getEmpty\(\))
-- [Flagged](https://apireference.aspose.com/email/java/com.aspose.email/ImapMessageFlags#getFlagged\(\))
-- [isRead](https://apireference.aspose.com/email/java/com.aspose.email/ImapMessageFlags#isRead\(\))
-- [Recent](https://apireference.aspose.com/email/java/com.aspose.email/ImapMessageFlags#getRecent\(\))
+- [Answered](https://reference.aspose.com/email/java/com.aspose.email/imapmessageflags/#getAnswered--)
+- [Deleted](https://reference.aspose.com/email/java/com.aspose.email/imapmessageflags/#getDeleted--)
+- [Draft](https://reference.aspose.com/email/java/com.aspose.email/imapmessageflags/#getDraft--)
+- [Empty](https://reference.aspose.com/email/java/com.aspose.email/imapmessageflags/#getEmpty--)
+- [Flagged](https://reference.aspose.com/email/java/com.aspose.email/imapmessageflags/#getFlagged--)
+- [isRead](https://reference.aspose.com/email/java/com.aspose.email/imapmessageflags/#isRead--)
+- [Recent](https://reference.aspose.com/email/java/com.aspose.email/imapmessageflags/#getRecent--)
+  
 ### **Setting Message Flags**
+
 The following code snippet shows you how to change message flags on an IMAP server with Aspose.Email.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
 // Mark the message as read
 client.changeMessageFlags(1, ImapMessageFlags.isRead());
 ~~~
+
 ### **Removing Message Flags**
-Message flags can also be removed with the [removeMessageFlags()](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient#removeMessageFlags\(com.aspose.email.IConnection,%20int,%20com.aspose.email.ImapMessageFlags\)) method. Usage is similar to that of the [changeMessageFlags()](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient#changeMessageFlags\(com.aspose.email.IConnection,%20int,%20com.aspose.email.ImapMessageFlags\)) method. It takes a sequence number or unique message ID and [MessageFlag](https://apireference.aspose.com/email/java/com.aspose.email/imapmessageflags). The following code snippet shows you how to remove message flags.
 
-
+Message flags can also be removed with the [removeMessageFlags()](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#removeMessageFlags-com.aspose.email.IConnection-int-com.aspose.email.ImapMessageFlags-) method. Usage is similar to that of the [changeMessageFlags()](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#changeMessageFlags-com.aspose.email.IConnection-int-com.aspose.email.ImapMessageFlags-) method. It takes a sequence number or unique message ID and [MessageFlag](https://reference.aspose.com/email/java/com.aspose.email/imapmessageflags/). The following code snippet shows you how to remove message flags.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
 // Remove the message flag
 client.removeMessageFlags(1, ImapMessageFlags.isRead());
 ~~~
+
 ## **Setting Custom Flags**
-You can also set custom flags to a message using the [ImapClient](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient) of the API. The ImapClient's AddMessageFlags provides the ability to set custom flags on messages.
 
-
+You can also set custom flags to a message using the [ImapClient](https://reference.aspose.com/email/java/com.aspose.email/imapclient/) of the API. The ImapClient [AddMessageFlags](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#addMessageFlags-com.aspose.email.IConnection-int-com.aspose.email.ImapMessageFlags-) provides the ability to set custom flags on messages.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java

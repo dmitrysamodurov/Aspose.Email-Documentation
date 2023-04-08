@@ -20,8 +20,9 @@ try (PersonalStorage pst = PersonalStorage.fromFile("storage.pst")) {
         }
 }
 ```
+
 {{% alert color="primary" %}}
-Prefer [MessageInfo](https://reference.aspose.com/email/java/com.aspose.email/messageinfo) for accessing basic message properties.
+Prefer [MessageInfo](https://reference.aspose.com/email/java/com.aspose.email/messageinfo/) for accessing basic message properties.
 {{% /alert %}}
 
 ```java
@@ -33,11 +34,11 @@ for (MessageInfo messageInfo : folder.enumerateMessages()) {
 }
 ```
 {{% alert color="primary" %}}
-Avoid using the [ExtractMessage](https://reference.aspose.com/email/java/com.aspose.email/PersonalStorage#extractMessage\(byte[]\)) or [EnumerateMapiMessages](https://reference.aspose.com/email/java/com.aspose.email/FolderInfo#enumerateMapiMessages\(\)) methods for all messages unless you need to have access to all properties.
+Avoid using the [ExtractMessage](https://reference.aspose.com/email/java/com.aspose.email/personalstorage/#extractMessage-com.aspose.email.MessageInfo-) or [EnumerateMapiMessages](https://reference.aspose.com/email/java/com.aspose.email/folderinfo/#enumerateMapiMessages--) methods for all messages unless you need to have access to all properties.
 {{% /alert %}}
 
 {{% alert color="primary" %}}
-Consider using [EnumerateMessagesEntryId](https://reference.aspose.com/email/java/com.aspose.email/FolderInfo#enumerateMessagesEntryId\(\)) to easily retrieve all message IDs contained in a folder.
+Consider using [EnumerateMessagesEntryId](https://reference.aspose.com/email/java/com.aspose.email/folderinfo/#enumerateMessagesEntryId--) to easily retrieve all message IDs contained in a folder.
 {{% /alert %}}
 
 ```java
@@ -50,7 +51,7 @@ for (String id : folder.enumerateMessagesEntryId())
 }
 ```
 {{% alert color="primary" %}}
-Consider using [ExtractProperty](https://reference.aspose.com/email/java/com.aspose.email/PersonalStorage#extractProperty\(byte[],%20long\)) to read a single property that is missing in MessageInfo.
+Consider using [ExtractProperty](https://reference.aspose.com/email/java/com.aspose.email/personalstorage/#extractProperty-byte---long-) to read a single property that is missing in MessageInfo.
 {{% /alert %}}
 
 ```java
@@ -61,7 +62,7 @@ for (String msgId : folder.enumerateMessagesEntryId()) {
 }
 ```
 {{% alert color="primary" %}}
-Consider using [ExtractAttachments](https://reference.aspose.com/email/java/com.aspose.email/PersonalStorage#extractAttachments\(java.lang.String\)) if only the attachments are required.
+Consider using [ExtractAttachments](https://reference.aspose.com/email/java/com.aspose.email/personalstorage/#extractAttachments-com.aspose.email.MessageInfo-) if only the attachments are required.
 {{% /alert %}}
 
 ```java
@@ -88,7 +89,7 @@ try (PersonalStorage pst = PersonalStorage.fromFile("storage.pst")) {
 ```
 
 {{% alert color="primary" %}}
-Consider using [SaveMessageToStream](https://reference.aspose.com/email/java/com.aspose.email/PersonalStorage#saveMessageToStream\(java.lang.String,%20java.io.OutputStream\)) if it is necessary to save messages from pst.
+Consider using [SaveMessageToStream](https://reference.aspose.com/email/java/com.aspose.email/personalstorage/#saveMessageToStream-java.lang.String-java.io.OutputStream-) if it is necessary to save messages from pst.
 {{% /alert %}}
 
 Instead of using:

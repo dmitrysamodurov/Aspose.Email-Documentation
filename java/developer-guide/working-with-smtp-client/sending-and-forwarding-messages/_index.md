@@ -7,25 +7,26 @@ url: /java/sending-and-forwarding-messages/
 ---
 
 
-The [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class allows applications to send email using the Simple Mail Transfer Protocol (SMTP).
+The [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class allows applications to send email using the Simple Mail Transfer Protocol (SMTP).
 
-- The [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class is the only major entry developers use to send mail messages.
-- The [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class also provides other common email delivery methods, including writing email messages to the file system, message queue etc.
-- The [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class fully supports these two programming models:
+- The [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class is the only major entry developers use to send mail messages.
+- The [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class also provides other common email delivery methods, including writing email messages to the file system, message queue etc.
+- The [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class fully supports these two programming models:
   - [Synchronous](#sending-emails-synchronously)
   - [Asynchronous](#sending-emails-asynchronously)
-- The [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class also supports [sending messages as TNEF](#sending-message-as-tnef)
+- The [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class also supports [sending messages as TNEF](#sending-message-as-tnef)
 
-To send the email message and block while waiting for the email to be transmitted to the SMTP server, use one of the synchronous Send methods. To allow your program's main thread to continue executing while the email is transmitted, use the [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) method.
+To send the email message and block while waiting for the email to be transmitted to the SMTP server, use one of the synchronous Send methods. To allow your program main thread to continue executing while the email is transmitted, use the [beginSend](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#beginSend-com.aspose.email.IConnection-com.aspose.email.MailMessage-) method.
+
 ## **Sending Emails Synchronously**
-An email message can be sent synchronously using the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class [send](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#send\(com.aspose.email.MailMessage\)) method. It sends the specified email message through an SMTP server for delivery. The message sender, recipients, subject, and message body are specified using String objects. To send an email message synchronously, follow the steps given below:
 
-1. Create an instance of [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class and set its properties.
-1. Create an instance of [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class and specify the Host, port, username & Password.
-1. Send the Message using the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class [send](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#send\(com.aspose.email.MailMessage\)) method and pass the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) instance.
+An email message can be sent synchronously using the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class [send](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#send-com.aspose.email.IConnection-com.aspose.email.MailMessage-) method. It sends the specified email message through an SMTP server for delivery. The message sender, recipients, subject, and message body are specified using String objects. To send an email message synchronously, follow the steps given below:
+
+1. Create an instance of [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class and set its properties.
+1. Create an instance of [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class and specify the Host, port, username & Password.
+1. Send the Message using the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class [send](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#send-com.aspose.email.IConnection-com.aspose.email.MailMessage-) method and pass the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) instance.
 
 The following Java code snippet shows you how to send outlook emails synchronously.
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -51,16 +52,17 @@ try {
     System.err.println(ex);
 }
 ~~~
+
 ## **Sending Emails Asynchronously**
-Sometimes, you may want to send mail asynchronously. For example, if you are sending a lot of mail through your application, the synchronous approach might not work. In such a scenario, you can use [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)). The [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) method of the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class sends an email message to an SMTP server for delivery. This method does not block the calling thread and allows the caller to pass an object to the method that is invoked when the operation completes. To send an outlook email message asynchronously in Java, follow these steps:
 
-1. Create an instance of [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class and use its different properties.
-1. Create an instance of [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class and specify the host, port, username, and password.
+Sometimes, you may want to send mail asynchronously. For example, if you are sending a lot of mail through your application, the synchronous approach might not work. In such a scenario, you can use [beginSend](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#beginSend-com.aspose.email.IConnection-com.aspose.email.MailMessage-). The [beginSend](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#beginSend-com.aspose.email.IConnection-com.aspose.email.MailMessage-) method of the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class sends an email message to an SMTP server for delivery. This method does not block the calling thread and allows the caller to pass an object to the method that is invoked when the operation completes. To send an outlook email message asynchronously in Java, follow these steps:
+
+1. Create an instance of [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class and use its different properties.
+1. Create an instance of [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class and specify the host, port, username, and password.
 1. Create a user-defined instance that will be passed to the method and invoked when the asynchronous operation completes.
-1. Send the message using [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) method of [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class and pass the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) instance and user-defined instance in it along with a callback function to be called when the operation is completed.
+1. Send the message using [beginSend](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#beginSend-com.aspose.email.IConnection-com.aspose.email.MailMessage-) method of [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class and pass the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) instance and user-defined instance in it along with a callback function to be called when the operation is completed.
 
-To receive a notification when the email has been sent or the operation has been canceled, the callback function passed to the [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) method is called. After calling the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) method it is not necessary to wait for an email message to be sent completely. We can call another method [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) at the same time. When an email has been sent using the [beginSend](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#beginSend\(com.aspose.email.MailMessage\)) method, the code snippet prints a message ("Message Sent"). The following Java program or code snippet shows you how to send emails asynchronously.
-
+To receive a notification when the email has been sent or the operation has been canceled, the callback function passed to the [beginSend](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#beginSend-com.aspose.email.IConnection-com.aspose.email.MailMessage-) method is called. After calling the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class [beginSend](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#beginSend-com.aspose.email.IConnection-com.aspose.email.MailMessage-) method it is not necessary to wait for an email message to be sent completely. We can call another method [beginSend](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#beginSend-com.aspose.email.IConnection-com.aspose.email.MailMessage-) at the same time. When an email has been sent using the [beginSend](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#beginSend-com.aspose.email.IConnection-com.aspose.email.MailMessage-) method, the code snippet prints a message ("Message Sent"). The following Java program or code snippet shows you how to send emails asynchronously.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -116,9 +118,10 @@ static AsyncCallback callback = new AsyncCallback() {
     }
 };
 ~~~
-## **Sending Stored Messages from Disc**
-EML files, (Outlook Express Electronic Mail files) contains an email's header, message body, and any attachments. Aspose.Email lets developers work with EML files in different ways. This article shows how to load EML files from disk and send them as emails with SMTP. You can load .eml files from disk or stream into the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class and send the email message using the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class. The [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class is the main class for creating new email messages, loading email message files from disk or stream and saving the messages. The following Java code snippet shows how to sending stored messages from the disc.
 
+## **Sending Stored Messages from Disc**
+
+EML files, (Outlook Express Electronic Mail files) contains an email header, message body, and any attachments. Aspose.Email lets developers work with EML files in different ways. This article shows how to load EML files from disk and send them as emails with SMTP. You can load .eml files from disk or stream into the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class and send the email message using the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class. The [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class is the main class for creating new email messages, loading email message files from disk or stream and saving the messages. The following Java code snippet shows how to send stored messages from the disc.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -135,16 +138,17 @@ try {
     System.out.println(ex.getMessage());
 }
 ~~~
-## **Sending Plain Text Email**
-The programming samples below show how to send a plain text email message. The [Body](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage#getBody\(\)) property, a property of the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class, is used to specify the plain text content of the message body. To send a plain text email message, follow these steps:
 
-- Create an instance of the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class.
-- Specify the sender and receiver email addresses in the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) instance.
-- Specify the [Body](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage#getBody\(\)) content, used for the plain text message.
-- Create an instance of the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class and send the email.
+## **Sending Plain Text Email**
+
+The programming samples below show how to send a plain text email message. The [Body](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/#getBody--) property, a property of the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class, is used to specify the plain text content of the message body. To send a plain text email message, follow these steps:
+
+- Create an instance of the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class.
+- Specify the sender and receiver email addresses in the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) instance.
+- Specify the [Body](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/#getBody--) content, used for the plain text message.
+- Create an instance of the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class and send the email.
 
 The following code snippet shows you how to send a plain text email.
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -174,16 +178,17 @@ try {
     System.err.println(ex);
 }
 ~~~
-## **Sending Email with HTML body**
-The programming samples below show how you can send a simple HTML email message. The [HtmlBody](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage#getHtmlBody\(\)), a property of the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class, is used to specify the HTML content of the message body. To send a simple HTML email, follow these steps:
 
-- Create an instance of the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class.
-- Specify sender and receiver email address in the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) instance.
-- Specify the [HtmlBody](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage#getHtmlBody\(\)) content.
-- Create an instance of the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class and send the email using the [send](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#send\(com.aspose.email.MailMessage\)) method.
+## **Sending Email with HTML body**
+
+The programming samples below show how you can send a simple HTML email message. The [HtmlBody](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/#getHtmlBody--), a property of the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class, is used to specify the HTML content of the message body. To send a simple HTML email, follow these steps:
+
+- Create an instance of the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class.
+- Specify sender and receiver email address in the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) instance.
+- Specify the [HtmlBody](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/#getHtmlBody--) content.
+- Create an instance of the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class and send the email using the [send](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#send-com.aspose.email.MailMessage-) method.
 
 For the purposes of this article, the HTML content of the email is rudimentary: <html><body>This is the HTML body</body></html> Most HTML emails will be more complex. The following Java program snippet shows you how to send an email with HTML body.
-
 
 ~~~Java
 public static void run() {
@@ -213,20 +218,21 @@ private static SmtpClient getSmtpClient() {
     return client;
 }
 ~~~
-## **Sending Email with Alternate Message Text**
-The programming samples below show how to send a simple HTML email message with alternative content. Use the [AlternateView](https://apireference.aspose.com/email/java/com.aspose.email/AlternateView) class to specify copies of an email message in different formats. For example, if you send a message in HTML, you might also want to provide a plain text version for recipients who use email readers that cannot display HTML content. Or, if you are sending a newsletter, you might want to provide a plain text copy of the text for those recipients who have chosen to receive a plain text version. To send an email with alternate text, follow these steps:
 
-1. Create an instance of the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class.
-1. Specify sender and receiver email addresses in the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) instance.
-1. Create an instance of the [AlternateView](https://apireference.aspose.com/email/java/com.aspose.email/AlternateView) class.
+## **Sending Email with Alternate Message Text**
+
+The programming samples below show how to send a simple HTML email message with alternative content. Use the [AlternateView](https://reference.aspose.com/email/java/com.aspose.email/alternateview/) class to specify copies of an email message in different formats. For example, if you send a message in HTML, you might also want to provide a plain text version for recipients who use email readers that cannot display HTML content. Or, if you are sending a newsletter, you might want to provide a plain text copy of the text for those recipients who have chosen to receive a plain text version. To send an email with alternate text, follow these steps:
+
+1. Create an instance of the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class.
+1. Specify sender and receiver email addresses in the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) instance.
+1. Create an instance of the [AlternateView](https://reference.aspose.com/email/java/com.aspose.email/alternateview/) class.
 
 This creates an alternate view to an email message using the content specified in the string.
 
-1. Add the instance of the [AlternateView](https://apireference.aspose.com/email/java/com.aspose.email/AlternateView) class to the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) object.
-1. Create an instance of the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class and send the email using the [send](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#send\(com.aspose.email.MailMessage\)) method.
+1. Add the instance of the [AlternateView](https://reference.aspose.com/email/java/com.aspose.email/alternateview/) class to the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) object.
+1. Create an instance of the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class and send the email using the [send](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#send-com.aspose.email.MailMessage-) method.
 
 The following code snippet shows you how to send an email with alternate text.
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -240,20 +246,21 @@ AlternateView alternate = AlternateView.createAlternateViewFromString("Alternate
 // Adding alternate text
 message.getAlternateViews().addItem(alternate);
 ~~~
-## **Sending Bulk Emails**
-Sending emails in bulk means sending a batch of emails in one message. We can send a batch of email using the of [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class [send](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#send\(com.aspose.email.MailMessage\)) method overload that accepts a [MailMessageCollection](https://apireference.aspose.com/email/java/com.aspose.email/MailMessagecollection):
 
-1. Create an instance of [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class.
-1. Specify the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class properties.
-1. Create an instance of the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class.
-1. Specify sender, receiver, mail subject and message in the instance of the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class.
+## **Sending Bulk Emails**
+
+Sending emails in bulk means sending a batch of emails in one message. We can send a batch of email using the of [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class [send](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#send-com.aspose.email.MailMessageCollection-) method overload that accepts a [MailMessageCollection](https://reference.aspose.com/email/java/com.aspose.email/mailmessagecollection/) class:
+
+1. Create an instance of [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class.
+1. Specify the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class properties.
+1. Create an instance of the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class.
+1. Specify sender, receiver, mail subject and message in the instance of the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class.
 1. Repeat the above two steps again, if you want to send email to a different person.
-1. Create an instance of [MailMessageCollection](https://apireference.aspose.com/email/java/com.aspose.email/MailMessagecollection) class.
-1. Add an instance of [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class in the object of the [MailMessageCollection](https://apireference.aspose.com/email/java/com.aspose.email/MailMessagecollection) class.
-1. Now send your email using the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class [send](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#send\(com.aspose.email.MailMessage\)) method by passing the instance of [MailMessageCollection](https://apireference.aspose.com/email/java/com.aspose.email/MailMessagecollection) class in it.
+1. Create an instance of [MailMessageCollection](https://reference.aspose.com/email/java/com.aspose.email/mailmessagecollection/) class.
+1. Add an instance of [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class in the object of the [MailMessageCollection](https://reference.aspose.com/email/java/com.aspose.email/mailmessagecollection/) class.
+1. Now send your email using the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class [send](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#send-com.aspose.email.MailMessageCollection-) method by passing the instance of [MailMessageCollection](https://reference.aspose.com/email/java/com.aspose.email/mailmessagecollection/) class in it.
 
 The following code snippet shows you how to send bulk emails.
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -281,9 +288,10 @@ try {
     System.err.println(ex);
 }
 ~~~
-## **Sending Emails with MultiConnection**
-[SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) provides a [UseMultiConnection](https://apireference.aspose.com/email/java/com.aspose.email/EmailClient#setUseMultiConnection\(int\)) property which can be used to create multiple connections for heavy operations. You may also set the number of connections to be used during multiconnection mode by using [SmtpClient.ConnectionsQuantity](https://apireference.aspose.com/email/java/com.aspose.email/EmailClient#setConnectionsQuantity\(int\)). The following code snippet demonstrates the use of the multiconnection mode for sending multiple messages.
 
+## **Sending Emails with MultiConnection**
+
+[SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) provides a [UseMultiConnection](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#setUseMultiConnection-int-) property which can be used to create multiple connections for heavy operations. You may also set the number of connections to be used during multiconnection mode by using [SmtpClient.ConnectionsQuantity](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#setConnectionsQuantity-int-). The following code snippet demonstrates the use of the multiconnection mode for sending multiple messages.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -313,9 +321,10 @@ smtpClient.send(messages);
 Please note that the usage of multiconnection mode does not guarantee performance increase.
 
 {{% /alert %}} 
-## **Sending Message as TNEF**
-TNEF emails have special formatting which may be lost if sent using the standard API. Aspose.Email provides the capability to send emails as TNEF, thus preserving the format. The [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class [UseTnef](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#setUseTnef\(boolean\)) property can be set to send the email as TNEF. The following code snippet shows you how to send a message as TNEF.
 
+## **Sending a Message as TNEF**
+
+TNEF emails have special formatting which may be lost if sent using the standard API. Aspose.Email provides the capability to send emails as TNEF, thus preserving the format. The [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class [UseTnef](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#setUseTnef\(boolean\)) property can be set to send the email as TNEF. The following code snippet shows you how to send a message as TNEF.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -334,22 +343,25 @@ client.setSecurityOptions(SecurityOptions.Auto);
 client.setUseTnef(true); // Use this flag to send as TNEF
 client.send(eml1);
 ~~~
+
 ## **Sending Meeting Requests**
+
 Microsoft Outlook offers calendar functions as well as email management. When a user opens an email with an invitation to an event, Outlook prompts them to accept or reject the invitation. Aspose.Email lets developers add calendar functions to your emails.
+
 ### **Sending Requests via Email**
+
 To send meeting requests via email, follow these steps:
 
-- Create an instance of the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class.
-- Specify sender and recipient addresses using an instance of the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class.
-- Initialize an instance of the [Appointment](https://apireference.aspose.com/email/java/com.aspose.email/Appointment) class and pass its values.
-- Specify summary and description in the [Calendar](https://apireference.aspose.com/email/java/com.aspose.email/Calendar) instance.
-- Add the [Calendar](https://apireference.aspose.com/email/java/com.aspose.email/Calendar) to the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) instance and pass it the [Appointment](https://apireference.aspose.com/email/java/com.aspose.email/Appointment) instance.
+- Create an instance of the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class.
+- Specify sender and recipient addresses using an instance of the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class.
+- Initialize an instance of the [Appointment](https://reference.aspose.com/email/java/com.aspose.email/appointment/) class and pass its values.
+- Specify summary and description in the [Calendar](https://reference.aspose.com/email/java/com.aspose.email/calendar/) instance.
+- Add the [Calendar](https://reference.aspose.com/email/java/com.aspose.email/calendar/)) to the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) instance and pass it the [Appointment](https://reference.aspose.com/email/java/com.aspose.email/appointment/) instance.
 
 |**iCalendar meeting request sent by email**|
 | :- |
 |![todo:image_alt_text](sending-and-forwarding-messages_1.png)|
 The following code snippet shows you how to send requests via Email.
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -383,12 +395,16 @@ try {
     System.err.println(ex);
 }
 ~~~
-### **iCalendar supports for IBM Lotus Notes**
-Aspose.Email calendar feature is based on the iCalendar standard, a standard for calendar data exchange (RFC 2445 or RFC2445 Syntax Reference). Therefore, it supports not only Microsoft Outlook but also IBM Lotus Notes. To send a meeting request in Lotus Notes, follow the same steps as mentioned above.
-## **Forward an Email using SMTP Client**
-### **Forwarding Email with SMTP client**
-Forwarding an email is common practice in daily life digital communication. An email received can be forwarded to specific recipients without sharing with the original senders. Aspose.Email API's [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) provides the capability to forward an email to specific recipients. Its Forward method can be used to forward a received or saved email to desired recipients as shown in this article. The following code snippet shows you how to Forward an Email using SMTP Client.
 
+### **iCalendar supports for IBM Lotus Notes**
+
+Aspose.Email calendar feature is based on the iCalendar standard, a standard for calendar data exchange (RFC 2445 or RFC2445 Syntax Reference). Therefore, it supports not only Microsoft Outlook but also IBM Lotus Notes. To send a meeting request in Lotus Notes, follow the same steps as mentioned above.
+
+## **Forward an Email using SMTP Client**
+
+### **Forwarding Email with SMTP client**
+
+Forwarding an email is a common practice in daily life digital communication. An email received can be forwarded to specific recipients without sharing with the original senders. Aspose.Email API [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) provides the capability to forward an email to specific recipients. Its [Forward](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#forward-java.lang.String-com.aspose.email.MailAddressCollection-com.aspose.email.MailMessage-) method can be used to forward a received or saved email to desired recipients as shown in this article. The following code snippet shows you how to forward an email using SMTP Client.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -405,9 +421,10 @@ client.setSecurityOptions(SecurityOptions.SSLExplicit);
 MailMessage message = MailMessage.load(dataDir + "Message.eml");
 client.forward("Recipient1@domain.com", "Recipient2@domain.com", message);
 ~~~
-### **Forwarding Email without using MailMessage**
-The API also supports forwarding EML messages without first loading into [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage). This is useful in cases where there are limited resources in terms of system memory.
 
+### **Forwarding Email without using MailMessage**
+
+The API also supports forwarding EML messages without first loading into [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/). This is useful in cases where there are limited resources in terms of system memory.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -427,7 +444,9 @@ try (SmtpClient client = new SmtpClient(host, smtpPort, username, password, Secu
     }
 }
 ~~~
+
 ## **Performing Mail Merge**
+
 Mail merges help you create and send a batch of similar email messages. The core of the emails are the same, but the content can be personalized. Typically, a recipient's contact details (first name, second name, company and so on) are used to personalize the email.
 
 |**Illustration of how a mail merge works:**|
@@ -438,22 +457,21 @@ Aspose.Email lets developers set up mail merges that include data from a variety
 To perform a mail merge with Aspose.Email, take the following steps:
 
 1. Create a function with the name signature
-1. Create an instance of the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class.
+1. Create an instance of the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class.
 1. Specify the sender, receiver, subject, and body.
 1. Create a signature for the end of the email.
-1. Create an instance of the [TemplateEngine](https://apireference.aspose.com/email/java/com.aspose.email/TemplateEngine) class and pass it the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) instance.
-1. Take signature in the [TemplateEngine](https://apireference.aspose.com/email/java/com.aspose.email/TemplateEngine) instance.
-1. Create an instance of the DataTable class.
-1. Add the columns **Receipt**, **FirstName** and **LastName** as data sources in the DataTable class.
-1. Create an instance of the DataRow class.
-1. Specify the receipt address, first and last names in the DataRow object.
-1. Create an instance of the [MailMessageCollection](https://apireference.aspose.com/email/java/com.aspose.email/MailMessagecollection) class
-1. Specify the [TemplateEngine](https://apireference.aspose.com/email/java/com.aspose.email/TemplateEngine)  and DataTable instances in the [MailMessageCollection](https://apireference.aspose.com/email/java/com.aspose.email/MailMessagecollection) instance.
-1. Create an instance of the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class and specify the server, port, username, and password.
-1. Send emails using the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class [send](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient#send\(com.aspose.email.MailMessage\)) method.
+1. Create an instance of the [TemplateEngine](https://reference.aspose.com/email/java/com.aspose.email/templateengine/) class and pass it the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) instance.
+1. Take signature in the [TemplateEngine](https://reference.aspose.com/email/java/com.aspose.email/templateengine/) instance.
+1. Create an instance of the [DataTable](https://reference.aspose.com/email/java/com.aspose.email/datatable/) class.
+1. Add the columns **Receipt**, **FirstName** and **LastName** as data sources in the [DataTable](https://reference.aspose.com/email/java/com.aspose.email/datatable/) class.
+1. Create an instance of the [DataRow](https://reference.aspose.com/email/java/com.aspose.email/datarow/) class.
+1. Specify the receipt address, first and last names in the [DataRow](https://reference.aspose.com/email/java/com.aspose.email/datarow/) object.
+1. Create an instance of the [MailMessageCollection](https://reference.aspose.com/email/java/com.aspose.email/mailmessagecollection/) class
+1. Specify the [TemplateEngine](https://reference.aspose.com/email/java/com.aspose.email/templateengine/)  and [DataTable](https://reference.aspose.com/email/java/com.aspose.email/datatable/) instances in the [MailMessageCollection](https://reference.aspose.com/email/java/com.aspose.email/mailmessagecollection/) instance.
+1. Create an instance of the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class and specify the server, port, username, and password.
+1. Send emails using the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class [send](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#send-com.aspose.email.MailMessageCollection-) method.
 
-In the sample below, #FirstName# indicates a column's DataTable, whose value is set by the user. The following code snippet shows you how to perform Mail Merge.
-
+In the sample below, #FirstName# indicates a [DataTable](https://reference.aspose.com/email/java/com.aspose.email/datatable/) column, whose value is set by the user. The following code snippet shows you how to perform Mail Merge.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -535,9 +553,10 @@ static Object getSignature(Object[] args) {
     return "Aspose.Email Team<br>Aspose Ltd.<br>" + new Date().toString();
 }
 ~~~
-## **Performing Row-Wise Mail Merge**
-User can merge individual data row as well to get a complete and prepared [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) object. The [TemplateEngine.merge](https://apireference.aspose.com/email/java/com.aspose.email/TemplateEngine#merge\(com.aspose.email.MailMessage\)) method can be used to perform a row-wise mail merge.
 
+## **Performing Row-Wise Mail Merge**
+
+User can merge individual data row as well to get a complete and prepared [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) object. The [TemplateEngine.merge](https://reference.aspose.com/email/java/com.aspose.email/templateengine/#merge-com.aspose.email.DataRow-) method can be used to perform a row-wise mail merge.
 
 ~~~Java
 // Create message from the data in current row.
