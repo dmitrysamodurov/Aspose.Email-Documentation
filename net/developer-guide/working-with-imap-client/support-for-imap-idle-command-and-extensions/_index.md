@@ -7,7 +7,8 @@ url: /net/support-for-imap-idle-command-and-extensions/
 
 
 ## **Support for IMAP Idle Command**
-Aspose.Email API's [ImapClient](https://apireference.aspose.com/email/net/aspose.email.clients.imap/imapclient) provides the capability to open a connection to the server and wait for the arrival of an email message. This allows avoiding polling the server again and again for any incoming email. The following code snippet shows you how to Support for IMAP Idle Command.
+
+Aspose.Email API's [ImapClient](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/) provides the capability to open a connection to the server and wait for the arrival of an email message. This allows avoiding polling the server again and again for any incoming email. The following code snippet shows you how to Support for IMAP Idle Command.
 
 ```csharp
 var client = = new ImapClient("imap.domain.com", "username", "password");
@@ -39,7 +40,9 @@ void OnNewMessagesCallback(object sender, ImapMonitoringEventArgs successEventAr
     //Use successEventArgs.DeletedMessages to handle deleted messages
 }
 ```
+
 ## **Support for IMAP Extensions**
+
 Aspose.Email API provides support for IMAP extensions. The following IMAP extensions are supported by the API at present. These IMAP extensions are not supported by all servers.
 
 ```csharp
@@ -61,7 +64,9 @@ using (ImapClient client = new ImapClient("imap.gmail.com", 993, "username", "pa
     Console.WriteLine(serverIdentificationInfo1.Version);
 }
 ```
+
 ### **IMAP4 Extended List Command**
+
 The following code snippet shows you how to use IMAP4 extended list command.
 
 ```csharp

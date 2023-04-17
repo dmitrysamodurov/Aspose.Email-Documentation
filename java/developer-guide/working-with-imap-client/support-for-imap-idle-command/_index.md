@@ -6,9 +6,7 @@ url: /java/support-for-imap-idle-command/
 ---
 
 
-Aspoe.Email API's [ImapClient](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient) provides the capability to open a connection to the server and wait for the arrival of an email message. This allows avoiding polling the server again and again for any incoming email. The following code snippet shows you how to Support for IMAP Idle Command.
-
-
+Aspoe.Email API [ImapClient](https://reference.aspose.com/email/java/com.aspose.email/imapclient/) provides the capability to open a connection to the server and wait for the arrival of an email message. This allows avoiding polling the server again and again for any incoming email. The following code snippet shows you how to Support for IMAP Idle Command.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java

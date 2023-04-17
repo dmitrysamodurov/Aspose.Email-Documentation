@@ -6,13 +6,14 @@ url: /java/read-and-convert-outlook-ost-file/
 ---
 
 
-Aspose.Email provides an API for reading Microsoft Outlook OST files. You can load an OST file from disk or stream into an instance of the [PersonalStorage](https://apireference.aspose.com/email/java/com.aspose.email/PersonalStorage) class and get information about its contents, for example, folders, subfolders, and messages. Microsoft Outlook creates a PST file to store emails in when POP3 or IMAP mail servers are used for downloading messages. It creates an OST file when Microsoft Exchange is the mail server. OST supports larger file sizes than PST files.
+Aspose.Email provides an API for reading Microsoft Outlook OST files. You can load an OST file from disk or stream into an instance of the [PersonalStorage](https://reference.aspose.com/email/java/com.aspose.email/personalstorage/) class and get information about its contents, for example, folders, subfolders, and messages. Microsoft Outlook creates a PST file to store emails in when POP3 or IMAP mail servers are used for downloading messages. It creates an OST file when Microsoft Exchange is the mail server. OST supports larger file sizes than PST files.
+
 ## **Reading OST Files**
-The process for reading an OST file with Aspose.Email is exactly the same as for reading a PST file. The same code can read both PST and OST files: just provide the correct file name to the [PersonalStorage.fromFile()](https://apireference.aspose.com/email/java/com.aspose.email/PersonalStorage#fromFile\(java.lang.String\)) method. The following code snippet shows you how to read OST files.
 
-
+The process for reading an OST file with Aspose.Email is exactly the same as for reading a PST file. The same code can read both PST and OST files: just provide the correct file name to the [PersonalStorage.fromFile()](https://reference.aspose.com/email/java/com.aspose.email/personalstorage/#fromFile-java.lang.String-) method. The following code snippet shows you how to read OST files.
 
 {{< gist "aspose-com-gists" "709d733586ce50505c3bca3f6e8bd18d" "Examples-src-main-java-com-aspose-email-examples-outlook-pst-LoadAndConvertOSTFile-ReadAnOSTFile.java" >}}
+
 ## **Converting OST to PST**
 
 {{% alert %}}
@@ -20,13 +21,9 @@ The process for reading an OST file with Aspose.Email is exactly the same as for
 
 Convert emails & message archives online with the free [**Aspose.Email Conversion App**](https://products.aspose.app/email/Conversion).
 {{% /alert %}}
-Aspose.Email makes it possible to convert an OST file to PST with a single line of code. Similarly, the OST file can be created from PST file using the same line of code with the [FileFormat](https://apireference.aspose.com/email/java/com.aspose.email/FileFormat) enumerator. At present, the API supports converting OST formats to PST except OST 2013/2016. The following code snippet shows you how to Convert OST to PST.
-
-
+Aspose.Email makes it possible to convert an OST file to PST with a single line of code. Similarly, the OST file can be created from PST file using the same line of code with the [FileFormat](https://reference.aspose.com/email/java/com.aspose.email/fileformat/) enumerator. At present, the API supports converting OST formats to PST except OST 2013/2016. The following code snippet shows you how to Convert OST to PST.
 
 {{< gist "aspose-com-gists" "709d733586ce50505c3bca3f6e8bd18d" "Examples-src-main-java-com-aspose-email-examples-outlook-pst-LoadAndConvertOSTFile-ConvertOSTToPST.java" >}}
-
-
 
 For performing other operations with OST files, please refer to the following pages:
 

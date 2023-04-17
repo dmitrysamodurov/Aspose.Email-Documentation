@@ -1,11 +1,11 @@
 ---
-title: Set Up Activity Loogging
+title: Set Up Activity Logging
 type: docs
 weight: 41
 url: /net/set-up-activity-logging/
 ---
 
-Logging is used for debugging, as well as for collecting and analyzing working information about the the application. Log files contain system information about the operation of the client application.
+Logging is used for debugging, as well as for collecting and analyzing working information about the application. Log files contain system information about the operation of the client application.
 
 ## **Enable Activity Logging using App.config File**
 
@@ -55,6 +55,7 @@ The following are the steps to enable logging in [EWSClient](https://reference.a
     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 </Content>
 ```
+
  - Then, add the following content to the appsettings.json file.
 
 ```json
@@ -77,7 +78,7 @@ You can also enable logging immediately in the code.
 
 The following are the steps to enable logging in EWSClient.
 
-- Create an [EWSClient](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/ewsclient/getewsclient/).
+- Create an [EWSClient](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/ewsclient/).
 - Set the path to the log file using the [LogFileName](https://reference.aspose.com/email/net/aspose.email.clients.exchange/exchangeclientbase/logfilename/) property.
 - Set the [UseDateInLogFileName](https://reference.aspose.com/email/net/aspose.email.clients.exchange/exchangeclientbase/usedateinlogfilename/) property if it is necessary.
 

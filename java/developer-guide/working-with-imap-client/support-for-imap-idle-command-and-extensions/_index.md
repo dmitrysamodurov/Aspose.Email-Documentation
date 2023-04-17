@@ -7,9 +7,8 @@ url: /java/support-for-imap-idle-command-and-extensions/
 
 
 ## **Support for IMAP Idle Command**
-Aspose.Email API's [ImapClient](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient) provides the capability to open a connection to the server and wait for the arrival of an email message. This allows avoiding polling the server again and again for any incoming email. The following code snippet shows you how to Support for IMAP Idle Command.
 
-
+Aspose.Email API [ImapClient](https://reference.aspose.com/email/java/com.aspose.email/imapclient/) provides the capability to open a connection to the server and wait for the arrival of an email message. This allows avoiding polling the server again and again for any incoming email. The following code snippet shows you how to Support for IMAP Idle Command.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -24,10 +23,10 @@ client.startMonitoring(new ImapMonitoringEventHandler() {
 });
 client.stopMonitoring("Inbox");
 ~~~
+
 ## **Support for IMAP Extensions**
+
 Aspose.Email API provides support for IMAP extensions. The following IMAP extensions are supported by the API at present. These IMAP extensions are not supported by all servers.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -51,10 +50,10 @@ try {
         client.dispose();
 }
 ~~~
+
 ### **IMAP4 Extended List Command**
+
 The following code snippet shows you how to use IMAP4 extended list command.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
