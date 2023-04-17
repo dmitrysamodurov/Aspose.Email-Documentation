@@ -6,7 +6,7 @@ url: /net/working-with-large-pst-files/
 ---
 
 Performance may be degraded when processing large PST files.
-The following suggestions will help improve the performance of your app when processing large files.
+The following suggestions will help you to improve the performance of your app when processing large files.
 
 {{% alert color="primary" %}}
 Consider methods returning `IEnumerable` when traversing folders or messages in a pst.
@@ -21,6 +21,7 @@ foreach (var messageInfo in folder.EnumerateMessages())
     // Do something with message
 }
 ```
+
 {{% alert color="primary" %}}
 Prefer [MessageInfo](https://reference.aspose.com/email/net/aspose.email.storage.pst/messageinfo/) for accessing basic message properties.
 {{% /alert %}}
@@ -34,6 +35,7 @@ foreach (var messageInfo in folder.EnumerateMessages())
     Console.WriteLine($"Message Class: {messageInfo.MessageClass}");
 }
 ```
+
 {{% alert color="primary" %}}
 Avoid using the [ExtractMessage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/extractmessage/) or [EnumerateMapiMessages](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/enumeratemapimessages/) methods for all messages unless you need to have access to all properties.
 {{% /alert %}}
@@ -51,6 +53,7 @@ foreach (var id in folder.EnumerateMessagesEntryId())
 	 // save msg to a stream(SaveMessageToStream).
 }
  ```
+
 {{% alert color="primary" %}}
 Consider using [ExtractProperty](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/extractproperty/) to read a single property that is missing in MessageInfo.
 {{% /alert %}}
@@ -63,6 +66,7 @@ foreach (var msgId in folder.EnumerateMessagesEntryId())
             .GetString();
 }
  ```
+
 {{% alert color="primary" %}}
 Consider using [ExtractAttachments](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/extractattachments/) if only the attachments are required.
 {{% /alert %}}
@@ -113,6 +117,7 @@ foreach (var id in folder.EnumerateMessagesEntryId())
     pst.SaveMessageToStream(id, File.OpenWrite(@"message.msg"));
 }
 ```
+
 {{% alert color="primary" %}}
 Prefer bulk methods to [add](https://docs.aspose.com/email/net/working-with-messages-in-a-pst-file/#adding-bulk-messages) or [delete](https://docs.aspose.com/email/net/working-with-messages-in-a-pst-file/#delete-items-in-bulk-from-pst-file) multiple items.
 {{% /alert %}}
