@@ -56,8 +56,7 @@ Aspose.Email API allows copying a message from one folder to another folder usin
 
 Aspose.Email for .NET API [IEWSClient](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/) interface provides the feature of syncing an Exchange folder for its contents. The [SyncFolder](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/syncfolder/#syncfolder/) method exposed by the [IEWSClient](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/) class can be used to perform folder sync information on a specified folder. The following code snippet shows you how to sync exchange folder information.
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Exchange_EWS-Synchronize
-FolderItems-SynchronizeFolderItems.cs" >}}
+{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Exchange_EWS-SynchronizeFolderItems-SynchronizeFolderItems.cs" >}}
 
 ## **Retrieving Permissions for Exchange Folders**
 
