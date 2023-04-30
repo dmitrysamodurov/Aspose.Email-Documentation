@@ -111,7 +111,7 @@ var msg = appointment.ToMapiMessage();
 **Changes in public API:**
 
 - `MapiTask.Priority` - Gets or sets the current Priority of the Task object.
-- `MhtSaveOptions.SaveAllHeaders` - Defines whether need to save all headers in output mhtml or not.
+- `MhtSaveOptions.SaveAllHeaders` - Defines whether there is a need to save all headers in output mhtml or not.
 - `HtmlFormatOptions.RenderTaskFields` - Indicates that the specific Task fields should be written in output html.
 
 Code samples:
@@ -137,11 +137,11 @@ These features provide developers with more control and customization options, a
 
 **Changes in public API:**
 
-- `MailConversionOptions.Timeout` - Limits the time in milliseconds of formatting message while converting.
-- `MailConversionOptions.TimeoutReached` - Raised if timed out while converting to MailMessage.
+- `MailConversionOptions.Timeout` - Limits the time in milliseconds while converting a message.
+- `MailConversionOptions.TimeoutReached` - Raised if the time is out while converting to MailMessage.
 
-- `MsgLoadOptions.Timeout` - Limits the time in milliseconds of formatting message while converting.
-- `MsgLoadOptions.TimeoutReached` - Raised if timed out while converting to MailMessage.
+- `MsgLoadOptions.Timeout` - Limits the time in milliseconds while converting a message.
+- `MsgLoadOptions.TimeoutReached` - Raised if the time is out while converting to MailMessage.
 
 **Code sample:**
 
