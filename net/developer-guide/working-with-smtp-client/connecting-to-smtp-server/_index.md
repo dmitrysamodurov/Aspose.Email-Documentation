@@ -6,24 +6,27 @@ url: /net/connecting-to-smtp-server/
 ---
 
 
-The following properties need to be set when connecting with an SMTP server with SSL support.
+When working with email clients, certain operations may take a considerable amount of time to execute. To prevent these operations from running indefinitely, users can make use of the [EmailClient.Timeout](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/timeout/) property. It's important to note that the values assigned to this property should have long enough intervals to accommodate lengthy operations.
 
-- [SecurityOptions](https://apireference.aspose.com/email/net/aspose.email.clients/securityoptions)
-- Port
+However, relying solely on the Timeout property may cause connection establishment to take longer than expected. This can occur when the email client uses the automatic mode for connection establishment. In this mode, the client cycles through various connection parameters until a connection is established.
 
-In the examples below we show how to:
+When connecting to SMTP, IMAP, and POP3 servers, a greeting string is sent to the client upon successful connection establishment. Servers may use implicit or explicit (START TLS) SSL/TLS connection initiation. In cases where the connection mode is mismatched (for example, the server is expecting an implicit SSL connection while the client tries to establish a non-secured or explicit SSL connection), the server will not send a greeting string.
 
-1. Set a username.
-1. Set a password.
-1. Set the port.
-1. Set security option.
+As a result, the user may wait for an extended period until the timeout is reached, and the client moves on to the next connection option.
 
-The following code snippet shows you how to connect SSL enabled SMTP server.
+To address this issue, the [GreetingTimeout](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/greetingtimeout/) property has been introduced. This property allows users to set a timeout for the greeting string, reducing the time it takes to establish an automatic connection. By implementing the [GreetingTimeout](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/greetingtimeout/) property, users can optimize their email client's performance and avoid lengthy wait times during connection establishment.
 
+The following code sample shows how to set the [EmailClient.Timeout](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/timeout/) property:
 
+```cs
+using (SmtpClient client = new SmtpClient("localhost", 25, "username", "password"))
+{
+    client.GreetingTimeout = 4000;
+}
+```
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-SMTP-SSLEnabledSMTPServer-SSLEnabledSMTPServer.cs" >}}
 ## **Connecting to Server via Socks Proxy Sever**
+
 Sometimes we use proxy servers for communicating with the outside world. In such cases, mail clients are not able to communicate over the Internet without specifying the proxy address. Aspose.Email provides support for versions 4, 4a and 5 of SOCKS proxy protocol. This article provides a working sample of sending email using a proxy mail server. To send an email via a proxy server:
 
 1. Initialize Proxy with the required information, that is proxy address, port, and SOCKS version.

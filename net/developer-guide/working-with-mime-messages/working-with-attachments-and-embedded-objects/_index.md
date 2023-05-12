@@ -51,6 +51,34 @@ eml.Save("AddAttachments.eml");
 
 Above, we described how to add attachments to your email message with Aspose.Email. What follows shows how to remove attachments, and display information about them on the screen.
 
+### **Adding a Reference Attachment**
+
+A reference attachment is a type of attachment that includes a link or a reference to a file or item, rather than including the file or item itself in the email message.
+When the recipients of the email click on the reference attachment, they will be able to access the linked file if they have the appropriate permissions to do so.
+By using a reference attachment, you can send a smaller email message and ensure that everyone has access to the most up-to-date version of the file or item.
+
+The code snippet below shows how to add a reference attachment to an email. The code performs the following steps:
+
+1. Loads the email message file using the [MailMessage.Load()](https://reference.aspose.com/email/net/aspose.email/mailmessage/load/#load_2) method.
+2. Creates a new ReferenceAttachment object called refAttach, passing the attachment URL "https://[attach_uri]" as a parameter to its constructor.
+3. Sets the name of the attachment to "Document.docx" using the [Name](https://reference.aspose.com/email/net/aspose.email/attachment/name/) property of the refAttach object.
+4. Sets the provider type of the attachment to [AttachmentProviderType.OneDrivePro](https://reference.aspose.com/email/net/aspose.email/attachmentprovidertype/) using the [ProviderType](https://reference.aspose.com/email/net/aspose.email/referenceattachment/providertype/) property of the refAttach object.
+5. Sets the permission type of the attachment to [AttachmentPermissionType.AnyoneCanEdit](https://reference.aspose.com/email/net/aspose.email/attachmentpermissiontype/) using the [PermissionType](https://reference.aspose.com/email/net/aspose.email/referenceattachment/permissiontype/) property of the refAttach object.
+6. Adds the refAttach object to the [Attachments](https://reference.aspose.com/email/net/aspose.email/mailmessage/attachments/) collection of the eml object using the [Add()](https://reference.aspose.com/email/net/aspose.email/attachmentcollection/) method.
+
+```cs
+var eml = MailMessage.Load("fileName");
+
+var refAttach = new ReferenceAttachment("https://[attach_uri]")
+{
+    Name = "Document.docx",
+    ProviderType = AttachmentProviderType.OneDrivePro,
+    PermissionType = AttachmentPermissionType.AnyoneCanEdit
+};
+
+eml.Attachments.Add(refAttach);
+```
+
 ### **Removing an Attachment**
 
 To remove an attachment, follow the steps given below:
@@ -138,11 +166,9 @@ Console.WriteLine(eml.Attachments[0].IsEmbeddedMessage
     : "Attachment isn't an embedded message.");
 ```
 
-## **Working with Embedded Objects**
+## **Working with inline images**
 
-An embedded object is an object that was created with one application and enclosed within a document or a file created by another application. For example, a Microsoft Excel spreadsheet can be embedded into a Microsoft Word report, or a video file can be embedded into a Microsoft PowerPoint presentation. When a file is embedded, rather than inserted or pasted into another document, it retains its original format. The embedded document can be opened in the original application and modified.
-
-### **Embedding Objects into an Email**
+### **Add inline image to email body**
 
 The [LinkedResource](https://reference.aspose.com/email/net/aspose.email/linkedresource/) class is used with the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class to embed objects in your email message. To add an embedded object, follow these steps
 
@@ -193,7 +219,7 @@ eml.AlternateViews.Add(htmlView);
 eml.Save("EmbeddedImage_out.msg", SaveOptions.DefaultMsgUnicode);
 ```
 
-### **Removing Embedded Objects from Email**
+### **Remove inline image from email body**
 
 [LinkedResourceCollection](https://reference.aspose.com/email/net/aspose.email/linkedresourcecollection/) accessed via [MailMessage.LinkedResources](https://reference.aspose.com/email/net/aspose.email/mailmessage/linkedresources/) property. The [LinkedResourceCollection](https://reference.aspose.com/email/net/aspose.email/linkedresourcecollection/) collection provides a method to completely remove embedded objects added into an email message. Use the overloaded version of [LinkedResourceCollection.RemoveAt](https://reference.aspose.com/email/net/aspose.email/linkedresourcecollection/removeat/#removeat/) method to remove all traces of an embedded object from an email message.
 
@@ -210,9 +236,13 @@ eml.LinkedResources.RemoveAt(0, true);
 eml.AlternateViews[0].LinkedResources.Clear(true);
 ```
 
+## **Working with Embedded Objects**
+
+An embedded object is an object that was created with one application and enclosed within a document or a file created by another application. For example, a Microsoft Excel spreadsheet can be embedded into a Microsoft Word report, or a video file can be embedded into a Microsoft PowerPoint presentation. When a file is embedded, rather than inserted or pasted into another document, it retains its original format. The embedded document can be opened in the original application and modified.
+
 ### **Extracting Embedded Objects**
 
-This topic explains how to extract embedded objects from an email file. An embedded object is an object that was created with one application and enclosed within a document or a file created by another application. For example, a Microsoft Excel spreadsheet can be embedded into a Microsoft Word report, or a video file can be embedded into a Microsoft PowerPoint presentation. When a file is embedded, rather than inserted or pasted into another document, it retains its original format. The embedded document can be opened in the original application and be modified. To extract an embedded object from an email message, follow these steps:
+This topic explains how to extract embedded objects from an email file. The embedded document can be opened in the original application and be modified. To extract an embedded object from an email message, follow these steps:
 
 1. Create an instance of the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class.
 1. Load an email file in the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) instance.
