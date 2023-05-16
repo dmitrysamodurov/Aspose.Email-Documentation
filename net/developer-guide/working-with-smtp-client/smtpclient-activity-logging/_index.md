@@ -45,7 +45,7 @@ Here is a sample form based application which uses [SmtpClient](https://apirefer
 |![todo:image_alt_text](utility-features-smtp-client_6.png)|
 | :- |
 
-## Enable Activity Logging using appsettings.json File
+## **Enable Activity Logging using appsettings.json File**
 
 This option is preferred for .NET Core applications.
 
@@ -75,11 +75,11 @@ The two properties mentioned above are:
 
 - **SmtpDiagnosticLog_UseDate** - specifies whether to add a string representation of the current date to the log file name.
 
-## Enable Activity Logging in Programm Code
+## **Enable Activity Logging in Programm Code**
 
 You can also enable logging immediately in the code. 
 
-**Note: even if you have already enabled logging by using configuration files, this option will be applied.**
+> **_NOTE:_** even if you have already enabled logging by using configuration files, this option will be applied.
 
 Logging in [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) can be enabled with the following steps and code samples:
 
