@@ -1,4 +1,9 @@
-# Using Asynchronous Operations in EWSClient
+---
+title: Using Asynchronous Operations in EWSClient
+type: docs
+weight: 42
+url: /net/using-asynchronous-operations-in-ewsclient/
+---
 
 Unlike the synchronous methods, the asynchronous methods are non-blocking and allow to perform multiple requests simultaneously. Asynchronous methods are named with the Async postfix.
 
