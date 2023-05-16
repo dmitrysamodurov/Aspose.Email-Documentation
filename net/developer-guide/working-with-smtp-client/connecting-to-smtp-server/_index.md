@@ -14,9 +14,9 @@ When connecting to SMTP, IMAP, and POP3 servers, a greeting string is sent to th
 
 As a result, the user may wait for an extended period until the timeout is reached, and the client moves on to the next connection option.
 
-To address this issue, the [GreetingTimeout](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/greetingtimeout/) property has been introduced. This property allows users to set a timeout for the greeting string, reducing the time it takes to establish an automatic connection. By implementing the [GreetingTimeout](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/greetingtimeout/) property, users can optimize their email client's performance and avoid lengthy wait times during connection establishment.
+To address this issue, the [GreetingTimeout](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/greetingtimeout/) property has been introduced. This property allows users to set a timeout for the greeting string, reducing the time it takes to establish an automatic connection. By implementing the **GreetingTimeout property**, users can optimize their email client's performance and avoid lengthy wait times during connection establishment.
 
-The following code sample shows how to set the [EmailClient.Timeout](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/timeout/) property:
+The following code sample shows how to set the [EmailClient.GreetingTimeout](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/greetingtimeout/) property:
 
 ```cs
 using (SmtpClient client = new SmtpClient("localhost", 25, "username", "password"))
