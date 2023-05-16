@@ -5,19 +5,7 @@ weight: 120
 url: /net/read-outlook-for-mac-olm-file-and-get-folders-and-subfolders-information/
 ---
 
-# **Read MS Outlook for Mac OLM Files**
-
 OLM is a specific file format used by Microsoft Outlook for storing local data such as emails, attachments, notes, calendar data, contacts, tasks, history, and more. OLM files are only compatible with Outlook for Mac and cannot be opened or accessed by Outlook for Windows, which uses the PST file format instead.
-
-Opening OLM format files(Opening-OLM-format-files)
-Opening file by constructor(Opening-files-by-constructor)
-Opening file using static method FromFile
-Getting folders
-List of emails
-Using EnumerateMessages method
-Using EnumerateMapiMessages method
-Other useful properties
-Extracting emails
 
 ## **Opening OLM format files**
 
@@ -205,7 +193,7 @@ public static void PrintMessageCount(List<OlmFolder> folders)
 
 ### **Get Total Items Count of OlmStorage**
 
-[OlmStorage](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/) class also has GetTotalItemsCount() method which returns the total number of message items contained in the OLM storage.
+[OlmStorage](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/) class also has [GetTotalItemsCount()](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/gettotalitemscount/) method which returns the total number of message items contained in the OLM storage.
   
 ```cs
   using (var olm = new OlmStorage("storage.olm"))
