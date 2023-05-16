@@ -344,7 +344,6 @@ BCC: receiver3@receiver.com
 Subject: test mail
 Date: 6 Mar 2006 8:2:2 +0800
 X-Mailer: Aspose.Email
-secret-header: mystery
 ```
 
 ### **Insert a Header at a Specific Location**
@@ -363,6 +362,12 @@ An email header can be specified using the [MailMessage](https://reference.aspos
 eml.Headers.Add("secret-header", "mystery");
 ```
 
+The above code snippet produces an email header in the following format:
+
+```
+secret-header: mystery
+```
+
 ## **Sign Emails with DKIM**
 
 > **_NOTE:_** The feature is accessible only for the library versions targeting .NET Framework. Versions, targeting .NET Core, do not have this feature.
@@ -378,16 +383,3 @@ DKIMSignatureInfo signInfo = new DKIMSignatureInfo("test", "somedomain.com");
 
 var signedEml = eml.DKIMSign(rsa, signInfo);
 ```
-
-## See Also
-
-This article also covers these topics. The codes are same as above.
-
-_Category_: **Email Body Encoding**
-
-- [C# Specify Email Body Encoding in Unicode](#csharp-specify-email-body-encoding-in-unicode)
-- [C# Specify Email Body Encoding in BigEndianUnicode](#csharp-specify-email-body-encoding-in-bigendianunicode)
-- [C# Specify Email Body Encoding in UTF-7](#csharp-specify-email-body-encoding-in-utf-7)
-
-_Category_: **Send Email**
-- [C# Send Email after Setting Encoding](#csharp-send-email-after-setting-encoding)
