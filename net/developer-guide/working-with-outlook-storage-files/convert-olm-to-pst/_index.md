@@ -5,8 +5,6 @@ weight: 120
 url: /
 ---
 
-# Convert OLM to PST
-
 [OLM](https://docs.fileformat.com/email/olm/) is a database file format used by Microsoft Outlook for Mac systems. OLM files store email messages, calendar data, contact data, and application settings. An OLM file isn’t supported by Outlook for Windows. Thus, it is not possible to open an Outlook for Mac (OLM) file in Outlook for Windows. If you want to migrate your mailbox from Outlook for Mac to Outlook for Windows, it's necessary to convert the Outlook for Mac OLM file to Outlook PST file format. 
 
 To convert an OLM file to PST follow the steps given below:
