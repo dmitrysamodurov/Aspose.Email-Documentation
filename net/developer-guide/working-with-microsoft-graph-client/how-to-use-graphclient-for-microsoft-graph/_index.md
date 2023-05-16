@@ -7,17 +7,14 @@ url: /net/how-to-use-graphclient-for-microsoft-graph/
 
 
 ## **Working with GraphClient**
-Microsoft Graph 
-The implementation of Graph Client in Aspose.Email for .NET, allows to access Microsoft Graph from our API.
-In the examples below we will create an instance of MS Graph Client, providing the token into it. 
-Then, we will examine the main methods to manage folders, update them, copy and delete. Messages, their content and 
-attachments can also be accessed or changed with our MS Graph Client. Managing categories, rules, notebooks and overrides is an 
-extended feature of Microsoft Graph Client by Aspose.Email, which you will learn with ease. 
 
+[Microsoft Graph](https://learn.microsoft.com/en-us/graph/overview) is a REST API to access the Microsoft 365 data. The implementation of Graph Client in Aspose.Email for .NET, allows to access Microsoft Graph from our API. 
+In the examples below we will create an instance of MS Graph Client, providing the token into it. Then, we will examine the main methods to manage folders, update them, copy and delete. Messages, their content and attachments can also be accessed or changed with our MS Graph Client. Managing categories, rules, notebooks and overrides is an extended feature of Microsoft Graph Client by Aspose.Email, which you will learn with ease. 
 
 ### **Create GraphClient Object**
-Create [IGraphClient](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient) object to make requests against the service.
-After you have a [IGraphClient](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient) that is authenticated, you can begin making calls against the service.
+
+Create [IGraphClient](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/) object to make requests against the service.
+After you have an [IGraphClient](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/) that is authenticated, you can start making calls against the service.
 
 A [GetClient](https://reference.aspose.com/email/net/aspose.email.clients.graph/graphclient/getclient/#getclient_1) method requires an [ITokenProvider](https://reference.aspose.com/email/net/aspose.email.clients/itokenprovider/) implementation instance as the first parameter.
 
@@ -27,7 +24,7 @@ The following are the steps to get authorization token.
 
  - Create an AccessParameters class to store credentials.
  - Add the [Microsoft.Identity.Client nuget package](https://www.nuget.org/packages/Microsoft.Identity.Client) that contains the binaries of the MSAL.NET.
- - Implement an ITokenProvider, and create a method accepting access parameters and using MSAL.NET to get an access token.
+ - Implement an [ITokenProvider](https://reference.aspose.com/email/net/aspose.email.clients/itokenprovider/), and create a method accepting access parameters and using MSAL.NET to get an access token.
 
 To keep the credentials add the following `AccessParameters` class:
 
@@ -136,12 +133,11 @@ client.Resource = ResourceType.Users;
 client.ResourceId = accessParams.UserId;
 ```
 
-
 ## **Manage Folders**
+
 ### **List Folders**
-By calling [ListFolders](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/listfolders) 
-method from Ms Graph Client, its possible to get the list of folders. Each folder has a set of parameters like 
-DisplayName, which can be read in [FolderInfo](https://apireference.aspose.com/email/net/aspose.email.clients.activesync.transportlayer/folderinfo) type.
+
+By calling [ListFolders](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/listfolders/#listfolders) method from MS Graph Client, its possible to get the list of folders. Each folder has a set of parameters like DisplayName, which can be read in [FolderInfo](https://reference.aspose.com/email/net/aspose.email.clients.activesync.transportlayer/folderinfo/) type.
 
 ```csharp
 var folders = client.ListFolders();
@@ -151,10 +147,10 @@ foreach (var folder in folders)
     Console.WriteLine(folder.DisplayName);
 }
 ```
+
 ### **Update Folder**
-To create folder with Ms Graph Client, use [CreateFolder](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/createfolder) 
-method. You will get [FolderInfo](https://apireference.aspose.com/email/net/aspose.email.clients.activesync.transportlayer/folderinfo) object 
-and the possibility to access DisplayName, ItemId, HasSubFolders and other properties.
+
+To create folder with MS Graph Client, use [CreateFolder](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/createfolder/#createfolder) method. You will get a [FolderInfo](https://reference.aspose.com/email/net/aspose.email.clients.activesync.transportlayer/folderinfo/) object and the possibility to access DisplayName, ItemId, HasSubFolders and other properties.
 
 ```csharp
 var folderInfo = client.CreateFolder("FolderName");
@@ -163,8 +159,8 @@ client.UpdateFolder(folderInfo);
 ```
 
 ### **Copy Folder**
-[CopyFolder](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/copyfolder) method is the key method to copy the folder object 
-with MS Graph.
+
+[CopyFolder](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/copyfolder/#copyfolder) method is the key method to copy the folder object with MS Graph.
 
 ```csharp
 var folderInfo1 = client.CreateFolder("Folder1");
@@ -175,9 +171,8 @@ client.CopyFolder(folderInfo1.ItemId, folderInfo2.ItemId);
 ```
 
 ### **Move and Delete Folder**
-Use [MoveFolder](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/movefolder) method is 
-used to move the folder, it accepts newParentId and itemId. [Delete](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/delete) 
-method is used to delete method by id.
+
+Use [MoveFolder](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/movefolder/#movefolder) method is used to move the folder, it accepts newParentId and itemId. [Delete](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/delete/#delete) method is used to delete a method by id.
 
 ```csharp
 var folderInfo1 = client.CreateFolder("Folder1");
@@ -191,17 +186,18 @@ client.Delete(folderInfo1.ItemId)
 ```
 
 ## **Manage Messages**
-MS Graph Client, implemented in Aspose.Email for .NET provides a set of methos to manage messages and attachments:
-* [List](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/listmessages) messages
-* [Fetch](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/fetchmessage) message
-* [Create](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/createmessage) message
-* [Send](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/send) message
-* [CopyMessage](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/copymessage) message
-* [Move](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/movemessage) message
-* [CreateAttachment](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/createattachment)
-* [FetchAttachment](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/fetchattachment)
-* [DeleteAttachment](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/deleteattachment)
-* [ListAttachments](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/listattachments)
+
+MS Graph Client, implemented in Aspose.Email for .NET, provides a set of methods to manage messages and attachments:
+* [List](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/listmessages/#listmessages) messages
+* [Fetch](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/fetchmessage/#fetchmessage) message
+* [Create](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/createmessage/#createmessage) message
+* [Send](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/send/#send) message
+* [CopyMessage](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/copymessage/#copymessage) message
+* [Move](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/movemessage/#movemessage) message
+* [CreateAttachment](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/createattachment/#createattachment)
+* [FetchAttachment](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/fetchattachment/#fetchattachment)
+* [DeleteAttachment](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/deleteattachment/#deleteattachment)
+* [ListAttachments](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/listattachments/#listattachments)
 
 
 ### **List Messages**
@@ -338,10 +334,10 @@ var attachments = client.ListAttachments(messageInfo.ItemId);
 
 ## **Manage Categories**
 To manage categories with MS Graph by Aspose.Email for .NET, use the following methods:
-* [CreateCategory](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/createcategory)
-* [FetchCategory](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/fetchcategory)
-* [ListCategories](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/listcategories)
-* [UpdateCategory](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/updatecategory)
+* [CreateCategory](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/createcategory/#createcategory)
+* [FetchCategory](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/fetchcategory/#fetchcategory)
+* [ListCategories](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/listcategories/#listcategories)
+* [UpdateCategory](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/updatecategory/#updatecategory)
 
 ```csharp
 // create a custom category with Orange color
@@ -367,10 +363,11 @@ client.Delete(fetchedCategory.Id);
 ```
 
 ## **Manage Overrides**
+
 To manage overrides with MS Graph by Aspose.Email for .NET, use the following methods:
-* [CreateOrUpdateOverride](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/createorupdateoverride) 
-* [ListOverrides](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/listoverrides)
-* [UpdateOverride](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/updateoverride)
+* [CreateOrUpdateOverride](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/createorupdateoverride/#createorupdateoverride) 
+* [ListOverrides](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/listoverrides/#listoverrides)
+* [UpdateOverride](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/updateoverride/#updateoverride)
 
 ```csharp
 // Create an user's override
@@ -389,10 +386,10 @@ client.Delete(updatedOverride.Id);
 ```
 ## **Manage Rules**
 To manage rules with MS Graph by Aspose.Email for .NET, use the following methods:
-* [CreateRule](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/createrule)
-* [FetchRule](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/fetchrule)
-* [UpdateRule](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/updaterule)
-* [ListRules](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/listrules)
+* [CreateRule](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/createrule/#createrule)
+* [FetchRule](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/fetchrule/#fetchrule)
+* [UpdateRule](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/updaterule/#updaterule)
+* [ListRules](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/listrules/#listrules)
 
 ```csharp
 // Create a rule
@@ -413,6 +410,7 @@ var updatedRule = client.UpdateRule(createdRule);
 // Delete a rule
 client.Delete(updatedRule.RuleId);
 ```
+
 ```csharp
 InboxRule PrepareRule(string email, string displayName)
 {
@@ -433,12 +431,14 @@ InboxRule PrepareRule(string email, string displayName)
     return rule;
 }
 ```
+
 ## **Manage Notebooks**
+
 To manage notebooks with MS Graph by Aspose.Email for .NET, use the following methods:
-* [CreateNotebook](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/createnotebook)
-* [CopyNotebook](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/copynotebook)
-* [FetchNotebook](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/fetchnotebook)
-* [ListNotebooks](https://apireference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/methods/listnotebooks)
+* [CreateNotebook](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/createnotebook/#createnotebook)
+* [CopyNotebook](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/copynotebook/#copynotebook)
+* [FetchNotebook](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/fetchnotebook/#fetchnotebook)
+* [ListNotebooks](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/listnotebooks/#listnotebooks)
 
 ```csharp
 // create a OneNote notebook

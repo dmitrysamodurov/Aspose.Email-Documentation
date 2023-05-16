@@ -9,9 +9,10 @@ url: /net/microsoft-graph-utility-features/
 ## **Creating Project in Azure Active Directory Admin Center**
 
 A Project is to be created on Azure Active Directory admin center for a user having MS Office account.
+
 ### **Steps to Create a Project in Azure Active Directory Admin Center**
 
-Following is a step by step tutorial for creating a project in Azure Active Directory admin center.
+Below is a step by step tutorial for creating a project in Azure Active Directory admin center.
 
 #### 1. Go to Azure Active Directory and login using your MS Office credentials.
 
@@ -19,7 +20,7 @@ Following is a step by step tutorial for creating a project in Azure Active Dire
 
 #### 2. Create an Azure AD Application in your tenant.
 
-In the left side pane click the label **Azure Active Directory**. This will open up the blade for Azure Active Directory. In that screen should see a label **App registrations**. This is the starting point of a registering an Azure AD Application. This blade will allow you to create a new application for Azure AD.
+In the left side pane click the label **Azure Active Directory**. This will open up the blade for Azure Active Directory. In that screen you should see a label **App registrations**. This is the starting point of a registering an Azure AD Application. This blade will allow you to create a new application for Azure AD.
 
 Click on the button **New registration** to create a new application.
 
@@ -45,9 +46,9 @@ Click **Register** button.
 
 Click on the **API permissions** label.
 
-Azure has already given you **User.Read** delegated permissions for your application. This permission will allow us to read user information for a logged in user. These are Microsoft Graph API permissions, in other hand we can call them as **Scopes**.
+Azure has already given you **User.Read** delegated permissions for your application. This permission will allow us to read user information for a logged in user. These are Microsoft Graph API permissions, we can also call them **Scopes**.
 
-The full list of scopes for Microsoft Graph API - <https://docs.microsoft.com/en-us/graph/permissions-reference>.
+The full list of scopes for Microsoft Graph API - <https://learn.microsoft.com/en-us/graph/permissions-reference>.
 
 Click on **+ Add a permission** button and select **Microsoft Graph**.
 
@@ -68,5 +69,3 @@ Specifies whether the application is a public client. Appropriate for apps using
 #### 7. Create a key for the application
 
 ![todo:image_alt_text](microsoft-graph-utility-features_5.png)
-
-

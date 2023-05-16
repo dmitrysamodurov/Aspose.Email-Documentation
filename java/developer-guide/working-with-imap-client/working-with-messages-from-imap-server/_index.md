@@ -7,9 +7,8 @@ url: /java/working-with-messages-from-imap-server/
 
 
 ## **Listing MIME Message IDs from Server**
-[ImapMessageInfo](https://apireference.aspose.com/email/java/com.aspose.email/imapmessageinfo) provides the MIME [MessageId](https://apireference.aspose.com/email/java/com.aspose.email/MessageInfoBase#getMessageId\(\)) for message identification without extracting the complete message. The following code snippet shows you how to list MIME messageId.
 
-
+[ImapMessageInfo](https://reference.aspose.com/email/java/com.aspose.email/imapmessageinfo/) provides the MIME [MessageId](https://reference.aspose.com/email/java/com.aspose.email/messageinfobase/#getMessageId--) for message identification without extracting the complete message. The following code snippet shows you how to list MIME messageId.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -28,10 +27,10 @@ try {
     System.out.println(ex.getMessage());
 }
 ~~~
+
 ## **Listing Messages from Server**
-Aspose.Email provides a 2-member overloaded variant of [listMessages()](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient#listMessagesByUids\(com.aspose.email.IConnection,%20java.lang.String,%20java.lang.Iterable\)) to retrieve a specified number of messages based on a query. The following code snippet shows you how to list Messages.
 
-
+Aspose.Email provides a 2-member overloaded variant of [listMessages()](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#listMessages--) to retrieve a specified number of messages based on a query. The following code snippet shows you how to list messages.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -46,10 +45,10 @@ MailQuery query = builder
 ImapMessageInfoCollection messageInfoCol4 = client.listMessages(query, 4);
 System.out.println((messageInfoCol4.size() == 4) ? "Success" : "Failure");
 ~~~
+
 ## **Listing Messages from Server Recursively**
+
 The IMAP protocol supports listing messages recursively from a mailbox folder. This helps list messages from subfolders of a folder as well. The following code snippet shows you how to list messages recursively.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -62,10 +61,10 @@ client.selectFolder("InBox");
 ImapMessageInfoCollection msgsColl = client.listMessages(true);
 System.out.println("Total Messages: " + msgsColl.size());
 ~~~
+
 ## **Listing Messages with MultiConnection**
-[ImapClient](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient) provides a [UseMultiConnection](https://apireference.aspose.com/email/java/com.aspose.email/EmailClient#setUseMultiConnection\(int\)) property which can be used to create multiple connections for heavy operations. You may also set the number of connections to be used during multiconnection mode by using [ImapClient.ConnectionsQuantity](https://apireference.aspose.com/email/java/com.aspose.email/EmailClient#setConnectionsQuantity\(int\)). The following code snippet demonstrates the use of the multiconnection mode for listing messages and compares its performance with single connection mode.
 
-
+[ImapClient](https://reference.aspose.com/email/java/com.aspose.email/imapclient/) provides a [UseMultiConnection](https://reference.aspose.com/email/java/com.aspose.email/emailclient/#setUseMultiConnection-int-) property which can be used to create multiple connections for heavy operations. You may also set the number of connections to be used during multiconnection mode by using [ImapClient.ConnectionsQuantity](https://reference.aspose.com/email/java/com.aspose.email/emailclient/#setConnectionsQuantity-int-). The following code snippet demonstrates the use of the multiconnection mode for listing messages and compares its performance with single connection mode.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -97,10 +96,12 @@ System.out.println("Performance Relation: " + performanceRelation);
 Please note that the usage of multiconnection mode does not guarantee performance increase.
 
 {{% /alert %}} 
-## **Get Messages in descending order**
-Aspose.Email provides [ImapClient.listMessagesByPage](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient#listMessagesByPage\(com.aspose.email.IConnection,%20int\)) method which lists messages with paging support.Some overloads of [ImapClient.listMessagesByPage](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient#listMessagesByPage\(com.aspose.email.IConnection,%20int\)) accept [PageSettings](https://apireference.aspose.com/email/java/com.aspose.email/pagesettings) as a parameter. [PageSettings](https://apireference.aspose.com/email/java/com.aspose.email/pagesettings) provides an [AscendingSorting](https://apireference.aspose.com/email/java/com.aspose.email/PageSettings#getAscendingSorting\(\)) property which when set to **false**, returns emails in descending order.
 
-The following example code demonstrates the use of [AscendingSorting](https://apireference.aspose.com/email/java/com.aspose.email/PageSettings#getAscendingSorting\(\)) property of the [PageSettings](https://apireference.aspose.com/email/java/com.aspose.email/pagesettings) class to change the order of emails.
+## **Get Messages in descending order**
+
+Aspose.Email provides [ImapClient.listMessagesByPage](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#listMessagesByPage-com.aspose.email.IConnection-com.aspose.email.PageInfo-) method which lists messages with paging support. Some overloads of [ImapClient.listMessagesByPage](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#listMessagesByPage-com.aspose.email.IConnection-com.aspose.email.PageInfo-) accept [PageSettings](https://reference.aspose.com/email/java/com.aspose.email/pagesettings/) as a parameter. [PageSettings](https://reference.aspose.com/email/java/com.aspose.email/pagesettings/) provides an [AscendingSorting](https://reference.aspose.com/email/java/com.aspose.email/pagesettings/#getAscendingSorting--) property which when set to **false**, returns emails in descending order.
+
+The following example code demonstrates the use of [AscendingSorting](https://reference.aspose.com/email/java/com.aspose.email/pagesettings/#getAscendingSorting--) property of the [PageSettings](https://reference.aspose.com/email/java/com.aspose.email/pagesettings/) class to change the order of emails.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -121,18 +122,18 @@ for (ImapMessageInfo message : messages) {
     System.out.println(message.getSubject() + " -> " + message.getDate().toString());
 }
 ~~~
-## **Fetch Messages from Server and Save to disc**
-The [ImapClient](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient) class can fetch messages from an IMAP server and save the messages in EML format to a local disk. The following steps are required to save the messages to disk:
 
-1. Create an instance of the [ImapClient](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient) class.
-1. Specify a hostname, port, username, and password in the ImapClient [constructor](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient#ImapClient\(java.lang.String,%20int,%20java.lang.String,%20java.lang.String\)).
-1. Select the folder using [selectFolder()](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient#selectFolder\(java.lang.String\)) method.
-1. Call the [listMessages](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient#listMessages\(\)) method to get the [ImapMessageInfoCollection](https://apireference.aspose.com/email/java/com.aspose.email/imapmessageinfocollection) object.
-1. Iterate through the [ImapMessageInfoCollection](https://apireference.aspose.com/email/java/com.aspose.email/imapmessageinfocollection) collection, call the [saveMessage()](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient#saveMessage\(com.aspose.email.IConnection,%20int,%20java.io.OutputStream\)) method and provide the output path and file name.
+## **Fetch Messages from Server and Save to disc**
+
+The [ImapClient](https://reference.aspose.com/email/java/com.aspose.email/imapclient/) class can fetch messages from an IMAP server and save the messages in EML format to a local disk. The following steps are required to save the messages to disk:
+
+1. Create an instance of the [ImapClient](https://reference.aspose.com/email/java/com.aspose.email/imapclient/) class.
+1. Specify a hostname, port, username, and password in the ImapClient [constructor](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#ImapClient\(java.lang.String,%20int,%20java.lang.String,%20java.lang.String\)).
+1. Select the folder using [selectFolder()](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#selectFolder-com.aspose.email.IConnection-java.lang.String-) method.
+1. Call the [listMessages](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#listMessages--) method to get the [ImapMessageInfoCollection](https://reference.aspose.com/email/java/com.aspose.email/imapmessageinfocollection/) object.
+1. Iterate through the [ImapMessageInfoCollection](https://reference.aspose.com/email/java/com.aspose.email/imapmessageinfocollection/) collection, call the [saveMessage()](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#saveMessage-com.aspose.email.IConnection-int-java.io.OutputStream-) method and provide the output path and file name.
 
 The following code snippet shows you how to fetch email messages from a server and save them.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -146,10 +147,10 @@ for (int i = 0; i < list.size(); i++) {
     client.saveMessage(list.get_Item(i).getUniqueId(), dataDir + list.get_Item(i).getUniqueId() + ".eml");
 }
 ~~~
+
 ## **Saving Messages in MSG Format**
-[In the above example](#fetch-messages-from-server-and-save-to-disc), the emails are saved in EML format. To save emails in MSG format, the [ImapClient.fetchMessage()](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient#fetchMessage\(int\)) method needs to be called. It returns the message in an instance of the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage) class. The [MailMessage.save()](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage#save\(java.lang.String\)) method can then be called to save the message to MSG. The following code snippet shows you how to save messages in MSG Format.
 
-
+[In the above example](#fetch-messages-from-server-and-save-to-disc), the emails are saved in EML format. To save emails in MSG format, the [ImapClient.fetchMessage()](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#fetchMessage-com.aspose.email.IConnection-int-) method needs to be called. It returns the message in an instance of the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class. The [MailMessage.save()](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/#save-java.lang.String-) method can then be called to save the message to MSG. The following code snippet shows you how to save messages in MSG Format.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -170,10 +171,10 @@ for (int i = 0; i < list.size(); i++) {
     message.save(dataDir + list.get_Item(i).getUniqueId() + "_out.msg", SaveOptions.getDefaultMsgUnicode());
 }
 ~~~
+
 ## **Group Fetch Messages**
-[ImapClient](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient) provides a [fetchMessages](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient#fetchMessagesBySequences\(java.lang.Iterable\)) method which accepts iterable of Sequence Numbers or Unique ID and returns a list of [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MailMessage). The following code snippet demonstrates the use of the [fetchMessages](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient#fetchMessagesBySequences\(java.lang.Iterable\)) method to fetch messages by Sequence Numbers and Unique ID.
 
-
+[ImapClient](https://reference.aspose.com/email/java/com.aspose.email/imapclient/) provides a [fetchMessages](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#fetchMessagesBySequences-com.aspose.email.IConnection-java.lang.Iterable-java.lang.Integer--) method which accepts iterable of Sequence Numbers or Unique ID and returns a list of [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/). The following code snippet demonstrates the use of the [fetchMessages](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#fetchMessagesBySequences-com.aspose.email.IConnection-java.lang.Iterable-java.lang.Integer--) method to fetch messages by Sequence Numbers and Unique ID.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -203,10 +204,10 @@ for (MailMessage m : imapClient.fetchMessagesByUids(uniqueIdAr)) {
     System.out.println("FetchMessages-uniqueIdAr : " + m.getSubject());
 }
 ~~~
+
 ## **Listing Messages with Paging Support**
-In scenarios, where the email server contains a large number of messages in the mailbox, it is often desired to list or retrieve the messages with paging support. Aspose.Email API's [ImapClient](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient) lets you retrieve the messages from the server with paging support.
 
-
+In scenarios, where the email server contains a large number of messages in the mailbox, it is often desired to list or retrieve the messages with paging support. Aspose.Email API [ImapClient](https://reference.aspose.com/email/java/com.aspose.email/imapclient/) lets you retrieve the messages from the server with paging support.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -256,10 +257,10 @@ try {
         client.dispose();
 }
 ~~~
+
 ## **Getting Folders and Reading Messages Recursively**
-In this article, most of the [ImapClient](https://apireference.aspose.com/email/java/com.aspose.email/ImapClient) features are used to create an application that lists all the folders and sub-folders recursively from an IMAP server. It also saves the messages in each folder and sub-folder in MSG format on a local disk. In disk, folders and messages are created and saved in the same hierarchical structure as on the IMAP server. The following code snippet shows you how to get the messages and sub-folders information recursively.
 
-
+In this article, most of the [ImapClient](https://reference.aspose.com/email/java/com.aspose.email/imapclient/) features are used to create an application that lists all the folders and sub-folders recursively from an IMAP server. It also saves the messages in each folder and sub-folder in MSG format on a local disk. In disk, folders and messages are created and saved in the same hierarchical structure as on the IMAP server. The following code snippet shows you how to get the messages and sub-folders information recursively.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -335,8 +336,8 @@ private static void listMessagesInFolder(ImapFolderInfo folderInfo, String rootF
     }
 }
 ~~~
-## **Retrieving Extra Parameters as Summary Information**
 
+## **Retrieving Extra Parameters as Summary Information**
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -376,10 +377,10 @@ try {
         client.dispose();
 }
 ~~~
+
 ## **Getting List-Unsubscribe Header Information**
-List-Unsubscribe header contains the URL for unsubscribing from email lists e.g. advertisements, newsletters, etc. To get the List-Unsubscribe header, use the [listUnsubscribe](https://apireference.aspose.com/email/java/com.aspose.email/MessageInfoBase#getListUnsubscribe\(\)) property of the [ImapMessageInfo](https://apireference.aspose.com/email/java/com.aspose.email/imapmessageinfo) class. The following example shows the use of the [listUnsubscribe](https://apireference.aspose.com/email/java/com.aspose.email/MessageInfoBase#getListUnsubscribe\(\)) property to get the List-Unsubscribe header.
 
-
+List-Unsubscribe header contains the URL for unsubscribing from email lists e.g. advertisements, newsletters, etc. To get the List-Unsubscribe header, use the [listUnsubscribe](https://reference.aspose.com/email/java/com.aspose.email/imapmessageinfo/#getListUnsubscribe--) property of the [ImapMessageInfo](https://reference.aspose.com/email/java/com.aspose.email/imapmessageinfo/) class. The following example shows the use of the [listUnsubscribe](https://reference.aspose.com/email/java/com.aspose.email/imapmessageinfo/#getListUnsubscribe--) property to get the List-Unsubscribe header.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java

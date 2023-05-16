@@ -7,9 +7,8 @@ url: /java/managing-message-files-with-aspose-email-outlook/
 
 
 ## **Converting MSG to MIME message**
-Aspose.Email API provides the capability of converting MSG files to MIME messages using the [toMailMessage](https://apireference.aspose.com/email/java/com.aspose.email/MapiMessage#toMailMessage\(com.aspose.email.MailConversionOptions\)) method.
 
-
+Aspose.Email API provides the capability of converting MSG files to MIME messages using the [toMailMessage](https://reference.aspose.com/email/java/com.aspose.email/mapimessage/#toMailMessage-com.aspose.email.MailConversionOptions-) method.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -22,21 +21,21 @@ MailConversionOptions options = new MailConversionOptions();
 options.setConvertAsTnef(true);
 MailMessage mail = msg.toMailMessage(options);
 ~~~
-## **Reading and Writing Outlook Template File (.OFT)**
-Outlook templates are very useful when you want to send a similar email message again and again. Instead of preparing the message from scratch each time, first, prepare the message in Outlook and save it as an Outlook Template (OFT). After that, whenever you need to send the message, you can create it from the template, saving time writing the same text in the body or the subject line, setting formatting and so on. Aspose.Email’s [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/mailmessage) class can be used to load and read an Outlook template (OFT) file. Once the Outlook template is loaded in an instance of the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/mailmessage) class, you can update the sender, recipient, body, subject and other properties. After updating the properties:
 
-- Send the email using the [SmtpClient](https://apireference.aspose.com/email/java/com.aspose.email/SmtpClient) class or
+## **Reading and Writing Outlook Template File (.OFT)**
+
+Outlook templates are very useful when you want to send a similar email message again and again. Instead of preparing the message from scratch each time, first, prepare the message in Outlook and save it as an Outlook Template (OFT). After that, whenever you need to send the message, you can create it from the template, saving time writing the same text in the body or the subject line, setting formatting and so on. Aspose.Email [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class can be used to load and read an Outlook template (OFT) file. Once the Outlook template is loaded in an instance of the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class, you can update the sender, recipient, body, subject and other properties. After updating the properties:
+
+- Send the email using the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class or
 - Save the message as MSG and do further updates/validation using Microsoft Outlook.
 
 In the code samples below, we:
 
-1. Load the template using the [MailMessage](https://apireference.aspose.com/email/java/com.aspose.email/mailmessage) class.
+1. Load the template using the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class.
 1. Update some of the properties.
 1. Save the message in MSG format.
 
-The following code snippet shows you how to load the OFT file, updating the message and saving it in MSG format.
-
-
+The following code snippet shows you how to load the OFT file, update the message and save it in MSG format.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -67,10 +66,10 @@ MapiMessage mapimessage = MapiMessage.fromMailMessage(message);
 mapimessage.setMessageFlags(MapiMessageFlags.MSGFLAG_UNSENT);
 mapimessage.save(dataDir + "ReadAndWritingOutlookTemplateFile_out.msg");
 ~~~
+
 ### **Saving Outlook MSG file as Template**
+
 The following code snippet shows you how to save the outlook MSG file as a template.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -81,12 +80,14 @@ try (MapiMessage mapi = new MapiMessage("test@from.to", "test@to.to", "template 
     mapi.saveAsTemplate(dataDir + "mapiToOft.msg");
 }
 ~~~
+
 ## **Managing Digitally Signed Messages**
+
 Aspose.Email implements the complete S/MIME email object algorithm. This gives the API complete power to preserve digital signatures while converting messages between formats.
+
 ### **Preserving Signature when Converting from EML to MSG**
-Aspose.Email preserves the digital signature when converting from EML to MSG. The following code snippet shows you how to converting from EML to MSG.
 
-
+Aspose.Email preserves the digital signature when converting from EML to MSG. The following code snippet shows you how to convert from EML to MSG.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -98,10 +99,10 @@ MailMessage message = MailMessage.load(dataDir + "Message.eml", new EmlLoadOptio
 // Save as MSG
 message.save(dataDir + "ConvertEMLToMSG_out.msg", SaveOptions.getDefaultMsgUnicode());
 ~~~
+
 ### **Converting S/MIME Messages from MSG to EML**
+
 Aspose.Email preserves the digital signature when converting from MSG to EML as shown in the following code snippet.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -113,21 +114,22 @@ MapiMessage mapi = MapiMessage.fromMailMessage(msg, new MapiConversionOptions(Ou
 // Save File to disk
 mapi.save(dataDir + "ConvertMIMEMessagesFromMSGToEML_out.msg");
 ~~~
-## **Setting Color Category for Outlook MSG Files**
-A color category marks an email message for some kind of importance or category. Microsoft Outlook lets users assign color categories to differentiate emails. To handle the color category, use the [FollowUpManager](https://apireference.aspose.com/email/java/com.aspose.email/FollowUpManager). It contains functions such as [addCategory](https://apireference.aspose.com/email/java/com.aspose.email/FollowUpManager#addCategory\(com.aspose.email.MapiMessage,%20java.lang.String\)), [removeCategory](https://apireference.aspose.com/email/java/com.aspose.email/FollowUpManager#removeCategory\(com.aspose.email.MapiMessage,%20java.lang.String\)), [clearCategories](https://apireference.aspose.com/email/java/com.aspose.email/FollowUpManager#clearCategories\(com.aspose.email.MapiMessage\)) and [getCategories](https://apireference.aspose.com/email/java/com.aspose.email/FollowUpManager#getCategories\(com.aspose.email.MapiMessage\)).
 
-- [addCategory](https://apireference.aspose.com/email/java/com.aspose.email/FollowUpManager#addCategory\(com.aspose.email.MapiMessage,%20java.lang.String\)) takes [MapiMessage](https://apireference.aspose.com/email/java/com.aspose.email/MapiMessage) and the color category string, for example, "Purple Category" or "Red Category" as arguments.
-- [removeCategory](https://apireference.aspose.com/email/java/com.aspose.email/FollowUpManager#removeCategory\(com.aspose.email.MapiMessage,%20java.lang.String\)) takes [MapiMessage](https://apireference.aspose.com/email/java/com.aspose.email/MapiMessage) and the color category string to be removed from the message.
-- [clearCategories](https://apireference.aspose.com/email/java/com.aspose.email/FollowUpManager#clearCategories\(com.aspose.email.MapiMessage\)) is used to remove all the color categories from the message.
-- [getCategories](https://apireference.aspose.com/email/java/com.aspose.email/FollowUpManager#getCategories\(com.aspose.email.MapiMessage\)) is used to retrieve all the color categories from a particular message.
+## **Setting Color Category for Outlook MSG Files**
+
+A color category marks an email message for some kind of importance or category. Microsoft Outlook lets users assign color categories to differentiate emails. To handle the color category, use the [FollowUpManager](https://reference.aspose.com/email/java/com.aspose.email/followupmanager/). It contains functions such as [addCategory](https://reference.aspose.com/email/java/com.aspose.email/followupmanager/#addCategory-com.aspose.email.MapiMessage-java.lang.String-), [removeCategory](https://reference.aspose.com/email/java/com.aspose.email/followupmanager/#removeCategory-com.aspose.email.MapiMessage-java.lang.String-), [clearCategories](https://reference.aspose.com/email/java/com.aspose.email/followupmanager/#clearCategories-com.aspose.email.MapiMessage-) and [getCategories](https://reference.aspose.com/email/java/com.aspose.email/followupmanager/#getCategories-com.aspose.email.MapiMessage-).
+
+- [addCategory](https://reference.aspose.com/email/java/com.aspose.email/followupmanager/#addCategory-com.aspose.email.MapiMessage-java.lang.String-) takes [MapiMessage](https://reference.aspose.com/email/java/com.aspose.email/mapimessage/) and the color category string, for example, "Purple Category" or "Red Category" as arguments.
+- [removeCategory](https://reference.aspose.com/email/java/com.aspose.email/followupmanager/#removeCategory-com.aspose.email.MapiMessage-java.lang.String-) takes [MapiMessage](https://reference.aspose.com/email/java/com.aspose.email/mapimessage/) and the color category string to be removed from the message.
+- [clearCategories](https://reference.aspose.com/email/java/com.aspose.email/followupmanager/#clearCategories-com.aspose.email.MapiMessage-) is used to remove all the color categories from the message.
+- [getCategories](https://reference.aspose.com/email/java/com.aspose.email/followupmanager/#getCategories-com.aspose.email.MapiMessage-) is used to retrieve all the color categories from a particular message.
 
 The following example performs the tasks as given below:
 
 1. Add a color category.
-1. Add another color category.
-1. Retrieve the list of all categories.
-1. Remove all categories.
-
+2. Add another color category.
+3. Retrieve the list of all categories.
+4. Remove all categories.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -147,12 +149,14 @@ IList categories = FollowUpManager.getCategories(msg);
 FollowUpManager.removeCategory(msg, "Red Category");
 FollowUpManager.clearCategories(msg);
 ~~~
+
 ## **Accessing Follow Up Information form MSG file**
+
 Aspose.Email API provides the capability to access the follow-up information from a sent or received message. It can retrieve the Read, Delivery Read Receipt and vote results information from a message file.
+
 ### **Retrieving Read and Delivery Receipt Information**
+
 The following code snippet shows you how to retrieve read and delivery receipt information.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -170,16 +174,18 @@ for (MapiRecipient recipient : msg.getRecipients()) {
     System.out.println("Read time" + recipient.getProperties().get_Item(MapiPropertyTag.PR_RECIPIENT_TRACKSTATUS_TIME_READ).getDateTime());
 }
 ~~~
+
 ## **Creating Forward and Reply Messages**
-Aspose.Email API provides the capability of creating and formatting the forward and reply messages. The [ReplyMessageBuilder](https://apireference.aspose.com/email/java/com.aspose.email/ReplyMessageBuilder) and [ForwardMessageBuilder](https://apireference.aspose.com/email/java/com.aspose.email/ForwardMessageBuilder) classes of the API are used to create the Reply and Forward messages respectively. A Reply or Forward message can be specified to be created using any of the modes of [OriginalMessageAdditionMode](https://apireference.aspose.com/email/java/com.aspose.email/OriginalMessageAdditionMode) enum. This enum has the following values:
+
+Aspose.Email API provides the capability of creating and formatting forward and reply messages. The [ReplyMessageBuilder](https://reference.aspose.com/email/java/com.aspose.email/replymessagebuilder/) and [ForwardMessageBuilder](https://reference.aspose.com/email/java/com.aspose.email/forwardmessagebuilder/) classes of the API are used to create the Reply and Forward messages respectively. A Reply or Forward message can be specified to be created using any of the modes of [OriginalMessageAdditionMode](https://reference.aspose.com/email/java/com.aspose.email/originalmessageadditionmode/) enum. This enum has the following values:
 
 - **OriginalMessageAdditionMode.None** - The original message is not included in the response message.
-- **OriginalMessageAdditionMode.Attachment** - The original message is included as attachment in the response message
-- **OriginalMessageAdditionMode.Textpart** - The original message is included as text in the body of response message
+- **OriginalMessageAdditionMode.Attachment** - The original message is included as an attachment in the response message
+- **OriginalMessageAdditionMode.Textpart** - The original message is included as a text in the body of the response message
+
 ### **Creating Reply Message**
-The following code snippet shows you how to creating reply message.
 
-
+The following code snippet shows you how to creat a reply message.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -198,10 +204,10 @@ builder.setResponseText(
 MapiMessage replyMsg = builder.buildResponse(originalMsg);
 replyMsg.save(dataDir + "reply_out.msg");
 ~~~
-### **Creating Forward Message**
+
+### **Creating a Forward Message**
+
 The following code snippet shows you how to create a forward message.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -216,7 +222,8 @@ forwardMsg.save(dataDir + "forward_out.msg");
 ~~~
 
 ## **Preserve Empty Dates when Converting a Message**
-**MapiConversionOptions.setPreserveEmptyDates(boolean)** property indicating whether it is necessary to keep empty dates when converting a message. This API appears in Aspose.Email 21.5
+
+[MapiConversionOptions.setPreserveEmptyDates(boolean)](https://reference.aspose.com/email/java/com.aspose.email/mapiconversionoptions/#setPreserveEmptyDates-boolean-) property indicating whether it is necessary to keep empty dates when converting a message. This API appears in Aspose.Email 21.5
 The following code snippet shows you how to preserve empty dates.
 
 ~~~java

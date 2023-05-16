@@ -6,17 +6,25 @@ url: /java/working-with-outlook-calendar-items/
 ---
 
 ## **Working with MapiCalendar**
-Aspose.Email's [MapiCalendar](https://apireference.aspose.com/email/java/com.aspose.email/MapiCalendar) class provides methods and attributes to set various properties of a calendar item. This article provides code samples for:
 
-- [Creating and saving calendar items](#creating-and-saving-calendar-items)
-- [Setting reminders for MapiCalendar items](#adding-display-reminder-to-a-calendar)
-- [Add/Retrieve Attachments from Calendar](#addretrieve-attachments-from-calendar-files)
-- [Retrieving Status of Recipients from Meeting Requests](#status-of-recipients-from-a-meeting-request)
-- [Creating MapiCalendar TimeZone object from Standard Timezone](#create-mapicalendartimezone-from-standard-timezone)
+Aspose.Email's [MapiCalendar](https://reference.aspose.com/email/java/com.aspose.email/mapicalendar/) class provides methods and attributes to set various properties of a calendar item. This article provides code samples for:
+
+- [**Working with MapiCalendar**](#working-with-mapicalendar)
+  - [**Creating and Saving Calendar Items**](#creating-and-saving-calendar-items)
+  - [**Saving the Calendar Item as MSG**](#saving-the-calendar-item-as-msg)
+  - [**Adding Display Reminder to a Calendar**](#adding-display-reminder-to-a-calendar)
+  - [**Adding Audio Reminder to a Calendar**](#adding-audio-reminder-to-a-calendar)
+  - [**Add/Retrieve Attachments from Calendar Files**](#addretrieve-attachments-from-calendar-files)
+  - [**Status of Recipients from a Meeting Request**](#status-of-recipients-from-a-meeting-request)
+  - [**Create MapiCalendarTimeZone from Standard Timezone**](#create-mapicalendartimezone-from-standard-timezone)
+- [**Setting Reminder with the Created Appointment**](#setting-reminder-with-the-created-appointment)
+  - [**Setting a Reminder by Adding Tags**](#setting-a-reminder-by-adding-tags)
+- [**Convert Appointment EML to MSG with HTML Body**](#convert-appointment-eml-to-msg-with-html-body)
+
+
 ### **Creating and Saving Calendar Items**
+
 The following code snippet shows you how to create and save a calendar item in ICS format.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -37,19 +45,19 @@ MapiCalendar calendar = new MapiCalendar("LAKE ARGYLE WA 6743",
 
 calendar.save(dataDir + "CalendarItem_out.ics", AppointmentSaveFormat.Ics);
 ~~~
+
 ### **Saving the Calendar Item as MSG**
+
 The following code snippet shows you how to save the calendar item as MSG.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
 calendar.save(dataDir + "CalendarItemAsMSG_out.Msg", AppointmentSaveFormat.Msg);
 ~~~
+
 ### **Adding Display Reminder to a Calendar**
+
 The following code snippet shows you how to add display reminder to a calendar.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -80,10 +88,10 @@ calendar.setReminderDelta(5); // 45 min before start of event
 String savedFile = (dataDir + "calendarWithDisplayReminder.ics");
 calendar.save(savedFile, AppointmentSaveFormat.Ics);
 ~~~
+
 ### **Adding Audio Reminder to a Calendar**
+
 The following code snippet shows you how to add an audio reminder to a calendar.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -115,10 +123,10 @@ cal.setReminderFileParameter(dataDir + "Alarm01.wav");
 String savedFile = dataDir + "calendarWithAudioReminder_out.ics";
 cal.save(savedFile, AppointmentSaveFormat.Ics);
 ~~~
+
 ### **Add/Retrieve Attachments from Calendar Files**
+
 The following code snippet shows you how to add/retrieve attachments from calendar files.
-
-
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -153,10 +161,10 @@ System.out.println(app2.getAttachments().size());
 for (Attachment att : app2.getAttachments())
     System.out.println(att.getName());
 ~~~
+
 ### **Status of Recipients from a Meeting Request**
-The following code snippet shows you how to status of recipients from a meeting request.
 
-
+The following code snippet shows you how to get the status of recipients from a meeting request.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -167,21 +175,23 @@ for (MapiRecipient recipient : message.getRecipients()) {
     System.out.println(recipient.getRecipientTrackStatus());
 }
 ~~~
+
 ### **Create MapiCalendarTimeZone from Standard Timezone**
-The following code snippet shows you how to Create [MapiCalendarTimeZone](https://apireference.aspose.com/email/java/com.aspose.email/MapiCalendarTimeZone) from standard Timezone.
 
-
+The following code snippet shows you how to сreate [MapiCalendarTimeZone](https://reference.aspose.com/email/java/com.aspose.email/mapicalendartimezone/) from the standard Timezone.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
 MapiCalendarTimeZone timeZone = new MapiCalendarTimeZone("Eastern Standard Time");
 ~~~
+
 ## **Setting Reminder with the Created Appointment**
-A reminder can be added when an appointment is created. These alarms can trigger based on different criteria like n minutes before the schedule starts, repeat n times at n intervals. Different tags can be used to create these triggers in the script enclosed by BEGIN:VALARM and END:VALARM within an appointment. There are a number of variants in which the reminder can be set on an appointment.
+
+A reminder can be added when an appointment is created. These alarms can trigger based on different criteria like n minutes before the schedule starts, repeat n times at n intervals. Different tags can be used to create these triggers in the script enclosed by BEGIN:VALARM and END:VALARM within an appointment. There is a number of variants in which the reminder can be set on an appointment.
+
 ### **Setting a Reminder by Adding Tags**
-The following code snippet shows you how to Set a reminder by adding tags.
 
-
+The following code snippet shows you how to set a reminder by adding tags.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
@@ -252,12 +262,12 @@ procReminder.getAttachments().addItem(attach2);
 target.getReminders().addItem(procReminder);
 target.save(dataDir + "savedFile_out.ics");
 ~~~
+
 ## **Convert Appointment EML to MSG with HTML Body**
-Since version 19.3, Aspose.Email provides the ability to convert Appointment EML to MSG while retaining the HTML body of the appointment. Aspose.Email provides a [MapiConversionOptions.ForcedRtfBodyForAppointment](https://apireference.aspose.com/email/java/com.aspose.email/MapiConversionOptions#setForcedRtfBodyForAppointment\(boolean\))[ ](https://apireference.aspose.com/email/net/aspose.email.mapi/mapiconversionoptions/properties/forcedrtfbodyforappointment)property which has a default value of **true.** When the value of [MapiConversionOptions.ForcedRtfBodyForAppointment](https://apireference.aspose.com/email/java/com.aspose.email/MapiConversionOptions#setForcedRtfBodyForAppointment\(boolean\)) is set to **true**, the appointment body is converted to RTF format. To keep the appointment body format in HTML format, set the value of [MapiConversionOptions.ForcedRtfBodyForAppointment](https://apireference.aspose.com/email/java/com.aspose.email/MapiConversionOptions#setForcedRtfBodyForAppointment\(boolean\)) to **false.**
 
-The following example demonstrates the use of [MapiConversionOptions.ForcedRtfBodyForAppointment](https://apireference.aspose.com/email/java/com.aspose.email/MapiConversionOptions#setForcedRtfBodyForAppointment\(boolean\)) property to keep the appointment body format in HTML format.
+Since version 19.3, Aspose.Email provides the ability to convert Appointment EML to MSG while retaining the HTML body of the appointment. Aspose.Email provides a [MapiConversionOptions.ForcedRtfBodyForAppointment](https://reference.aspose.com/email/java/com.aspose.email/mapiconversionoptions/#getForcedRtfBodyForAppointment--) property which has a default value of **true.** When the value of [MapiConversionOptions.ForcedRtfBodyForAppointment](https://reference.aspose.com/email/java/com.aspose.email/mapiconversionoptions/#getForcedRtfBodyForAppointment--) is set to **true**, the appointment body is converted to RTF format. To keep the appointment body format in HTML format, set the value of [MapiConversionOptions.ForcedRtfBodyForAppointment](https://reference.aspose.com/email/java/com.aspose.email/mapiconversionoptions/#getForcedRtfBodyForAppointment--) to **false.**
 
-
+The following example demonstrates the use of [MapiConversionOptions.ForcedRtfBodyForAppointment](https://reference.aspose.com/email/java/com.aspose.email/mapiconversionoptions/#getForcedRtfBodyForAppointment--) property to keep the appointment body format in HTML format.
 
 ~~~Java
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java

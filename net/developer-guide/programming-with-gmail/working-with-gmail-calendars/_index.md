@@ -7,55 +7,56 @@ url: /net/working-with-gmail-calendars/
 
 
 ## **Adding, Editing and Deleting a Calendar**
-Aspose.Email allows applications to manage the Gmail calendars using IGmailClient which provides feature like adding, deleting and updating Gmail calendars. This client class returns list of ExtendedCalendar type objects which contain information about the Gmail calendar items. IGmailClient class exposes following functions for calendars:
 
-- CreateCalendar
-  To insert new calendar
-- ListCalendars
+Aspose.Email allows applications to manage the Gmail calendars using [IGmailClient](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/) which provides features like adding, deleting and updating Gmail calendars. This client class returns list of ExtendedCalendar type objects which contain information about the Gmail calendar items. [IGmailClient](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/) class exposes the following functions for calendars:
 
-Get list of all calendars of a client
-
-- DeleteCalendar
+- [CreateCalendar](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/createcalendar/#createcalendar) 
+  It can be used to insert new calendar
+- [ListCalendars](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/listcalendars/)
+  It can be used to get the list of all calendars of a client
+- [DeleteCalendar](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/deletecalendar/)
   It can be used to delete a calendar
-- Fetch Calendar
+- [FetchCalendar](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/fetchcalendar/)
   It can be used to fetch particular calendar of a client
-- Update Calendar
-  This function is used for inserting back a modified calendar of a client
+- [UpdateCalendar](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/updatecalendar/)
+  This function is used to insert back a modified calendar of a client
 
 To Access the calendars, GoogleTestUser is initialized using gmail account credentials. GoogleOAuthHelper is used to get the access token for the user which is further used to initialize IGmailClient.
+
 ### **Insert, Fetch and Update**
-For inserting a calendar, initialize a Calendar type object and insert it using CreateCalendar() function. CreateCalendar() returns the id of the newly inserted calendar. This id can be used to fetch the calendar from the server. The following code snippet shows you how to insert, fetch and update calendar.
 
-
+For inserting a calendar, initialize a Calendar type object and insert it using [CreateCalendar()](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/createcalendar/#createcalendar) function. [CreateCalendar()](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/createcalendar/#createcalendar) returns the id of the newly inserted calendar. This id can be used to fetch the calendar from the server. The following code snippet shows you how to insert, fetch and update calendar.
 
 {{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Gmail-InsertFetchAndUpdateCalendar-InsertFetchAndUpdateCalendar.cs" >}}
+
 ### **Delete particular calendar**
-For deleting a particular calendar, we need to get the list of all the calendars of a client and then delete as required. ListCalendars() returns the list of ExtendedCalendar which contains Gmail calendars. The following code snippet shows you how to delete particular calendar.
 
-
+For deleting a particular calendar, we need to get the list of all the calendars of a client and then delete as required. [ListCalendars()](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/listcalendars/#listcalendars) returns the list of [ExtendedCalendar](https://reference.aspose.com/email/net/aspose.email.clients.google/extendedcalendar/) which contains Gmail calendars. The following code snippet shows you how to delete particular calendar.
 
 {{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Gmail-DeleteParticularCalendar-DeleteParticularCalendar.cs" >}}
-## **Working with Calendar Access Control**
-Aspose.Email provides full control over the access control to the calendar items. ListAccessRules() function is exposed by IGmailClient which returns list of AccessControlRule. Individual rule information can be retrieved, modified and saved back for the calendar of a client. IGmailClient contains following functions for managing the access control rules.
 
-- ListAccessRules
-  This function provides list of AccessControlRule
-- CreateAccessRule
+## **Working with Calendar Access Control**
+
+Aspose.Email provides full control over the access to the calendar items. [ListAccessRules()](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/listaccessrules/) function is exposed by [IGmailClient](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/) which returns the list of [AccessControlRule](https://reference.aspose.com/email/net/aspose.email.clients.google/accesscontrolrule/). Individual rule information can be retrieved, modified and saved back for the calendar of a client. [IGmailClient](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/) contains the following functions for managing the access control rules.
+
+- [ListAccessRules](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/listaccessrules/)
+  This function provides the list of AccessControlRule
+- [CreateAccessRule](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/createaccessrule/)
   This function creates a new access rule for a calendar.
-- UpdateAccessRule
+- [UpdateAccessRule](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/updateaccessrule/)
   This function is used for updating an access rule.
-- FetchAccessRule
+- [FetchAccessRule](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/fetchaccessrule/)
   It can be used to fetch particular access rule for calendar of a client
-- DeleteAccessRule
+- [DeleteAccessRule](https://search.aspose.com/q/deleteaccessrule.html)
   This function is used for deleting an access rule.
 
-The following code snippet shows you how the functions used for managing the access rules:
-
-
+The following code snippet shows you how to use functions for managing the access rules:
 
 {{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Gmail-ManageAccessRule-ManageAccessRule.cs" >}}
+
 ## **Working with Client Settings and Color Info**
-Aspose.Email supports accessing the Client settings by using IGmailClient.GetSettings(). It returns list of settings as given below:
+
+Aspose.Email supports accessing the Client settings by using [IGmailClient.GetSettings()](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/getsettings/#igmailclientgetsettings-method). It returns the list of settings as given below:
 
 1. dateFieldOrder
 1. displayAllTimezones
@@ -77,20 +78,22 @@ Aspose.Email supports accessing the Client settings by using IGmailClient.GetSet
 1. useKeyboardShortcuts
 1. country
 
-Similarly color info for clients can also be retrieved using IGmailClient.GetColors(). This color info object returns the list of Foreground colors, background colors and update date and time.
+Similarly color info for clients can also be retrieved using [IGmailClient.GetColors()](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/getcolors/#igmailclientgetcolors-method). This color info object returns the list of Foreground colors, background colors and update date and time.
+
 ### **Access client settings**
-The following code snippet shows you how the functions used for accessing the client settings:
 
-
+The following code snippet shows you how the functions can be used for accessing the client settings:
 
 {{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Gmail-AccessClientSettings-AccessClientSettings.cs" >}}
+
 ### **Access color info**
-The following code snippet shows you how the functions used for accessing the client color settings.
 
-
+The following code snippet shows you how the functions can be used for accessing the client color settings.
 
 {{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Gmail-AccessColorInfo-AccessColorInfo.cs" >}}
+
 ## **Working with Appointments**
+
 Aspose.Email provides features for working with Appointments in Google calendars. Following is the list of tasks that can be performed on appointments in google calendar:
 
 1. Add Appointments.
@@ -100,33 +103,33 @@ Aspose.Email provides features for working with Appointments in Google calendars
 1. Move appointment from one calendar to another.
 1. Delete appointment.
 
-IGmailClient provides functions like CreateAppointment, FetchAppointment, UpdateAppointment, ListAppointments, MoveAppointment and DeleteAppointment.
+[IGmailClient](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/) provides functions like [CreateAppointment](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/createappointment/#igmailclientcreateappointment-method), [FetchAppointment](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/fetchappointment/#igmailclientfetchappointment-method), [UpdateAppointment](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/updateappointment/#igmailclientupdateappointment-method), [ListAppointments](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/listappointments/#igmailclientlistappointments-method), [MoveAppointment](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/moveappointment/#moveappointment) and [DeleteAppointment](https://reference.aspose.com/email/net/aspose.email.clients.google/igmailclient/deleteappointment/#igmailclientdeleteappointment-method).
+
 ### **Adding an appointment**
-Following code sample demonstrates the feature of adding an appointment in a calendar. In this sample following steps are followed:
+
+The following code sample demonstrates the feature of adding an appointment in a calendar. To achieve this, follow the steps:
 
 1. Create and insert a calendar.
-1. Retrieve list of appointments from a new calendar.
+1. Retrieve the list of appointments from a new calendar.
 1. Create an appointment.
-1. Insert appointment.
-
-
+1. Insert an appointment.
 
 {{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Gmail-AddingAnAppointment-AddingAnAppointment.cs" >}}
-### **Retrieve and update appointment**
+
+### **Retrieve and update an appointment**
+
 Here retrieving and updating of calendar is demonstrated as follows:
 
 1. Rerieve particaulr appointment.
 1. Modify the appointment.
 1. Update the appointment in calendar.
 
-It is assumed that a calendar with id "calendarId" and appointment unique id "AppointmentUniqueId" are already extracted. The following code snippet shows you how to retrieve and update appointment.
-
-
+It is assumed that a calendar with id "calendarId" and appointment unique id "AppointmentUniqueId" are already extracted. The following code snippet shows you how to retrieve and update an appointment.
 
 {{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Gmail-RetrieveUpdateAppointment-RetrieveUpdateAppointment.cs" >}}
-### **Move and Delete appointment**
-Appointment can be moved by providing the source calendar, destination calendar and unique id of appointment in the source calendar. The following code snippet shows you how to move and delete appointment.
 
+### **Move and Delete an appointment**
 
+Appointment can be moved by providing the source calendar, destination calendar and the unique id of an appointment in the source calendar. The following code snippet shows you how to move and delete an appointment.
 
 {{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Gmail-MoveAndDeleteAppointment-MoveAndDeleteAppointment.cs" >}}
