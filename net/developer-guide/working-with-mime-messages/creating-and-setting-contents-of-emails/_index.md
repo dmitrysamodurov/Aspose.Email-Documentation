@@ -365,7 +365,7 @@ eml.Headers.Add("secret-header", "mystery");
 
 ## **Sign Emails with DKIM**
 
-**Note: The feature is accessible only for the library versions targeting .NET Framework. Versions, targeting .NET Core, do not have this feature.**
+> **_NOTE:_** The feature is accessible only for the library versions targeting .NET Framework. Versions, targeting .NET Core, do not have this feature.
 
 Aspose.Email allows signing Email with DKIM (DomainKeys Identified Mail). This lets an organization take responsibility for a message that is in transit ([More Info](https://www.dkim.org/)). DKIM adds a digital signature to the email message headers that can be validated by recipients. The public key of the sender enables the receiver to verify that the signature matches the message's contents. The [DKIMSign](https://reference.aspose.com/email/net/aspose.email/mailmessage/dkimsign/#dkimsign) method of the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class is used to set the cryptographic and signature information for signing the message. The following code snippet shows you how to sign emails with DKIM.
 
