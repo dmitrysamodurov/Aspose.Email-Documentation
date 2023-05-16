@@ -2,7 +2,7 @@
 
 Unlike the synchronous methods, the asynchronous methods are non-blocking and allow to perform multiple requests simultaneously. Asynchronous methods are named with the Async postfix.
 
-**Note: Async methods are available in versions targeting .NET Core, .NET Framework 4.5, and later.**
+> **_NOTE:_** Async methods are available in versions targeting .NET Core, .NET Framework 4.5, and later.
 
 ## Implementing IAsyncTokenProvider to get OAuth Tokens Asynchronously
 
