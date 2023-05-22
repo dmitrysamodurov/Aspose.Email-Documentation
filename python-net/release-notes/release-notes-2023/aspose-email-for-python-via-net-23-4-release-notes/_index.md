@@ -14,7 +14,7 @@ This page contains release notes information for Aspose.Email for Python via .NE
 Aspose.Email for Python via .NET 23.4 is based on [Aspose.Email for .NET 23.4](/email/net/aspose-email-for-net-23-4-release-notes/).
 
 ## **Features not implemented**
-The following features are not implemented in Aspose.Email for Python via .NET 23.4 but they are implemented in [Aspose.Email for .NET 23.4](/email/net/aspose-email-for-net-23-3-release-notes/):
+The following features are not implemented in Aspose.Email for Python via .NET but they are implemented in [Aspose.Email for .NET](https://products.aspose.com/email/net/):
 
 - Microsoft Graph REST API
 - Exchange API
