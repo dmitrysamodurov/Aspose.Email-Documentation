@@ -1,13 +1,13 @@
 ---
 title: Utility Features - IMAP Client
 type: docs
-weight: 100
+weight: 10
 url: /net/utility-features-imap-client/
 ---
 
 # Utility Features - IMAP Client
 
-## **Validate Mail Server Credentials Without Sending Email**
+## **Validate Mail Server Credentials**
 
 Aspose.Email API enables the validation of mail server credentials without sending an email. [ValidateCredentials](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/validatecredentials) method is responsible for verifying the authenticity and validity of the provided email credentials, which are normally used to authenticate when connecting to the server.
 
