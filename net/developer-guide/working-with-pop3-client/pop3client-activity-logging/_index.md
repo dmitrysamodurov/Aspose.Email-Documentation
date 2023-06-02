@@ -42,7 +42,7 @@ For VB .NET use the following option
 
 ## **Enable Activity Logging using appsettings.json File**
 
-This option is preferred for .NET Core applications.
+> **_NOTE:_** This option is preferred for .NET Core applications.
 
 Logging in [Pop3Client](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/) can be enabled with the following steps and code samples:
 
