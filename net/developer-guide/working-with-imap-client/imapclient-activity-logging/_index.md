@@ -46,7 +46,7 @@ For VB .NET use the following option
 
 ## **Enable Activity Logging using appsettings.json File**
 
-This option is preferred for .NET Core applications.
+> **_NOTE:_** This option is preferred for .NET Core applications.
 
 Logging in [ImapClient](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/) can be enabled with the following steps and code samples:
 
