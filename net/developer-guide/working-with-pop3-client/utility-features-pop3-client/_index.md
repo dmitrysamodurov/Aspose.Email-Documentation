@@ -7,7 +7,7 @@ url: /net/utility-features-pop3-client/
 
 # Utility Features - POP3 Client
 
-## **Validate Mail Server Credentials Without Sending Email**
+## **Validate Mail Server Credentials**
 
 The [ValidateCredentials](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/validatecredentials) method of Aspose.Email API makes the validation of mail server credentials possible without sending an email. This method is responsible for verifying the authenticity and validity of the provided email credentials, being used for authentication when connecting to the server.
 
