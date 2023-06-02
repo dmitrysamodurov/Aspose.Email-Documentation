@@ -1,11 +1,9 @@
 ---
 title: Utility Features - IMAP Client
 type: docs
-weight: 10
+weight: 100
 url: /net/utility-features-imap-client/
 ---
-
-# Utility Features - IMAP Client
 
 ## **Validate Mail Server Credentials**
 

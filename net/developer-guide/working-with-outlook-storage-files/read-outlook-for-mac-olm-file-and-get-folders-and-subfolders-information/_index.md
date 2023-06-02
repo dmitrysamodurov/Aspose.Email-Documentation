@@ -1,5 +1,5 @@
 ---
-title: Read Outlook for Mac OLM File & Get Folders & SubFolders Information
+title: Read Outlook for Mac OLM File
 type: docs
 weight: 120
 url: /net/read-outlook-for-mac-olm-file-and-get-folders-and-subfolders-information/
@@ -56,7 +56,7 @@ private void PrintAllFolders(List<OlmFolder> folderHierarchy, string indent)
         PrintAllFolders(folder.SubFolders, indent+"-");
     }
 }
-``` 
+```
 
 When using the [FromFile](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/fromfile/) method to open an OLM file, the [FolderHierarchy](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/folderhierarchy/) property will not be initialized by default and will return null. In this case, call the GetFolders method explicitly to initialize the [FolderHierarchy](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/folderhierarchy/) property and retrieve the list of directories in the OLM file:
 
@@ -84,8 +84,8 @@ using (var olm = OlmStorage.FromFile(fileName))
 
 [OlmFolder](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmfolder/) class, which represents a folder, has the following methods to get the list of emails:
 
-- [EnumerateMessages]() implements iteration of emails in a folder. In this case, every iteration returns [OlmMessageInfo](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmmessageinfo/) object, which provides short info about email.
-- [EnumerateMapiMessages](), also implements iteration of emails in a folder, but in this case, every iteration returns [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) object, which represents the email itself, with all properties.
+- [EnumerateMessages](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmfolder/enumeratemessages/) implements iteration of emails in a folder. In this case, every iteration returns [OlmMessageInfo](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmmessageinfo/) object, which provides short info about email.
+- [EnumerateMapiMessages](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmfolder/enumeratemapimessages/), also implements iteration of emails in a folder, but in this case, every iteration returns [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) object, which represents the email itself, with all properties.
 
 ### **Using EnumerateMessages method**
 
@@ -206,7 +206,7 @@ public static void PrintMessageCount(List<OlmFolder> folders)
   
 Sometimes it is required to extract selected messages by identifiers. For example, your application stores identifiers in a database and extracts a message on demand. This is the efficient way to avoid traversing through the entire storage each time to find a specific message to extract. This feature is available for OLM storages.
 
-The code below shows how to extract messages from OLM by identifiers. 
+The code below shows how to extract messages from OLM by identifiers.
 
 The code performs the following steps:
 
