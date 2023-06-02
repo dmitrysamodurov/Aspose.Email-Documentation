@@ -103,3 +103,24 @@ Emails can be filtered based on case-sensitivity by specifying the IgnoreCase fl
 ## **Filtering Messages with Paging Support**
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Exchange_EWS-FilterMessagesOnCriteriaUsingEWS-FilterMessagesWithPagingSupport.cs" >}}
+
+## **Sorting filtered messages in ascending/descending order**
+
+Email filtering can be supported with sorting of messages in ascending/descending order. In this case, [OrderBy](https://reference.aspose.com/email/net/aspose.email.tools.search/comparisonfield/orderby/) method is used to specify the order in which the results of an email search are sorted using the MailQueryBuilder class. This method allows you to define sorting criteria for a search query, specifying whether the results should be sorted in ascending or descending order based on a particular property.
+
+The method accepts the ascending parameter, which specifies the sort order for the specified property. If the ascending parameter is true, it means that the search results should be sorted in ascending order. Conversely, if the ascending parameter is false, it means that the search results should be sorted in descending order.
+
+```cs
+MailQueryBuilder builder = new MailQueryBuilder();
+builder.Subject.Contains("Report");
+builder.InternalDate.Since(new DateTime(2020, 1, 1));
+builder.Subject.OrderBy(true); // sort the subject ascending
+builder.InternalDate.OrderBy(false); // sort the date descending
+
+MailQuery query = builder.GetQuery();
+
+// Get list of messages
+ExchangeMessageInfoCollection messages = client.ListMessages(client.MailboxInfo.InboxUri, query, false);
+```
+
+In the above code snippet, the OrderBy method is applied twice, once for the subject and once for the date of the emails. As a result of executing the ListMessages method with the passed request, we will get a list of messages with the subject containing the word "Report" which were received on the specified date or later. At the same time, the results will be sorted by subject in ascending order. This means that the messages will be sorted alphabetically from A to Z, depending on their subject. Also, the results will be sorted by date in descending order. This means that posts will be ordered from newest to oldest.

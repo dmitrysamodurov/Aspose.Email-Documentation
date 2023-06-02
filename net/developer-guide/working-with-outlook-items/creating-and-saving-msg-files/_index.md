@@ -60,8 +60,35 @@ Emails are saved as drafts when someone has started editing them but wants to re
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-SavingMessageInDraftStatus-SavingMessageInDraftStatus.cs" >}}
 
-## **Implications of Body Compression**
+## **RTF compression when setting the MAPI message body**
 
-The RTF body compression method can be used to generate a smaller size MSG. However, this results in slower creation speed. To create messages with improved speed, set the flag to **false**. This flag, in turn, has an effect on the created PSTs: smaller MSG files result in smaller PST, and large MSG files result in slower PST creation.
+In this section you will learn how to use RTF compression when installing the MAPI message body. RTF compression is intended to reduce the size of a message as well as the resulting PST (Personal Storage Table) files that Microsoft Outlook uses to store e-mail messages and other data. By using RTF compression when configuring the message body, developers can reduce the amount of memory needed to store e-mail messages or optimize network bandwidth when transmitting messages.
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-SetBodyCompression-SetBodyCompression.cs" >}}
+For this purpose, there have been designed two overloaded methods:
+
+- [MapiMessageItemBase.SetBodyContent](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessageitembase/setbodycontent/)(string content, BodyContentType contentType, bool compression): This method lets you set the message body content using the specified string content and specifying the body contentType (for example, plain text, HTML, etc.). The optional compression parameter is a value that specifies whether the content should be compressed using RTF compression. If the compression parameter is true, the content will be compressed, resulting in a smaller message size.
+
+- [MapiMessageItemBase.SetBodyRtf](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessageitembase/setbodyrtf/)(string content, bool compression): This method specifically sets the content of the message body in RTF format. The content parameter is a string representing the RTF content that will be set as the message body. As in the previous method, the compression parameter determines whether RTF compression should be applied to the content. If compression is true, the RTF content will be compressed to reduce the size.
+
+The following code sample shows how to set html body and keep it compressed:
+
+```cs
+var msg = new MapiMessage("from@doamin.com", "to@domain.com", "subject", "body");
+// set the html body and keep it compressed
+// this will reduce the message size
+msg.SetBodyContent(htmlBody, BodyContentType.Html, true);
+```
+
+There is also a [MapiConversionOptions.UseBodyCompression](https://reference.aspose.com/email/net/aspose.email.mapi/mapiconversionoptions/usebodycompression/) property. When this property is enabled, RTF body compression is applied during MailMessage to MapiMessage conversion, resulting in a smaller MSG file size. It is shown in the code sample below:
+
+```cs
+var message = MailMessage.Load(fileName);
+var options = new MapiConversionOptions();
+options.UseBodyCompression = true;
+var msg = MapiMessage.FromMailMessage(message, options);
+```
+
+Please, note that the compression process can slow down performance when creating messages.
+
+By understanding this fact and configuring the compression flag based on specific requirements and compromise between the file size and performance, developers can effectively manage the creation of MSG and PST files when dealing with email messages.
+
