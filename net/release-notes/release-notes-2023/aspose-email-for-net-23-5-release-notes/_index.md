@@ -31,7 +31,7 @@ This page contains release notes information for Aspose.Email for .NET 23.5
 
 ## **New Enhancements**
 
-### **Adding the Appoinment.Version property**
+### **Adding the Appointment.Version property**
 
 The Appointment class now includes a Version property, which enables users to retrieve the version of their ICS/VCS files. This property assists to determine which version their files are based on, ensuring integration with other systems and apps.
 
@@ -48,7 +48,7 @@ if (app.Version == 1.0)
 
 ### **Adding the VCardSaveOptions**
 
-We are added the new class to our API: VCardSaveOptions. This class enhances the capabilities of VCard contact management, allowing users to customize the saving behavior when working with vCard files.
+We added the new class to our API: VCardSaveOptions. This class enhances the capabilities of VCard contact management, allowing users to customize the saving behavior when working with vCard files.
 
 VCardSaveOptions class has the following properties:
 
