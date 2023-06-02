@@ -1,7 +1,7 @@
 ---
 title: Utility Features - POP3 Client
 type: docs
-weight: 100
+weight: 10
 url: /net/utility-features-pop3-client/
 ---
 
