@@ -62,6 +62,8 @@ Emails are saved as drafts when someone has started editing them but wants to re
 
 ## **RTF compression when setting the MAPI message body**
 
+> **_NOTE:_** The compression process can slow down performance when creating messages. By understanding this fact and configuring the compression flag based on specific requirements and compromise between the file size and performance, developers can effectively manage the creation of MSG and PST files when dealing with email messages.
+
 In this section you will learn how to use RTF compression when setting the MAPI message body. RTF compression is intended to reduce the size of a message as well as the resulting PST (Personal Storage Table) files that Microsoft Outlook uses to store e-mail messages and other data. By using RTF compression when configuring the message body, developers can reduce the amount of memory needed to store e-mail messages or optimize network bandwidth when transmitting messages.
 
 For this purpose, there have been designed two overloaded methods:
@@ -87,6 +89,3 @@ var options = new MapiConversionOptions();
 options.UseBodyCompression = true;
 var msg = MapiMessage.FromMailMessage(message, options);
 ```
-
-> **_NOTE:_** The compression process can slow down performance when creating messages. By understanding this fact and configuring the compression flag based on specific requirements and compromise between the file size and performance, developers can effectively manage the creation of MSG and PST files when dealing with email messages.
-

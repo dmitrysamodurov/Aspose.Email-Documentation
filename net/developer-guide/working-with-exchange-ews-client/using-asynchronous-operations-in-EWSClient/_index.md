@@ -72,16 +72,16 @@ await ewsClient.SendAsync(message, cancellationToken: cancellationToken);
 
 To fetch an email message asynchronously, use the following code example with the steps described below:
 
-1. Call the [FetchItemAsync](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iasyncewsclient/fetchitemasync/) method of an EWSclient. The method takes two parameters: 
+1. Call the [FetchItemAsync](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iasyncewsclient/fetchitemasync/) method of an EWSclient. The method takes two parameters:
 
-- `messageUri` is a string representing the URI of the message to fetch
-- `cancellationToken` is an optional parameter that can be used to cancel the asynchronous operation. The method returns a Task object that resolves to a [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) object when the asynchronous operation is complete. The "await" keyword is used to wait for the Task object to complete before proceeding.
+   - `messageUri` is a string representing the URI of the message to fetch
+   - `cancellationToken` is an optional parameter that can be used to cancel the asynchronous operation. The method returns a Task object that resolves to a [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) object when the asynchronous operation is complete. The "await" keyword is used to wait for the Task object to complete before proceeding.
 
 2. Assign to the `fetched` variable the result of the completed Task, which is a [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) object containing the fetched message data.
 
-```cs
-var fetched = await ewsClient.FetchItemAsync(messageUri, cancellationToken: cancellationToken);
-```
+   ```cs
+      var fetched = await ewsClient.FetchItemAsync(messageUri, cancellationToken: cancellationToken);
+   ```
 
 ## Appending Messages
 
@@ -90,9 +90,9 @@ The code example below is attempting to append email messages asynchronously. Th
 1. Calls the [AppendMessagesAsync](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/appendmessagesasync/) method of an [EWSclient](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/ewsclient/) object. The method takes an [EwsAppendMessage](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice.models/ewsappendmessage/) object that contains paremeters: the messages to append, the target folder URI, and the cancellation token.
 2. Creates the [EwsAppendMessage](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice.models/ewsappendmessage/) object using the [Create](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice.models/ewsappendmessage/create/) method and configures it with the following method calls:
 
-- [AddMessage](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice.models/ewsappendmessage/addmessage/) adds a message to the append operation.
-- [SetFolder](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice.models/ewsappendmessage/setfolder/) sets the target folder URI for the append operation.
-- [SetCancellationToken](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice.models/ewsappendmessage/setcancellationtoken/) sets the cancellation token that can be used to cancel the asynchronous operation.
+   - [AddMessage](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice.models/ewsappendmessage/addmessage/) adds a message to the append operation.
+   - [SetFolder](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice.models/ewsappendmessage/setfolder/) sets the target folder URI for the append operation.
+   - [SetCancellationToken](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice.models/ewsappendmessage/setcancellationtoken/) sets the cancellation token that can be used to cancel the asynchronous operation.
 
 3. The [AppendMessagesAsync]((https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/appendmessagesasync/)) method returns a Task object that resolves to an IEnumerable<string> object when the asynchronous operation is complete. The "await" keyword is used to wait for the Task object to complete before proceeding.
 4. The `uris` variable is assigned the result of the completed Task, which is an IEnumerable<string> object containing the URIs of the appended messages.
@@ -112,11 +112,11 @@ The code sample below shows how to copy items and performs the following steps:
 
 1. Calls the [CopyItemAsync](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iasyncewsclient/copyitemasync/) method of an [EWSClient](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/ewsclient/) object. The method takes three parameters: 
 
-- `messageUri` is a string representing the URI of the message to copy 
-- `destinationFolderUri` is a string representing the URI of the destination folder
-- `cancellationToken` is an optional parameter that can be used to cancel the asynchronous operation. 
+   - `messageUri` is a string representing the URI of the message to copy 
+   - `destinationFolderUri` is a string representing the URI of the destination folder
+   - `cancellationToken` is an optional parameter that can be used to cancel the asynchronous operation. 
 
-The method returns a Task object that resolves to a string when the asynchronous operation is complete. The "await" keyword is used to wait for the Task object to complete before proceeding.
+   The method returns a Task object that resolves to a string when the asynchronous operation is complete. The "await" keyword is used to wait for the Task object to complete before proceeding.
 
 2. `newItemUri` variable is assigned the result of the completed Task, which is a string containing the URI of the newly created copy of the message.
 
@@ -144,7 +144,7 @@ await ewsClient.DeleteItemAsync(newItemUri, DeletionOptions.DeletePermanently, c
 
 The following code is attempting to delete a folder asynchronously.
 
-It calls the [DeleteFolderAsync](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/deletefolderasync/) method of an EWSClient object. The method takes three parameters: 
+It calls the [DeleteFolderAsync](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/deletefolderasync/) method of an EWSClient object. The method takes three parameters:
 
 - `folderUri` is a string representing the URI of the folder to delete
 - `deletePermanently` specifies whether to delete the folder permanently or move it to the "Deleted Items" folder

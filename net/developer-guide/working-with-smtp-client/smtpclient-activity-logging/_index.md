@@ -5,69 +5,31 @@ weight: 26
 url: /net/smtpclient-activity-logging/
 ---
 
-
-## **Enable Activity Logging using App.config File**
-
-SMTP client activity can be logged by modifying the configSections in the config file. Diagnostics logging can be performed with the following steps:
-
-1. Add a sectionGroup called "applicationSettings".
-2. Add a section called "Aspose.Email.Properties.Settings".
-3. Include the setting with the name SmtpDiagonosticLog where the file name is defined in the applicationSettings/Aspose.Email.Properties.Settings
-
-Here is a sample form based application which uses [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) to send an email. This whole activity is logged by modifying the App.config file. Create a form application with a single button on it. Add the following code for button’s click:
-
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-SMTP-SMTPClientActivityLogging-SMTPClientActivityLogging.cs" >}}
-
-4. Add reference to Aspose.Email.
-
-|![todo:image_alt_text](utility-features-smtp-client_1.png)|
-| :- |
-
-5. Add the App.Config file and modify it in such a way that file contents are as follows
-
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-App-SMTPClientActivityLogging.config" >}}
-
-- For C# .NET use the following option
-
-|![todo:image_alt_text](utility-features-smtp-client_2.png)|
-| :- |
-
-- For VB .NET use the following option
-
-|![todo:image_alt_text](utility-features-smtp-client_2.png)| |![todo:image_alt_text](utility-features-smtp-client_4.png)|
-| :- | :- | :- |
-
-|![todo:image_alt_text](utility-features-smtp-client_5.png)|
-| :- |
-
-6. Run the code and then observe the debug folder. The following file will be generated.
-
-|![todo:image_alt_text](utility-features-smtp-client_6.png)|
-| :- |
+Activity logging is used for debugging, as well as for collecting and analyzing working information about the SMTP client.
 
 ## **Enable Activity Logging using appsettings.json File**
 
-This option is preferred for .NET Core applications.
+> **_NOTE:_** This option is preferred for .NET Core applications.
 
 Logging in [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) can be enabled with the following steps and code samples:
 
 1. Add an appsettings.json configuration file to a C# project, if it has not been added before. 
 2. Make sure that the project file contains the following lines in the ItemGroup section.
 
-```xml
-   <Content Include="appsettings.json">
-       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-   </Content>
-```
+   ```xml
+      <Content Include="appsettings.json">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+   ```
 
 3. Then, add the following content to the appsettings.json file.
 
-```json
-   {
-     "SmtpDiagnosticLog": "smtp.log",
-     "SmtpDiagnosticLog_UseDate": true
-   }
-```
+   ```json
+      {
+        "SmtpDiagnosticLog": "smtp.log",
+        "SmtpDiagnosticLog_UseDate": true
+      }
+   ```
 
 The two properties mentioned above are:
 
@@ -107,3 +69,42 @@ Logging in [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clie
        client.Send(eml);
    }
 ```
+
+## **Enable Activity Logging using App.config File**
+
+SMTP client activity can be logged by modifying the configSections in the config file. Diagnostics logging can be performed with the following steps:
+
+1. Add a sectionGroup called "applicationSettings".
+2. Add a section called "Aspose.Email.Properties.Settings".
+3. Include the setting with the name SmtpDiagonosticLog where the file name is defined in the applicationSettings/Aspose.Email.Properties.Settings
+
+Here is a sample form based application which uses [SmtpClient](https://apireference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient) to send an email. This whole activity is logged by modifying the App.config file. Create a form application with a single button on it. Add the following code for button’s click:
+
+{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-SMTP-SMTPClientActivityLogging-SMTPClientActivityLogging.cs" >}}
+
+4. Add reference to Aspose.Email.
+
+|![todo:image_alt_text](utility-features-smtp-client_1.png)|
+| :- |
+
+5. Add the App.Config file and modify it in such a way that file contents are as follows
+
+{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-App-SMTPClientActivityLogging.config" >}}
+
+- For C# .NET use the following option
+
+|![todo:image_alt_text](utility-features-smtp-client_2.png)|
+| :- |
+
+- For VB .NET use the following option
+
+|![todo:image_alt_text](utility-features-smtp-client_2.png)| |![todo:image_alt_text](utility-features-smtp-client_4.png)|
+| :- | :- | :- |
+
+|![todo:image_alt_text](utility-features-smtp-client_5.png)|
+| :- |
+
+6. Run the code and then observe the debug folder. The following file will be generated.
+
+|![todo:image_alt_text](utility-features-smtp-client_6.png)|
+| :- |
