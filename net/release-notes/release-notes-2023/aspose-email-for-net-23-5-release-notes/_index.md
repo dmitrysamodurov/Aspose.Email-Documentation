@@ -26,7 +26,6 @@ This page contains release notes information for Aspose.Email for .NET 23.5
 |EMAILNET-41047|Custom header not rendered in MHT|Bug|
 |EMAILNET-41060|MSG to MHTML: Incorrect styling and formatting|Bug|
 |EMAILNET-41051|Exception in Appointment from Mapi to Ics|Bug|
-|EMAILNET-41049|NullReferenceException when save vcard|Bug|
 |EMAILNET-41046|System.NullReferenceException raised when save vcf to msg|Bug|
 
 ## **New Enhancements**
