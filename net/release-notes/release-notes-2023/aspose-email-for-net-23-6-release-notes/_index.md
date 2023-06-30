@@ -66,7 +66,7 @@ This page contains release notes information for Aspose.Email for .NET 23.6
    var msg = MapiMessage.Load(fileName, new EmlLoadOptions() { RemoveSignature = true});
    ```
    
-### ** API Enhancement: Secure Email Signature Checking**
+### **API Enhancement: Secure Email Signature Checking**
 
 - Added a new `SecureEmailManager` class for checking the signature of secure emails.
    You can now check the signature of [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) and [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) objects.
