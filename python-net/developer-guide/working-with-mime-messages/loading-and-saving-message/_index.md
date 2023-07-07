@@ -9,11 +9,11 @@ url: /python-net/loading-and-saving-message/
 ## **Detecting File Formats**
 Aspose.Email API provides the capability to detect file format of provided message file. The DetectFileFormat method of FileFormatUtil class can be used to achieve this. The following classes and methods can be used to detect the loaded file format.
 
-- Class Aspose.Email.FileFormatType
-- Class Aspose.Email.FileFormatInfo
-- Class Aspose.Email.FileFormatUtil
-- Method Aspose.Email.FileFormatUtil.DetectFileFormat(Stream)
-- Method Aspose.Email.FileFormatUtil.DetectFileFormat(String)
+- Enum [FileFormatType](https://reference.aspose.com/email/python-net/aspose.email/fileformattype/)
+- Class [FileFormatInfo](https://reference.aspose.com/email/python-net/aspose.email/fileformatinfo/)
+- Class [FileFormatUtil](https://reference.aspose.com/email/python-net/aspose.email.tools/fileformatutil/)
+- Method detect_file_format(stream)
+- Method detect_file_format(file_path)
 
 The following code snippet shows you how to detecting file formats.
 
@@ -66,7 +66,7 @@ file_format = FileFormatUtil.detect_file_format(mail.attachments[0].content_stre
 print("Embedded message file format: " + str(file_format))
 ```
 ## **Saving and Converting Messages**
-Aspose.Email makes it easy to convert any message type to another format. To demonstrate this feature, the code in this article loads three types of messages from disk and saves them back in other formats. The base class SaveOptions and the classes EmlSaveOptions, MsgSaveOptions, MhtSaveOptions, HtmlSaveOptions for additional settings when saving MailMessage can be used for saving messages to other formats. The article shows how to use these classes to save a sample email as:
+Aspose.Email makes it easy to convert any message type to another format. To demonstrate this feature, the code in this article loads three types of messages from disk and saves them back in other formats. The base class [SaveOptions](https://reference.aspose.com/email/python-net/aspose.email/saveoptions/) and the classes [EmlSaveOptions](https://reference.aspose.com/email/python-net/aspose.email/emlsaveoptions/), [MsgSaveOptions](https://reference.aspose.com/email/python-net/aspose.email/msgsaveoptions/), [MhtSaveOptions](https://reference.aspose.com/email/python-net/aspose.email/mhtsaveoptions/), [HtmlSaveOptions](https://reference.aspose.com/email/python-net/aspose.email/htmlsaveoptions/) for additional settings when saving [MailMessage](https://reference.aspose.com/email/python-net/aspose.email/mailmessage/) can be used for saving messages to other formats. The article shows how to use these classes to save a sample email as:
 
 - EML format.
 - Outlook MSG.
@@ -111,7 +111,7 @@ eml_save_options.file_compatibility_mode = FileCompatibilityMode.PRESERVE_TNEF_A
 mail_message.save(data_dir + "PreserveTNEFAttachment_out.eml", eml_save_options)
 ```
 ### **Loading EML, Saving to MSG**
-The following code snippet shows you how to loads an EML message and converts it to MSG using the appropriate option from SaveOptions.
+The following code snippet shows you how to loads an EML message and converts it to MSG using the appropriate option from [SaveOptions](https://reference.aspose.com/email/python-net/aspose.email/saveoptions/).
 
 ```py
 from aspose.email import MailMessage, SaveOptions, MailMessageSaveType, FileCompatibilityMode
@@ -123,7 +123,7 @@ eml = MailMessage.load(data_dir + "message.eml")
 eml.save(data_dir + "AnEmail_out.msg", SaveOptions.default_msg_unicode)
 ```
 ### **Saving as MSG with Preserved Dates**
-The MsgSaveOptions class allows you to save the source message as an Outlook Message file (MSG) preserving dates. The following code snippet shows you how to Saving as MSG with Preserved Dates.
+The [MsgSaveOptions](https://reference.aspose.com/email/python-net/aspose.email/msgsaveoptions/) class allows you to save the source message as an Outlook Message file (MSG) preserving dates. The following code snippet shows you how to Saving as MSG with Preserved Dates.
 
 ```py
 from aspose.email import MailMessage, MsgSaveOptions, MailMessageSaveType, FileCompatibilityMode
@@ -138,7 +138,7 @@ msg_save_options.preserve_original_dates = True
 eml.save(data_dir + "outTest_out.msg", msg_save_options)
 ```
 ### **Saving MailMessage as MHTML**
-Different options of MHTML can be used to obtain the desired results. The following code snippet shows you how to loads an EML message into MailMessage and converts it to MHTML.
+Different options of MHTML can be used to obtain the desired results. The following code snippet shows you how to loads an EML message into[MailMessage](https://reference.aspose.com/email/python-net/aspose.email/mailmessage/) and converts it to MHTML.
 
 ```py
 from aspose.email import MailMessage, SaveOptions, MailMessageSaveType, FileCompatibilityMode
@@ -150,17 +150,23 @@ eml.save(data_dir + "AnEmail_out.mhtml", SaveOptions.default_mhtml)
 ```
 #### **Converting to MHTML with Optional Settings**
 
-The MhtSaveOptions class provides additional options for saving email messages to MHTML format. The enumerator MhtFormatOptions makes it possible to write additional email information to the output MHTML. The following additional fields can be written:
+The [MhtSaveOptions](https://reference.aspose.com/email/python-net/aspose.email/mhtsaveoptions/) class provides additional options for saving email messages to MHTML format. The enumerator [MhtFormatOptions](https://reference.aspose.com/email/python-net/aspose.email/mhtformatoptions/) makes it possible to write additional email information to the output MHTML. The following additional fields can be written:
 
-- WriteHeader – writes the email header to the output file.
-- WriteOutlineAttachments – writes outline attachments to the output file.
-- WriteCompleteEmailAddressToMht – writes complete email address to the output file.
-- WriteCompleteEmailAddress – writes complete email address to the output file.
-- HideExtraPrintHeader – hides extra print header from the top of output file.
-- WriteCompleteToEmailAddressToMht – writes the complete recipient email address to the output file.
-- WriteCompleteFromEmailAddressToMht – writes the complete sender email address to the output file.
-- WriteCompleteCcEmailAddressToMht – writes the complete email addresses of any carbon-copied recipients to the output file.
-- WriteCompleteBccEmailAddressToMht – writes the complete email address of any blind carbon-copied recipients to the output file.
+ - NONE - No specific settings are specified.
+ - WRITE_HEADER - Indicates that header information should be written.
+ - WRITE_OUTLINE_ATTACHMENTS - Indicates that outline attachments should be written.
+ - WRITE_COMPLETE_EMAIL_ADDRESS - Indicates that complete e-mail address should be written in all email headers.
+ - NO_ENCODE_CHARACTERS - Indicates that no transfer encoding of characters should be used.
+ - HIDE_EXTRA_PRINT_HEADER - Indicates that PageHeader will be unvisible.
+ - WRITE_COMPLETE_TO_EMAIL_ADDRESS - Indicates that complete e-mail address should be written in ‘To’ header.
+ - WRITE_COMPLETE_FROM_EMAIL_ADDRESS - Indicates that complete e-mail address should be written in ‘From’ header.
+ - WRITE_COMPLETE_CC_EMAIL_ADDRESS - Indicates that complete e-mail address should be written in ‘Cc’ header.
+ - WRITE_COMPLETE_BCC_EMAIL_ADDRESS - Indicates that complete e-mail address should be written in ‘Bcc’ header.
+ - RENDER_CALENDAR_EVENT - Indicates that text from calendar event should be written in output mhtml.
+ - SKIP_BYTE_ORDER_MARK_IN_BODY - Indicates that Byte Order Mark(BOM) bytes should be written to body.
+ - RENDER_V_CARD_INFO - Indicates that text from VCard AlternativeView should be written in output mhtml.
+ - DISPLAY_AS_OUTLOOK - Indicates that From header will be displayed as in Outlook.
+ - RENDER_TASK_FIELDS - Indicates that the specific Task fields should be written in output mhtml.
 
 The following code snippet shows you how to converting eml file to MHTML with optional settings.
 
@@ -184,16 +190,7 @@ mht_save_options.check_body_content_encoding = True
 eml.save(data_dir + "outMessage_out.mht", mht_save_options)
 ```
 #### **Rendering Calendar Events while Converting to MHTML**
-The MhtFormatOptions.RenderCalendarEvent renders the Calendar events to the output MTHML. Furthermore, the formatting of the output MHTML can be controlled by various properties available as part of MhtMessageFormatter class. The following options are available to format the calendar event output to MHTML, 
-
-- MhtMessageFormatter.StartFormat - Gets or sets the Start format.
-- MhtMessageFormatter.EndFormat - Gets or sets the End format.
-- MhtMessageFormatter.ShowTimeAsFormat - Gets or sets the ShowTimeAs format.
-- MhtMessageFormatter.RecurrenceFormat - Gets or sets the Recurrence format.
-- MhtMessageFormatter.RecurrencePatternFormat - Gets or sets the RecurrencePattern format.
-- MhtMessageFormatter.OrganizerFormat - Gets or sets the Organizer format.
-- MhtMessageFormatter.RequiredAttendeesFormat - Gets or sets the RequiredAttendees format.
-
+The [MhtFormatOptions.RenderCalendarEvent](https://reference.aspose.com/email/python-net/aspose.email/mhtformatoptions/) renders the Calendar events to the output MTHML.
 The following code snippet shows you how to render calendar events while converting to MHTML.
 
 ```py
@@ -227,7 +224,7 @@ mht_save_options.skip_inline_images = True
 eml.save(data_dir + "EmlToMhtmlWithoutInlineImages_out.mht", mht_save_options)
 ```
 #### **Exporting Email to MHT with customized TimeZone**
-MailMessage class provides the TimeZoneOffset property to set customized Timezone while exporting to MHT. The following code snippet shows you how to export an email to MHT with customized TimeZone.
+[MailMessage](https://reference.aspose.com/email/python-net/aspose.email/mailmessage/) class provides the TimeZoneOffset property to set customized Timezone while exporting to MHT. The following code snippet shows you how to export an email to MHT with customized TimeZone.
 
 ```py
 from aspose.email import MailMessage, MhtSaveOptions, MhtFormatOptions, MhtTemplateName, MailMessageSaveType, FileCompatibilityMode
@@ -257,7 +254,7 @@ msg = MailMessage.load(data_dir + "message.eml")
 msg.save(data_dir + "ExporttoEml_out.eml", SaveOptions.default_eml)
 ```
 ### **Saving Message as HTML**
-The HtmlSaveOptions class allows you to export the message body to HTML with the option to save embedded resources. The following code snippet shows you how to Saving Message as HTML where the default value of EmbedResources is true.
+The [HtmlSaveOptions](https://reference.aspose.com/email/python-net/aspose.email/htmlsaveoptions/) class allows you to export the message body to HTML with the option to save embedded resources. The following code snippet shows you how to Saving Message as HTML where the default value of embed_resources is true.
 
 ```py
 from aspose.email import MailMessage, SaveOptions, HtmlSaveOptions, HtmlFormatOptions
