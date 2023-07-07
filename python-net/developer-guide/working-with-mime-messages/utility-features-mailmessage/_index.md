@@ -24,7 +24,7 @@ for attachment in eml.attachments:
 ```
 
 ### **Creating TNEF EML from MSG**
-Outlook MSGs sometimes contain information such as tables and text styles that may get disturb if these are converted to EML. Creating TNEF messages from such MSG files allows to retain the formatting and even send such messages via the email clients retaining the formatting. The InterpretAsTnef property is used to achieve this. The following code snippet shows you how to creating TNEF eML from MSG.
+Outlook MSGs sometimes contain information such as tables and text styles that may get disturb if these are converted to EML. Creating TNEF messages from such MSG files allows to retain the formatting and even send such messages via the email clients retaining the formatting. The convert_as_tnef property is used to achieve this. The following code snippet shows you how to creating TNEF eML from MSG.
 
 ```py
 from aspose.email.mapi import MapiMessage, MailConversionOptions, OutlookMessageFormat
@@ -58,7 +58,7 @@ mail = MailMessage.load(data_dir + "message.eml")
 is_tnef = mail.original_is_tnef
 ```
 ## **Processing of Bounced Messages**
-It is very common that a message sent to a recipient may bounce for any reason such as invalid recipient address. Aspose.Email API has the capability to process such a message for checking if it is a bounced email or a regular email message. The  MailMesage's CheckBounced method returns a valid result if the email message is a bounced email. This article shows the usage of BounceResult class that provides the capability of checking if a message is a bounced email. It further gives detailed information about the recipients, action taken and the reason about the notification. The following code snippet shows you how to process bounced messages.
+It is very common that a message sent to a recipient may bounce for any reason such as invalid recipient address. Aspose.Email API has the capability to process such a message for checking if it is a bounced email or a regular email message. The  MailMesage's check_bounced method returns a valid result if the email message is a bounced email. This article shows the usage of [BounceResult](https://reference.aspose.com/email/python-net/aspose.email.bounce/bounceresult/) class that provides the capability of checking if a message is a bounced email. It further gives detailed information about the recipients, action taken and the reason about the notification. The following code snippet shows you how to process bounced messages.
 
 ```py
 from aspose.email import MailMessage, SaveOptions, MsgLoadOptions, MessageFormat, FileCompatibilityMode
