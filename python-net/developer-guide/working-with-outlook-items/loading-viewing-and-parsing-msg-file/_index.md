@@ -15,20 +15,79 @@ Parse email files online with the free [**Aspose.Email Parser App**](https://pro
 ## **Loading MSG Files**
 The following code snippet shows you how to load MSG files.
 
+```py
+from aspose.email.mapi import MapiMessage
 
+# Create an instance of MapiMessage from file
+msg = MapiMessage.from_file("message.msg")
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Outlook-LoadMSGFiles-LoadMSGFiles.cs" >}}
+# Get subject
+print("Subject: " + msg.subject)
+
+# Get from address
+print("From: " + msg.sender_email_address)
+
+# Get body
+print("Body: " + msg.body)
+
+# Get recipients information
+recipients = ", ".join([r.email_address for r in msg.recipients])
+print("Recipients: " + recipients)
+
+# Get attachments
+for att in msg.attachments:
+    print(att.file_name)
+    print(att.display_name)
+```
 ## **Loading from Stream**
 The following code snippet shows you how to load file from stream.
 
+```py
+from aspose.email.mapi import MapiMessage
+import io
 
+# Read the file into a byte array
+file_path = dir_path + "message.msg"
+with open(file_path, "rb") as file:
+    bytes_data = file.read()
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Outlook-LoadingFromStream-LoadingFromStream.cs" >}}
+# Create a memory stream from the byte array
+stream = io.BytesIO(bytes_data)
+stream.seek(0)
 
+# Create an instance of MapiMessage from the stream
+msg = MapiMessage.from_stream(stream)
+
+# Get subject
+print("Subject: " + msg.subject)
+
+# Get from address
+print("From: " + msg.sender_email_address)
+
+# Get body
+print("Body: " + msg.body)
+```
 
 ## **Converting EML to MSG preserving embedded EML format**
 EML files can be loaded into MapiMessage class by instantiating a MailMessage object and passing it to MapiMessage.FromMailMessage method. If the EML file contains embedded EML files, use MapiConversionOptions.PreserveEmbeddedMessageFormat to retain the format of embedded EML files. The below code snippet shows how to laod EML files into MapiMessage while preserving format of embedded EML files.
 
+```py
+from aspose.email import MailMessage, EmlLoadOptions
+from aspose.email.mapi import MapiMessage, MapiConversionOptions, OutlookMessageFormat
 
+eml_file = dir_path + "message.eml"
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Email-PreservingEmbeddedMsgFormat-PreservingEmbeddedMsgFormat.cs" >}}
+# Load the EML file
+eml_options = EmlLoadOptions()
+eml = MailMessage.load(eml_file, eml_options)
+
+# Create MapiConversionOptions
+conversion_options = MapiConversionOptions()
+conversion_options.format = OutlookMessageFormat.UNICODE
+
+# Preserve Embedded Message Format
+conversion_options.preserve_embedded_message_format = True
+
+# Convert EML to MSG with options
+msg = MapiMessage.from_mail_message(eml, conversion_options)
+```
