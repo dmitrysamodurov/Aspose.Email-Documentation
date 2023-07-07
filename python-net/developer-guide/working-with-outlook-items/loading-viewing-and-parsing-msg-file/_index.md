@@ -6,7 +6,7 @@ url: /python-net/loading-viewing-and-parsing-msg-file/
 ---
 
 
-This topic explains how to load a Microsoft Outlook Messagefile (*.msg). The MapiMessage class is used to load MSG files, and provides several static loading functions for different scenarios. The following code snippet shows you how to load MSG files from file or from stream.
+This topic explains how to load a Microsoft Outlook Messagefile (*.msg). The [MapiMessage](https://reference.aspose.com/email/python-net/aspose.email.mapi/mapimessage/) class is used to load MSG files, and provides several static loading functions for different scenarios. The following code snippet shows you how to load MSG files from file or from stream.
 {{% alert %}}
 **Try it out!**
 
@@ -69,7 +69,7 @@ print("Body: " + msg.body)
 ```
 
 ## **Converting EML to MSG preserving embedded EML format**
-EML files can be loaded into MapiMessage class by instantiating a MailMessage object and passing it to MapiMessage.FromMailMessage method. If the EML file contains embedded EML files, use MapiConversionOptions.PreserveEmbeddedMessageFormat to retain the format of embedded EML files. The below code snippet shows how to laod EML files into MapiMessage while preserving format of embedded EML files.
+EML files can be loaded into [MapiMessage](https://reference.aspose.com/email/python-net/aspose.email.mapi/mapimessage/) class by instantiating a [MailMessage](https://reference.aspose.com/email/python-net/aspose.email/mailmessage/) object and passing it to MapiMessage.from_mail_message method. If the EML file contains embedded EML files, use MapiConversionOptions.PreserveEmbeddedMessageFormat to retain the format of embedded EML files. The below code snippet shows how to laod EML files into MapiMessage while preserving format of embedded EML files.
 
 ```py
 from aspose.email import MailMessage, EmlLoadOptions
