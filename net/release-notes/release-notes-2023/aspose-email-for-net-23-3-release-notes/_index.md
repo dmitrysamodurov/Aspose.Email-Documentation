@@ -35,7 +35,7 @@ This page contains release notes information for Aspose.Email for .NET 23.3
 
 ## **New Features**
 
-### **Provide method to get Get Total Items Count of PersonalStorage**
+### **Provide method to get Get Total Items Count of OlmStorage**
 
 We have added the `GetTotalItemsCount()` method to [OlmStorage](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/) class. It returns the total number of message items contained in the OLM storage.
 
