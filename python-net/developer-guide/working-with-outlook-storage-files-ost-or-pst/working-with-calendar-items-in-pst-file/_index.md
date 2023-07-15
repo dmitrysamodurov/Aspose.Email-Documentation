@@ -11,12 +11,10 @@ Create a New PST File and Add Subfolders showed how to create a PST file and add
 
 1. Create a MapiCalendar object.
 1. Set the MapiCalendar properties using a constructor and methods.
-1. Create a PST using the PersonalStorage.Create() method.
-1. Create a pre-defined folder (Calendar) at the root of the PST file by accessing the root folder and then calling the AddMapiMessageItem() method.
+1. Create a PST using the PersonalStorage.create() method.
+1. Create a pre-defined folder (Calendar) at the root of the PST file by accessing the root folder and then calling the add_mapi_message_item() method.
 
 The following code snippet shows you how to create a MapiCalendar and then add it to the calendar folder of a newly created PST file.
-
-
 
 {{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-WorkingWithOutlookStorageFiles-AddMapiCalendarToPST-AddMapiCalendarToPST.py" >}}
 ## **Save Calendar Items from PST to Disk in ICS Format**
@@ -26,8 +24,8 @@ This articles shows how to access calendar items from an Outlook PST file and sa
 1. Browse the Calendar folder.
 1. Get the contents of the Calendar folder to get the message collection.
 1. Loop through the message collection.
-1. Call PersonalStorage.ExtractMessage() method to get the contact information in the MapiCalendar class.
-1. Call the MapiCalendar.Save() method to save the calendar item to disk in ICS format.
+1. Call PersonalStorage.extract_message() method to get the contact information in the MapiCalendar class.
+1. Call the MapiCalendar.save() method to save the calendar item to disk in ICS format.
 
 The program below loads a PST file from disk and saves all the calendar items in ICS format. The ICS files can then be used in any other program that can load the standard ICS calendar file. Opened in Microsoft Outlook, an ICS file looks like the one in the below screenshot.
 
@@ -41,4 +39,54 @@ The following code snippet shows you how to export the calendar items from Outlo
 ## **Modify/Delete Occurrences from Recurrences**
 Exceptions can be added to existing recurrences using Aspose.Email for .NET API. Following code sample illustrates the usage of this feature.
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Outlook-ModifyDeleteOccurrenceInRecurrence-ModifyDeleteOccurrenceInRecurrence.cs" >}}
+```py
+from datetime import datetime, timedelta
+from aspose.email.storage.pst import PersonalStorage, StandardIpmFolder, FileFormatVersion
+from aspose.email.mapi import MapiCalendar, MapiCalendarEventRecurrence, \
+    MapiCalendarDailyRecurrencePattern, MapiCalendarRecurrenceEndType, \
+    MapiCalendarExceptionInfo, MapiCalendarRecurrencePatternType, \
+    MapiRecipientCollection, MapiRecipientType
+
+start_date = datetime.now().date()
+
+recurrence = MapiCalendarEventRecurrence()
+pattern = MapiCalendarDailyRecurrencePattern()
+pattern.pattern_type = MapiCalendarRecurrencePatternType.DAY
+pattern.period = 1
+pattern.end_type = MapiCalendarRecurrenceEndType.NEVER_END
+recurrence.recurrence_pattern = pattern
+
+exception_date = start_date + timedelta(days=1)
+
+# adding one exception
+exception_info = MapiCalendarExceptionInfo()
+exception_info.location = "London"
+exception_info.subject = "Subj"
+exception_info.original_start_date = exception_date
+exception_info.start_date_time = exception_date
+exception_info.end_date_time = exception_date + timedelta(hours=5)
+pattern.exceptions.append(exception_info)
+pattern.modified_instance_dates.append(exception_date)
+# every modified instance also has to have an entry in the DeletedInstanceDates field with the original instance date.
+pattern.deleted_instance_dates.append(exception_date)
+
+# adding one deleted instance
+pattern.deleted_instance_dates.append(exception_date + timedelta(days=2))
+
+rec_coll = MapiRecipientCollection()
+rec_coll.add("receiver@domain.com", "receiver", MapiRecipientType.TO)
+new_cal = MapiCalendar(
+    "This is Location",
+    "This is Summary",
+    "This is recurrence test",
+    start_date,
+    start_date + timedelta(hours=3),
+    "organizer@domain.com",
+    rec_coll
+)
+new_cal.recurrence = recurrence
+
+with PersonalStorage.create("output.pst", FileFormatVersion.UNICODE) as pst:
+    calendar_folder = pst.create_predefined_folder("Calendar", StandardIpmFolder.APPOINTMENTS)
+    calendar_folder.add_message(new_cal)
+```
