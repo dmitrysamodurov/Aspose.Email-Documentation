@@ -11,8 +11,8 @@ Create a New PST File and Add Subfolders showed how to create a PST file and add
 
 1. Create a MapiContact object.
 1. Set the MapiContact properties using different constructors and methods.
-1. Create a PST using the PersonalStorage.Create() method.
-1. Create a pre-defined folder (Contacts) at the root of the PST file by accessing the root folder and then calling the AddMapiMessageItem() method.
+1. Create a PST using the PersonalStorage.create() method.
+1. Create a pre-defined folder (Contacts) at the root of the PST file by accessing the root folder and then calling the add_mapi_message_item() method.
 
 The following code snippet shows you how to create a MapiContact and then add it to the contacts folder of a newly created PST file.
 
@@ -26,9 +26,8 @@ This article explains how to access contact information from an Outlook PST file
 1. Browse the Contacts folder.
 1. Get the contents of the Contacts folder to get the message collection.
 1. Loop through the message collection.
-1. Call the PersonalStorage.ExtractContactInfo() method to get the contact information in the MapiContact class. Use the MapiContact class properties to access the contact information
-1. Call the PersonalStorage.ExtractMessage() method to get the contact information in the MapiMessage class.
-1. Call the MapiMessage.Save() method to save the contact to disk in MSG format.
+1. Call the PersonalStorage.extract_message() method to get the contact information in the MapiMessage class.
+1. Call the MapiMessage.save() method to save the contact to disk in MSG format.
 
 The following code snippet shows you how to retrieve all the contact information from the PST file and save to disk in MSG format.
 
@@ -42,7 +41,7 @@ This article shows how to access contact information from a Microsoft Outlook PS
 1. Browse the Contacts folder.
 1. Get the contents of the Contacts folder to get the message collection.
 1. Loop through the message collection.
-1. Call the PersonalStorage.ExtractMessage() method to get the contact information in the MapiContact class.
+1. Call the PersonalStorage.extract_message() method to get the contact information in the MapiContact class.
 1. Use the MapiContact class different properties to access the contact information.
 
 The program below loads a PST file from disk and saves all the contacts to vCard (VCF) format. The VCF files can then be used in any other program that can load the standard vCard contact file. If you open any VCF file in Microsoft Outlook, it looks like the one in the below screenshot.
