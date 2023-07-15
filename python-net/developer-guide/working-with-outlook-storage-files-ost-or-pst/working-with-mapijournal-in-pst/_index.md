@@ -11,8 +11,8 @@ Create a New PST File and Add Subfolders showed how to create a PST file and add
 
 1. Create a MapiJournal object
 1. Set the MapiJournal properties using a constructor and methods.
-1. Create a PST using the PersonalStorage.Create() method.
-1. Create a pre-defined folder (Journals) at the root of the PST file by accessing the root folder and then calling the AddMapiMessageItem() method.
+1. Create a PST using the PersonalStorage.create() method.
+1. Create a pre-defined folder (Journals) at the root of the PST file by accessing the root folder and then calling the add_mapi_message_item() method.
 
 The following code snippet shows you how to create a MapiJournal and then add it to the journal folder of a newly created PST file.
 
