@@ -22,6 +22,21 @@ The following code snippet shows you how to create a MapiJournal and then add it
 ## **Adding Attachments to MapiJournal**
 The following code snippet shows you how to add attachments to MapiJournal.
 
+```py
+import os
+from datetime import datetime, timedelta
+from aspose.email.mapi import MapiJournal
 
+data_dir = "path_to_data_directory"
+attach_file_names = [os.path.join(data_dir, "Desert.jpg"), os.path.join(data_dir, "download.png")]
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Outlook-AddAttachmentsToMapiJournal-AddAttachmentsToMapiJournal.cs" >}}
+journal = MapiJournal("testJournal", "This is a test journal", "Phone call", "Phone call")
+journal.start_time = datetime.now()
+journal.end_time = journal.start_time + timedelta(hours=1)
+journal.companies = ["company 1", "company 2", "company 3"]
+
+for attach in attach_file_names:
+    journal.attachments.append(attach, open(attach, 'rb').read())
+
+journal.save(os.path.join(data_dir, "AddAttachmentsToMapiJournal_out.msg"))
+```

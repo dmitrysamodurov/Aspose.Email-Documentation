@@ -41,4 +41,54 @@ The following code snippet shows you how to export the calendar items from Outlo
 ## **Modify/Delete Occurrences from Recurrences**
 Exceptions can be added to existing recurrences using Aspose.Email for .NET API. Following code sample illustrates the usage of this feature.
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Outlook-ModifyDeleteOccurrenceInRecurrence-ModifyDeleteOccurrenceInRecurrence.cs" >}}
+```py
+from datetime import datetime, timedelta
+from aspose.email.storage.pst import PersonalStorage, StandardIpmFolder, FileFormatVersion
+from aspose.email.mapi import MapiCalendar, MapiCalendarEventRecurrence, \
+    MapiCalendarDailyRecurrencePattern, MapiCalendarRecurrenceEndType, \
+    MapiCalendarExceptionInfo, MapiCalendarRecurrencePatternType, \
+    MapiRecipientCollection, MapiRecipientType
+
+start_date = datetime.now().date()
+
+recurrence = MapiCalendarEventRecurrence()
+pattern = MapiCalendarDailyRecurrencePattern()
+pattern.pattern_type = MapiCalendarRecurrencePatternType.DAY
+pattern.period = 1
+pattern.end_type = MapiCalendarRecurrenceEndType.NEVER_END
+recurrence.recurrence_pattern = pattern
+
+exception_date = start_date + timedelta(days=1)
+
+# adding one exception
+exception_info = MapiCalendarExceptionInfo()
+exception_info.location = "London"
+exception_info.subject = "Subj"
+exception_info.original_start_date = exception_date
+exception_info.start_date_time = exception_date
+exception_info.end_date_time = exception_date + timedelta(hours=5)
+pattern.exceptions.append(exception_info)
+pattern.modified_instance_dates.append(exception_date)
+# every modified instance also has to have an entry in the DeletedInstanceDates field with the original instance date.
+pattern.deleted_instance_dates.append(exception_date)
+
+# adding one deleted instance
+pattern.deleted_instance_dates.append(exception_date + timedelta(days=2))
+
+rec_coll = MapiRecipientCollection()
+rec_coll.add("receiver@domain.com", "receiver", MapiRecipientType.TO)
+new_cal = MapiCalendar(
+    "This is Location",
+    "This is Summary",
+    "This is recurrence test",
+    start_date,
+    start_date + timedelta(hours=3),
+    "organizer@domain.com",
+    rec_coll
+)
+new_cal.recurrence = recurrence
+
+with PersonalStorage.create("output.pst", FileFormatVersion.UNICODE) as pst:
+    calendar_folder = pst.create_predefined_folder("Calendar", StandardIpmFolder.APPOINTMENTS)
+    calendar_folder.add_message(new_cal)
+```

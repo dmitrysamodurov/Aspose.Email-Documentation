@@ -53,7 +53,28 @@ The following code snippet shows you how to export contacts from Outlook PST to 
 
 
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Outlook-SaveContactInformation-SaveContactInformation.cs" >}}
+```py
+from aspose.email.storage.pst import PersonalStorage
+from aspose.email.mapi import ContactSaveFormat
+
+# Load the Outlook PST file
+pst = PersonalStorage.from_file("my.pst")
+
+# Get the Contacts folder
+folder_info = pst.root_folder.get_sub_folder("Contacts")
+
+# Loop through all the contacts in this folder
+message_info_collection = folder_info.get_contents()
+for message_info in message_info_collection:
+    # Get the contact information
+    contact = pst.extract_message(message_info).to_mapi_message_item()
+
+    # Display some contents on screen
+    print("Name: " + contact.name_info.display_name + " - " + message_info.entry_id_string)
+
+    # Save to disk in vCard VCF format
+    contact.save("D:\\" + contact.name_info.display_name + ".vcf", ContactSaveFormat.V_CARD)
+```
 ## **Working with Distribution Lists**
 It is possible to create a Distribution list using Aspose.Email API that is a collection of multiple contacts. A distribution list can be saved to disc in Outlook MSG format and can be viewed/manipulated by opening it in MS Outlook.
 ### **Creating and Saving a Distribution List**
@@ -65,6 +86,12 @@ The following code snippet shows you how to create and save a distribution list.
 ### **Reading a Distribution List from a PST**
 The following code snippet shows you how to read a distribution list from a PST.
 
+```py
+from aspose.email.mapi import MapiMessage
 
+# Load the MAPI message from file
+message = MapiMessage.load("dl.msg")
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Outlook-ReadingDistributionListFromPST-ReadingDistributionListFromPST.cs" >}}
+# Convert the message to MAPI distribution list
+dlist = message.to_mapi_message_item()
+```
