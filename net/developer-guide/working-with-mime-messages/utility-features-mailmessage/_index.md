@@ -70,6 +70,19 @@ The following code snippet shows you how to detect if a message is TNEF.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-DetectMessageIsTNEF-DetectMessageIsTNEF.cs" >}}
 
+### **Check whether Attachment is in TNEF format**
+
+The [Attachment.IsTnef](https://reference.aspose.com/email/net/aspose.email/attachment/istnef/#attachmentistnef-property) property allows to detect whether the message attachment is TNEF formatted message.
+
+```cs
+var eml = MailMessage.Load(fileName);
+
+foreach (attachment in eml.Attachments)
+{
+    Console.WriteLine($"Is Attachment TNEF?: {attachment.IsTnef}");
+}
+```
+
 ## **Processing Bounced Messages**
 
 It is very common that a message sent to a recipient may bounce for any reason such as an invalid recipient address. Aspose.Email API has the capability to process such a message for checking if it is a bounced email or a regular email message. The [CheckBounced](https://reference.aspose.com/email/net/aspose.email/mailmessage/checkbounced/#checkbounced) method of the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class returns a valid result if the email message is a bounced email. This article shows the usage of the [BounceResult](https://reference.aspose.com/email/net/aspose.email.bounce/bounceresult/) class that provides the capability of checking if a message is a bounced email. It further gives detailed information about the recipients, action taken and the reason for the notification. The following code snippet shows you how to process bounced messages.
@@ -81,3 +94,17 @@ It is very common that a message sent to a recipient may bounce for any reason s
 Aspose.Email provides email filtering using a Bayesian spam analyzer. It provides the [SpamAnalyzer](https://reference.aspose.com/email/net/aspose.email.antispam/spamanalyzer/) class for this purpose. This article shows how to train the filter to distinguish between spam and regular emails based on the words database.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-BayesianSpamAnalyzer-BayesianSpamAnalyzer.cs" >}}
+
+## **Obtaining preamble and epilogue from eml messages**
+
+An email message may contain some hidden information as a plain text before the message body (i.e. preamble) or after the body (i.e. epilogue). It is typically some additional information or context to the recipient before or after they read the main content of the email. You can obtain this information using [MailMessage.Preamble](https://reference.aspose.com/email/net/aspose.email/mailmessage/preamble/) or/and [MailMessage.Epilogue](https://reference.aspose.com/email/net/aspose.email/mailmessage/epilogue/#mailmessageepilogue-property) properties respectively. 
+
+The following code snippet shows how to obtain the preamble and epilogue texts:
+
+```cs
+// Gets or sets a preamble text.
+public string Preamble
+
+// Gets or sets an epilogue text.
+public string Epilogue
+```

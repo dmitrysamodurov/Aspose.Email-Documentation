@@ -79,6 +79,16 @@ This can be used to replace embedded attachment contents with the new ones using
 
 {{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Outlook-ReplaceEmbeddedMSGAttachmentContents-ReplaceEmbeddedMSGAttachmentContents.cs" >}}
 
+### **Renaming an Attachment in MapiMessage**
+
+It is possible to edit the DisplayName property value in MapiMessage attachments.
+
+```cs
+var msg = MapiMessage.Load(fileName);
+msg.Attachments[0].DisplayName = "New display name 1";
+msg.Attachments[1].DisplayName = "New display name 2";
+```
+
 ## **Save Attachments from Digitally Signed Messages**
 
 Aspose.Email API provides the capability to get or set a value indicating whether clear-signed message will be decoded. 

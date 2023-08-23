@@ -70,3 +70,20 @@ Microsoft Exchange server provides the capability to share calendars by sending 
 ## **Retrieving Extended Attributes Information from Calendar Items**
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Exchange_EWS-RetreiveExtAttributesForCalendarItems-RetreiveExtAttributesForCalendarItems.cs" >}}
+
+## **Returning the Recurring Calendar Items Within the Specified Date Range**
+
+[EWSClient](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/ewsclient/) supports the return of the recurring calendar items within the range specified by StartDate and EndDate. [AppointmentQueryBuilder.SetCalendarView](https://reference.aspose.com/email/net/aspose.email.clients.exchange/appointmentquerybuilder/setcalendarview/) method is used to define a specific date range and limit the number of returned appointments to retrieve relevant information. By setting the following parameters you can retrieve the appointments matching the specified criteria.
+
+- startDate: The start date of the calendar view. Appointments starting from this date will be included in the query result.
+
+- endDate: The end date of the calendar view. Appointments ending before or on this date will be included in the query result.
+
+- maxEntriesReturned: The maximum number of appointments to be returned in the query result. The value of -1 indicates that there is no specific limit.
+
+```cs
+ExchangeQueryBuilder builder = new ExchangeQueryBuilder();
+builder.Appointment.SetCalendarView(DateTime.Now, DateTime.Now.AddMonths(1), -1);
+
+Appointment[] appointments = client.ListAppointments(builder.GetQuery());
+```

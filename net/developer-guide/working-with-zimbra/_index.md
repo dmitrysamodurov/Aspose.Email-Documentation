@@ -23,3 +23,16 @@ You may also save all the message with directory structure from the Zimbra TGZ s
 The following code snippet demonstrates the use of the TgzReader.ExportTo method to save all messages from the Zimbra TGZ storage file.
 
 {{< gist "aspose-com-gists" "522d47278b8ca448dc1d7eb97193322c" "Examples-CSharp-Email-SaveMessagesFromZimbraTgzStorage-1.cs" >}}
+
+## **Export calendar and contact items from Zimbra backup files**
+
+To export Zimbra’s calendar and contacts and save them in iCalendar and VCard formats, you can use the following code snippet:
+
+```cs
+using (var reader = new TgzReader(@"test2.tgz"))
+{
+    //contacts files can be found in Contacts and Emailed Contacts subfolders
+    //calendar files can be found in Calendar subfolder
+    reader.ExportTo(@"out");
+}
+```

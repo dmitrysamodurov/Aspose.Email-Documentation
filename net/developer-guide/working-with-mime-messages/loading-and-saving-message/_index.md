@@ -132,6 +132,38 @@ The [MhtFormatOptions.RenderCalendarEvent](https://reference.aspose.com/email/ne
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-ChangeFontWhileConvertingToMHT-ChangeFontWhileConvertingToMHT.cs" >}}
 
+#### **Preserving RTF body when converting MSG to EML** 
+
+The convertion of a MSG file to EML preserving RTF body can be done in two ways:
+
+- using [MsgLoadOptions.PreserveRtfContent](https://reference.aspose.com/email/net/aspose.email/msgloadoptions/preservertfcontent/) property of the [MsgLoadOptions](https://reference.aspose.com/email/net/aspose.email/msgloadoptions/) class;
+
+- using [MailConversionOptions.PreserveRtfContent](https://reference.aspose.com/email/net/aspose.email.mapi/mailconversionoptions/preservertfcontent/) property of the [MailConversionOptions](https://reference.aspose.com/email/net/aspose.email.mapi/mailconversionoptions/) class;
+
+Both properties get or set a value indicating whether to keep the rtf body in MailMessage.
+
+The following code snippets show how to convert a MSG file to EML and preserve RTF body:
+
+```cs
+var loadOptions = new MsgLoadOptions
+{
+    PreserveRtfContent = true
+};
+
+var eml = MailMessage.Load("my.msg", loadOptions);
+```
+
+```cs
+var conversionOptions = new MailConversionOptions
+{
+    PreserveRtfContent = true
+};
+
+var msg = MapiMessage.Load("my.msg");
+
+var eml = msg.ToMailMessage(conversionOptions);
+```
+
 ### **Exporting Email to EML**
 
 The following code snippet shows you how to export emails to EML.

@@ -47,6 +47,31 @@ The following code snippet shows you how to load contacts from VCard with the sp
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-LoadingContactFromVCardWithSpecifiedEncoding-LoadingContactFromVCardWithSpecifiedEncoding.cs" >}}
 
+### **Reading Multiple Contacts in VCard format**
+
+Our library makes it possible to get the list of all contacts from a VCard. It can be done using the following methods and steps:
+
+```cs
+// Checks whether VCard source stream contains multiple contacts.
+VCardContact.IsMultiContacts(Stream stream)
+
+// Loads list of all contacts from VCard file.
+VCardContact.LoadAsMultiple(string filePath, Encoding encoding)
+
+// Loads list of all contacts from VCard stream.
+VCardContact.LoadAsMultiple(Stream stream, Encoding encoding)
+```
+The following code snippet demonstrates how to handle VCard files that contain multiple contacts:
+
+```cs
+using (FileStream stream = new FileStream("test.vcf", FileMode.Open, FileAccess.Read))
+{
+    if(VCardContact.IsMultiContacts(stream))
+    {
+        List<VCardContact> contacts = VCardContact.LoadAsMultiple(stream, Encoding.UTF8);
+    }
+}
+```
 ## **Rendering Contact Information to MHTML**
 
 Outlook Contact can be converted to MHTML using Aspose.Email API. This example shows how a VCard is loaded into [MapiContact](https://reference.aspose.com/email/net/aspose.email.mapi/mapicontact/) and then converted to MHTML with the help of [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) API.

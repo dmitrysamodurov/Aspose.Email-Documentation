@@ -110,6 +110,25 @@ eml.To.Add(new MailAddress("kyle@to.com", "Kyle Huang"));
 eml.CC.Add(new MailAddress("guangzhou@cc.com", "Guangzhou Team"));
 eml.Bcc.Add(new MailAddress("ahaq@bcc.com", "Ammad ulHaq "));
 ```
+## **Displaying the optional attendees in the mht header output**
+
+The code sample below demonstrates how to use *display optional attendees* feature when saving an msg in mhtml format:
+
+
+```cs
+MhtSaveOptions options = new MhtSaveOptions()
+{
+    MhtFormatOptions = MhtFormatOptions.RenderCalendarEvent | MhtFormatOptions.WriteHeader
+};
+
+MapiMessage msg = MapiMessage.Load(fileName);
+msg.Save(fileName + ".mhtml", options);
+
+//if you need to skip OptionalAttendees in mhtml file you can clear format template for OptionalAttendees
+options.FormatTemplates[MhtTemplateName.OptionalAttendees] = "";
+msg.Save(fileName + "2.mhtml", options);
+```
+
 
 ## **Set Mail Body**
 

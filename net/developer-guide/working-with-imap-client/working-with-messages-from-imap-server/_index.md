@@ -5,6 +5,35 @@ weight: 20
 url: /net/working-with-messages-from-imap-server/
 ---
 
+## **Obtaining the identification info for messages received from a mailbox**
+
+When retrieving and processing email messages, you can fetch the details of those messages using their sequence numbers.
+The following features are used to interact with an IMAP mailbox:
+
+- Aspose.Email.MailboxInfo class - Represents identification information about message in a mailbox.
+
+    - Aspose.Email.MailboxInfo.SequenceNumber property - The sequence number of a message.
+
+    - Aspose.Email.MailboxInfo.UniqueId property - The unique id of a message.
+
+- Aspose.Email.MailMessage.ItemId property - Represents identification information about the message in a mailbox.
+
+The code snippet below shows how to obtain identification info about messages:
+
+```cs
+using (var client = new ImapClient(imapHost, port, emailAddress, password, securityOption))
+{
+    var msgs = client.ListMessages("INBOX").Take(5);
+    var seqIds = msgs.Select(t => t.SequenceNumber);
+    var msgsViaFetch = client.FetchMessages(seqIds);
+	
+    for (var i = 0; i < 5; i++)
+    {
+        var thisMsg = msgsViaFetch[i];
+        Console.WriteLine($"Message ID:{seqIds.ElementAt(i)} SequenceNumber: {thisMsg.ItemId.SequenceNumber} Subject:{thisMsg.Subject}");
+    }
+}
+```
 
 ## **Listing MIME Message IDs from Server**
 
@@ -75,6 +104,37 @@ The following code snippet shows you how to fetch email messages from a server a
 In scenarios, where the email server contains a large number of messages in the mailbox, it is often desired to list or retrieve the messages with paging support. Aspose.Email API's [ImapClient](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/) lets you retrieve the messages from the server with paging support.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-IMAP-ListingMessagesWithPagingSupport-ListingMessagesWithPagingSupport.cs" >}}
+
+## **Listing the Message Attachments** 
+
+To get information about attachments such as name, size without fetching the attachment data, try the following APIs:
+
+- *Aspose.Email.Clients.Imap.ImapAttachmentInfo* - Represents an attachment information. 
+- *Aspose.Email.Clients.Imap.ImapAttachmentInfoCollection* - Represents a collection of the [ImapAttachmentInfo](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapattachmentinfo/) class. 
+- *Aspose.Email.Clients.Imap.ListAttachments(int sequenceNumber)* - Gets an information for each attachment in a message.
+
+The code sample with steps below will show you how to use the APIs:
+
+1. Call the [ListMessages()](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/listmessages/) method on the imapClient object. This method will return an ImapMessageInfoCollection containing information about the messages in the mailbox.
+2. Iterate through each message in the messageInfoCollection using a foreach loop.
+3. Call the [ListAttachments()](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/listattachments/#imapclientlistattachments-method) method on the imapClient object, passing the SequenceNumber property of the message object as a parameter. This method will return an ImapAttachmentInfoCollection containing information about the attachments in the message.
+4. Iterate through each attachment in the attachmentInfoCollection using a foreach loop.
+5. Within the inner loop, you can access the information about each attachment using properties of the attachmentInfo object. In this example, the name and size of each attachment are logged to the console using Console.WriteLine().
+   
+   Console.WriteLine("Attachment: {0} (size: {1})", attachmentInfo.Name, attachmentInfo.Size);
+```cs
+var messageInfoCollection = imapClient.ListMessages();
+    
+foreach (var message in messageInfoCollection)
+{
+    var attachmentInfoCollection = imapClient.ListAttachments(message.SequenceNumber);
+
+    foreach (var attachmentInfo in attachmentInfoCollection)
+    {
+        Console.WriteLine("Attachment: {0} (size: {1})", attachmentInfo.Name, attachmentInfo.Size);
+    }
+}
+```
 
 ## **Getting Folders and Reading Messages Recursively**
 

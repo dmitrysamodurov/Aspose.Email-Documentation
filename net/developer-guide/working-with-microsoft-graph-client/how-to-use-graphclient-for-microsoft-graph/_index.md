@@ -220,6 +220,71 @@ foreach (var folder in folders)
 }
 ```
 
+### **Listing Messages by their Sent Date**
+
+The [OrderBy](https://reference.aspose.com/email/net/aspose.email.tools.search/comparisonfield/orderby/#comparisonfieldorderby-method) method from the library collection enables you to retrieve messages with different sorting orders (ascending and descending) based on the date they were sent. The following code sample shows how to order messages by their sent date:
+
+```cs
+IGraphClient client = GraphClient.GetClient(provider, TenantId);
+
+var builder = new GraphQueryBuilder();
+
+// create orderby messages query 'DESC'
+builder.SentDate.OrderBy(false);
+var messagePageInfo = client.ListMessages(KnownFolders.Inbox, new PageInfo(10), builder.GetQuery());
+var messages = messagePageInfo.Items;
+
+builder.Clear();
+
+// create orderby messages query 'ASC'
+builder.SentDate.OrderBy(true);
+messagePageInfo = client.ListMessages(KnownFolders.Inbox, new PageInfo(10), builder.GetQuery());
+messages = messagePageInfo.Items;
+```
+
+### **Enumerating Messages with Paging Support using Graph Client** 
+
+The API allows paging and filtering of the messages when listing them. It is especially helpful for mailboxes with a high volume of messages, as it saves time by retrieving only the necessary summary information.
+
+The code sample and the steps below demonstrate how to retrieve messages from the Inbox folder using paging and filtering features. 
+
+1. First, initiate the client.
+2. Then, set the number of items to display per page, for example, 10.
+3. Create a filter to only retrieve unread messages using the [GraphQueryBuilder](https://reference.aspose.com/email/net/aspose.email.clients.graph/graphquerybuilder/#graphquerybuilder-class) class. The builder.IsRead.Equals(false) is setting the condition for filtering unread messages.
+4. Call the [ListMessages](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/listmessages/#listmessages_1) method on the client object, specifying the folder (Inbox) and the items per page (PageInfo(itemsPerPage)) as parameters. It also passes the query object to apply the unread messages filter.
+The returned PageInfo object (pageInfo) contains the retrieved messages for the current page in the Items property.
+5. Create a loop that continues until the last page is reached (pageInfo.LastPage is false). The retrieved messages are added to the existing messages list using messages.AddRange(pageInfo.Items).
+
+
+```cs
+//  reading unread messages with paging
+using var client = GraphClient.GetClient(tokenProvider, config.Tenant);
+
+// paging option
+var itemsPerPage = 10;
+// create unread messages filter
+GraphQueryBuilder builder = new GraphQueryBuilder();
+builder.IsRead.Equals(false);
+var query = builder.GetQuery();
+
+// list messages
+var pageInfo = client.ListMessages(KnownFolders.Inbox, new PageInfo(itemsPerPage), query);
+var  messages = pageInfo.Items;
+
+while (!pageInfo.LastPage)
+{
+    pageInfo = client.ListMessages(KnownFolders.Inbox, pageInfo.NextPage, query);
+    messages.AddRange(pageInfo.Items);
+}
+
+// set messages state as read
+foreach (var message in messages)
+{
+    client.SetRead(message.ItemId);
+}
+
+```
+
 ### **Fetch Message**
 
 ```csharp

@@ -129,6 +129,14 @@ else
     Console.WriteLine("No unread messages found");
 }
 ```
+## **Connecting to Server using CRAM-MD5 authentication**
+
+For secure authentication and access to the email server, Aspose.Email for .NET offers a CRAM-MD5 authentication method.
+The following code snippet will show you how it works with the ImapClient:
+
+```cs
+imapClient.AllowedAuthentication = ImapKnownAuthenticationType.CramMD5;
+```
 
 ## **How to Set Timeout for Mail Operations**
 

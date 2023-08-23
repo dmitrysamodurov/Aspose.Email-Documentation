@@ -40,6 +40,16 @@ The following code snippet shows you how to connect to a server via proxy server
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-SMTP-SendEmailViaHttpProxy-SendEmailViaHttpProxy.cs" >}}
 
+## **Connecting to Server using Supported Authentication Method**
+
+Aspose.Email for .NET offers properties allowing to check which authentication methods can be used for establishing a secure connection with the SMTP server before sending an email:
+- the [SmtpClient.SupportedAuthentication](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/supportedauthentication/) property returns a list of authentication methods supported by the SMTP server. 
+- the [SmtpClient.AllowedAuthentication](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/allowedauthentication/) property returns a list of authentication methods defined by the user.
+
+```cs
+smtpClient.AllowedAuthentication = SmtpKnownAuthenticationType.Login;
+```
+
 ## **Loading SMTP Authentication Information from CONFIG File**
 
 The [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class allows applications to read authentication information like username and password and the host address and port number directly from a configuration file. Using the .NET native configuration tag, as shown below, enables the [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class to read this information through the Configuration Manager also available in .NET framework. For Aspose.Email to be able to read a configuration file, it needs to be in the correct format. Below, we show an example XML configuration file followed by the code that reads it. The following code snippet shows you how to load SMTP authentication information from CONFIG File.
@@ -91,3 +101,11 @@ using (SmtpClient smtpClient = new SmtpClient("host", 587, "username", "password
 In case of a specified encryption protocol is not supported in the current version of .NET Framework, the difference in behavior between [SetSupportedEncryptionUnsafe](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/setsupportedencryptionunsafe/#setsupportedencryptionunsafe) method and [SupportedEncryption](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/supportedencryption/) property is the following:
 - If [SupportedEncryption](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/supportedencryption/) property is used, the email client downgrades the encryption protocol to a supported level.
 - If [SetSupportedEncryptionUnsafe](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/setsupportedencryptionunsafe/#setsupportedencryptionunsafe) method is used, the email client throws exceptions.
+
+##  **Using the CRAM-MD5 Mechanism for Authentication**
+
+The CRAM-MD5 authentication mechanism of Aspose.Email for .NET provides an additional layer of security when accessing the server. The following code snippet shows how to implement this feature into your project:
+
+```cs
+smtpClient.AllowedAuthentication = SmtpKnownAuthenticationType.CramMD5;
+```

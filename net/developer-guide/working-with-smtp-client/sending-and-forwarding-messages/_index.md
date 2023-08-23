@@ -57,17 +57,106 @@ catch (Exception ex)
 
 ## **Sending Emails Asynchronously**
 
-Sometimes, you may want to send mail asynchronously. For example, if you are sending a lot of mail through your application, the synchronous approach might not work. 
-Starting with .NET Framework 4.5, you can use asynchronous methods implemented according to [TAP](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) model. The C# code snippet below shows how to send outlook email messages using the task-based asynchronous pattern method named `SendAsync` and then interrupt this process after a while.
+Sometimes, you may want to send mail asynchronously to let program continue executing other operations while the email is being sent in the background. Especially, if you are sending a lot of mail through your application, the synchronous approach might not work. 
+Starting with .NET Framework 4.5, you can use asynchronous methods implemented according to [TAP](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) model. The C# code snippet below shows how to send outlook email messages using the task-based asynchronous pattern methods:
+
+- [SendAsync](https://reference.aspose.com/email/net/aspose.email.clients.smtp/iasyncsmtpclient/sendasync/)
+Sends the specified messages.
+
+- [IAsyncSmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/iasyncsmtpclient/#iasyncsmtpclient-interface) - Allows applications to send messages by using the Simple Mail Transfer Protocol (SMTP).
+
+- [SmtpClient.CreateAsync](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/createasync/) - Creates a new instance of the Aspose.Email.Clients.Smtp.SmtpClient class
+
+- [SmtpSend](https://reference.aspose.com/email/net/aspose.email.clients.smtp/iasyncsmtpclient/sendasync/) - Aspose.Email.Clients.Smtp.IAsyncSmtpClient.SendAsync(Aspose.Email.Clients.Smtp.Models.SmtpSend) method parameter set.
+
+- [SmtpForward](https://reference.aspose.com/email/net/aspose.email.clients.smtp/iasyncsmtpclient/forwardasync/) - The Aspose.Email.Clients.Smtp.IAsyncSmtpClient.ForwardAsync(Aspose.Email.Clients.Smtp.Models.SmtpForward) arguments.
 
 ```csharp
-using (var client = new SmtpClient(host, smtpPort, username, password))
+// Authenticate the client to obtain necessary permissions
+static readonly string tenantId = "YOU_TENANT_ID";
+static readonly string clientId = "YOU_CLIENT_ID";
+static readonly string redirectUri = "http://localhost";
+static readonly string username = "username";
+static readonly string[] scopes = { "https://outlook.office.com/SMTP.Send" };
+
+// Use the SmtpAsync method for asynchronous operations
+static async Task Main(string[] args)
 {
-    await client.SendAsync(new MailMessage(
-        "user1@server.com",
-        "user1@server.com",
-        "Test subject",
-        "test body"));
+    await SmtpAsync();
+    Console.ReadLine();
+}
+
+static async Task SmtpAsync()
+{
+    // Create token provider and get access token
+    var tokenProvider = new TokenProvider(clientId, tenantId, redirectUri, scopes);
+    var client = SmtpClient.CreateAsync("outlook.office365.com", username, tokenProvider, 587).GetAwaiter().GetResult();
+	
+	// Create a message to send
+    var eml = new MailMessage("from@domain.com", "to@domain.com", "test subj async", "test body async");
+    
+    // send message
+    var sendOptions = SmtpSend.Create();
+    sendOptions.AddMessage(eml);
+    await client.SendAsync(sendOptions);
+    Console.WriteLine("message was sent");
+
+    // forward message
+    var fwdOptions = SmtpForward.Create();
+    fwdOptions.SetMessage(eml);
+    fwdOptions.AddRecipient("rec@domain.com");
+    await client.ForwardAsync(fwdOptions);
+    Console.WriteLine("message was forwarded");
+}
+
+// Token provider implementation
+public class TokenProvider : IAsyncTokenProvider
+{
+    private readonly PublicClientApplicationOptions _pcaOptions;
+    private readonly string[] _scopes;
+
+    public TokenProvider(string clientId, string tenantId, string redirectUri, string[] scopes)
+    {
+        _pcaOptions = new PublicClientApplicationOptions
+        {
+            ClientId = clientId,
+            TenantId = tenantId,
+            RedirectUri = redirectUri
+        };
+
+        _scopes = scopes;
+    }
+
+    public async Task<OAuthToken> GetAccessTokenAsync(bool ignoreExistingToken = false, CancellationToken cancellationToken = default)
+    {
+
+        var pca = PublicClientApplicationBuilder
+            .CreateWithApplicationOptions(_pcaOptions).Build();
+
+        try
+        {
+            var result = await pca.AcquireTokenInteractive(_scopes)
+                .WithUseEmbeddedWebView(false)
+                .ExecuteAsync(cancellationToken);
+
+            return new OAuthToken(result.AccessToken);
+        }
+        catch (MsalException ex)
+        {
+            Console.WriteLine($"Error acquiring access token: {ex}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex}");
+        }
+
+        return null;
+    }
+
+    public void Dispose()
+    {
+
+    }
 }
 ```
 

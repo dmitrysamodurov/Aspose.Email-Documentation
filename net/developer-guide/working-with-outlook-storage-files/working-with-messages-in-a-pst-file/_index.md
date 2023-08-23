@@ -367,6 +367,18 @@ FolderInfo inbox = personalStorage.RootFolder.GetSubFolder("Inbox");
 // Extracts messages starting from 10th index top and extract total 100 messages
 MessageInfoCollection messages = inbox.GetContents(10, 100);
 ```
+### **Getting Total Items Count from a PST File**
+
+Aspose.Email provides the [GetTotalItemsCount()](https://reference.aspose.com/email/net/aspose.email.storage.pst/messagestore/gettotalitemscount/) method of the [PersonalStorage.Store](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/store/#personalstoragestore-property) property. It returns the total number of message items contained in the PST.
+
+The following code sample shows how to retrieve the total count of items (messages, appointments, contacts, etc.) stored within the PST file:
+
+```cs
+using (var pst = PersonalStorage.FromFile("my.pst", false))
+{
+    var count = pst.Store.GetTotalItemsCount();
+}
+```
 
 ## **Delete Items from PST Files**
 

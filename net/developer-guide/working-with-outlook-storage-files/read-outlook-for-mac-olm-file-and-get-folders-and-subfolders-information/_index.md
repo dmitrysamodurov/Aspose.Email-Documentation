@@ -130,7 +130,18 @@ using (var olm = OlmStorage.FromFile(fileName))
     }
 }
 ```
+### **Get or Set the Modified Date of a Message**
 
+The modified date represents the date and time when the OLM message was last modified. You can use the [OlmMessageInfo.ModifiedDate](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmmessageinfo/modifieddate/) property to retrieve or update the modified date value of an OLM message.
+
+Here's an example that demonstrates the usage of the property:
+
+```cs
+foreach (OlmMessageInfo messageInfo in inboxFolder.EnumerateMessages())
+{
+   DateTime modifiedDate = messageInfo.ModifiedDate;
+}
+```
 ## **Extracting emails**
 
 [OlmStorage](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/) class has [ExtractMapiMessage](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/extractmapimessage/) method which allows to extract emails. This method receives an [OlmMessageInfo](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmmessageinfo/) object.
@@ -150,6 +161,65 @@ using (var olm = OlmStorage.FromFile(fileName))
     }
 }
 ```
+## **Extracting all Items from an Email using Traversal API**
+
+You can extract all items from an Outlook OLM file as far as possible, without throwing out exceptions, even if some data of the original file is corrupted. To perform this, use [OlmStorage(TraversalExceptionsCallback callback)](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/#constructors) constructor and [Load(string fileName)](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/load/#load_1) method instead of FromFile method. The constructor allows defining a callback method.
+
+```cs
+using (var olm = new OlmStorage((exception, id) => { /* Exception handling  code. */ }))
+```
+The callback method makes loading and traversal exceptions available.
+
+The [Load](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/load/#load_1) method returns 'true' if the file has been loaded successfully and further traversal is possible. If a file is corrupted and no traversal is possible, 'false' is returned.
+
+```cs
+if (olm.Load(fileName))
+```
+
+The following code snippet and the steps show how to use this API:
+
+1. Create a new instance of the [OlmStorage](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/) class, passing an exception handling callback to handle any exceptions encountered during the process.
+2. Load the OLM file by calling the [Load](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/load/#load_1) method of the OlmStorage instance. 
+3. If the OLM file is successfully loaded, obtain the folder hierarchy by calling the [GetFolders](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/getfolders/) method on the OlmStorage instance. This returns a list of OlmFolder objects.
+4. Call the ExtractItems method, passing the OlmStorage instance and the list of OlmFolder objects.
+5. In the ExtractItems method, iterate through each folder in the folders list.
+6. If the folder contains messages (emails), print the folder name to the console using Console.WriteLine(folder).
+7. Iterate through the messages in the current folder by calling the EnumerateMessages method on the OlmStorage instance, passing the current folder as an argument.
+8. Print the subject of each message to the console using Console.WriteLine(msg.Subject).
+9. If the folder has subfolders, recursively call the ExtractItems method again, passing the OlmStorage instance and the subfolders of the current folder.
+
+```cs
+using (var olm = new OlmStorage((exception, id) => { /* Exception handling  code. */ }))
+{
+    if (olm.Load(fileName))
+    {
+        var folderHierarchy = olm.GetFolders();
+        ExtractItems(olm, folderHierarchy);
+    }
+}
+
+private static void ExtractItems(OlmStorage olm, List<OlmFolder> folders)
+{
+    foreach (var folder in folders)
+    {
+        if (folder.HasMessages)
+        {
+            Console.WriteLine(folder);
+
+            foreach (var msg in olm.EnumerateMessages(folder))
+            {
+                Console.WriteLine(msg.Subject);
+            }
+        }
+
+        if (folder.SubFolders.Count > 0)
+        {
+            ExtractItems(olm, folder.SubFolders);
+        }
+    }
+}
+```
+
 
 ## **Get Folder Path**
 

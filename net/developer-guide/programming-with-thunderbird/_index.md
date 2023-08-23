@@ -20,6 +20,34 @@ The following code snippet shows you how to read all the messages from a Thunder
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Thunderbird-ReadMessagesFromThunderbird-ReadMessagesFromThunderbird.cs" >}}
 
+### **Configuring the load options when reading messages from MBOX** 
+
+The following features will allow you to specify various options related to loading and processing messages:
+
+- MailStorageConverter.MboxMessageOptions property - Gets or sets email load options when parsing an Mbox storage.
+
+- MboxrdStorageReader.ReadNextMessage(EmlLoadOptions options) method - EmlLoadOptions parameter specifies options when reading message from Mbox storage.
+
+**Code sample**
+
+```cs
+var reader = new MboxrdStorageReader(fileName, new MboxLoadOptions());
+// Read messages preserving tnef attachments.
+var eml = reader.ReadNextMessage(new EmlLoadOptions {PreserveTnefAttachments = true});
+MailStorageConverter.MboxMessageOptions(new EmlLoadOptions {PreserveTnefAttachments = true});
+// Convert messages from mbox to pst preserving tnef attachments.
+var pst = MailStorageConverter.mboxToPst("Input.mbox", "Output.pst");
+```
+
+## **Setting Preferred Text Encoding when Loading Mbox Files for Reading**
+
+Encoding option is available for MboxrdStorageReader class. This provides additional options for loading the mbox file and ensures that messages with the encoded content will be correctly read and processed.. The following code snippet shows how you can set text encoding that satisfies your needs:
+
+```cs
+var reader = new MboxrdStorageReader("sample.mbox", new MboxLoadOptions() { PreferredTextEncoding = Encoding.UTF8});
+var message = reader.ReadNextMessage();
+```
+
 ## **Writing Messages**
 
 The [MboxrdStorageWriter](https://reference.aspose.com/email/net/aspose.email.storage.mbox/mboxrdstoragewriter/) class provides the facility to write new messages to Thunderbird mail storage file. To write messages:

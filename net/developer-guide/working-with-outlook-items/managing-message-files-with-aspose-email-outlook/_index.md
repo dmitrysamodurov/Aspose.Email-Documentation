@@ -5,6 +5,53 @@ weight: 30
 url: /net/managing-message-files-with-aspose-email-outlook/
 ---
 
+## **Getting a MAPI item type**
+
+The [MapiItemType](https://reference.aspose.com/email/net/aspose.email.mapi/mapiitemtype/) enum represents a MAPI item type that can be explicitly converted into an object of the corresponding class derived from the [IMapiMessageItem](https://reference.aspose.com/email/net/aspose.email.mapi/imapimessageitem/#imapimessageitem-interface)interface. This way users can avoid checking the [MessageClass](https://reference.aspose.com/email/net/aspose.email.mapi/imapimessageitem/messageclass/) property value before message conversion.
+
+The following code sample shows how to define a type for the item to be converted:
+
+```cs
+foreach (var messageInfo in folder.EnumerateMessages())
+{
+    var msg = pst.ExtractMessage(messageInfo);
+
+    switch (msg.SupportedType)
+    {
+        // Non-supported type. MapiMessage cannot be converted to an appropriate item type.
+        // Just use in MSG format.
+        case MapiItemType.None:
+            break;
+        // An email message. Conversion isn't required.
+        case MapiItemType.Message:
+            break;
+        // A contact item. Can be converted to MapiContact.
+        case MapiItemType.Contact:
+            var contact = (MapiContact)msg.ToMapiMessageItem();
+            break;
+        // A calendar item. Can be converted to MapiCalendar.
+        case MapiItemType.Calendar:
+            var calendar = (MapiCalendar)msg.ToMapiMessageItem();
+            break;
+        // A distribution list. Can be converted to MapiDistributionList.
+        case MapiItemType.DistList:
+            var dl = (MapiDistributionList)msg.ToMapiMessageItem();
+            break;
+        // A Journal entry. Can be converted to MapiJournal.
+        case MapiItemType.Journal:
+            var journal = (MapiJournal)msg.ToMapiMessageItem();
+            break;
+        // A StickyNote. Can be converted to MapiNote.
+        case MapiItemType.Note:
+            var note = (MapiNote)msg.ToMapiMessageItem();
+            break;
+        // A Task item. Can be converted to MapiTask.
+        case MapiItemType.Task:
+            var task = (MapiTask)msg.ToMapiMessageItem();
+            break;
+    }
+}
+```
 
 ## **Converting MSG to MIME message**
 
@@ -50,6 +97,40 @@ Aspose.Email preserves the digital signature when converting from EML to MSG. T
 Aspose.Email preserves the digital signature when converting from MSG to EML as shown in the following code snippet.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-ConvertMIMEMessagesFromMSGToEML-ConvertMIMEMessagesFromMSGToEML.cs" >}}
+
+### **Removing a Signature from a MapiMessage**
+
+For better compatibility, the [MapiMessage.RemoveSignature](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/removesignature/) method and [MapiMessage.IsSigned](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/issigned/) property are used to remove a digital signature from a message.
+
+The follwoing code snippet shows how to implement these features into your project:
+
+```cs
+var msg = MapiMessage.Load(fileName);
+
+if (msg.IsSigned)
+{
+    var unsignedMsg = msg.RemoveSignature();
+}
+```
+## **Decrypt a MapiMessage with Certificate**
+
+If you have encrypted MAPI messages and need to decrypt them using the private key stored in a certificate, the following features of Aspose.Email can be useful:
+
+- [MapiMessage.IsEncrypted](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/isencrypted/#mapimessageisencrypted-property) - Gets a value indicating whether the message is encrypted.
+- [MapiMessage.Decrypt()](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/decrypt/#decrypt) - Decrypts this message(method searches the current user and computer My stores for the appropriate certificate and private key).
+- [MapiMessage.Decrypt(X509Certificate2 certificate)](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/decrypt/#decrypt_1) - Decrypts this message with certificate.
+
+The following code snippet shows how to work with encrypted MAPI messages: 
+
+```cs
+var privateCert = new X509Certificate2(privateCertFile, "password");
+var msg = MapiMessage.Load("encrypted.msg");
+
+if (msg.IsEncrypted);
+{
+    var decryptedMsg = msg.Decrypt(privateCert);
+}
+```
 
 ## **Setting Color Category for Outlook MSG Files**
 
