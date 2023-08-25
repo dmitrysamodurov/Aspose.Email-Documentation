@@ -59,6 +59,35 @@ Aspose.Email API provides the capability of converting MSG files to MIME message
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-ConvertMSGToMIMEMessage-ConvertMSGToMIMEMessage.cs" >}}
 
+## **Setting Timeout to Message Conversion and Loading Process**
+
+The following features will enable you to set the timeout in milliseconds for conversion and loading process:
+
+- [MailConversionOptions.Timeout](https://reference.aspose.com/email/net/aspose.email.mapi/mailconversionoptions/timeout/#mailconversionoptionstimeout-property) property- Limits the time in milliseconds while converting a message.
+
+- [MailConversionOptions.TimeoutReached](https://reference.aspose.com/email/net/aspose.email.mapi/mailconversionoptions/timeoutreached/) - Raised if the time is out while converting to MailMessage.
+
+- [MsgLoadOptions.Timeout](https://reference.aspose.com/email/net/aspose.email/msgloadoptions/timeout/) - Limits the time in milliseconds while converting a message.
+
+- [MsgLoadOptions.TimeoutReached](https://reference.aspose.com/email/net/aspose.email/msgloadoptions/timeoutreached/) - Raised if the time is out while converting to MailMessage.
+
+The code sample below will show you how to set timeout while converting a message:
+
+```cs
+var options = new MailConversionOptions();
+// Set the timeout to 5 seconds
+options.Timeout = 5000;
+
+options.TimeoutReached += (object sender, EventArgs args) =>
+{
+    string subj = (sender as MailMessage).Subject;
+	 // Set a flag indicating the timeout was reached
+    isTimedOut = true;
+};
+
+var mailMessage = mapiMessage.ToMailMessage(options);
+```
+
 ## **Reading and Writing Outlook Template File (.OFT)**
 
 Outlook templates are very useful when you want to send a similar email message again and again. Instead of preparing the message from scratch each time, first, prepare the message in Outlook and save it as an Outlook Template (OFT). After that, whenever you need to send the message, you can create it from the template, saving time writing the same text in the body or the subject line, setting formatting and so on. Aspose.Email’s [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class can be used to load and read an Outlook template (OFT) file. Once the Outlook template is loaded in an instance of the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class, you can update the sender, recipient, body, subject and other properties. After updating the properties:
@@ -82,6 +111,57 @@ The following code snippet shows you how to save the outlook MSG file as a templ
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-SaveMsgAsTemplate-SaveMsgAsTemplate.cs" >}}
 
+### **Determine if a MapiMessage is OFT or MSG**
+
+When loading a MapiMessage object from a file, you may need to determine if the loaded message is a template file or a regular email file. By using the [IsTemplate](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/istemplate/) property of the [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/#mapimessage-class) class, you can accurately detect whether an email is a template or not.  This functionality can be valuable when handling and processing various types of email files within applications and systems.
+
+The code example below demonstrates how to determine if a MapiMessage is OFT or MSG: 
+
+```cs
+var msg = MapiMessage.Load("message.msg");
+var isOft = msg.IsTemplate; // returns false
+
+var msg = MapiMessage.Load("message.oft");
+var isOft = msg.IsTemplate; // returns true
+```
+
+### **Saving MapiMessage or MailMessage in OFT format**
+
+The [SaveOptions](https://reference.aspose.com/email/net/aspose.email/saveoptions/#saveoptions-class) class allows you to specify additional options when saving a MailMessage or MapiMessage into a particular format.
+
+The following code sample demonstrates how to save a message to OFT format:
+
+```cs
+// Save the MailMessage to OFT format
+using (var eml = MailMessage.Load("message.eml"))
+{
+    eml.Save("message.oft", SaveOptions.DefaultOft);
+	
+	// or alternative way #2
+	var saveOptions = new MsgSaveOptions(MailMessageSaveType.OutlookTemplateFormat);
+    eml.Save("message.oft", saveOptions);
+	
+	// or alternative  way #3
+	saveOptions = SaveOptions.CreateSaveOptions(MailMessageSaveType.OutlookTemplateFormat);
+    eml.Save("message.oft", saveOptions);
+
+}
+
+// Save the MapiMessage to OFT format
+using (var msg = MapiMessage.Load("message.msg"))
+{
+    msg.Save("message.oft", SaveOptions.DefaultOft);
+	
+	// or alternative way #2
+	var saveOptions = new MsgSaveOptions(MailMessageSaveType.OutlookTemplateFormat);
+    msg.Save("message.oft", saveOptions);
+	
+	// or alternative  way #3
+	saveOptions = SaveOptions.CreateSaveOptions(MailMessageSaveType.OutlookTemplateFormat);
+    msg.Save("message.oft", saveOptions);
+}
+```
+
 ## **Managing Digitally Signed Messages**
 
 Aspose.Email implements the complete S/MIME email object algorithm. This gives the API complete power to preserve digital signatures while converting messages between formats.
@@ -97,6 +177,33 @@ Aspose.Email preserves the digital signature when converting from EML to MSG. T
 Aspose.Email preserves the digital signature when converting from MSG to EML as shown in the following code snippet.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-ConvertMIMEMessagesFromMSGToEML-ConvertMIMEMessagesFromMSGToEML.cs" >}}
+
+### **Email Signature Checking for Security**
+
+The following features are available to check the signature of MapiMessage objects.
+
+- [SecureEmailManager](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/#secureemailmanager-class) class for checking the signature of secure emails.
+- [SmimeResult](https://reference.aspose.com/email/net/aspose.email/smimeresult/#smimeresult-class) class to store the results of checking secure emails.
+- [SecureEmailManager.CheckSignature(MapiMessage msg)](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/checksignature/#checksignature_3) method.
+- [SecureEmailManager.CheckSignature(MapiMessage msg, X509Certificate2 certificateForDecrypt)](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/checksignature/#checksignature_4) method.
+- [SecureEmailManager.CheckSignature(MapiMessage msg, X509Certificate2 certificateForDecrypt, X509Store store)](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/checksignature/#checksignature_5) method.
+
+The code sample below shows how to implement the features in your project:
+
+```cs
+var msg = MapiMessage.Load(fileName, new EmlLoadOptions());
+var result = new SecureEmailManager().CheckSignature(msg);
+
+var certFileName = "cert.pfx";
+var cert = new X509Certificate2(certFileName, "pass");
+var eml = MapiMessage.Load(fileName);
+var store = new X509Store();
+store.Open(OpenFlags.ReadWrite);
+store.Add(cert);
+store.Close();
+
+var result = new SecureEmailManager().CheckSignature(eml, cert, store);
+```
 
 ### **Removing a Signature from a MapiMessage**
 

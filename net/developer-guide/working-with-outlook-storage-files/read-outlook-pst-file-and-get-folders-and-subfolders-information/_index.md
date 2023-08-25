@@ -102,6 +102,23 @@ The following code snippet shows you how to retrieve parent folder information f
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-PST-RetreivingParentFolderInformationFromMessageInfo-RetreivingParentFolderInformationFromMessageInfo.cs" >}}
 
+## **Retrieve a PST subfolder by path**
+
+The [FolderInfo.GetSubFolder(string name, bool ignoreCase, bool handlePathSeparator)](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/getsubfolder/#getsubfolder_2) method overload will enable you to retrieve a subfolder with the specified name from the current PST folder.
+
+The method takes the following parameters:
+
+- **name** - specifies the name of the subfolder to retrieve.
+- **ignoreCase** - determines whether the search for the subfolder name should be case-sensitive or case-insensitive. If set to *true*, the search will be case-insensitive, otherwise, it will be case-sensitive.
+- **handlePathSeparator** - specifies whether the specified folder name should be treated as a path if it contains backslashes. If set to *true*, the method will interpret the folder name as a path, attempting to navigate to the subfolder using the path. If set to *false*, the method will treat the folder name as a simple name, searching for a subfolder with an exact name match.
+  
+The following code sample demonstrates how to implement this method in your project:
+
+```cs
+var folder = pst.RootFolder.GetSubFolder(@"Inbox\Reports\Jan", true, true);
+In this sample, the method will return a ‘Jan’ named folder that is located at the Inbox\Reports\ path relative to the root folder.
+```
+
 ## **PST file traversal API**
 
 The traversal API allows extracting all PST items as far as possible, without throwing out exceptions, even if some data of the original file is corrupted.

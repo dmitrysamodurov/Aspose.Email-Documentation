@@ -31,23 +31,23 @@ The following code snippet shows you how to create and save an appointment to a 
 ```cs
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
 
-            // Create and initialize an instance of the Appointment class
-            Appointment appointment = new Appointment(
-                "Meeting Room 3 at Office Headquarters",// Location
-                "Monthly Meeting",                      // Summary
-                "Please confirm your availability.",    // Description
-                new DateTime(2015, 2, 8, 13, 0, 0),     // Start date
-                new DateTime(2015, 2, 8, 14, 0, 0),     // End date
-                "from@domain.com",                      // Organizer
-                "attendees@domain.com");                // Attendees
+// Create and initialize an instance of the Appointment class
+Appointment appointment = new Appointment(
+    "Meeting Room 3 at Office Headquarters",// Location
+    "Monthly Meeting",                      // Summary
+    "Please confirm your availability.",    // Description
+    new DateTime(2015, 2, 8, 13, 0, 0),     // Start date
+    new DateTime(2015, 2, 8, 14, 0, 0),     // End date
+    "from@domain.com",                      // Organizer
+    "attendees@domain.com");                // Attendees
 
-            // Save the appointment to disk in ICS format            
-			appointment.Save(fileName + ".ics", new AppointmentIcsSaveOptions());
-            Console.WriteLine("Appointment created and saved to disk successfully.");
-			
-			// Save the appointment to disk in MSG format
-			appointment.Save(fileName + ".msg", new AppointmentMsgSaveOptions(););
-            Console.WriteLine("Appointment created and saved to disk successfully.");
+// Save the appointment to disk in ICS format            
+appointment.Save(fileName + ".ics", new AppointmentIcsSaveOptions());
+Console.WriteLine("Appointment created and saved to disk successfully.");
+
+// Save the appointment to disk in MSG format
+appointment.Save(fileName + ".msg", new AppointmentMsgSaveOptions(););
+Console.WriteLine("Appointment created and saved to disk successfully.");
 ```
 
 ### **Create an Appointment with HTML Content**
@@ -91,8 +91,7 @@ var appointment = new Appointment("Bygget 83",
 };
 ```
 
-
-### **Load Appointment ICS Format**
+### **Load an Appointment in ICS Format**
 
 To load an appointment in ICS format, the following steps are required:
 
@@ -104,6 +103,17 @@ The following code snippet shows you how to load an appointment in ICS format.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-SMTP-AppointmentInICSFormat-LoadAppointment.cs" >}}
 
+## **Load and Convert an ICS File to a Message Format**
+
+The API allows you easily convert an Appointment to a message object. The following code example shows how to convert an appointment request into a MailMessage or MapiMessage:
+
+```cs
+var appointment = Appointment.Load("appRequest.ics");
+
+var eml = appointment.ToMailMessage();
+var msg = appointment.ToMapiMessage();
+```
+
 ## **Read Multiple Events from ICS File**
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-ReadMultilpleEventsFromICS-ReadMultilpleEventsFromICS.cs" >}}
@@ -111,15 +121,6 @@ The following code snippet shows you how to load an appointment in ICS format.
 ## **Write Multiple Events to ICS File**
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Exchange_EWS-WriteMultipleEventsToICS-WriteMultipleEventsToICS.cs" >}}
-
-## Saving appointments to MSG format 
-
-[AppointmentMsgSaveOptions](https://reference.aspose.com/email/net/aspose.email.calendar/appointmentmsgsaveoptions/appointmentmsgsaveoptions/) class allows to save appointments directly to .msg files.
-
-
-AppointmentIcsSaveOptions
-
-class with additional options to save appointment in ics format. It was added to replace the obsolete IcsSaveOptions.
 
 ## **Create a Draft Appointment Request**
 
@@ -144,3 +145,18 @@ Aspose.Email for .NET API lets you set the status of appointment attendees while
 Aspose.Email for .NET API allows to get or set the product identifier that created iCalendar object.
 
 {{< gist "aspose-com-gists" "522d47278b8ca448dc1d7eb97193322c" "Examples-CSharp-Email-ChangeProdIdOfICS-1.cs" >}}
+
+## **Determine the Appointment Version**
+
+To determine the version of an appointment, you can use the [Appointment.Version](https://reference.aspose.com/email/net/aspose.email.calendar/appointment/version/#appointmentversion-property) property of the [Appointment](https://reference.aspose.com/email/net/aspose.email.calendar/appointment/#appointment-class) class. This property assists to determine which version their files are based on, ensuring integration with other systems and apps.
+
+The following code sample shows how to implement this property in your project:
+
+```cs
+var app = Appointment.Load("meeting.ics");
+
+if (app.Version == 1.0)
+{
+    // do something
+}
+```

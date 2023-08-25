@@ -31,6 +31,16 @@ The following code snippet shows you how to load a message with load options.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-PreserveEmbeddedMSGFormatDuringLoad-PreserveEmbeddedMSGFormatDuringLoad.cs" >}}
 
+### **Loading a Message Preserving or Removing a Signature**
+
+Signature preservation is supported by default when loading EML files. To remove the signature, you can set the [LoadOptions.RemoveSignature](https://reference.aspose.com/email/net/aspose.email/loadoptions/removesignature/#loadoptionsremovesignature-property) property to *true*.
+
+The code sample below shows how to remove a signature when loading a message:
+
+```cs
+var msg = MapiMessage.Load(fileName, new EmlLoadOptions() { RemoveSignature = true});
+```
+
 ## **Saving and Converting Messages**
 
 Aspose.Email makes it easy to convert any message type to another format. To demonstrate this feature, the code in this article loads three types of messages from disk and saves them back in other formats. The base class [SaveOptions](https://reference.aspose.com/email/net/aspose.email/saveoptions/) and the classes [EmlSaveOptions](https://reference.aspose.com/email/net/aspose.email/emlsaveoptions/), [MsgSaveOptions](https://reference.aspose.com/email/net/aspose.email/msgsaveoptions/), [MhtSaveOptions](https://reference.aspose.com/email/net/aspose.email/mhtsaveoptions/), [HtmlSaveOptions](https://reference.aspose.com/email/net/aspose.email/htmlsaveoptions/) for additional settings when saving [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) can be used for saving messages to other formats. The article shows how to use these classes to save a sample email as:

@@ -25,7 +25,11 @@ The following code snippet shows you how to create and save outlook contact.
 
 ### **Save Contact in Version 3 VCF Format**
 
-To save the contact in version 3 VCF format, use the [VCardVersion](https://reference.aspose.com/email/net/aspose.email.personalinfo.vcard/vcardversion/) enumerable to set the [VCardSaveOptions.Version](https://reference.aspose.com/email/net/aspose.email.personalinfo.vcard/vcardsaveoptions/version/) property. The following sample code demonstrates the use of [VCardVersion](https://reference.aspose.com/email/net/aspose.email.personalinfo.vcard/vcardversion/) enumerable to save the contact VCF version 3 format.
+To save the contact in version 3 VCF format, use the [VCardVersion](https://reference.aspose.com/email/net/aspose.email.personalinfo.vcard/vcardversion/) enumerable to set the [VCardSaveOptions.Version](https://reference.aspose.com/email/net/aspose.email.personalinfo.vcard/vcardsaveoptions/version/) property. The following sample code demonstrates the use of [VCardVersion](https://reference.aspose.com/email/net/aspose.email.personalinfo.vcard/vcardversion/) enumerable to save the contact VCF version 3 format:
+
+```cs
+
+```
 
 ### **Reading a MapiContact**
 
@@ -46,6 +50,23 @@ The following code snippet shows you how to load contacts from VCard.
 The following code snippet shows you how to load contacts from VCard with the specified encoding.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-LoadingContactFromVCardWithSpecifiedEncoding-LoadingContactFromVCardWithSpecifiedEncoding.cs" >}}
+
+#### **Saving VCard Contact Items with Specified Encoding**
+
+Customize the saving behavior when working with VCard files using the [VCardSaveOptions](https://reference.aspose.com/email/net/aspose.email.personalinfo.vcard/vcardsaveoptions/#vcardsaveoptions-class) class. The [PreferredTextEncoding](https://reference.aspose.com/email/net/aspose.email.personalinfo.vcard/vcardsaveoptions/preferredtextencoding/) property of the class will specify the encoding to be used when saving VCard contact items.
+
+The following code sample shows how to implement this property in your project:
+
+```cs
+var cont = VCardContact.Load(fileName, Encoding.UTF8);
+var opt = new VCardSaveOptions();
+opt.PreferredTextEncoding = Encoding.UTF8;
+cont.Save("my.vcard", opt);
+```
+
+#### **Saving VCard Files with Extended fields**
+
+The [UseExtensions](https://reference.aspose.com/email/net/aspose.email.personalinfo.vcard/vcardsaveoptions/useextensions/#vcardsaveoptionsuseextensions-property) property allows you to control whether extended fields can be used when saving vCard files. When set to true (default), extensions are permitted, providing compatibility with custom fields and additional contact information.
 
 ### **Reading Multiple Contacts in VCard format**
 
@@ -72,6 +93,7 @@ using (FileStream stream = new FileStream("test.vcf", FileMode.Open, FileAccess.
     }
 }
 ```
+
 ## **Rendering Contact Information to MHTML**
 
 Outlook Contact can be converted to MHTML using Aspose.Email API. This example shows how a VCard is loaded into [MapiContact](https://reference.aspose.com/email/net/aspose.email.mapi/mapicontact/) and then converted to MHTML with the help of [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) API.

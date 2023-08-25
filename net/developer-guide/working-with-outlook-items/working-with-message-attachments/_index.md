@@ -10,6 +10,21 @@ url: /net/working-with-message-attachments/
 
 [Creating and Saving Outlook Message (MSG) Files](https://docs.aspose.com/email/net/creating-and-saving-msg-files/) explains how to create and save messages, and how to create MSG files with attachments. This article explains how to manage Microsoft Outlook attachments with Aspose.Email. Attachments from a message file are accessed and saved to disk using the [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) class [Attachments](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessageitembase/attachments/) property. The [Attachments](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessageitembase/attachments/) property is a collection of type [MapiAttachmentCollection](https://reference.aspose.com/email/net/aspose.email.mapi/mapiattachmentcollection/) class.
 
+### **Check if the Attachment is Inline or Regular**
+
+Inline and regular attachments serve different purposes. Inline attachments are visually integrated into the email message and are typically images or media files. Meanwhile, regular attachments are separate files attached to the email and can include various types of files. The [MapiAttachment.IsInline](https://reference.aspose.com/email/net/aspose.email.mapi/mapiattachment/isinline/) property of the [MapiAttachment](https://reference.aspose.com/email/net/aspose.email.mapi/mapiattachment/#mapiattachment-class) class gets a value indicating whether the attachment is inline or regular.
+
+The following code sample extracts and displays information about each attachment in the loaded MapiMessage, including their display names and whether they are inline attachments or not.
+
+```cs
+var message = MapiMessage.Load(fileName);
+
+foreach (var attach in message.Attachments)
+{
+    Console.WriteLine($"{attach.DisplayName0} : {attach.IsInline)}");
+}
+```
+
 ### **Save Attachments from Outlook Message (MSG) file**
 
 To save attachments from an MSG file:
@@ -50,6 +65,44 @@ An Outlook message can contain other Microsoft Outlook messages in attachments e
 
 Add or remove email attachments with the free [**Aspose.Email Editor App**](https://products.aspose.app/email/editor).
 {{% /alert %}}
+
+### **Adding a ReferenceAttachment on a MapiMessage**
+
+The [MapiAttachmentCollection.Add(string name, string sharedLink, string url, string providerName)](https://reference.aspose.com/email/net/aspose.email.mapi/mapiattachmentcollection/add/#add_4) method of the [MapiAttachmentCollection](https://reference.aspose.com/email/net/aspose.email.mapi/mapiattachmentcollection/#mapiattachmentcollection-class) class allows adding a reference attachment in a MapiMessage. When the recipients of the email click on the reference attachment, they will be able to access the linked file if they have the appropriate permissions to do so. By using a reference attachment, you can send a smaller email message and ensure that everyone has access to the most up-to-date version of the file or item.
+
+The method has the following parameters:
+
+- *name* - the name of attachment
+- *sharedLink* - a fully qualified shared link to the attachment provided by web service manipulating the attachment
+- *url* - a file location
+- *providerName* - a name of reference attachment provider
+
+The code example below demonstrates how to add a reference attachment to a message:
+
+```cs
+// Let's say you want to send an email message that includes a link to a Document.pdf file stored on a Google Drive.
+// Instead of attaching the document directly to the email message,
+// you can create a reference attachment that links to the file on the Google Drive.
+
+// Create a message
+var msg = new MapiMessage("from@domain.com", "to@domain.com", "Outlook message file",
+    "This message is created by Aspose.Email", OutlookMessageFormat.Unicode);
+
+// Add reference attachment
+msg.Attachments.Add("Document.pdf",
+    "https://drive.google.com/file/d/1HJ-M3F2qq1oRrTZ2GZhUdErJNy2CT3DF/",
+    "https://drive.google.com/drive/my-drive",
+    "GoogleDrive");
+//Also, you can set additional attachment properties
+msg.Attachments[0].SetProperty(KnownPropertyList.AttachmentPermissionType, AttachmentPermissionType.AnyoneCanEdit);
+msg.Attachments[0].SetProperty(KnownPropertyList.AttachmentOriginalPermissionType, 0);
+msg.Attachments[0].SetProperty(KnownPropertyList.AttachmentIsFolder, false);
+msg.Attachments[0].SetProperty(KnownPropertyList.AttachmentProviderEndpointUrl, "");
+msg.Attachments[0].SetProperty(KnownPropertyList.AttachmentPreviewUrl, "");
+msg.Attachments[0].SetProperty(KnownPropertyList.AttachmentThumbnailUrl, "");
+// Finally save the message
+msg.Save(@"my.msg");
+```
 
 ### **Embedding a Message as Attachment**
 
