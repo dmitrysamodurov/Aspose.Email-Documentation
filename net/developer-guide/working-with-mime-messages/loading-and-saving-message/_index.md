@@ -40,6 +40,33 @@ The code sample below shows how to remove a signature when loading a message:
 ```cs
 var msg = MapiMessage.Load(fileName, new EmlLoadOptions() { RemoveSignature = true});
 ```
+### **Checking Secure Emails Signature**
+
+The [SecureEmailManager](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/#secureemailmanager-class) class allows you to check the signature of secure MailMessage objects.
+
+The [SmimeResult](https://reference.aspose.com/email/net/aspose.email/smimeresult/#smimeresult-class) class stores the results of the check.
+
+The following methods of the [SecureEmailManager](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/#secureemailmanager-class) class and a code snippet will enable you to process a signature:
+
+- [SecureEmailManager.CheckSignature(MailMessage msg)](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/checksignature/#checksignature) method.
+- [SecureEmailManager.CheckSignature(MailMessage msg, X509Certificate2 certificateForDecrypt)](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/checksignature/#checksignature_1) method.
+- [SecureEmailManager.CheckSignature(MailMessage msg, X509Certificate2 certificateForDecrypt, X509Store store)](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/checksignature/#checksignature_2) method.
+
+```cs
+var eml = MailMessage.Load(fileName);
+var result = new SecureEmailManager().CheckSignature(eml);
+
+var certFileName = "cert.pfx";
+var cert = new X509Certificate2(certFileName, "pass");
+var eml = MailMessage.Load(fileName);
+var store = new X509Store();
+store.Open(OpenFlags.ReadWrite);
+store.Add(cert);
+store.Close();
+
+var result = new SecureEmailManager().CheckSignature(eml, cert, store);
+```
+
 
 ## **Saving and Converting Messages**
 

@@ -449,6 +449,26 @@ The [DeleteChildItem()](https://reference.aspose.com/email/net/aspose.email.stor
 FolderInfo someFolder = pst.RootFolder.GetSubFolder("Some folder");
 pst.RootFolder.DeleteChildItem(someFolder.EntryId);
 ```
+### **Delete Items from PST**
+
+Delete items (folders or messages) from a Personal Storage Table (PST) using the unique entryId associated with the item by calling the DeleteItem(string entryId) method of the [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/#personalstorage-class) class.
+
+The following code snippet can be used to call the DeleteItem method and pass the entryId as a parameter:
+
+```cs
+var pst = PersonalStorage.FromFile("sample.pst");
+
+// ...
+
+pst.DeleteItem(entryId);
+
+// ...
+```
+**Please Note:**
+
+- This method will permanently delete the item from the PST and cannot be undone. Exercise caution when using this method to avoid accidental data loss.
+- As per standard conventions, ensure that the entryId is valid and corresponds to an existing item within the PST. 
+- Otherwise, an exception will be thrown. It is advisable to have a backup of the PST or implement suitable measures to recover deleted items if needed.
 
 ### **Delete Items in Bulk from PST File**
 
@@ -633,6 +653,38 @@ using(PersonalStorage personalStorage = PersonalStorage.FromFile("test.pst"))
     inbox.MoveSubfolders(deleted);
     subfolder.MoveContents(deleted);
 }
+```
+## **Merge and Split PST Files**
+
+The code sample below describes the process of a file split:
+
+1. It, first, uses the [FromFile](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/fromfile/#fromfile) method of the [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/#personalstorage-class) class to specify the file name.
+
+2. Then, it calls the [StorageProcessedEventHandler](https://reference.aspose.com/email/net/aspose.email.storage.pst/storageprocessedeventhandler/#storageprocessedeventhandler-delegate) delegate to handle an StorageProcessed event.
+
+3. The [StorageProcessingEventArgs]() class provides data for the PersonalStorage.StorageProcessing event. Its [StorageProcessingEventArgs.FileName](https://reference.aspose.com/email/net/aspose.email.storage.pst/storageprocessedeventargs/filename/#storageprocessedeventargsfilename-property) property allows you to retrieve the name of the PST file. For [MergeWith](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/mergewith/#mergewith_1) method it will be a name of the current pst to be merged with the main one, and for [SplitInto](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/splitinto/#splitinto) method it will be a name of the current part.
+
+4. Finally, [SplitInto(long chunkSize, string partFileNamePrefix, string path)](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/splitinto/#splitinto) overload method will launch the splitting of the PST storage into smaller-sized parts. It takes the following parameters:
+
+- **chunkSize**: The approximate size of each chunk in bytes.
+- **partFileNamePrefix**: The prefix to be added to the filename of each part of the PST. If provided, the prefix will be added to the beginning of each file name. If not provided (null or empty), the PST parts will be created without a prefix.
+- **path**: The folder path where the chunks will be created.
+
+The filename of each part follows the template: {prefix}part{number}.pst, where {prefix} represents the filename prefix (if provided), and {number} represents the number of the chunk file.
+
+```cs
+var pst = PersonalStorage.FromFile("sample.pst");
+
+// ...
+
+pst.StorageProcessing += (sender, args) =>
+{
+    Console.WriteLine("Storage processing event raised for file: " + args.FileName);
+};
+
+// ...
+
+pst.SplitInto(5000000, "prefix_", outputFolderPath);
 ```
 
 ## **Updating Message Properties in a PST File**
