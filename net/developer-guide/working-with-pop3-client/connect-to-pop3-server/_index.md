@@ -52,6 +52,14 @@ The following code snippet shows you how to retrieve email via proxy server.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-POP3-AccessMailboxViaHttpProxy-AccessPOP3MailboxViaHttpProxy.cs" >}}
 
+## **Connecting to server via CRAM-MD5 authentication mechanism**
+
+Using CRAM-MD5 authentication, Aspose.Email for .NET allows users to securely authenticate and access email servers supporting this authentication method. The code sample below shows how to use the mechanism in your project:
+
+```cs
+popClient.AllowedAuthentication = Pop3KnownAuthenticationType.CramMD5;
+```
+
 ## **How to Set Timeout for Mail Operations**
 
 Each mail operation takes some time depending on many factors (network delays, data size, server performance, etc.). You can set a timeout for all mail operations. The code example below shows you how to do that using the [Timeout](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/timeout/) property. Note: you should not set large values to avoid long waits in your application.

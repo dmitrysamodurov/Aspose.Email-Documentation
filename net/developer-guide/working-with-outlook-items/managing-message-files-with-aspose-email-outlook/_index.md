@@ -5,12 +5,88 @@ weight: 30
 url: /net/managing-message-files-with-aspose-email-outlook/
 ---
 
+## **Getting a MAPI item type**
+
+The [MapiItemType](https://reference.aspose.com/email/net/aspose.email.mapi/mapiitemtype/) enum represents a MAPI item type that can be explicitly converted into an object of the corresponding class derived from the [IMapiMessageItem](https://reference.aspose.com/email/net/aspose.email.mapi/imapimessageitem/#imapimessageitem-interface)interface. This way users can avoid checking the [MessageClass](https://reference.aspose.com/email/net/aspose.email.mapi/imapimessageitem/messageclass/) property value before message conversion.
+
+The following code sample shows how to define a type for the item to be converted:
+
+```cs
+foreach (var messageInfo in folder.EnumerateMessages())
+{
+    var msg = pst.ExtractMessage(messageInfo);
+
+    switch (msg.SupportedType)
+    {
+        // Non-supported type. MapiMessage cannot be converted to an appropriate item type.
+        // Just use in MSG format.
+        case MapiItemType.None:
+            break;
+        // An email message. Conversion isn't required.
+        case MapiItemType.Message:
+            break;
+        // A contact item. Can be converted to MapiContact.
+        case MapiItemType.Contact:
+            var contact = (MapiContact)msg.ToMapiMessageItem();
+            break;
+        // A calendar item. Can be converted to MapiCalendar.
+        case MapiItemType.Calendar:
+            var calendar = (MapiCalendar)msg.ToMapiMessageItem();
+            break;
+        // A distribution list. Can be converted to MapiDistributionList.
+        case MapiItemType.DistList:
+            var dl = (MapiDistributionList)msg.ToMapiMessageItem();
+            break;
+        // A Journal entry. Can be converted to MapiJournal.
+        case MapiItemType.Journal:
+            var journal = (MapiJournal)msg.ToMapiMessageItem();
+            break;
+        // A StickyNote. Can be converted to MapiNote.
+        case MapiItemType.Note:
+            var note = (MapiNote)msg.ToMapiMessageItem();
+            break;
+        // A Task item. Can be converted to MapiTask.
+        case MapiItemType.Task:
+            var task = (MapiTask)msg.ToMapiMessageItem();
+            break;
+    }
+}
+```
 
 ## **Converting MSG to MIME message**
 
 Aspose.Email API provides the capability of converting MSG files to MIME messages using the [ToMailMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/tomailmessage/#tomailmessage) method.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-ConvertMSGToMIMEMessage-ConvertMSGToMIMEMessage.cs" >}}
+
+## **Setting Timeout to Message Conversion and Loading Process**
+
+The following features will enable you to set the timeout in milliseconds for conversion and loading process:
+
+- [MailConversionOptions.Timeout](https://reference.aspose.com/email/net/aspose.email.mapi/mailconversionoptions/timeout/#mailconversionoptionstimeout-property) property- Limits the time in milliseconds while converting a message.
+
+- [MailConversionOptions.TimeoutReached](https://reference.aspose.com/email/net/aspose.email.mapi/mailconversionoptions/timeoutreached/) - Raised if the time is out while converting to MailMessage.
+
+- [MsgLoadOptions.Timeout](https://reference.aspose.com/email/net/aspose.email/msgloadoptions/timeout/) - Limits the time in milliseconds while converting a message.
+
+- [MsgLoadOptions.TimeoutReached](https://reference.aspose.com/email/net/aspose.email/msgloadoptions/timeoutreached/) - Raised if the time is out while converting to MailMessage.
+
+The code sample below will show you how to set timeout while converting a message:
+
+```cs
+var options = new MailConversionOptions();
+// Set the timeout to 5 seconds
+options.Timeout = 5000;
+
+options.TimeoutReached += (object sender, EventArgs args) =>
+{
+    string subj = (sender as MailMessage).Subject;
+	 // Set a flag indicating the timeout was reached
+    isTimedOut = true;
+};
+
+var mailMessage = mapiMessage.ToMailMessage(options);
+```
 
 ## **Reading and Writing Outlook Template File (.OFT)**
 
@@ -35,6 +111,57 @@ The following code snippet shows you how to save the outlook MSG file as a templ
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-SaveMsgAsTemplate-SaveMsgAsTemplate.cs" >}}
 
+### **Determine if a MapiMessage is OFT or MSG**
+
+When loading a MapiMessage object from a file, you may need to determine if the loaded message is a template file or a regular email file. By using the [IsTemplate](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/istemplate/) property of the [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/#mapimessage-class) class, you can accurately detect whether an email is a template or not.  This functionality can be valuable when handling and processing various types of email files within applications and systems.
+
+The code example below demonstrates how to determine if a MapiMessage is OFT or MSG: 
+
+```cs
+var msg = MapiMessage.Load("message.msg");
+var isOft = msg.IsTemplate; // returns false
+
+var msg = MapiMessage.Load("message.oft");
+var isOft = msg.IsTemplate; // returns true
+```
+
+### **Saving MapiMessage or MailMessage in OFT format**
+
+The [SaveOptions](https://reference.aspose.com/email/net/aspose.email/saveoptions/#saveoptions-class) class allows you to specify additional options when saving a MailMessage or MapiMessage into a particular format.
+
+The following code sample demonstrates how to save a message to OFT format:
+
+```cs
+// Save the MailMessage to OFT format
+using (var eml = MailMessage.Load("message.eml"))
+{
+    eml.Save("message.oft", SaveOptions.DefaultOft);
+	
+	// or alternative way #2
+	var saveOptions = new MsgSaveOptions(MailMessageSaveType.OutlookTemplateFormat);
+    eml.Save("message.oft", saveOptions);
+	
+	// or alternative  way #3
+	saveOptions = SaveOptions.CreateSaveOptions(MailMessageSaveType.OutlookTemplateFormat);
+    eml.Save("message.oft", saveOptions);
+
+}
+
+// Save the MapiMessage to OFT format
+using (var msg = MapiMessage.Load("message.msg"))
+{
+    msg.Save("message.oft", SaveOptions.DefaultOft);
+	
+	// or alternative way #2
+	var saveOptions = new MsgSaveOptions(MailMessageSaveType.OutlookTemplateFormat);
+    msg.Save("message.oft", saveOptions);
+	
+	// or alternative  way #3
+	saveOptions = SaveOptions.CreateSaveOptions(MailMessageSaveType.OutlookTemplateFormat);
+    msg.Save("message.oft", saveOptions);
+}
+```
+
 ## **Managing Digitally Signed Messages**
 
 Aspose.Email implements the complete S/MIME email object algorithm. This gives the API complete power to preserve digital signatures while converting messages between formats.
@@ -50,6 +177,67 @@ Aspose.Email preserves the digital signature when converting from EML to MSG. T
 Aspose.Email preserves the digital signature when converting from MSG to EML as shown in the following code snippet.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-ConvertMIMEMessagesFromMSGToEML-ConvertMIMEMessagesFromMSGToEML.cs" >}}
+
+### **Checking the Signature of Secure Emails**
+
+The following features are available to check the signature of MapiMessage objects.
+
+- [SecureEmailManager](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/#secureemailmanager-class) class for checking the signature of secure emails.
+- [SmimeResult](https://reference.aspose.com/email/net/aspose.email/smimeresult/#smimeresult-class) class to store the results of the check.
+- [SecureEmailManager.CheckSignature(MapiMessage msg)](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/checksignature/#checksignature_3) method.
+- [SecureEmailManager.CheckSignature(MapiMessage msg, X509Certificate2 certificateForDecrypt)](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/checksignature/#checksignature_4) method.
+- [SecureEmailManager.CheckSignature(MapiMessage msg, X509Certificate2 certificateForDecrypt, X509Store store)](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/checksignature/#checksignature_5) method.
+
+The code sample below shows how to implement the features in your project:
+
+```cs
+var msg = MapiMessage.Load(fileName, new EmlLoadOptions());
+var result = new SecureEmailManager().CheckSignature(msg);
+
+var certFileName = "cert.pfx";
+var cert = new X509Certificate2(certFileName, "pass");
+var eml = MapiMessage.Load(fileName);
+var store = new X509Store();
+store.Open(OpenFlags.ReadWrite);
+store.Add(cert);
+store.Close();
+
+var result = new SecureEmailManager().CheckSignature(eml, cert, store);
+```
+
+### **Removing a Signature from a MapiMessage**
+
+For better compatibility, the [MapiMessage.RemoveSignature](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/removesignature/) method and [MapiMessage.IsSigned](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/issigned/) property are used to remove a digital signature from a message.
+
+The follwoing code snippet shows how to implement these features into your project:
+
+```cs
+var msg = MapiMessage.Load(fileName);
+
+if (msg.IsSigned)
+{
+    var unsignedMsg = msg.RemoveSignature();
+}
+```
+## **Decrypt a MapiMessage with Certificate**
+
+If you have encrypted MAPI messages and need to decrypt them using the private key stored in a certificate, the following features of Aspose.Email can be useful:
+
+- [MapiMessage.IsEncrypted](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/isencrypted/#mapimessageisencrypted-property) - Gets a value indicating whether the message is encrypted.
+- [MapiMessage.Decrypt()](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/decrypt/#decrypt) - Decrypts this message(method searches the current user and computer My stores for the appropriate certificate and private key).
+- [MapiMessage.Decrypt(X509Certificate2 certificate)](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/decrypt/#decrypt_1) - Decrypts this message with certificate.
+
+The following code snippet shows how to work with encrypted MAPI messages: 
+
+```cs
+var privateCert = new X509Certificate2(privateCertFile, "password");
+var msg = MapiMessage.Load("encrypted.msg");
+
+if (msg.IsEncrypted);
+{
+    var decryptedMsg = msg.Decrypt(privateCert);
+}
+```
 
 ## **Setting Color Category for Outlook MSG Files**
 

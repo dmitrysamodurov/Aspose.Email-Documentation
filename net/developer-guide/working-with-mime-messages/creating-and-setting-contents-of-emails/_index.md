@@ -110,6 +110,25 @@ eml.To.Add(new MailAddress("kyle@to.com", "Kyle Huang"));
 eml.CC.Add(new MailAddress("guangzhou@cc.com", "Guangzhou Team"));
 eml.Bcc.Add(new MailAddress("ahaq@bcc.com", "Ammad ulHaq "));
 ```
+## **Displaying the optional attendees in the mht header output**
+
+The code sample below demonstrates how to use *display optional attendees* feature when saving an msg in mhtml format:
+
+
+```cs
+MhtSaveOptions options = new MhtSaveOptions()
+{
+    MhtFormatOptions = MhtFormatOptions.RenderCalendarEvent | MhtFormatOptions.WriteHeader
+};
+
+MapiMessage msg = MapiMessage.Load(fileName);
+msg.Save(fileName + ".mhtml", options);
+
+//if you need to skip OptionalAttendees in mhtml file you can clear format template for OptionalAttendees
+options.FormatTemplates[MhtTemplateName.OptionalAttendees] = "";
+msg.Save(fileName + "2.mhtml", options);
+```
+
 
 ## **Set Mail Body**
 
@@ -354,7 +373,18 @@ The [Add](https://reference.aspose.com/email/net/aspose.email.mime/headercollect
 eml.Headers.Insert("Received", "Value");
 ```
 
-### **Adding Custom headers to email**
+### **Save All Headers in MHTML**
+
+The [MhtSaveOptions.SaveAllHeaders](https://reference.aspose.com/email/net/aspose.email/mhtsaveoptions/saveallheaders/#mhtsaveoptionssaveallheaders-property) property of the [MhtSaveOptions](https://reference.aspose.com/email/net/aspose.email/mhtsaveoptions/#mhtsaveoptions-class) class defines whether there is a need to save all headers in output mhtml or not. The following code snippet shows you how to save all headers of an mhtml file:
+
+```cs
+var eml = MailMessage.Load("message.eml");
+var sopt = SaveOptions.DefaultMhtml;
+sopt.SaveAllHeaders = true;
+eml.Save("message.mhtml", sopt);
+```
+
+### **Adding Custom Headers to Email**
 
 An email header can be specified using the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class. To specify a **custom header** in an email message, consider the following code sample:
 
@@ -364,8 +394,19 @@ eml.Headers.Add("secret-header", "mystery");
 
 The above code snippet produces an email header in the following format:
 
-```
+```cs
 secret-header: mystery
+```
+
+## **Save a HTML file with Task Fields in a Header**
+
+The [HtmlFormatOptions.RenderTaskFields](https://reference.aspose.com/email/net/aspose.email/htmlformatoptions/#htmlformatoptions-enumeration) enumeration allows you to specify that task fields should be included in the header of the saved HTML file. The following code snippet shows how to preserve task fields in a header when saving a html file:
+
+```cs
+var msg = MapiMessage.Load("task.msg");
+HtmlSaveOptions opt = SaveOptions.DefaultHtml;
+opt.HtmlFormatOptions = HtmlFormatOptions.WriteHeader | HtmlFormatOptions.RenderTaskFields;
+msg.Save("task.html", opt);
 ```
 
 ## **Sign Emails with DKIM**

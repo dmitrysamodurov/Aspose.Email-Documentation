@@ -31,6 +31,43 @@ The following code snippet shows you how to load a message with load options.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-PreserveEmbeddedMSGFormatDuringLoad-PreserveEmbeddedMSGFormatDuringLoad.cs" >}}
 
+### **Loading a Message Preserving or Removing a Signature**
+
+Signature preservation is supported by default when loading EML files. To remove the signature, you can set the [LoadOptions.RemoveSignature](https://reference.aspose.com/email/net/aspose.email/loadoptions/removesignature/#loadoptionsremovesignature-property) property to *true*.
+
+The code sample below shows how to remove a signature when loading a message:
+
+```cs
+var msg = MapiMessage.Load(fileName, new EmlLoadOptions() { RemoveSignature = true});
+```
+### **Checking Secure Emails Signature**
+
+The [SecureEmailManager](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/#secureemailmanager-class) class allows you to check the signature of secure MailMessage objects.
+
+The [SmimeResult](https://reference.aspose.com/email/net/aspose.email/smimeresult/#smimeresult-class) class stores the results of the check.
+
+The following methods of the [SecureEmailManager](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/#secureemailmanager-class) class and a code snippet will enable you to process a signature:
+
+- [SecureEmailManager.CheckSignature(MailMessage msg)](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/checksignature/#checksignature) method.
+- [SecureEmailManager.CheckSignature(MailMessage msg, X509Certificate2 certificateForDecrypt)](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/checksignature/#checksignature_1) method.
+- [SecureEmailManager.CheckSignature(MailMessage msg, X509Certificate2 certificateForDecrypt, X509Store store)](https://reference.aspose.com/email/net/aspose.email/secureemailmanager/checksignature/#checksignature_2) method.
+
+```cs
+var eml = MailMessage.Load(fileName);
+var result = new SecureEmailManager().CheckSignature(eml);
+
+var certFileName = "cert.pfx";
+var cert = new X509Certificate2(certFileName, "pass");
+var eml = MailMessage.Load(fileName);
+var store = new X509Store();
+store.Open(OpenFlags.ReadWrite);
+store.Add(cert);
+store.Close();
+
+var result = new SecureEmailManager().CheckSignature(eml, cert, store);
+```
+
+
 ## **Saving and Converting Messages**
 
 Aspose.Email makes it easy to convert any message type to another format. To demonstrate this feature, the code in this article loads three types of messages from disk and saves them back in other formats. The base class [SaveOptions](https://reference.aspose.com/email/net/aspose.email/saveoptions/) and the classes [EmlSaveOptions](https://reference.aspose.com/email/net/aspose.email/emlsaveoptions/), [MsgSaveOptions](https://reference.aspose.com/email/net/aspose.email/msgsaveoptions/), [MhtSaveOptions](https://reference.aspose.com/email/net/aspose.email/mhtsaveoptions/), [HtmlSaveOptions](https://reference.aspose.com/email/net/aspose.email/htmlsaveoptions/) for additional settings when saving [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) can be used for saving messages to other formats. The article shows how to use these classes to save a sample email as:
@@ -131,6 +168,38 @@ The [MhtFormatOptions.RenderCalendarEvent](https://reference.aspose.com/email/ne
 #### **Changing Font while Converting to MHT**
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-ChangeFontWhileConvertingToMHT-ChangeFontWhileConvertingToMHT.cs" >}}
+
+#### **Preserving RTF body when converting MSG to EML** 
+
+The convertion of a MSG file to EML preserving RTF body can be done in two ways:
+
+- using [MsgLoadOptions.PreserveRtfContent](https://reference.aspose.com/email/net/aspose.email/msgloadoptions/preservertfcontent/) property of the [MsgLoadOptions](https://reference.aspose.com/email/net/aspose.email/msgloadoptions/) class;
+
+- using [MailConversionOptions.PreserveRtfContent](https://reference.aspose.com/email/net/aspose.email.mapi/mailconversionoptions/preservertfcontent/) property of the [MailConversionOptions](https://reference.aspose.com/email/net/aspose.email.mapi/mailconversionoptions/) class;
+
+Both properties get or set a value indicating whether to keep the rtf body in MailMessage.
+
+The following code snippets show how to convert a MSG file to EML and preserve RTF body:
+
+```cs
+var loadOptions = new MsgLoadOptions
+{
+    PreserveRtfContent = true
+};
+
+var eml = MailMessage.Load("my.msg", loadOptions);
+```
+
+```cs
+var conversionOptions = new MailConversionOptions
+{
+    PreserveRtfContent = true
+};
+
+var msg = MapiMessage.Load("my.msg");
+
+var eml = msg.ToMailMessage(conversionOptions);
+```
 
 ### **Exporting Email to EML**
 

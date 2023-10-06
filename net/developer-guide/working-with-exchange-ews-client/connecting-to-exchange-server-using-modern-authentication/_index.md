@@ -210,3 +210,20 @@ var smtpClient = new SmtpClient(
     true);
 
 ```
+## **Return the Client Request ID**
+
+ The [ReturnClientRequestId](https://reference.aspose.com/email/net/aspose.email.clients.exchange/autodiscoverservicebase/returnclientrequestid/) property was added to EWSClient for your convenience to specify whether the client request ID should be returned in the response from Exchange Web Services (EWS) calls. The client request ID is a unique identifier that you can set for each EWS request sent from your application. By setting the [ReturnClientRequestId](https://reference.aspose.com/email/net/aspose.email.clients.exchange/autodiscoverservicebase/returnclientrequestid/) property to *true*, you indicate that you want the client request ID to be included in the response from the EWS server. This can be useful for tracking and correlating requests and responses in scenarios where multiple requests are made and processed asynchronously.
+
+ The following code snippet shows how the property can be utilized:
+
+ ```cs
+ using (IEWSClient client = TestUtil.CreateEWSClient(user))
+{
+    // Client will create random id and pass it to the server.
+	// The server should include this id in request-id header of all responses.
+    client.ReturnClientRequestId = true;
+    
+	client.LogFileName = "ews.log";
+    client.GetMailboxInfo();
+}
+ ```

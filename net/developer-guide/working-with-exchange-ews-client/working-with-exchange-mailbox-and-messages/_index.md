@@ -215,6 +215,25 @@ IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
 ExchangeMessageInfoCollection list = client.ListMessages(client.MailboxInfo.DeletedItemsUri);
 Console.WriteLine(list[0].MessageInfoType.ToString());
 ```
+### **Retrieving Message Class from ExchangeMessageInfo Object**
+
+The message class represents the type of an item in the Exchange store. By getting the message class, you can determine the type of the Exchange email message and perform specific operations based on its classification. 
+
+Below is an example of getting the message class using the [ExchangeMessageInfo](https://reference.aspose.com/email/net/aspose.email.clients.exchange/exchangemessageinfo/) class of the Aspose.Email for .NET:
+
+**Code sample**
+
+```cs
+using (var client = EWSClient.GetEWSClient(uri, credentials))
+{
+    var messageInfoCollection = client.ListMessagesFromPublicFolder(publicFolder);
+
+    foreach (var messageInfo in messageInfoCollection)
+    {
+        Console.WriteLine("Message Class: {0}", messageInfo.MessageClass);
+    }
+}
+```
 
 ## **Saving Messages**
 
@@ -403,6 +422,26 @@ To fetch messages with attachments, use the more powerful [FetchItems](https://r
 ```csharp
 var uriList = client.ListItems(client.MailboxInfo.InboxUri);
 var items = client.FetchItems(EwsFetchItems.Create().AddUris(uriList).WithAttachments());
+```
+
+## **Fetching Items with Attachments**
+
+The [FetchItems](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/fetchitems/#iewsclientfetchitems-method)(EwsFetchItems options) method of the EwsClient retrieves email items from an Exchange server. It accepts an instance of [EwsFetchItems](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice.models/ewsfetchitems/#ewsfetchitems-class) class as a parameter to define various options for fetching the items.
+
+The following code shows how to get items with attachments:
+
+```cs
+// Call the ListMessages method to retrieve a list of message from the Inbox folder
+var messageInfoList = ewsClient.ListMessages(ewsClient.MailboxInfo.InboxUri);
+
+// Create an instance of the EwsFetchItems class and assign it to the options variable
+var options = EwsFetchItems.Create();
+
+// Generate a new collection of messages which is then converted to a List.
+var uriList = messageInfoList.Select(item => item.UniqueUri).ToList();
+
+// Fetch only messages containing attachments
+var items = ewsClient.FetchItems(options.AddUris(uriList).WithAttachments());
 ```
 
 ## **Pre-Fetch Message Size**

@@ -38,6 +38,25 @@ The following code snippet shows you how to export the calendar items from Outlo
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-SaveCalendarItems-SaveCalendarItems.cs" >}}
 
+### **Saving as ICS with Original Timestamp**
+
+The following features are available to save calendar items as ICS preserving their original date and time information:
+
+- [MapiCalendarIcsSaveOptions](https://reference.aspose.com/email/net/aspose.email.mapi/mapicalendaricssaveoptions/) - Allows to specify additional options when saving MapiCalendar to Ics format. 
+
+- [MapiCalendarIcsSaveOptions.KeepOriginalDateTimeStamp](https://reference.aspose.com/email/net/aspose.email.mapi/mapicalendaricssaveoptions/keeporiginaldatetimestamp/) - Allows keep original DateTimeStamp value in output file.
+
+Use the code sample below to implement the features to your project:
+
+```cs
+var cal = pst.ExtractMessage(msgInfo).ToMapiMessageItem() as MapiCalendar;
+
+if (cal != null)
+{
+  cal.Save("cal.ics", new MapiCalendarIcsSaveOptions() { KeepOriginalDateTimeStamp = true});
+}
+```
+
 ## **Modify/Delete Occurrences from Recurrences**
 
 Exceptions can be added to existing recurrences using Aspose.Email for .NET API. The following code sample illustrates the usage of this feature.

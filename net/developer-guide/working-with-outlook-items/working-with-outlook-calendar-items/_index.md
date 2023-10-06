@@ -34,6 +34,42 @@ The following code snippet shows you how to save the calendar item as MSG.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-SavingTheCalendarItemAsMSG-SavingTheCalendarItemAsMSG.cs" >}}
 
+### **Setting a Product ID when Saving MapiCalendar to ICS**
+
+The [ProductIdentifier](https://reference.aspose.com/email/net/aspose.email.mapi/mapicalendaricssaveoptions/productidentifier/) property of the [MapiCalendarIcsSaveOptions](https://reference.aspose.com/email/net/aspose.email.mapi/mapicalendaricssaveoptions/#mapicalendaricssaveoptions-class) class is used to save a MAPI calendar item to an iCalendar (ICS) file preserving original date and time information as well as a custom product identifier. The property specifies the identifier for the product that created the iCalendar object.
+
+The following code sample shows how to work with iCalendar (ICS) data within a MAPI calendar object:
+
+```cs
+var icsSaveOptions = new MapiCalendarIcsSaveOptions
+{
+    KeepOriginalDateTimeStamp = true,
+    ProductIdentifier = "Foo Ltd"
+};
+
+mapiCalendar.Save("my.ics", icsSaveOptions);
+```
+### **Getting total number of events**
+
+The CalendarReader class enables handling calendar events effortlessly. The following properties and a method allow you to work with multiple events:
+
+- **CalendarReader.Count** - The Count property of the CalendarReader class allows you to retrieve the number of Vevent components (events) present in the calendar, making it easier to track the total number of events.
+- **CalendarReader.IsMultiEvents** - This property determines whether the calendar contains multiple events. It provides a boolean value indicating whether the calendar contains more than one event, aiding in identifying calendars with single or multiple events.
+- **CalendarReader.Method** - The Method property obtains the iCalendar method type associated with the calendar object. It returns the method type, such as “REQUEST,” “PUBLISH,” or “CANCEL,” providing valuable insights into the purpose of the calendar.
+- **CalendarReader.Version** - Gets the Version of iCalendar.
+- **CalendarReader.LoadAsMultiple()** This method enables the loading of a list of events from a calendar containing multiple events. It returns a list of Appointment objects, allowing easy access and processing of each event individually.
+
+The following code example demonstrates how you can implement these capabilities in your project:
+
+```cs
+var reader = new CalendarReader(fileName);
+Console.WriteLine("Calendar contains " + reader.Count + " events");
+Console.WriteLine("The Version of the calendar is " + reader.Version);
+Console.WriteLine("The Method of the calendar is " + reader.Method);
+Console.WriteLine("Is calendar contains contains multiple events? - " + reader.IsMultiEvents);
+List<Appointment> appointments = reader.LoadAsMultiple();
+```
+
 ### **Adding display reminder to a Calendar**
 
 The following code snippet shows you how to add a display reminder to a calendar.

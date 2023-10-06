@@ -12,7 +12,32 @@ This topic explains how to load a Microsoft Outlook Message file (*.msg). The [M
 
 The following code snippet shows you how to load MSG files.
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-LoadMSGFiles-LoadMSGFiles.cs" >}}
+```cs
+// The path to the File directory.
+string dataDir = RunExamples.GetDataDir_Outlook();
+
+// Create an instance of MapiMessage from file
+MapiMessage msg = MapiMessage.Load(dataDir + @"message.msg");
+
+// Get subject
+Console.WriteLine("Subject:" + msg.Subject);
+
+// Get from address
+Console.WriteLine("From:" + msg.SenderEmailAddress);
+
+// Get body
+Console.WriteLine("Body" + msg.Body);
+
+// Get recipients information
+Console.WriteLine("Recipient: " + msg.Recipients);
+
+// Get attachments
+foreach (MapiAttachment att in msg.Attachments)
+{
+    Console.Write("Attachment Name: " + att.FileName);
+    Console.Write("Attachment Display Name: " + att.DisplayName);
+}
+```
 
 The following code example shows how to use MailMessage to load a message in MSG format.
 
@@ -38,7 +63,27 @@ var msg = MailMessage.Load(stream, msgLoadOptions);
 
 The following code snippet shows you how to load file from stream.
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-LoadingFromStream-LoadingFromStream.cs" >}}
+```cs
+// Create an instance of MapiMessage from file
+byte[] bytes = File.ReadAllBytes(dataDir + @"message.msg");
+
+using (MemoryStream stream = new MemoryStream(bytes))
+{
+    stream.Seek(0, SeekOrigin.Begin);
+    // Create an instance of MapiMessage from file
+    MapiMessage msg = MapiMessage.Load(stream);
+
+    // Get subject
+    Console.WriteLine("Subject:" + msg.Subject);
+
+    // Get from address
+    Console.WriteLine("From:" + msg.SenderEmailAddress);
+
+    // Get body
+    Console.WriteLine("Body" + msg.Body);
+
+}
+```
 
 Converting EML to MSG preserving embedded EML format
 

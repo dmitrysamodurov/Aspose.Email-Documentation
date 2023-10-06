@@ -10,6 +10,14 @@ url: /net/working-with-ibm-notes/
 
 IBM Notes is a client and IBM Domino is a server of a collaborative client-server software platform. IBM Notes provides collaboration features like email, calendars, to-do lists, contacts management, etc. The database file used by IBM Notes is saved in the Notes Storage Facility (NSF) format.
 
+## **Detect a File is in NSF Format**
+
+The code sample below will show you how to recognize the NSF file format:
+
+```cs
+var formatType = FileFormatUtil.DetectFileFormat("storage.nsf").FileFormatType; // Returns FileFormatType.Nsf
+```
+
 ## **Read messages from NSF storage file**
 
 {{% alert color="primary" %}}

@@ -46,7 +46,7 @@ folder.ChangeContainerClass("IPF.Note");
 Adding individual messages to a PST implies more I/O operations to the disc and may slow down the performance. To improve the performance, messages can be added to the PST in the bulk mode to minimize I/O operations.
 The [AddMessages](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/addmessages/) method allows you to add messages in bulk and can be used as in the following scenarios. In addition, the [MessageAdded](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/messageadded/) event occurs when a message is added to the folder.
 
-### Add Messages from Another PST
+### **Add Messages from Another PST**
 
 To add messages from another PST, use the [FolderInfo.EnumerateMapiMessages](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/enumeratemapimessages/) method that returns `IEnumerable<MapiMessage>`:
 
@@ -69,7 +69,7 @@ static void OnMessageAdded(object sender, MessageAddedEventArgs e)
 }
 ```
 
-### Add Messages from Directory
+### **Add Messages from Directory**
 
 To add messages from directory, create the `GetMessages(string pathToDir)` named iterator method that returns `IEnumerable<MapiMessage>`:
 
