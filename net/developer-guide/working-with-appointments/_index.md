@@ -89,78 +89,7 @@ var appointment = new Appointment("Bygget 83",
     </html>"
 };
 ```
-
-## **Load and Save an Appointment in ICS Format**
-
-Also, the [Appointment](https://reference.aspose.com/email/net/aspose.email.calendar/appointment/) class can be used to load an appointment from ICS file.
-
-### **Load an Appointment in ICS Format**
-
-To load an appointment in ICS format, the following steps are required:
-
-1. Create an instance of the [Appointment](https://reference.aspose.com/email/net/aspose.email.calendar/appointment/) class.
-1. Call the [Load()](https://reference.aspose.com/email/net/aspose.email.calendar/appointment/load/#load/) method by providing the path of the ICS file.
-1. Read any property to get any information from the appointment (ICS file).
-
-The following code snippet shows you how to load an appointment in ICS format.
-
-```cs
-// Load an Appointment just created and saved to disk and display its details.
-Appointment loadedAppointment = Appointment.Load(dstEmail);
-Console.WriteLine(Environment.NewLine + "Loaded Appointment details are as follows:");
-// Display the appointment information on screen
-Console.WriteLine("Summary: " + loadedAppointment.Summary);
-Console.WriteLine("Location: " + loadedAppointment.Location);
-Console.WriteLine("Description: " + loadedAppointment.Description);
-Console.WriteLine("Start date: " + loadedAppointment.StartDate);
-Console.WriteLine("End date: " + loadedAppointment.EndDate);
-Console.WriteLine("Organizer: " + appointment.Organizer);
-Console.WriteLine("Attendees: " + appointment.Attendees);
-Console.WriteLine(Environment.NewLine + "Appointment loaded successfully from " + dstEmail);
-```
-
-## **Load and Convert an ICS File to a Message Format**
-
-The API allows you easily convert an Appointment to a message object. The following code example shows how to convert an appointment request into a MailMessage or MapiMessage:
-
-```cs
-var appointment = Appointment.Load("appRequest.ics");
-
-var eml = appointment.ToMailMessage();
-var msg = appointment.ToMapiMessage();
-```
-
-## **Read Multiple Events from ICS File**
-
-```cs
-List<Appointment> appointments = new List<Appointment>();
-CalendarReader reader = new CalendarReader(dataDir + "US-Holidays.ics");
-
-while (reader.NextEvent())
-{
-    appointments.Add(reader.Current);
-}
-//working with appointments...
-```
-
-## **Write Multiple Events to ICS File**
-
-```cs
-IcsSaveOptions saveOptions = new IcsSaveOptions();
-saveOptions.Action = AppointmentAction.Create;
-using (CalendarWriter writer = new CalendarWriter(dataDir + "WriteMultipleEventsToICS_out.ics", saveOptions))
-{
-    for (int i = 0; i < 10; i++)
-    {
-        Appointment app = new Appointment(string.Empty, DateTime.Now, DateTime.Now, "sender@domain.com", "receiver@domain.com");
-        app.Description = "Test body " + i;
-        app.Summary = "Test summary:" + i;
-        writer.Write(app);
-    }
-}
-```
-
-## **Create a Draft Appointment Request**
+### **Create a Draft Appointment Request**
 
 It was shown in our earlier articles how to create and save an appointment in ICS format. It is often required to create an Appointment request in a Draft mode, so as the basic information is added and then the same draft Appointment be forwarded to other users for necessary changes according to individual uses. In order to save an Appointment in a Draft mode, the [MethodType](https://reference.aspose.com/email/net/aspose.email.calendar/appointment/methodtype/) property of Appointment class should be set to [AppointmentMethodType.Publish](https://reference.aspose.com/email/net/aspose.email.calendar/appointmentmethodtype/). The following code snippet shows you how to create a draft appointment request.
 
@@ -211,7 +140,7 @@ MapiMessage msg = MapiMessage.FromMailMessage(message);
 msg.Save(dataDir + "draft_out.msg");
 ```
 
-## **Set Participants Status of Appointment Attendees**
+### **Set Participants Status of Appointment Attendees**
 
 Aspose.Email for .NET API lets you set the status of appointment attendees while formulating a reply message. This adds the PARTSTAT property to the ICS file.
 
@@ -231,7 +160,7 @@ attendees.Add(attendee2);
 Appointment target = new Appointment(location, startDate, endDate, organizer, attendees);
 ```
 
-## **Customize Product Identifier for ICalendar**
+### **Customize Product Identifier for ICalendar**
 
 Aspose.Email for .NET API allows to get or set the product identifier that created iCalendar object.
 
@@ -243,6 +172,76 @@ DateTime.Today.AddDays(1), "first@test.com", "second@test.com");
 IcsSaveOptions saveOptions = IcsSaveOptions.Default;
 saveOptions.ProductId = "Test Corporation";
 app.Save(dataDir + "ChangeProdIdOfICS.ics", saveOptions);
+```
+
+## **Load and Save an Appointment in ICS Format**
+
+Also, the [Appointment](https://reference.aspose.com/email/net/aspose.email.calendar/appointment/) class can be used to load an appointment from ICS file.
+
+### **Load an Appointment in ICS Format**
+
+To load an appointment in ICS format, the following steps are required:
+
+1. Create an instance of the [Appointment](https://reference.aspose.com/email/net/aspose.email.calendar/appointment/) class.
+1. Call the [Load()](https://reference.aspose.com/email/net/aspose.email.calendar/appointment/load/#load/) method by providing the path of the ICS file.
+1. Read any property to get any information from the appointment (ICS file).
+
+The following code snippet shows you how to load an appointment in ICS format.
+
+```cs
+// Load an Appointment just created and saved to disk and display its details.
+Appointment loadedAppointment = Appointment.Load(dstEmail);
+Console.WriteLine(Environment.NewLine + "Loaded Appointment details are as follows:");
+// Display the appointment information on screen
+Console.WriteLine("Summary: " + loadedAppointment.Summary);
+Console.WriteLine("Location: " + loadedAppointment.Location);
+Console.WriteLine("Description: " + loadedAppointment.Description);
+Console.WriteLine("Start date: " + loadedAppointment.StartDate);
+Console.WriteLine("End date: " + loadedAppointment.EndDate);
+Console.WriteLine("Organizer: " + appointment.Organizer);
+Console.WriteLine("Attendees: " + appointment.Attendees);
+Console.WriteLine(Environment.NewLine + "Appointment loaded successfully from " + dstEmail);
+```
+
+### **Load and Convert an ICS File to a Message Format**
+
+The API allows you easily convert an Appointment to a message object. The following code example shows how to convert an appointment request into a MailMessage or MapiMessage:
+
+```cs
+var appointment = Appointment.Load("appRequest.ics");
+
+var eml = appointment.ToMailMessage();
+var msg = appointment.ToMapiMessage();
+```
+
+### **Read Multiple Events from ICS File**
+
+```cs
+List<Appointment> appointments = new List<Appointment>();
+CalendarReader reader = new CalendarReader(dataDir + "US-Holidays.ics");
+
+while (reader.NextEvent())
+{
+    appointments.Add(reader.Current);
+}
+//working with appointments...
+```
+
+### **Write Multiple Events to ICS File**
+
+```cs
+IcsSaveOptions saveOptions = new IcsSaveOptions();
+saveOptions.Action = AppointmentAction.Create;
+using (CalendarWriter writer = new CalendarWriter(dataDir + "WriteMultipleEventsToICS_out.ics", saveOptions))
+{
+    for (int i = 0; i < 10; i++)
+    {
+        Appointment app = new Appointment(string.Empty, DateTime.Now, DateTime.Now, "sender@domain.com", "receiver@domain.com");
+        app.Description = "Test body " + i;
+        app.Summary = "Test summary:" + i;
+        writer.Write(app);
+    }
+}
 ```
 
 ## **Determine the Appointment Version**
