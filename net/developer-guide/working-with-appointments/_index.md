@@ -214,7 +214,7 @@ var eml = appointment.ToMailMessage();
 var msg = appointment.ToMapiMessage();
 ```
 
-### **Read Multiple Events from ICS File**
+## **Read Multiple Events from ICS File**
 
 ```cs
 List<Appointment> appointments = new List<Appointment>();
@@ -227,7 +227,7 @@ while (reader.NextEvent())
 //working with appointments...
 ```
 
-### **Write Multiple Events to ICS File**
+## **Write Multiple Events to ICS File**
 
 ```cs
 IcsSaveOptions saveOptions = new IcsSaveOptions();
