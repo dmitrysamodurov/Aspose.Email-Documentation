@@ -6,13 +6,13 @@ is_root: true
 url: /androidjava/
 ---
 
-{{% alert color="primary" %}} 
+{{% alert color="primary" %}}
 
 ![Aspose.Email for Android via Java Product Logo](home_1.png)
 
 Aspose.Email for Android via Java is a Java API that enables Android applications to read and write Microsoft Outlook® documents without using Microsoft Outlook®. Aspose.Email for Android via Java provides a number of key features such as managing recipients, subject, body, attachments in Microsoft Outlook® MSG documents and reading contacts, messages and folder information from Microsoft Outlook® PST documents. It can also be used to create, modify and convert email messages in EML, MSG and MHT formats.
 
-{{% /alert %}} 
+{{% /alert %}}
 
 ## **Aspose.Email for Android via Java Resources**
 
@@ -22,8 +22,9 @@ Following are the links to some useful resources you may need to accomplish your
 - [Online Documentation](/email/java/)
 - [Limitations and API Differences](/email/androidjava/limitations-and-api-differences)
 - [Features](/email/androidjava/features-overview/)
-- [Release Notes](/email/java/release-notes/)
+- [Release Notes](https://releases.aspose.com/email/androidjava/release-notes/)
 - [Product Page](https://products.aspose.com/email/android-java)
+- [Aspose.Email New Releases](https://releases.aspose.com/email/androidjava/)
 - [Install Aspose.Email from Maven Repository](/email/java/installation/)
 - [Reference Guide](https://apireference.aspose.com/email/java)
 - [Download from GitHub Repository](https://github.com/aspose-email/Aspose.Email-for-Java)
