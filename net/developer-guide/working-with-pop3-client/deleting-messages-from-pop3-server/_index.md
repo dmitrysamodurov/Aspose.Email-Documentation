@@ -25,7 +25,10 @@ The following code snippet deletes all the mail messages of a mailbox one by one
 
 We might also call [Pop3Client.DeleteMessages](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/deletemessage/#deletemessage/) to delete all the messages. The following code snippet shows you how to delete all emails.
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-POP3-DeleteAllEmails-DeleteAllEmails.cs" >}}
+```cs
+// Delete all the messages
+client.DeleteMessages();
+```
 
 If the connection to the POP3 server is broken immediately after deleting operations, you can no longer call Cancel Deletes to do the things you want.
 
@@ -33,4 +36,7 @@ If the connection to the POP3 server is broken immediately after deleting operat
 
 [Pop3Client.UndeleteMessages](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/undeletemessages/#undeletemessages/) can be used to cancel the deletion of email messages. The following code snippet shows you how to cancel deletes.
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-POP3-CancelDeletes-CancelDeletes.cs" >}}
+```cs
+// Cancel deletes
+client.UndeleteMessages();
+```

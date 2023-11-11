@@ -14,33 +14,108 @@ A follow up flag marks an email message for some kind of action. Microsoft Outlo
 1. Mark as complete.
 1. Remove flag.
 1. Read follow up options.
+
 ## **Setting a FollowUp flag**
+
 The following code snippet shows you how to set a followUp flag.
 
+```py
+import aspose.email as ae
+from datetime import datetime, timedelta
 
+# Create a new MailMessage
+mail_msg = ae.MailMessage()
+mail_msg.from_address = ae.MailAddress("from@domain.com")
+mail_msg.to.append(ae.MailAddress("to@domain.com"))
+mail_msg.body = "This message will test if follow-up options can be added to a new MAPI message."
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Outlook-SetFollowUpflag-SetFollowUpflag.cs" >}}
+# Convert MailMessage to MapiMessage
+mapi = ae.mapi.MapiMessage.from_mail_message(mail_msg)
+
+# Define follow-up options
+dt_start_date = datetime(2013, 5, 23, 14, 40, 0)
+dt_reminder_date = datetime(2013, 5, 23, 16, 40, 0)
+dt_due_date = dt_reminder_date + timedelta(days=1)
+
+options = ae.mapi.FollowUpOptions("Follow Up", dt_start_date, dt_due_date, dt_reminder_date)
+
+# Set follow-up options for the MapiMessage
+ae.mapi.FollowUpManager.set_options(mapi, options)
+
+# Save the MapiMessage
+mapi.save("SetFollowUpFlag_out.msg")
+```
+
 ## **Setting Follow Up for Recipients**
 The following code snippet shows you how to set follow Up for recipients.
 
+```py
+import aspose.email as ae
+from datetime import datetime
 
+# Create a new MailMessage
+mail_msg = ae.MailMessage()
+mail_msg.from_address = ae.MailAddress("from@domain.com")
+mail_msg.to.append(ae.MailAddress("to@domain.com"))
+mail_msg.body = "This message will test if follow-up options can be added to a new MAPI message."
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Outlook-SetFollowUpForRecipients-SetFollowUpForRecipients.cs" >}}
+# Convert MailMessage to MapiMessage
+mapi = ae.mapi.MapiMessage.from_mail_message(mail_msg)
+
+# Mark the message as draft
+mapi.set_message_flags(ae.mapi.MapiMessageFlags.UNSENT)
+
+dt_reminder_date = datetime(2013, 5, 23, 16, 40, 0)
+
+# Add the follow-up flag for recipients
+ae.mapi.FollowUpManager.set_flag_for_recipients(mapi, "Follow up", dt_reminder_date)
+
+# Save the MapiMessage
+mapi.save("SetFollowUpForRecipients_out.msg")
+```
+
 ## **Marking a FollowUp flag as Completed**
+
 The following code snippet shows you how to mark followUp flag as completed.
 
+```py
+import aspose.email as ae
 
+# Load the MapiMessage from file
+mapi_message = ae.mapi.MapiMessage.load("Message.msg")
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Outlook-MarkFollowUpFlagAsCompleted-MarkFollowUpFlagAsCompleted.cs" >}}
+# Mark the message as completed
+ae.mapi.FollowUpManager.mark_as_completed(mapi_message)
+
+# Save the updated MapiMessage
+mapi_message.save("MarkedCompleted_out.msg")
+```
 ## **Removing a FollowUp flag**
 The following code snippet shows you how to remove followUp flag.
 
+```py
+import aspose.email as ae
 
+# Load the MapiMessage from file
+mapi_message = ae.mapi.MapiMessage.load("message.msg")
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Outlook-RemoveFollowUpflag-RemoveFollowUpflag.cs" >}}
+# Clear the follow-up flag
+ae.mapi.FollowUpManager.clear_flag(mapi_message)
+
+# Save the updated MapiMessage
+mapi_message.save("RemoveFollowUpflag_out.msg")
+```
+
 ## **Read followup flag options for a message**
+
 The following code snippet shows you how to read followup flag options for a message.
 
+```py
+import aspose.email as ae
 
+# Load the MapiMessage from file
+mapi_message = ae.mapi.MapiMessage.load("message.msg")
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Outlook-ReadFollowupFlagOptionsForMessage-ReadFollowupFlagOptionsForMessage.cs" >}}
+# Get the follow-up options
+options = ae.mapi.FollowUpManager.get_options(mapi_message)
+```
