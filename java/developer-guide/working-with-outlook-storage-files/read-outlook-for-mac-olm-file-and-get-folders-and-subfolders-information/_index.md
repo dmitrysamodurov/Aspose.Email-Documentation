@@ -7,19 +7,71 @@ url: /java/read-outlook-for-mac-olm-file-and-get-folders-and-subfolders-informat
 
 {{% alert color="primary" %}} 
 
-Aspose.Email for Java lets you read Outlook for Mac OLM files. You can load an OLM file from disk into an instance of the [OlmStorage](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/) class and get the information about its contents, for example, folders, subfolders, and messages.
+Aspose.Email for Java allows you to read Outlook for Mac OLM files. You can load an OLM file from disk into an instance of the [OlmStorage](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/) class and get the information about its contents, for example, folders, subfolders, and messages.
 
 {{% /alert %}} 
 
-## **Read Outlook for Mac OLM File and Get Folder and Subfolder Information**
+## **Open OLM format files**
 
-Aspose.Email for Java provides an API for reading Outlook for Mac data files in OLM format. An OLM file can be loaded into an instance of the [OlmStorage](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/) class. After loading the OLM file into the [OlmStorage](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/) class, you can get the information about the file display name, root folder, subfolders and messages count.
+OLM format files can be opened in two ways:
 
-### **Read OLM file**
+- using constructor
+- using static FromFile method
+
+There are differences in behavior between these methods. See section below.
+
+### **Open files by constructor**
+
+To open a file, call constructor of the [OlmStorage](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/) class and pass full file name or stream as an argument to it:
+
+```java
+OlmStorage olm = new OlmStorage("fileName");
+```
+
+### **Open files using static method FromFile**
+
+To open a file, use static method [fromFile](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/#fromFile-java.lang.String-) and pass full file name as an argument to it:
+
+```java
+OlmStorage olm = OlmStorage.fromFile("fileName");
+```
+### **Open files using static method FromStream**
+
+To open a file using static method [fromStream](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/#fromStream-java.io.InputStream-), pass a stream name as an argument to it:
+
+
+## **Read OLM file**
 
 The following code snippet shows you how to load the OLM file and get its content.
 
 {{< gist "aspose-com-gists" "709d733586ce50505c3bca3f6e8bd18d" "Examples-src-main-java-com-aspose-email-examples-outlook-olm-LoadAndReadOLMFile.java" >}}
+
+## **Get folders**
+
+To retrieve folders from an OLM (Outlook for Mac) file, load it with the [OlmStorage](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/) class first, and then use one of the following methods depending on your needs:
+
+- [getFolder(String name, boolean ignoreCase)](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/#getFolder-java.lang.String-boolean-) - Gets the folder by name.
+- [getFolders()](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/#getFolders--) - Gets the folder hierarchy/collection of folders.
+- [getFolderHierarchy()](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/#getFolderHierarchy--) - Gets the folder hierarchy.
+
+The code sample below will show you how to get a folder from an OLM file:
+
+```java
+// Get the folder by name
+OlmStorage olm = OlmStorage.fromFile("fileName");
+
+try {
+
+    OlmFolder inbox = olm.getFolder("inbox", true);
+
+} finally {
+
+    olm.dispose();
+
+}
+```
+When using the [fromFile](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/#fromFile-java.lang.String-) method to open an OLM file, the [getFolderHierarchy()](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/#getFolderHierarchy--) will return null. In this case, call the [getFolders()](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/#getFolders--) method explicitly to retrieve the list of directories in the OLM file.
+
 
 ### **Get Folder Path**
 
@@ -32,3 +84,126 @@ You may also get the folder path of folders in the OML file. Aspose.Email provid
 You may also count the number of items in the folder. Aspose.Email provides [OlmFolder.MessageCount](https://reference.aspose.com/email/java/com.aspose.email/olmfolder/#getMessageCount--) property which returns the number of items in the folder. The following code snippet demonstrates the use of [OlmFolder.MessageCount](https://reference.aspose.com/email/java/com.aspose.email/olmfolder/#getMessageCount--) property to get the number of items in the folders of the OML file.
 
 {{< gist "aspose-com-gists" "709d733586ce50505c3bca3f6e8bd18d" "Examples-src-main-java-com-aspose-email-examples-outlook-olm-CountItemsInOLMFolder-1.java" >}}
+
+## **Enumerate Messages from a given Folder**
+
+Aspose.Email provides the API to work with OLM storages and extract messages from a given folder. The [OlmFolder](https://reference.aspose.com/email/java/com.aspose.email/olmfolder/) and [OlmMessageInfo](https://reference.aspose.com/email/java/com.aspose.email/olmmessageinfo/) classes represent brief information about a folder and a message in the storage respectively. The [OlmFolder](https://reference.aspose.com/email/java/com.aspose.email/olmfolder/) class provides the following methods:
+
+- **OlmFolder.getSubFolder**(String subfolderName, boolean ignoreCase) - Gets the subfolder by name.
+
+- **OlmFolder.enumerateMapiMessages()** - Exposes the enumerator, which supports an iteration of MapiMessages in the current folder.
+
+- **OlmFolder.enumerateMessages()** - Exposes the enumerator, which supports an iteration of OlmMessageInfo's in the current folder.
+
+- **OlmFolder.enumerateMessages**(int startIndex, int count) - Exposes the enumerator, which supports an iteration of OlmMessageInfo's within a given range.
+
+- **OlmFolder.enumerateMessages**(MailQuery query) - Exposes the enumerator, which supports an iteration of OlmMessageInfo's by search criteria.
+
+The code samples below will demonstrate the use of these methods:
+
+```java
+ // Enumerates all messages in a given folder
+
+OlmStorage olm = OlmStorage.fromFile("fileName");
+
+try {
+
+    OlmFolder inbox = olm.getFolder("inbox", true);
+
+   for (OlmMessageInfo messageInfo : inbox.enumerateMessages()) {
+
+        System.out.println(messageInfo.getSubject());
+
+   }
+
+} finally {
+
+    olm.dispose();
+
+}
+
+// Enumerates a range of messages in a given folder
+
+OlmStorage olm = OlmStorage.fromFile("fileName");
+
+try {
+
+    OlmFolder inbox = olm.getFolder("inbox", true);
+
+   int startIndex = 10;
+
+   int count = 100;
+
+   for (OlmMessageInfo messageInfo : inbox.enumerateMessages(startIndex, count)) {
+
+        System.out.println(messageInfo.getSubject());
+
+   }
+
+} finally {
+
+    olm.dispose();
+
+}
+
+// Enumerates messages by search criteria
+
+OlmStorage olm = OlmStorage.fromFile("fileName");
+
+try {
+
+    OlmFolder inbox = olm.getFolder("inbox", true);
+
+    MailQueryBuilder mailQueryBuilder = new MailQueryBuilder();
+
+    mailQueryBuilder.getSubject().contains("invitation");
+
+    mailQueryBuilder.getFrom().contains("Mark");
+
+   for (OlmMessageInfo messageInfo : inbox.enumerateMessages(mailQueryBuilder.getQuery())) {
+
+        System.out.println(messageInfo.getSubject());
+
+   }
+
+} finally {
+
+    olm.dispose();
+
+}
+
+// Enumerates all messages and the extraction of some of them
+
+OlmStorage olm = OlmStorage.fromFile("fileName");
+
+try {
+
+    OlmFolder inbox = olm.getFolder("inbox", true);
+
+   for (OlmMessageInfo messageInfo : inbox.enumerateMessages()) {
+
+       if (messageInfo.hasAttachments()) {
+
+            MapiMessage msg = olm.extractMapiMessage(messageInfo);
+
+       }
+
+   }
+
+} finally {
+
+    olm.dispose();
+
+}
+```
+
+## **Getting Message Modified Date**
+
+The [OlmMessageInfo.getModifiedDate](https://reference.aspose.com/email/java/com.aspose.email/olmmessageinfo/#getModifiedDate--) property allows you to get the message modified date.
+
+```java
+for (OlmMessageInfo messageInfo : inboxFolder.enumerateMessages()) {
+    Date modifiedDate = messageInfo.getModifiedDate();
+}
+```
+

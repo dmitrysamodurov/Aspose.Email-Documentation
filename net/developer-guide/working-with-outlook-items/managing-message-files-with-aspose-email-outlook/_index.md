@@ -59,6 +59,7 @@ Aspose.Email API provides the capability of converting MSG files to MIME message
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-ConvertMSGToMIMEMessage-ConvertMSGToMIMEMessage.cs" >}}
 
+
 ## **Setting Timeout to Message Conversion and Loading Process**
 
 The following features will enable you to set the timeout in milliseconds for conversion and loading process:

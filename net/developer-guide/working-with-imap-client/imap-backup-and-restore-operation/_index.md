@@ -21,7 +21,7 @@ To backup messages, use the [ImapClient.Backup](https://reference.aspose.com/em
 
 ## **Restore Messages**
 
-To backup messages, use the [ImapClient.Restore](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/restore/) method as demonstrated in the following code snippet.
+To restore messages, use the [ImapClient.Restore](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/restore/) method as demonstrated in the following code snippet.
 
 {{< gist "aspose-com-gists" "522d47278b8ca448dc1d7eb97193322c" "Examples-CSharp-IMAP-ImapRestoreOperation-1.cs" >}}
 

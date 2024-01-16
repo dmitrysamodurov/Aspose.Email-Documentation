@@ -235,7 +235,6 @@ eml.LinkedResources.RemoveAt(0, true);
 //Now clear the Alternate View for linked Resources
 eml.AlternateViews[0].LinkedResources.Clear(true);
 ```
-
 ## **Working with Embedded Objects**
 
 An embedded object is an object that was created with one application and enclosed within a document or a file created by another application. For example, a Microsoft Excel spreadsheet can be embedded into a Microsoft Word report, or a video file can be embedded into a Microsoft PowerPoint presentation. When a file is embedded, rather than inserted or pasted into another document, it retains its original format. The embedded document can be opened in the original application and modified.

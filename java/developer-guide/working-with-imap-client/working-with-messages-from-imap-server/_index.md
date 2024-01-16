@@ -205,6 +205,130 @@ for (MailMessage m : imapClient.fetchMessagesByUids(uniqueIdAr)) {
 }
 ~~~
 
+## **Email Threading/Organize Emails into Conversations** 
+
+Aspose.Email makes it possible to group all forwards, replies, and reply-all messages related to the same conversation together in hierarchical manner. Basically, the IMAP protocol may support the THREAD capability defined in RFC-5256. Besides, there is another IMAP extension provided by Gmail and described as X-GM-EXT-1. 
+
+The following email threading features are available for use:
+
+- [getMessageThreads](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#getMessageThreads-com.aspose.email.BaseSearchConditions-) method - Receives message threads by [ImapClient](https://reference.aspose.com/email/java/com.aspose.email/imapclient/).
+- boolean [getGmExt1Supported](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#getGmExt1Supported--) - Gets information whether Gmail X-GM-EXT-1 extension is supported.
+- boolean [getThreadSupported](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#getThreadSupported--) - Gets information whether THREAD extension is supported.
+- String[] [getThreadAlgorithms](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#getThreadAlgorithms--) - Gets supported THREAD algorithms.
+
+The following code samples show the usage of these features to get the email threads from Gmail:
+
+```java
+  ImapClient client = new ImapClient("imap.gmail.com", 993, "username", "password", SecurityOptions.SSLImplicit);
+
+try {
+
+    client.selectFolder(ImapFolderInfo.IN_BOX);
+
+   // get a list of messages that we'll group by conversation
+
+   ImapMessageInfoCollection messages = client.listMessages();
+
+   // make sure the IMAP server supports X-GM-EXT-1 extension
+
+   if (client.getGmExt1Supported()) {
+
+       // gets unique conversationId for our example
+
+       Set<String> conversationIds = new HashSet<String>();
+
+       for (ImapMessageInfo messageInfo : messages) {
+
+           if (messageInfo.getConversationId() != null)
+
+                conversationIds.add(messageInfo.getConversationId());
+
+       }
+
+       for (String conversationId : conversationIds) {
+
+           // create the necessary search conditions for a thread
+
+           XGMThreadSearchConditions conditions = new XGMThreadSearchConditions();
+
+            conditions.setConversationId(conversationId);
+
+            conditions.setUseUId(true);
+
+           // get results
+
+           List<MessageThreadResult> conversation = client.getMessageThreads(conditions);
+
+           // print the email conversation in hierarchically manner
+
+           printConversaton("", conversation, messages);
+
+            System.out.println("--------------------");
+
+       }
+
+   }
+
+} finally {
+
+    client.dispose();
+
+}
+
+/**
+
+ * <p>
+
+ * Prints the email conversation in hierarchically manner
+
+ * </p>
+
+ */
+
+public static void printConversaton(String indent, Iterable<MessageThreadResult> conversation,
+
+    Iterable<ImapMessageInfo> messages) {
+
+   for (MessageThreadResult thread : conversation) {
+
+       for (ImapMessageInfo messageInfo : messages) {
+
+           if (thread.getUniqueId().equals(messageInfo.getUniqueId())) {
+
+                System.out.println(indent + " (" + thread.getUniqueId() + ") " + messageInfo.getSubject());
+
+               break;
+
+           }
+
+       }
+
+       if (thread.getChildMessages().size() != 0) {
+
+            printConversaton(indent += "-", thread.getChildMessages(), messages);
+
+       }
+
+   }
+
+}
+```
+The code slightly changes if the IMAP server supports THREAD capability:
+
+Check if the IMAP server supports THREAD extension:
+
+```java
+ if (client.getThreadSupported())
+```
+Create the suitable search conditions for a thread:
+```java
+ ThreadSearchConditions conditions = new ThreadSearchConditions();
+
+conditions.setAlgorithm(client.getThreadAlgorithms()[0]);
+
+conditions.setUseUId(true);
+```
+
 ## **Listing Messages with Paging Support**
 
 In scenarios, where the email server contains a large number of messages in the mailbox, it is often desired to list or retrieve the messages with paging support. Aspose.Email API [ImapClient](https://reference.aspose.com/email/java/com.aspose.email/imapclient/) lets you retrieve the messages from the server with paging support.

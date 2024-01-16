@@ -75,13 +75,12 @@ try (MboxrdStorageReader reader = new MboxrdStorageReader(stream, lo)) {
 }
 ~~~
 
-## **Encoding option for MboxrdStorageReader class**
-We can set preferred text encoding when loading Mbox files for reading:
+## **Set Preferred Text Encoding when Loading Mbox Files**
+
+The [setPreferredTextEncoding(Charset value)](https://reference.aspose.com/email/java/com.aspose.email/mboxloadoptions/#setPreferredTextEncoding-java.nio.charset.Charset-) method of the [MboxLoadOptions](https://reference.aspose.com/email/java/com.aspose.email/mboxloadoptions/) class gets or sets preferred encoding for messages. Create a reader for the Mbox file with specified load options and your messages with the encoded content will be correctly read and processed. The following code sample shows how to implement this feature into a project:
+
 ~~~Java
 MboxLoadOptions lo = new MboxLoadOptions();
-// Gets or sets a value indicating whether to keep the underlying stream open after disposing.
-lo.setLeaveOpen(false);
-// Gets or sets preferred encoding for messages.
 lo.setPreferredTextEncoding(Charset.forName("utf-8"));
 MboxrdStorageReader reader = new MboxrdStorageReader("sample.mbox", lo);
 MailMessage message = reader.readNextMessage();

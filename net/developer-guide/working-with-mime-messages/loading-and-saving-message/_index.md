@@ -213,6 +213,7 @@ The [HtmlSaveOptions](https://reference.aspose.com/email/net/aspose.email/htmlsa
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-SaveMessageAsHTML-SaveMessageAsHTML.cs" >}}
 
+
 #### **Saving as HTML without Embedding Resources**
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-SaveMessageAsHTML-SaveAsHtmlWithoutEmbeddingResources.cs" >}}

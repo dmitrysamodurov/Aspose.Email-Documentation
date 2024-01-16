@@ -12,7 +12,7 @@ As well as parsing an existing PST file, Aspose.Email provides the means to crea
 1. [Changing Container class of a folder](#changing-a-folders-container-class).
 1. [Add Bulk Messages with Improved Performance](#add-bulk-messages-with-improved-performance) 
 
-## **Creating a new PST file**
+## **Create a new PST file**
 
 Use the [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/) class to create a PST file at some location on a local disk. To create a PST file from scratch:
 

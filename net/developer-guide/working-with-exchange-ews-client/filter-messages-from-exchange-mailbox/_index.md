@@ -16,7 +16,7 @@ Aspose.Email for .NET provides the capability to filter messages from Exchange M
 
 The [IEWSClient](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/) interface provides the [ListMessages()](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/listmessages/#listmessages) method which gets all messages from a mailbox. To get only messages which match some condition, use the overloaded [ListMessages()](https://reference.aspose.com/email/net/aspose.email.clients.exchange.webservice/iewsclient/listmessages/#listmessages) method which takes the [MailQuery](https://reference.aspose.com/email/net/aspose.email.tools.search/mailquery/) class as an argument. The [MailQuery](https://reference.aspose.com/email/net/aspose.email.tools.search/mailquery/) class provides various properties for specifying conditions, for example, date, subject, sender and recipient. In addition, the API also allows applying case-sensitivity filters for retrieving emails from the mailbox.
 
-### **Filtering Messages**
+### **Filter Messages on Criteria**
 
 To get filtered messages from a mailbox:
 
@@ -28,55 +28,52 @@ The following code snippet shows you how to connect to an IMAP mailbox and get m
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Exchange_EWS-FilterMessagesUsingEWS-FilterMessagesUsingEWS.cs" >}}
 
-### **Filter Messages on Criteria**
-
-The code samples above filters messages based on the email subject and date. We can filter on other properties too. Below are some examples of setting the conditions using [MailQuery](https://reference.aspose.com/email/net/aspose.email.tools.search/mailquery/).
-
-#### **Filter Criteria Today's Date**
+#### **Filter Messages by Today's Date**
 
 The following code snippet shows you how to filter all emails on the basis of today's date.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Exchange_EWS-FilterMessagesOnCriteriaUsingEWS-GetEmailsWithTodayDate.cs" >}}
 
-#### **Filter Criteria Date Range**
+#### **Filter Messages by Date Range**
 
 The following code snippet shows you how to filter all emails on the basis of the date range.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Exchange_EWS-FilterMessagesOnCriteriaUsingEWS-GetEmailsOverDateRange.cs" >}}
 
-#### **Filter Criteria Specific Sender**
+#### **Filter Messages by Specific Sender**
 
 The following code snippet shows you how to filter all emails on the basis of a specific sender.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Exchange_EWS-FilterMessagesOnCriteriaUsingEWS-GetSpecificSenderEmails.cs" >}}
 
-#### **Filter Criteria Specific Domain**
+#### **Filter Messages by Specific Domain**
 
 The following code snippet shows you how to filter all emails on the basis of a specific domain.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Exchange_EWS-FilterMessagesOnCriteriaUsingEWS-GetSpecificDomainEmails.cs" >}}
 
-#### **Filter Criteria Specific Recipient**
+#### **Filter Messages by Specific Recipient**
 
 The following code snippet shows you how to filter all emails on the basis of a specific recipient.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Exchange_EWS-FilterMessagesOnCriteriaUsingEWS-GetSpecificRecipientEmails.cs" >}}
 
-#### **Filter Criteria By MessageID**
+#### **Filter Messages By MessageID**
 
 The following code snippet shows you how to filter all emails on the basis of MessageID.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Exchange_EWS-FilterMessagesOnCriteriaUsingEWS-GetSpecificMessageIdEmail.cs" >}}
 
-#### **Filter Criteria All Mail Delivery Notifications**
+#### **Filter Messages by All Mail Delivery Notifications**
 
 The following code snippet shows you how to filter all emails on the basis of all mail delivery notifications.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Exchange_EWS-FilterMessagesOnCriteriaUsingEWS-GetMailDeliveryNotifications.cs" >}}
 
-#### **Filter by Message Size**
+#### **Filter Messages by Message Size**
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Exchange_EWS-FilterMessagesOnCriteriaUsingEWS-FilterMessagesByMessageSize.cs" >}}
+
 
 ### **Building Complex Queries**
 

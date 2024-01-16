@@ -89,6 +89,7 @@ It is very common that a message sent to a recipient may bounce for any reason s
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-CheckBouncedMessage-CheckBouncedMessage.cs" >}}
 
+
 ## **Bayesian Spam Analyzer**
 
 Aspose.Email provides email filtering using a Bayesian spam analyzer. It provides the [SpamAnalyzer](https://reference.aspose.com/email/net/aspose.email.antispam/spamanalyzer/) class for this purpose. This article shows how to train the filter to distinguish between spam and regular emails based on the words database.

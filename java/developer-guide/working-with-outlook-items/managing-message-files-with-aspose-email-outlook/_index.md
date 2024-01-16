@@ -22,6 +22,52 @@ options.setConvertAsTnef(true);
 MailMessage mail = msg.toMailMessage(options);
 ~~~
 
+## **Converting MSG to EML Preserving RTF Body** 
+
+The API provides the following methods to preserve RTF body while converting MSG to EML:
+
+- [MsgLoadOptions.PreserveRtfContent](https://reference.aspose.com/email/java/com.aspose.email/msgloadoptions/#setPreserveRtfContent-boolean-) - Gets or sets a value indicating whether to keep the rtf body in MailMessage.
+- [MailConversionOptions.PreserveRtfContent](https://reference.aspose.com/email/java/com.aspose.email/mailconversionoptions/#setPreserveRtfContent-boolean-) - Gets or sets a value indicating whether to keep the rtf body in MailMessage.
+
+The following code samples demonstrate how to keep the rtf body in MailMessage:
+
+- using [MsgLoadOptions.PreserveRtfContent](https://reference.aspose.com/email/java/com.aspose.email/msgloadoptions/#setPreserveRtfContent-boolean-)
+
+```java
+MsgLoadOptions options = new MsgLoadOptions();
+options.setPreserveRtfContent(true);
+MailMessage message = MailMessage.load("fileName", options);
+```
+- using [MailConversionOptions.PreserveRtfContent](https://reference.aspose.com/email/java/com.aspose.email/mailconversionoptions/#setPreserveRtfContent-boolean-)
+
+```java
+MapiMessage mapi = MapiMessage.load("fileName");
+MailConversionOptions options = new MailConversionOptions();
+options.setPreserveRtfContent(true);
+MailMessage message = mapi.toMailMessage(options);
+```
+## **Converting MSG to MHTML Preserving Category Header**
+
+Aspose.Email API provides the ability to add a category header while converting message to MHTML. This feature is specified by the [MhtSaveOptions](https://reference.aspose.com/email/java/com.aspose.email/mhtsaveoptions/) class as an additional option when saving MailMessage to Mhtml format.
+
+The following code sample demonstrates how to create an MHT (MHTML) file from a MapiMessage object, customize the formatting and headers of the MHT file using MhtSaveOptions, set categories for the email message and then modify the format templates and rendering headers for the MHT file before saving it. 
+
+```java
+ MapiMessage msg = new MapiMessage("from@aaa.com", "to@aaa.com", "subj", "body");
+
+msg.setCategories(new String[] { "Urgently", "Important" });
+
+MhtSaveOptions saveOptions = new MhtSaveOptions();
+
+saveOptions.getFormatTemplates().set_Item(MhtTemplateName.CATEGORIES,
+
+    saveOptions.getFormatTemplates().get_Item(MhtTemplateName.CATEGORIES).replace("Categories", "Les catégories"));
+
+saveOptions.getRenderingHeaders().add(MhtTemplateName.CATEGORIES);
+
+msg.save("fileName.mhtml", saveOptions);
+```
+
 ## **Reading and Writing Outlook Template File (.OFT)**
 
 Outlook templates are very useful when you want to send a similar email message again and again. Instead of preparing the message from scratch each time, first, prepare the message in Outlook and save it as an Outlook Template (OFT). After that, whenever you need to send the message, you can create it from the template, saving time writing the same text in the body or the subject line, setting formatting and so on. Aspose.Email [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class can be used to load and read an Outlook template (OFT) file. Once the Outlook template is loaded in an instance of the [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class, you can update the sender, recipient, body, subject and other properties. After updating the properties:

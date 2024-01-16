@@ -9,82 +9,59 @@ url: /python-net/working-with-pst-password-protection-properties/
 Microsoft Outlook lets users password protect PST files to restrict access to them. Aspose.Email can detect password protection on a PST file. This article shows how to:
 
 - Check for Password Protection of a PST
-- Remove/Reset the Password property from the PST
-- Setting/Changing PST Password
+- Read Password Protected PST Files
+- Validate Password in Password Protected PST
+- Add/Change/Remove Password in PST Files
 ## **Check for Password protection**
-The MapiPropertyTag.PR_PST_PASSWORD value from the MapiPropertyTag class is used to check if a file is password protected. The CRC-32 hash of the password string is stored in the PidTagPstPassword (tag = 0x67ff0003) property in the MessageStore. If this property exists and is nonzero, then the PST is password protected. The following code snippet shows you how to check if the PST is password protected. It also shows how to check whether the provided password is correct or not.
 
-
+To check if a PST file is protected with a password, use the *is_password_protected* method of the [MessageStore](https://reference.aspose.com/email/python-net/aspose.email.storage.pst/messagestore/#messagestore-class) class as shown in the code sample below: 
 
 ```py
 import aspose.email as ae
-from zlib import crc32
 
-# Determines whether the specified PST is password protected.
-def is_password_protected(pst):
-    # If the property exists and is nonzero, then the PST file is password protected.
-    if ae.mapi.MapiPropertyTag.PST_PASSWORD in pst.store.properties.keys:
-        password_hash = pst.store.properties[ae.mapi.MapiPropertyTag.PST_PASSWORD].get_long()
-        return password_hash != 0
-    return False
+pst = ae.storage.pst.PersonalStorage.from_file("my.pst")
 
-# Determines whether the specified string is a valid password for the PST.
-def is_password_valid(password, pst):
-    # If the property exists and is nonzero, then the PST file is password protected.
-    if ae.mapi.MapiPropertyTag.PST_PASSWORD in pst.store.properties.keys:
-        # The property value contains the CRC-32 hash of the password string of PST.
-        password_hash = pst.store.properties[ae.mapi.MapiPropertyTag.PST_PASSWORD].get_long()
-        return password_hash != 0 and password_hash == compute_crc32(password.encode("ascii"))
-    return False
-
-# Compute CRC-32 hash for the given bytes
-def compute_crc32(data):
-    return crc32(data) & 0xffffffff
-
-# Usage
-pst_file_path = "backup.pst"
-
-with ae.storage.pst.PersonalStorage.from_file(pst_file_path) as pst:
-    is_protected = is_password_protected(pst)
-    is_valid = is_password_valid("password", pst)
-
-    print("Is Password Protected:", is_protected)
-    print("Is Password Valid:", is_valid)
+print(f"The storage is password protected - {pst.store.is_password_protected}")
 ```
-## **Removing/Reseting PR_PST_PASSWORD Property**
-Removal of the PR_PST_PASSWORD property cannot be achieved as other properties are removed from a message store. Instead, we need to set its value to zero (0) in order to get it removed. The "Store" property of the PST class allows to access store properties of PST instead of MessageStoreProperties of PST in this case. The following code snippet shows you how to Remove/Reset PR_PST_PASSWORD Property.
 
+## **Read Password Protected PST Files**
 
+You can read password-protected files just like regular unprotected pst files. The following code snippet allows you to access each individual message with the possibility of its further processing:
 
 ```py
 import aspose.email as ae
 
-data_dir = "D:\\"
-pst_file_path = data_dir + "my.pst"
+pst = ae.storage.pst.PersonalStorage.from_file("my.pst")
 
-with ae.storage.pst.PersonalStorage.from_file(pst_file_path) as personal_storage:
-    if ae.mapi.MapiPropertyTag.PST_PASSWORD in personal_storage.store.properties.keys:
-        property = ae.mapi.MapiProperty(
-            ae.mapi.MapiPropertyTag.PST_PASSWORD,
-            bytearray([0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00])
-        )
-        personal_storage.store.set_property(property)
+for folder in pst.root_folder.get_sub_folders():
+    for msg in folder.enumerate_messages():
+    # do something
 ```
-## **Setting Password on PST Files**
-The following code snippet shows you how to set password on PST files.
+## **Validate Password in Password Protected PST**
 
+To check if a password in a PST file is valid, Aspose.Email provides the *is_password_valid(password)* method of the [MessageStore](https://reference.aspose.com/email/python-net/aspose.email.storage.pst/messagestore/#messagestore-class) class. It takes the string password as a parameter and returns True if the password is correct and False if it is incorrect.
 
+The following code snippet demonstrates the use of *is_password_valid(password)* method.
 
 ```py
 import aspose.email as ae
 
-data_dir = "D:\\"
-output_file_path = data_dir + "my.pst"
+pst = ae.storage.pst.PersonalStorage.from_file("my.pst")
 
-with ae.storage.pst.PersonalStorage.create(output_file_path, ae.storage.pst.FileFormatVersion.UNICODE) as pst:
-    # Set the password
-    password = "Password1"
-    pst.store.change_password(password)
-    # Remove the password
-    pst.store.change_password(None)
+print(f"Password is valid - {pst.store.is_password_valid('Password1')}")
+```
+
+## **Add/Change/Remove Password in PST Files**
+
+The *change_password(password)* method of the [MessageStore](https://reference.aspose.com/email/python-net/aspose.email.storage.pst/messagestore/#messagestore-class) class is used to manipulate passwords in PST files. The following code sample shows how to add, change or remove a password:
+
+```py
+import aspose.email as ae
+
+pst = ae.storage.pst.PersonalStorage.create("SetPasswordOnPST_out.pst", ae.storage.pst.FileFormatVersion.UNICODE)
+# Add or change the password
+password = "Password1"
+pst.store.change_password(password)
+# Remove the password
+pst.store.change_password(None)
 ```

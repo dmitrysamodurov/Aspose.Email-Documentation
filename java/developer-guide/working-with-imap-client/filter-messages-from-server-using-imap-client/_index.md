@@ -259,12 +259,13 @@ queryBuilder.hasNoFlags(ImapMessageFlags.keyword("custom2"));
 
 ## **Filter Messages using Custom Search**
 
-For example, RFC 3501 standard does not allow a message search based on the existence of attachments in messages. But **Gmail** provides [IMAP Extensions](https://developers.google.com/gmail/imap/imap-extensions) that allow performing such a search. The next code snippet shows how to make a corresponding query.
+For example, RFC 3501 standard does not allow a message search based on the existence of attachments in messages. But **Gmail** provides [IMAP Extensions](https://developers.google.com/gmail/imap/imap-extensions) that allow performing such a search. Aspose.Email provides the [customSearch](https://reference.aspose.com/email/java/com.aspose.email/imapquerybuilder/#customSearch-java.lang.String-) method of the [ImapQueryBuilder](https://reference.aspose.com/email/java/com.aspose.email/imapquerybuilder/) class to make a corresponding query. 
+
+The code sample below shows how to retrieve a list of email messages from the server that have attachments, using the IMAP protocol and a custom search criterion:
 
 ```java
-ImapQueryBuilder queryBuilder = new ImapQueryBuilder();
-queryBuilder.customSearch("X-GM-RAW \"has:attachment\"");
-
-MailQuery mailQuery = queryBuilder.getQuery();
-ImapMessageInfoCollection messageInfoCollection = imapClient.listMessages(mailQuery);
+ImapQueryBuilder builder = new ImapQueryBuilder();
+builder.customSearch("X-GM-RAW \"has:attachment\"");
+MailQuery query = builder.getQuery();
+messageInfoCol = client.listMessages(query);
 ```

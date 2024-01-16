@@ -82,6 +82,7 @@ rss_folder = pst.create_predefined_folder("RSS Feeds", ae.storage.pst.StandardIp
 
 ## **Parsing Searchable Folders**
 
+Aspose.Email provides a [FolderKind](https://reference.aspose.com/email/python-net/aspose.email.storage.pst/folderkind/#folderkind-enumeration) enumeration to work with different kinds of PST folders. Apart from NORMAL folders, it works with SEARCH folders. A SEARCH folder is a virtual folder that provides a view of all email items that match specific search criteria. To parse SEARCH folders, use the following code snippet:
 
 ```python
 import aspose.email as ae
@@ -104,3 +105,28 @@ The following code snippet shows you how to retrieve parent folder information f
 
 
 {{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-WorkingWithOutlookStorageFiles-RetrievingParentFolderInformationFromMessageInfo-RetrievingParentFolderInformationFromMessageInfo.py" >}}
+
+## **Retrieving a PST subfolder by path**
+
+To retrieve a PST subfolder by path, use the *get_sub_folder* method of the [FolderInfo](https://reference.aspose.com/email/python-net/aspose.email.storage.pst/folderinfo/#folderinfo-class) class. It retrieves a specific subfolder within a directory or file system.
+
+The method takes the following parameters:
+
+- **name** - represents the name of the subfolder that needs to be retrieved. It is used to specify the name or identifier of the subfolder the method should search for.
+
+- **ignore_case** - is a boolean value that determines whether the method should ignore the case sensitivity when comparing the name of the subfolder. If set to True, the method will consider the name matching without considering the case (e.g., "folder" and "Folder" will be treated as the same). If set to False, the method will perform a case-sensitive comparison.
+
+- **handle_path_separator** - is a boolean value that specifies whether the method should handle the path separator when searching for the subfolder. Path separators are characters used to separate folders in a directory path (e.g., "\" in Windows or "/" in Unix). If set to True, the method will handle the path separator automatically, ensuring correct folder matching. If set to False, it will treat the path separator as part of the subfolder name, resulting in a different search behavior.
+
+The following code sample shows how to retrieve a PST subfolder by path:
+
+```python
+import aspose.email as ae
+
+pst = ae.storage.pst.PersonalStorage.from_file("my.pst")
+
+# In this sample, the method will return a ‘Jan’ named folder
+# that is located at the Inbox\Reports\ path 
+# relative to the root folder.
+folder = pst.root_folder.get_sub_folder("Inbox\Reports\Jan", True, True)
+```

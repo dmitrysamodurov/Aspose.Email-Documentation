@@ -51,9 +51,9 @@ try {
     System.out.println(ex.getMessage());
 }
 ~~~
-### **Filter Messages on Criteria**
+### **Filter Messages by Criteria**
 The code samples above filters messages based on the email subject and date. We can filter on other properties too. Below are some examples of setting the conditions using [MailQuery](https://apireference.aspose.com/email//java/com.aspose.email/mailquery).
-#### **Filter Criteria Today's Date**
+#### **Filter Messages by Today's Date**
 The following code snippet shows you how to filter all emails on the basis of today's date.
 
 ~~~Java
@@ -61,7 +61,7 @@ The following code snippet shows you how to filter all emails on the basis of to
 MailQueryBuilder builder = new MailQueryBuilder();
 builder.getInternalDate().on(new Date());
 ~~~
-#### **Filter Criteria Date Range**
+#### **Filter Messages by Date Range**
 The following code snippet shows you how to filter all emails on the basis of the date range.
 
 
@@ -73,28 +73,28 @@ builder.getInternalDate().before(cal.getTime());
 cal.add(Calendar.DATE, -7);
 builder.getInternalDate().since(cal.getTime());
 ~~~
-#### **Filter Criteria Specific Sender**
+#### **Filter Messages by Specific Sender**
 The following code snippet shows you how to filter all emails on the basis of a specific sender.
 
 ~~~Java
 // Get emails from specific sender
 builder.getFrom().contains("saqib.razzaq@127.0.0.1");
 ~~~
-#### **Filter Criteria Specific Domain**
+#### **Filter Messages by Specific Domain**
 The following code snippet shows you how to filter all emails on the basis of a specific domain.
 
 ~~~Java
 // Get emails from specific domain
 builder.getFrom().contains("SpecificHost.com");
 ~~~
-#### **Filter Criteria Specific Recipient**
+#### **Filter Messages by Specific Recipient**
 The following code snippet shows you how to filter all emails on the basis of a specific recipient.
 
 ~~~Java
 // Get emails sent to specific recipient
 builder.getTo().contains("recipient");
 ~~~
-#### **Filter Criteria By MessageID**
+#### **Filter Messages by MessageID**
 The following code snippet shows you how to filter all emails on the basis of MessageID.
 
 ~~~Java
@@ -102,7 +102,7 @@ The following code snippet shows you how to filter all emails on the basis of Me
 ExchangeQueryBuilder builder = new ExchangeQueryBuilder();
 builder.getMessageId().equals("MessageID");
 ~~~
-#### **Filter Criteria All Mail Delivery Notifications**
+#### **Filter Messages by All Mail Delivery Notifications**
 The following code snippet shows you how to filter all emails on the basis of all mail delivery notifications.
 
 ~~~Java
@@ -110,11 +110,39 @@ The following code snippet shows you how to filter all emails on the basis of al
 builder = new ExchangeQueryBuilder();
 builder.getContentClass().equals(ContentClassType.getMDN().toString());
 ~~~
-#### **Filter by Message Size**
+#### **Filter Messages by Size**
 ~~~Java
 builder = new ExchangeQueryBuilder();
 builder.getItemSize().greater(80000);
 ~~~
+#### **Filter Messages by String Value**
+
+The following code snippet shows you how to filter all emails on the basis of the specified string in the headers (subject, from, to, cc). The [getText()](https://reference.aspose.com/email/java/com.aspose.email/exchangequerybuilder/#getText--) method returns the string value together with the body of the message.
+
+```java
+ ExchangeQueryBuilder builder = new ExchangeQueryBuilder();
+
+builder.getText().equals("SomeText");
+
+MailQuery query = builder.getQuery();
+
+ExchangeMessageInfoCollection messages = ewsClient.listMessages("InboxUri", query, false);
+```
+#### **Filter Messages in Ascending/Descending Order**
+
+Aspose.Email provides the [ComparisonField.orderBy(boolean ascending)](https://reference.aspose.com/email/java/com.aspose.email/comparisonfield/#orderBy-boolean-) method which sets the value indicating that the client uses ascending or descending sorting on the search field. It allows you to sort email messages in ascending/descending order based on the  criteria specified by [MailQueryBuilder](https://reference.aspose.com/email/java/com.aspose.email/mailquerybuilder/).
+
+The code snippet below demonstrates how to filter messages ascending/descending order:
+
+```java
+MailQueryBuilder builder = new MailQueryBuilder();
+builder.getSubject().contains("Report");
+builder.getInternalDate().since(sinceDate);
+builder.getSubject().orderBy(true); // sort the subject ascending
+builder.getInternalDate().orderBy(false); // sort the date descending  
+
+ExchangeMessageInfoCollection miColl = client.listMessages(client.getMailboxInfo().getInboxUri(), builder.getQuery());
+```
 ### **Building Complex Queries**
 If different [MailQueryBuilder](https://apireference.aspose.com/email/java/com.aspose.email/MailQueryBuilder) properties are set in a separate statement, all the conditions are matched. For example, to get a message in a particular date range and from a specific host, write three statements:
 #### **Combining Queries with AND**
