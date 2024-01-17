@@ -25,7 +25,9 @@ Aspose.Email makes it possible to convert an OST file to PST with a single line 
 
 {{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-WorkingWithOutlookStorageFiles-ConvertingOSTToPST-ConvertingOSTToPST.py" >}}
 
+## **Convert PST to OST**
 
+Conversion from PST to OST is not supported by Aspose.Email because OST is always created by the Outlook when adding an account and synchronizing with the mail server. The difference between PST and OST files is that PST is only available locally. OST content is also available on the e-mail server. So there is no need to convert PST to OST for local use. But you can import PST into an existing account using the Import/Export wizard in Outlook.
 
 For performing other operations with OST files, please refer to the following pages:
 

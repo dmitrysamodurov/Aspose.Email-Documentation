@@ -121,3 +121,4 @@ foreach (var id in folder.EnumerateMessagesEntryId())
 {{% alert color="primary" %}}
 Prefer bulk methods to [add](https://docs.aspose.com/email/net/working-with-messages-in-a-pst-file/#adding-bulk-messages) or [delete](https://docs.aspose.com/email/net/working-with-messages-in-a-pst-file/#delete-items-in-bulk-from-pst-file) multiple items.
 {{% /alert %}}
+

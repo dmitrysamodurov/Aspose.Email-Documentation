@@ -31,6 +31,21 @@ Sending emails asynchronously is not supported by the API.
 {{% /alert %}} 
 
 {{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-SMTP-SendEmailsSynchronously-SendEmailsSynchronously.py" >}}
+
+## **Sending Stored Messages from Disc**
+
+If you need to programmatically send a pre-composed email message stored in the EML format, use the [MailMessage](https://reference.aspose.com/email/python-net/aspose.email/mailmessage/#mailmessage-class) class to load the existing file and keep it before sending. Then send it using the [SmtpClient](https://reference.aspose.com/email/python-net/aspose.email.clients.smtp/smtpclient/#smtpclient-class) class specifying the SMTP server's hostname, username, and password for authentication. The 'send' method of the [SmtpClient](https://reference.aspose.com/email/python-net/aspose.email.clients.smtp/smtpclient/#smtpclient-class) class is used to send the email message. The whole process is shown in the code sample below.
+
+```py
+import aspose.email as ae
+
+message = ae.MailMessage.load("test.eml")
+
+# Send this message using SmtpClient
+client = ae.clients.SmtpClient("host", "username", "password")
+client.send(message)
+```
+
 ## **Sending Plain Text Email**
 The programming samples below show how to send a plain text email message. The Body property, a property of the MailMessage class, is used to specify the plain text content of the message body. To send a plain text email message, follow these steps:
 
@@ -91,6 +106,33 @@ The following code snippet shows you how to sending bulk emails.
 
 
 {{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-SMTP-SendingBulkEmails-SendingBulkEmails.py" >}}
+
+## **Sending Emails with MultiConnection**
+
+The following properties of the [SmtpClient](https://reference.aspose.com/email/python-net/aspose.email.clients.smtp/smtpclient/#smtpclient-class) class allow a client to utilize multiple connections to the server for sending emails. This can be beneficial in scenarios where the client needs to send a large volume of emails and wants to distribute the workload across multiple connections.
+
+- 'use_multi_connection' property	gets or sets value which indicates if client has to use multiple connections for heavy loaded operations.
+- 'connections_quantity' property	gets or sets quantity of connections in multy-connection mode.
+```
+Please note, the use of this mode will not necessarily lead to performance increasing.
+```
+The following code sample shows how to implement this feature in a project:
+```py
+import aspose.email as ae
+
+client = ae.clients.smtp.SmtpClient
+client.host = "<HOST>"
+client.username = "<USERNAME>"
+client.password = "<PASSWORD>"
+client.port = 587
+client.supported_encryption = ae.clients.base.EncryptionProtocols.TLS
+client.security_options = ae.clients.SecurityOptions.SSL_EXPLICIT
+
+client.connections_quantity = 5
+client.use_multi_connection = ae.clients.MultiConnectionMode.ENABLE
+client.send(messages)
+```
+
 ## **Sending Message as TNEF**
 TNEF emails have special formatting which may be lost if sent using the standard API. Aspose.Email provides the capability to send emails as TNEF, thus preserving the format. The SmtpClient class UseTnef property can be set to send the email as TNEF. The following code snippet shows you how to send message as TNEF.
 
@@ -125,3 +167,15 @@ Forwarding an email is common practice in daily life digital communication. An e
 
 
 {{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-SMTP-ForwardEmail-ForwardEmail.py" >}}
+
+### **Forwarding Email without using MailMessage**
+
+The API also supports forwarding EML messages without first loading into [MailMessage](https://reference.aspose.com/email/python-net/aspose.email/mailmessage/#mailmessage-class). This is useful in cases where there are limited resources in terms of system memory.
+
+```py
+import aspose.email as ae
+
+client = ae.clients.smtp.SmtpClient(host, smtp_port, username, password, ae.clients.SecurityOptions.AUTO)
+file = open("test.eml", "rb")
+client.forward(sender, recipients, file)
+```

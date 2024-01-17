@@ -5,6 +5,22 @@ weight: 40
 url: /java/working-with-contacts-in-pst-file/
 ---
 
+## **Reading Multiple Contacts in VCard Format**
+
+The code sample below demonstrates how to read a VCF file, check if it contains multiple contacts, and if so, load the contacts from the file into a list of VCardContact objects. The code uses the following methods:
+
+- [isMultiContacts(InputStream stream)](https://reference.aspose.com/email/java/com.aspose.email/vcardcontact/#isMultiContacts-java.io.InputStream-) - Checks whether source stream contains multi contacts.
+- [loadAsMultiple(String filePath, Charset encoding)](https://reference.aspose.com/email/java/com.aspose.email/vcardcontact/#loadAsMultiple-java.lang.String-java.nio.charset.Charset-) - Loads list of contacts from multi contact file.
+- [loadAsMultiple(InputStream stream, Charset encoding)](https://reference.aspose.com/email/java/com.aspose.email/vcardcontact/#loadAsMultiple-java.io.InputStream-java.nio.charset.Charset-) - Loads list of contacts from multi contact stream.
+
+```java
+try (InputStream stream = new FileInputStream("test.vcf")) {
+    if (VCardContact.isMultiContacts(stream)) {
+        List<VCardContact> contacts = VCardContact.loadAsMultiple(stream, Charset.forName("utf-8"));
+    }
+}
+```
+
 ## **Adding Contact to PST**
 
 [Create New PST, Add Sub-folders and Messages](java/create-new-pst-add-sub-folders-and-messages/) showed how to create a PST file and add a subfolder to it. With Aspose.Email you can add a [MapiContact](https://reference.aspose.com/email/java/com.aspose.email/mapicontact/) to the Contacts subfolder of a PST file that you have created or loaded. Below are the steps to add [MapiContact](https://reference.aspose.com/email/java/com.aspose.email/mapicontact/) to a PST:

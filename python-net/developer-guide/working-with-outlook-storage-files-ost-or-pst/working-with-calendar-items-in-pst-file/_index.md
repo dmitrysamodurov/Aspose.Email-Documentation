@@ -36,8 +36,30 @@ The following code snippet shows you how to export the calendar items from Outlo
 
 
 {{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-WorkingWithOutlookStorageFiles-SaveCalendarItems-SaveCalendarItems.py" >}}
+
+### **Saving as ICS with Original Timestamp**
+
+The *keep_original_date_time_stamp* method of the [MapiCalendarIcsSaveOptions](https://reference.aspose.com/email/python-net/aspose.email.mapi/mapicalendaricssaveoptions/#mapicalendaricssaveoptions-class) class allows to preserve the original date and time stamps of the calendar items when saving them as an ICS (iCalendar) file. The following code sample demonstrates the implementation of this method:
+
+```python
+import aspose.email as ae
+
+pst = ae.storage.pst.PersonalStorage.from_file("my.pst")
+
+calendar_folder = pst.get_predefined_folder(ae.storage.pst.StandardIpmFolder.APPOINTMENTS)
+
+for msg_info in calendar_folder.enumerate_messages():
+    cal = pst.extract_message(msg_info).to_mapi_message_item()
+
+    save_options = ae.mapi.MapiCalendarIcsSaveOptions()
+    save_options.keep_original_date_time_stamp = True
+
+    if not (cal is None):
+      cal.save("cal.ics", save_options)
+```
 ## **Modify/Delete Occurrences from Recurrences**
-Exceptions can be added to existing recurrences using Aspose.Email for .NET API. Following code sample illustrates the usage of this feature.
+
+Exceptions can be added to existing recurrences using Aspose.Email for .NET API. Following code sample illustrates the usage of this feature.  
 
 ```py
 from datetime import datetime, timedelta

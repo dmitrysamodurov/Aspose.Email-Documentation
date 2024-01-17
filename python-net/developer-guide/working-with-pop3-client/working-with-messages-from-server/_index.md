@@ -51,6 +51,20 @@ The POP3 Client of the API can retrieve message summary information from the ser
 
 
 {{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-POP3-RetrieveMessageSummaryInformationUsingUniqueId-RetrieveMessageSummaryInformationUsingUniqueId.py" >}}
+## **Listing Messages with MultiConnection**
+
+For heavy-loaded operations Aspose.Email offers the 'use_multi_connection' property of the [Pop3Client](https://reference.aspose.com/email/python-net/aspose.email.clients.pop3/pop3client/#pop3client-class) class to use multiple connections while retrieving emails. However, using this mode does not necessarily have to lead to the increase in performance. The following code snippet shows you how to establish a connection to a POP3 server, configure the client to allow up to 5 concurrent connections and enable multi-connection mode to retrieve information about the messages present on the server:
+
+```py
+import aspose.email as ae
+
+client = ae.clients.pop3.Pop3Client("host", 995, "username", "password", ae.clients.SecurityOptions.AUTO)
+
+client.connections_quantity = 5
+client.use_multi_connection = ae.clients.MultiConnectionMode.ENABLE
+message_info_coll = client.list_messages()
+```
+
 ## **Fetching Messages from Server and saving to Disc**
 ### **Save Message to Disk without Parsing**
 If you want to download email messages from the POP3 server without parsing them, use the Pop3Client class SaveMessage function. The SaveMessage function does not parse the email message so it is faster than the FetchMessage function. The following code snippet shows how to saves a message by its sequence number, in this case number 1. The SaveMessagemethod saves the message in the original EML format without parsing it.
@@ -58,6 +72,20 @@ If you want to download email messages from the POP3 server without parsing them
 
 
 {{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-POP3-SaveToDiscWithoutParsing-SaveToDiscWithoutParsing.py" >}}
+
+### **Parse Message Before Saving**
+
+Use the 'fetch_message' method of the client object created using [Pop3Client](https://reference.aspose.com/email/python-net/aspose.email.clients.pop3/pop3client/#pop3client-class) class to retrieve the message with a specific sequence number. The code sample below demonstrates how to retrieve a specific message and save it using its subject as the file name by calling the 'save' method on the msg object:
+
+```py
+import aspose.email as ae
+
+client = ae.clients.pop3.Pop3Client("host", 995, "username", "password", ae.clients.SecurityOptions.AUTO)
+
+# Fetch the message by its sequence number and Save the message using its subject as the file name
+msg = client.fetch_message(1)
+msg.save("first-message_out.eml", ae.SaveOptions.default_eml)
+```
 ### **Filtering Messages on Sender, Recipient or Date**
 The Pop3Client class, described in Connecting to a POP3 Server, provides the list_messages() method which gets all the messages from a mailbox. To get only messages which match some condition, use the overloaded ListMessages() method which takes MailQuery as an argument. The MailQuery class provides various properties for specifying the query conditions, for example, date, subject, sender, recipient and so on. The MailQueryBuilder class is used to build the search expression. First, all the conditions and constraints are set and then MailQuery is filled with the query developed by MailQueryBuilder. The MailQuery class object is used by Pop3Client to extract the filtered information from the server. This article shows how to filter email messages from a mailbox. The first example illustrates how to filter messages based on date and subject. We also show how to filter on other criteria and how to build more complex queries. It also shows the application of Date and Time filter to retrieve the specific emails from the mailbox. In addition, it also shows how to apply case-sensitive filtering.
 ### **Filtering Messages from Mailbox**
@@ -72,3 +100,114 @@ The following code snippet shows you how to connect to a POP3 mailbox and get me
 
 
 {{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-POP3-FilterMessagesFromMailbox-FilterMessagesFromMailbox.py" >}}
+
+### **Getting Messages that Meet Specific Criteria**
+
+Aspose.Email also makes it possible to build complex search criteria for querying and filtering email messages. For this purpose use the [MailQueryBuilder](https://reference.aspose.com/email/python-net/aspose.email.tools.search/mailquerybuilder/#mailquerybuilder-class) class and its properties. The criteria for fetching are as follows:
+
+- Fetch messages by delivery date.
+- Fetch messages within a range.
+- Fetch messages from a specific sender.
+- Fetch messages from a specific domain.
+- Fetch messages to a specific recipient.
+
+#### **Today's date**
+
+To fetch messages by a delivery date, use the 'internal_date' property as shown in the code sample below:
+
+```py
+import aspose.email as ae
+from datetime import datetime
+
+builder = ae.tools.search.MailQueryBuilder()
+builder.internal_date.on(datetime.now())
+```
+#### **Date range**
+
+To fetch messages within a date range, use the same 'internal_date' property specifying the date range as shown in the code sample below:
+
+```py
+import aspose.email as ae
+from datetime import datetime, timedelta
+
+builder = ae.tools.search.MailQueryBuilder()
+# Emails that arrived in last 7 days
+builder.internal_date.before(datetime.now())
+builder.internal_date.since(datetime.today() - timedelta(days=7))
+```
+#### **Specific Sender**
+
+To fetch messages from a specific sender, use the 'from_address' property as shown in the code sample below:
+
+```py
+import aspose.email as ae
+
+builder = ae.tools.search.MailQueryBuilder()
+builder.from_address.contains("saqib.razzaq@127.0.0.1")
+```
+#### **Specific domain**
+
+To fetch messages from a specific domain, use the 'from_address' property as shown in the code sample below:
+
+```py
+import aspose.email as ae
+
+builder = ae.tools.search.MailQueryBuilder()
+builder.from_address.contains("SpecificHost.com")
+```
+#### **Specific recipient**
+
+To fetch messages to a specific recipient, use the 'to' property as shown in the code sample below:
+
+```py
+import aspose.email as ae
+
+builder = ae.tools.search.MailQueryBuilder()
+builder.to.contains("recipient")
+```
+### **Building Complex Queries**
+
+Sometimes it is necessary to satisfy more than one query. Aspose.Email makes it possible by combining queries in several statements. Create a [MailQueryBuilder](https://reference.aspose.com/email/python-net/aspose.email.tools.search/mailquerybuilder/#mailquerybuilder-class) object and use its properties to build specific queries.
+
+#### **Combining Queries with AND**
+
+The following code snippet shows you how to combine queries with AND.
+
+```py
+import aspose.email as ae
+from datetime import datetime, timedelta
+
+builder = ae.tools.search.MailQueryBuilder()
+builder.internal_date.before(datetime.now())
+builder.internal_date.since(datetime.today() - timedelta(days=7))
+builder.from_address.contains("SpecificHost.com")
+```
+#### **Combining Queries with OR**
+
+The following code snippet shows you how to combine queries with OR.
+
+```py
+import aspose.email as ae
+
+builder = ae.tools.search.MailQueryBuilder()
+builder.either(builder.subject.contains("test"), builder.from_address.contains("noreply@host.com"))
+```
+
+#### **Applying Case Sensitive Filters**
+
+The API also provides the capability to filter emails from the mailbox based on a case sensitive criteria. The following methods of the [StringComparisonField](https://reference.aspose.com/email/python-net/aspose.email.tools.search/stringcomparisonfield/#stringcomparisonfield-class) class provide the capability to search emails specifying case sensitive flags.  
+
+Method Aspose.Email.StringComparisonField.contains(value, ignore_case)
+Method Aspose.Email.StringComparisonField.equals(value, ignore_case)
+Method Aspose.Email.StringComparisonField.not_contains(value, ignore_case)
+Method Aspose.Email.StringComparisonField.not_equals(value, ignore_case)
+
+The following code snippet shows you how to implement this capability into your project:
+
+```py
+import aspose.email as ae
+
+builder = ae.tools.search.MailQueryBuilder()
+builder.from_address.contains("noreply@host.com", True)
+```
+

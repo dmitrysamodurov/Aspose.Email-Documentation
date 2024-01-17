@@ -23,6 +23,20 @@ The following code snippet shows you how to create and save outlook contact.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-CreateAndSaveOutlookContact-CreateAndSaveOutlookContact.cs" >}}
 
+### **Save Mapi Distribution List to a Single Multi Contact VCF File**
+
+The code sample below demonstrates how to save a distribution list to a multi-contact VCF file:
+
+```cs
+// convert the `msg` object to a `MapiMessage` object
+var dlist = (MapiDistributionList)msg.ToMapiMessageItem();
+
+//save the distribution list
+var options = new MapiDistributionListSaveOptions(ContactSaveFormat.VCard);
+dlist.Save("distribution_list.vcf", options);
+```
+
+
 ### **Save Contact in Version 3 VCF Format**
 
 To save the contact in version 3 VCF format, use the [VCardVersion](https://reference.aspose.com/email/net/aspose.email.personalinfo.vcard/vcardversion/) enumerable to set the [VCardSaveOptions.Version](https://reference.aspose.com/email/net/aspose.email.personalinfo.vcard/vcardsaveoptions/version/) property. The following sample code demonstrates the use of [VCardVersion](https://reference.aspose.com/email/net/aspose.email.personalinfo.vcard/vcardversion/) enumerable to save the contact VCF version 3 format:

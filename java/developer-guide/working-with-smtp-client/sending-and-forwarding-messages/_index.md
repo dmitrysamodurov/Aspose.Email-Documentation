@@ -288,6 +288,29 @@ try {
     System.err.println(ex);
 }
 ~~~
+## **Get Information about Bulk Messages Sent**
+
+When you send messages in bulk, you can get information about the number of successfully sent messages and the list of these messages. The [SucceededSending](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#setSucceededSending-com.aspose.ms.System.EventHandler-com.aspose.email.MailMessageEventArgs--) event is used for this purpose.
+
+The code sample below shows how to get information about the number of successfully sent messages:
+
+```java
+try (SmtpClient client = new SmtpClient(host, SecurityOptions.Auto)) {
+    final AtomicInteger messageCount = new AtomicInteger(0);
+
+    client.setSucceededSending(new EventHandler<MailMessageEventArgs>() {
+        public void invoke(Object sender, MailMessageEventArgs eventArgs) {
+            System.out.println("The message " + eventArgs.getMessage().getSubject() + " was successfully sent.");
+            messageCount.incrementAndGet();
+        }
+    });
+
+    client.send(messages);
+
+    System.out.println(messageCount + " messages were successfully sent.");
+}
+```
+
 
 ## **Sending Emails with MultiConnection**
 

@@ -112,6 +112,36 @@ for messageInfo in messageInfoCollection:
    print("Delivery time: ", str(mapi.delivery_time))
    print("Body: " + mapi.body)
 ```
+### **Extracting n Number of Messages from a PST File**
+
+To extract a specific number of messages from a PST file, use the *get_contents(start_index, count)* method of the [FolderInfo](https://reference.aspose.com/email/python-net/aspose.email.storage.pst/folderinfo/#folderinfo-class) class. It takes two parameters:
+
+- **start_index** - the number of the starting message, for example the 10th;
+- **count** - total number of messages to retrieve.
+
+Retrieving only the necessary subset of messages at a time can be useful for managing large volumes of email data. The following code sample demonstrates the implementation of this feature:
+
+```python
+import aspose.email as ae
+
+pst = ae.storage.pst.PersonalStorage.from_file("my.pst")
+
+folder = pst.root_folder.get_sub_folder("Inbox")
+
+# Extracts messages starting from 10th index top and extract total 100 messages
+messages = folder.get_contents(10, 100)
+```
+### **Getting Total Items Count from a PST File**
+
+To retrieve the total number of items (such as emails, appointments, tasks, contacts, etc.) present in the message store, use the *get_total_items_count()* method of the [MessageStore](https://reference.aspose.com/email/python-net/aspose.email.storage.pst/messagestore/#messagestore-class) class. It provides a convenient way to quickly gather information about the size and volume of data within the store. The following code snippet shows how to get the total number of items from a PST file:
+
+```python
+import aspose.email as ae
+
+pst = ae.storage.pst.PersonalStorage.from_file("my.pst")
+
+count = pst.store.get_total_items_count()
+```
 
 ## **Delete Messages from PST Files**
 Add Messages to PST Files showed how to add messages to PST files. It is, of course, also possible to delete items (contents) from a PST file and it may also be desirable to delete messages in bulk. Items from a PST file can be deleted using the FolderInfo.delete_child_item() method. The API also provides FolderInfo.delete_child_items() method to delete items in bulk from the PST file.
@@ -124,6 +154,58 @@ This articles shows how to Use the FolderInfo class to access specific folders i
 
 
 {{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-WorkingWithOutlookStorageFiles-DeleteMessagesFromPSTFile-DeleteMessagesFromPSTFile.py" >}}
+
+### **Deleting Folders from PST Files**
+
+You can delete a PST folder by moving it to the Deleted Items folder.
+
+```python
+import aspose.email as ae
+
+pst = ae.storage.pst.PersonalStorage.from_file("my.pst")
+
+deleted_items_folder = pst.get_predefined_folder(ae.storage.pst.StandardIpmFolder.DELETED_ITEMS)
+empty_folder = pst.root_folder.get_sub_folder("Empty folder")
+some_folder = pst.root_folder.get_sub_folder("Some folder")
+pst.move_item(empty_folder, deleted_items_folder)
+pst.move_item(some_folder, deleted_items_folder)
+```
+The advantage of this method is that the deleted folder can be easily recovered.
+
+
+```python
+some_folder = pst.root_folder.get_sub_folder("Some folder")
+pst.move_item(some_folder, pst.root_folder)
+```
+You can also permanently remove a folder from the Deleted Items folder, if necessary.
+
+
+```python
+deleted_items_folder.delete_child_item(empty_folder.entry_id)
+```
+The *delete_child_item* method can be used for any folders if you want to immediately and permanently delete a subfolder, bypassing the Deleted Items folder.
+
+
+```python
+some_folder = pst.root_folder.get_sub_folder("Some folder")
+pst.root_folder.delete_child_item(some_folder.entry_id)
+```
+### **Delete Items from PST**
+
+In many messaging systems or email clients, each item (such as an email, appointment, or task) is assigned a unique identifier called an entry ID. The *delete_item(entry_id)* method of the [FolderInfo](https://reference.aspose.com/email/python-net/aspose.email.storage.pst/folderinfo/#folderinfo-class) class takes this entry ID as a parameter and removes the corresponding item from the message store. Use the following code to delete an item from the message store:
+
+```python
+import aspose.email as ae
+
+pst = ae.storage.pst.PersonalStorage.from_file("my.pst")
+
+# ...
+
+pst.delete_item(entry_id)
+
+# ...
+```
+
 ### **Delete Items in Bulk from PST File**
 Aspose.Email API can be used to delete items in bulk from a PST file. This is achieved using the delete_child_items() method which accepts a list of Entry ID items referring to the items to be deleted. The following code snippet shows you how to delete Items in bulk from PST file.
 
@@ -205,6 +287,34 @@ The following code snippet shows you how to search for a string in PST with the 
 
 
 {{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-WorkingWithOutlookStorageFiles-SearchingStringInPSTWithIgnoreCaseParameter-SearchingStringInPSTWithIgnoreCaseParameter.py" >}}
+
+### **Searching for Message Subjects by Multiple Keywords in a PST File**
+
+Retrieve specific messages or items from a personal storage file (PST) or message store by implementing the *either(query1, query2)* method of the [PersonalStorageQueryBuilder](https://reference.aspose.com/email/python-net/aspose.email.storage.pst/personalstoragequerybuilder/#personalstoragequerybuilder-class) class in your project. It takes two parameters allowing you to combine two different queries, query1 and query2, and find a message subject matching either of the two specified words. See the code sample below:
+
+```python
+import aspose.email as ae
+
+builder1 = ae.storage.pst.PersonalStorageQueryBuilder()
+builder1.subject.contains("Review") # 'Review' is key word for the search
+
+builder2 = ae.storage.pst.PersonalStorageQueryBuilder()
+builder2.subject.contains("Error") # 'Error' is also key word for the search
+
+builder = ae.storage.pst.PersonalStorageQueryBuilder()
+# message subjects must contain 'Review' or 'Error' words
+builder.either(builder1.get_query(), builder2.get_query())
+
+
+pst = ae.storage.pst.PersonalStorage.from_file("my.pst")
+
+folder = pst.root_folder.get_sub_folder("Inbox")
+messages = folder.get_contents(builder.get_query())
+
+for message in messages:
+    print(f"Message: {message.subject}")
+```
+
 ## **Move Items to Other Folders of PST File**
 Aspose.Email makes it possible to move items from a source folder to another folder in the same Personal Storage (PST) file. This includes:
 

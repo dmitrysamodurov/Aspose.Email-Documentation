@@ -68,6 +68,23 @@ try (SmtpClient client = new SmtpClient("host", 587, "username", "password")) {
 }
 ~~~
 
+## **Customize Authentication Mechanism**
+
+Retrieve the list of authentication mechanisms that are supported by the SMTP server using the [getSupportedAuthentication](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#getSupportedAuthentication--) method of the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) class. This method allows the client to determine which authentication methods are available for establishing a secure connection with the server. Then, using the [setAllowedAuthentication](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#setAllowedAuthentication-long-) method which gets (or sets) enumeration of the authentication types allowed by user, choose the most appropriate authentication mechanism for the client-server communication. This allows you to set the authentication method for the mail client explicitly.
+
+The following code sample shows how to customize email client authentication:
+
+```java
+smtpClient.setAllowedAuthentication(SmtpKnownAuthenticationType.Login);
+```
+## **Using CRAM-MD5 authentication to Connect to a Server**
+
+To ensure secure authentication and communication with the SMTP server, you can specify and enforce the use of CRAM-MD5 as the allowed authentication method for the SMTP client. The following code snippet shows how to configure the allowed authentication type for the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/):
+
+```java
+smtpClient.setAllowedAuthentication(SmtpKnownAuthenticationType.CramMD5);
+```
+
 ## **Bind SMTP Client to Specific IP Address on Host**
 
 The possibility of a host having multiple ports available for sending out emails cannot be ruled out. In such cases, the requirement may arise to bind the email sending client to a specific port on the host for sending out emails. This can be achieved with Aspose.Email API as well using the [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) [bindIPEndPoint](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#bindIPEndPoint-com.aspose.email.BindIPEndPointHandler-) property. The API [SmtpClient](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/) can be set to use a specific IP address on the host by specifying the specific IP Endpoint. The following code snippet shows you how to bind SMTP Client to Specific IP Address on Host.
@@ -93,6 +110,21 @@ try {
     client.dispose();
 }
 ~~~
+
+## **Validate Mail Server Credentials Without Sending Email**
+
+Sometimes it is necessary to verify credentials without sending an email. Aspose.Email provides the [validateCredentials()](https://reference.aspose.com/email/java/com.aspose.email/smtpclient/#validateCredentials--) method to perform this operation. If the validation is successful, the code inside the if statement is executed, typically used to perform further actions or retrieve data from the IMAP server. The following code snippet demonstrates the validation of credentials without sending an email:
+
+```java
+try (SmtpClient smtpClient = new SmtpClient(
+        server.SmtpUrl, server.SmtpPort, "username", "password", SecurityOptions.Auto)) {
+    smtpClient.setTimeout(4000);
+
+    if (smtpClient.validateCredentials()) {
+        // to do something
+    }
+}
+```
 
 ## **How to Set Timeout for Mail Operations**
 

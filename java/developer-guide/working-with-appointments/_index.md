@@ -9,6 +9,7 @@ url: /java/working-with-appointments/
 
 The [Appointment](https://reference.aspose.com/email/java/com.aspose.email/appointment/) class in Aspose.Email for Java can be used to load an appointment in ICS format as well as to create a new appointment and save it to a disk in ICS format. In this article, we first create an appointment and save it to a disk in ICS format and then we load it.
 
+
 ### **Create an Appointment and Save to Disk in ICS Format**
 
 The following steps are required to create an appointment and save it in ICS format.
@@ -32,7 +33,7 @@ The following code snippets show how to create and save an appointment to a disk
 
 {{< gist "" "e3443fa9baa07df6d929fc4a408add67" "Examples-src-main-java-com-aspose-email-examples-appointment-WorkingWithAppointments-CreateAppointment.java" >}}
 
-### **Load Appointment ICS Format**
+### **Load an Appointment in ICS Format**
 
 To load an appointment in ICS format, the following steps are required:
 
@@ -43,6 +44,21 @@ To load an appointment in ICS format, the following steps are required:
 The following code snippets show how to load an appointment in ICS format.
 
 {{< gist "" "e3443fa9baa07df6d929fc4a408add67" "Examples-src-main-java-com-aspose-email-examples-appointment-WorkingWithAppointments-LoadAppointment.java" >}}
+
+## **Saving Appointments to MSG Format**
+
+Aspose.Email makes it possible to save appointments directly to .msg files. The following public classes are available for customizing the saving process of apppointments:
+
+- [AppointmentMsgSaveOptions](https://reference.aspose.com/email/java/com.aspose.email/appointmentmsgsaveoptions/) class with additional options to save appointments in msg format.
+- [AppointmentIcsSaveOptions](https://reference.aspose.com/email/java/com.aspose.email/appointmenticssaveoptions/) class with additional options to save appointment in ics format. It was added to replace the obsolete IcsSaveOptions.
+
+The code sample below shows how to load an appointment from a file, and then save it in two different formats: .ics and .msg. 
+
+```java
+Appointment appointment = Appointment.load("fileName");
+appointment.save("fileName.ics", new AppointmentIcsSaveOptions());
+appointment.save("fileName.msg", new AppointmentMsgSaveOptions());
+```
 
 ## **Create a Draft Appointment Request**
 

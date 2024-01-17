@@ -91,6 +91,16 @@ try {
 }
 ~~~
 
+## **Customize Authentication Mechanism**
+
+Retrieve the list of authentication mechanisms that are supported by the IMAP server using the [getSupportedAuthentication](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#getSupportedAuthentication--) method of the [ImapClient](https://reference.aspose.com/email/java/com.aspose.email/imapclient/) class. This method allows the client to determine which authentication methods are available for establishing a secure connection with the server. Then, using the [setAllowedAuthentication](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#setAllowedAuthentication-long-) method which gets (or sets) enumeration of the authentication types allowed by user, choose the most appropriate authentication mechanism for the client-server communication. This allows you to set the authentication method for the mail client explicitly.
+
+The following code sample shows how to customize email client authentication:
+
+```java
+imapClient.setAllowedAuthentication(ImapKnownAuthenticationType.Plain);
+```
+
 ## **Connecting to Server in Read-Only mode**
 
 The [ImapClient](https://reference.aspose.com/email/java/com.aspose.email/imapclient/) class provides a [ReadOnly](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#setReadOnly-boolean-) property which when set to **true**, indicates that no changes should be made to the permanent state of the mailbox. The following code sample demonstrates the use of [ImapClient.ReadOnly](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#setReadOnly-boolean-) property. It gets the count of unread messages, then fetches one message and then gets the count of unread messages again in read-only mode. The count of the unread messages remains the same indicating that the permanent state of the mailbox was not changed.
@@ -123,6 +133,28 @@ if (messageInfoCol.size() > 0) {
     System.out.println("No unread messages found");
 }
 ~~~
+
+## **Using CRAM-MD5 authentication to Connect to a Server**
+
+To ensure secure authentication and communication with the IMAP server, you can specify and enforce the use of CRAM-MD5 as the allowed authentication method for the IMAP client. The following code snippet shows how to configure the allowed authentication type for the [ImapClient](https://reference.aspose.com/email/java/com.aspose.email/imapclient/):
+
+```java
+imapClient.setAllowedAuthentication(ImapKnownAuthenticationType.CramMD5);
+```
+## **Validate Mail Server Credentials Without Sending Email**
+
+Sometimes it is necessary to verify credentials without sending an email. Aspose.Email provides the [validateCredentials()](https://reference.aspose.com/email/java/com.aspose.email/imapclient/#validateCredentials--) method to perform this operation. If the validation is successful, the code inside the if statement is executed, typically used to perform further actions or retrieve data from the IMAP server. The following code snippet demonstrates the validation of credentials without sending an email:
+
+```java
+try (ImapClient imapClient = new ImapClient(
+        server.ImapUrl, server.ImapPort, "username", "password", SecurityOptions.Auto)) {
+    imapClient.setTimeout(4000);
+
+    if (imapClient.validateCredentials()) {
+        // to do something
+    }
+}
+```
 
 ## **How to Set Timeout for Mail Operations**
 

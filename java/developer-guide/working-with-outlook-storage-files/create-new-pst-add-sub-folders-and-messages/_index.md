@@ -26,6 +26,30 @@ try (PersonalStorage pst = PersonalStorage.create(path, FileFormatVersion.Unicod
     pst.getRootFolder().addSubFolder("Inbox");
 }
 ```
+## **Create PST with Size more than 2Gb using OutputStream**
+
+Aspose.Email users can optimize PST internal cache using the PersonalStorage constructor:
+
+- **blockSize** - The optimal block size to expand cache buffer(in bytes).
+
+```java
+PersonalStorage create(OutputStream stream, int blockSize, /*FileFormatVersion*/int version)
+```
+## **Reduce the message size and the size of the created PST file**
+
+Aspose.Email offers the capability to compress the body content, which can help reduce the message size. This can be particularly useful when sending large messages or when dealing with limited bandwidth or storage constraints. For this purpose, the library provides the compression parameter included in the following methods:
+
+- [MapiMessageItemBase.setBodyContent(String content, /*BodyContentType*/int contentType, boolean compression)](https://reference.aspose.com/email/java/com.aspose.email/mapimessageitembase/#setBodyContent-java.lang.String-int-boolean-) - Sets the content of the body.
+- [MapiMessageItemBase.setBodyRtf(String content, boolean compression)](https://reference.aspose.com/email/java/com.aspose.email/mapimessageitembase/#setBodyRtf-java.lang.String-boolean-) - Gets or sets the RTF formatted message text.
+
+The code snippet below demonstrates how to use RTF Compression while setting the MAPI message body:
+
+```java
+MapiMessage msg = new MapiMessage("from@doamin.com", "to@domain.com", "subject", "body");
+// set the html body and keep it compressed
+// this will reduce the message size
+msg.setBodyContent(htmlBody, BodyContentType.Html, true);
+```
 
 ## **Changing a Folder Container Class**
 

@@ -141,6 +141,26 @@ try {
     client.dispose();
 }
 ~~~
+
+## **Return the Client Request ID in the Header**
+
+The ```return-client-request-id``` header is sent in the request and used by the server to determine whether the ```client-request-id``` header specified by the client should be returned in the server response. The following methods are used in this operation:
+
+- [getReturnClientRequestId()](https://reference.aspose.com/email/java/com.aspose.email/iewsclient/#getReturnClientRequestId--) 
+- [setReturnClientRequestId(boolean value)](https://reference.aspose.com/email/java/com.aspose.email/iewsclient/#setReturnClientRequestId-boolean-) - Get or set a flag to indicate whether the client requires the server side to return the request id.
+
+```java
+try (IEWSClient client = createEWSClient())
+{
+    // Client will create random id and pass it to the server.
+    // The server should include this id in request-id header of all responses.
+    client.setReturnClientRequestId(true);
+    
+    client.setLogFileName("ews.log");
+    client.getMailboxInfo();
+}
+```
+
 ## **Working with Unified Messaging**
 Aspose.Email can retrieve unified messaging information from Exchange Server 2010. Unified messaging such as getting configuration information, initiating an outbound call, retrieving phone call information by call ID and disconnecting a phone call by ID is supported at present. The following code sample shows how to retrieve unified messaging configuration information from Microsoft Exchange Server 2010.
 

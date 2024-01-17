@@ -11,7 +11,7 @@ Microsoft Outlook lets users to protect PST files with a password to restrict ac
 
 ### **Read Password Protected PST Files**
 
- You can read password-protected files just like regular unprotected pst files.
+You can read password-protected files just like regular unprotected pst files.
 
 ```csharp
 using var pst = PersonalStorage.FromFile(fileName);

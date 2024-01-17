@@ -43,6 +43,14 @@ To extract headers from an email, follow these steps:
 
 {{< gist "aspose-com-gists" "709d733586ce50505c3bca3f6e8bd18d" "Examples-src-main-java-com-aspose-email-examples-email-EmailHeaders-GetDecodedHeaderValueFromHeaderCollection.java" >}}
 
+## **Get and Modify the Linked Resource Disposition Header**
+
+The linked resource can be accessed and manipulated programmatically in the email message object. The [getContentDisposition()](https://reference.aspose.com/email/java/com.aspose.email/linkedresource/#getContentDisposition--) method of the [LinkedResource](https://reference.aspose.com/email/java/com.aspose.email/linkedresource/) class gets the Content-Disposition header. The code sample below demonstrates how to access and modify the filename of the linked resource:
+
+```java
+MailMessage eml = MailMessage.load(fileName);
+eml.getLinkedResources().get_Item(0).getContentDisposition().setFileName("changed.png");
+```
 ## **Get HTML body as plain text**
 
 The [MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class provides the feature to extract the HTML body of the message as plain text. The **MailMessage** class provides a [GetHtmlBodyText](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/#getHtmlBodyText-boolean-) method that returns the HTML body in plain text. The **GetHtmlBodyText** method accepts a boolean parameter that indicates whether the body should contain URLs or not. Passing the parameter as true indicates that the HTML body should contain URLs.

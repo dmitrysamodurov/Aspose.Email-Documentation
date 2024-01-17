@@ -27,3 +27,47 @@ Sometimes it is necessary to change a folder's folder class. A common example is
 
 
 {{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-WorkingWithOutlookStorageFiles-ChangeFolderContainerClass-ChangeFolderContainerClass.py" >}}
+
+## **Add Bulk Messages with Improved Performance**
+
+Adding bulk messages to a PST file as opposed to adding them individually can offer several advantages, particularly in terms of efficiency and performance: less I/O operations, reduced time to complete the task, system resources are more effeciently utilized, etc. The *add_messages* method of the [FolderInfo](https://reference.aspose.com/email/python-net/aspose.email.storage.pst/folderinfo/#folderinfo-class) class is used to transfer the collection of MAPI messages obtained from the source folder to the destination folder.
+
+### **Add Messages from Another PST**
+
+To enumerate and retrieve all the MAPI messages from the source folder of a PST file, use the *enumerate_mapi_messages()* method of the [FolderInfo](https://reference.aspose.com/email/python-net/aspose.email.storage.pst/folderinfo/#folderinfo-class) class. Then, add these messages to the destination folder of another PST file.
+
+```python
+import aspose.email as ae
+
+src_pst = ae.storage.pst.PersonalStorage.from_file("source.pst", False)
+dest_pst = ae.storage.pst.PersonalStorage.from_file("destination.pst")
+
+# Get the folder by name
+src_folder = src_pst.root_folder.get_sub_folder("SomeFolder")
+dest_folder = dest_pst.root_folder.get_sub_folder("SomeFolder")
+
+dest_folder.add_messages(src_folder.enumerate_mapi_messages())
+```
+
+### **Add Messages from Directory**
+
+To add messages from directory, after the file is opened and the reference to a specific folder within the PST file is obtained, retrieve a list of file names from a directory specified by the "path" variable and create an empty MSG list to load each file as a MapiMessage. Append each loaded message to the msg_list. The code sample below demonstrates the process of adding messages from directory:
+
+```python
+import aspose.email as ae
+import os
+
+pst = ae.storage.pst.PersonalStorage.from_file("my.pst", False)
+
+# Get the folder by name
+folder = pst.root_folder.get_sub_folder("SomeFolder")
+
+dirs = os.listdir("path")
+msg_list = []
+
+for file in dirs:
+    msg = ae.mapi.MapiMessage.load(file)
+    msg_list.append(msg)
+
+folder.add_messages(iter(msg_list))
+```

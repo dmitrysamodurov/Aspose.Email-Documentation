@@ -98,6 +98,17 @@ client.cancelAppointment(app);
 Appointment[] appointments2 = client.listAppointments();
 System.out.println("Total Appointments: " + appointments2.length);
 ~~~
+
+### **Return the Recurring Calendar Items Within the Specified Date Range**
+
+Aspose.Email EWSClient supports the return of the recurring calendar items within the range specified by StartDate and EndDate. The [AppointmentQueryBuilder.setCalendarView(Date startDate, Date endDate, int maxEntriesReturned)](https://reference.aspose.com/email/java/com.aspose.email/appointmentquerybuilder/#setCalendarView-java.util.Date-java.util.Date-int-) method, if the CalendarView is specified, returns a list of single calendar items and occurrences of recurring calendar items within the range specified by StartDate and EndDate. The *maxEntriesReturned* parameter describes the maximum number of results. (Value <= 0 for all results).
+
+```java
+ExchangeQueryBuilder builder = new ExchangeQueryBuilder();
+builder.getAppointment().setCalendarView(startDate, endDate, -1);
+
+Appointment[] appointments = client.listAppointments(builder.getQuery());
+```
 ## **Listing Appointments with Paging Support**
 The ListAppointments method exposed by the [IEWSClient](https://apireference.aspose.com/email/java/com.aspose.email/IEWSClient) API retrieves the complete list of appointments from the Exchange server. This may take time if there are a large number of appointments on the Exchange Server. The API provides overloaded methods of [listAppointments](https://apireference.aspose.com/email/java/com.aspose.email/IEWSClient#listAppointments\(\)) method that gives paging support to the operation. This can be used in different combinations with the querying feature as well. The following overloaded methods are available to list appointments from Exchange Server with Paging support.
 

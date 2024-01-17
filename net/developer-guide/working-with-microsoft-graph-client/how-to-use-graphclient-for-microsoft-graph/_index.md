@@ -361,6 +361,27 @@ var draftMessage = client.CreateMessage(KnownFolders.Drafts, msg);
 // send a draft message
 client.Send(draftMessage.ItemId);
 ```
+
+### **Send an EML Message**
+
+Creating and sending emails is easy using the MailMessage object. The following code sample demonstrates how to create and send an email message using Graph API:
+
+```cs
+// prepare the message
+var eml = new MailMessage
+{
+    From = "from@domain.com",
+    To = "to1@domain.com, to2@domain.com",
+    Subject = "New message",
+    HtmlBody = "<html><body>This is the HTML body</body></html>"
+};
+
+// send the message
+graphClient.Send(eml);
+graphClient.Create(KnownFolders.Inbox, eml);
+```
+
+
 ### **Copy Message**
 
 ```csharp

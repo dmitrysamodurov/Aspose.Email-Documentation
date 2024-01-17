@@ -97,6 +97,74 @@ try (Pop3Client client = new Pop3Client("imap.domain.com", "username", "password
 }
 ~~~
 
+## **Customize Authentication Mechanism**
+
+Retrieve the list of authentication mechanisms that are supported by the POP3 server using the [getSupportedAuthentication](https://reference.aspose.com/email/java/com.aspose.email/pop3client/#getSupportedAuthentication--) method of the [Pop3Client](https://reference.aspose.com/email/java/com.aspose.email/pop3client/) class. This method allows the client to determine which authentication methods are available for establishing a secure connection with the server. Then, using the [setAllowedAuthentication](https://reference.aspose.com/email/java/com.aspose.email/pop3client/#setAllowedAuthentication-long-) method which gets (or sets) enumeration of the authentication types allowed by user, choose the most appropriate authentication mechanism for the client-server communication. This allows you to set the authentication method for the mail client explicitly.
+
+The following code sample shows how to customize email client authentication:
+
+```java
+pop3Client.setAllowedAuthentication(Pop3KnownAuthenticationType.Plain);
+```
+
+## **OAuth 2.0 protocol support for authorization**
+
+OAuth 2.0 provides  authorization 
+
+Pop3Client supports OAuth 2.0 providing specific authorization ways for applications. The following constructors are used to initialize POP3Client using OAuth: 
+
+```java
+public Pop3Client(
+
+            String host, /*The host name*/
+
+            int port, /*The port number*/ 
+
+            String username, /*The user name*/
+
+            ITokenProvider tokenProvider, /*TokenProvider allowing to retrieve access token*/
+
+            /*SecurityOptions*/int securityOptions) /*Security mode for a mail client*/
+
+
+
+public Pop3Client(
+
+            String host, /*The host name*/
+
+            int port, /*The port number*/
+
+            String username, /*The user name*/
+
+            String authInfo, /*The user password or XOAUTH2 access token*/
+
+            boolean useOAuth, /*Defines whether SASL XOAUTH2 mechanism is used to login to the server*/
+
+            /*SecurityOptions*/int securityOptions) /*Security mode for a mail client*/
+```
+
+## **Validate Mail Server Credentials Without Sending Email**
+
+Sometimes it is necessary to verify credentials without sending an email. Aspose.Email provides the [validateCredentials()](https://reference.aspose.com/email/java/com.aspose.email/pop3client/#validateCredentials--) method to perform this operation. If the validation is successful, the code inside the if statement is executed, typically used to perform further actions or retrieve data from the IMAP server. The following code snippet demonstrates the validation of credentials without sending an email:
+
+```java
+try (Pop3Client pop3Client = new Pop3Client(
+        server.Pop3Url, server.Pop3Port, "userName", "password", SecurityOptions.Auto)) {
+    pop3Client.setTimeout(4000);
+
+    if (pop3Client.validateCredentials()) {
+        // to do something
+    }
+}
+```
+
+## **Using CRAM-MD5 authentication to Connect to a Server**
+
+To ensure secure authentication and communication with the POP3 server, you can specify and enforce the use of CRAM-MD5 as the allowed authentication method for the POP3 client. The following code snippet shows how to configure the allowed authentication type for the [Pop3Client](https://reference.aspose.com/email/java/com.aspose.email/pop3client/):
+
+```java
+popClient.setAllowedAuthentication(Pop3KnownAuthenticationType.CramMD5);
+```
 ## **How to Set Timeout for Mail Operations**
 
 Each mail operation takes some time depending on many factors (network delays, data size, server performance, etc.). You can set a timeout for all mail operations. The code example below shows you how to do that using the [Timeout](https://reference.aspose.com/email/java/com.aspose.email/emailclient/#setTimeout-int-) property. Note: you should not set large values to avoid long waits in your application.

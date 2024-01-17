@@ -24,7 +24,14 @@ We might also call Pop3Client.DeleteAllMessages() to delete all the messages. Th
 
 
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-POP3-DeleteAllEmails-DeleteAllEmails.cs" >}}
+```py
+import aspose.email as ae
+
+client = ae.clients.pop3.Pop3Client("imap.example.com", "username", "password")
+
+# Delete all the messages
+client.delete_messages()
+```
 
 
 
@@ -34,4 +41,11 @@ Pop3Client.UndeleteMessages can be used to cancel the deletion of email messages
 
 
 
-{{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-POP3-CancelDeletes-CancelDeletes.cs" >}}
+```py
+import aspose.email as ae
+
+client = ae.clients.pop3.Pop3Client("imap.example.com", "username", "password")
+
+# Cancel deletes
+client.undelete_messages()
+```

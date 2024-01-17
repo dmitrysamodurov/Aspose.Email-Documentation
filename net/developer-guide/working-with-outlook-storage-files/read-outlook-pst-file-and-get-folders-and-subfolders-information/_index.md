@@ -35,37 +35,18 @@ The [FolderInfo.GetPredefinedType](https://reference.aspose.com/email/net/aspose
 The following code sample shows how to implement this feature into your project:
 
 ```cs
-string fileName = "my.pst");
-
-using (var pst = PersonalStorage.FromFile(fileName))
-{
-    CheckFolders(pst.RootFolder.GetSubFolders());
-}
-
-private void CheckFolders(FolderInfoCollection folders)
-{
-    foreach (var folder in folders)
-    {
-        Console.WriteLine($"Display Name: {folder.DisplayName}");
-
-        // Determines whether the current folder is a predefined folder
-        var folderType = folder.GetPredefinedType(false);
-        var answer = folderType == StandardIpmFolder.Unspecified ? "No" : $"Yes, {folderType}"; 
-        Console.WriteLine($"Is StandardIpmFolder?: {answer}");
-
-        // Determines whether the current folder is a subfolder of a predefined folder
-        if (folderType == StandardIpmFolder.Unspecified)
+PersonalStorage.FromFile("my.pst"))
         {
-            folderType = folder.GetPredefinedType(true);
-            answer = folderType == StandardIpmFolder.Unspecified ? "No" : $"Yes, {folderType}";
-            Console.WriteLine($"Is subfolder from StandardIpmFolder parent?: {answer}");
+            FolderInfoCollection folders = pst.RootFolder.GetSubFolders();
+
+            foreach (FolderInfo folder in folders)
+            {
+                Console.WriteLine($"Folder: {folder.DisplayName}");
+                Console.WriteLine($"Is predefined: {folder.GetPredefinedType(false) != StandardIpmFolder.Unspecified}");
+                Console.WriteLine("-----------------------------------");
+            }
         }
-
-        Console.WriteLine();
-
-        CheckFolders(folder.GetSubFolders());
     }
-}
 ```
 ## **Getting and adding a standard RSS Feeds folder in PersonalStorage**
 
@@ -94,7 +75,24 @@ using (var pst = PersonalStorage.Create("my.pst", FileFormatVersion.Unicode))
 
 A PST/OST may contain searchable folders in addition to the normal type of folders. Aspose.Email provides the [FolderKind](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderkind/) enumerator for specifying the messages from such search folders with [EnumerateFolders](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/enumeratefolders/#enumeratefolders/) and [GetSubFolders](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/getsubfolders/#getsubfolders/) methods. The following code snippet shows you how to parse searchable folders.
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-ParseSearchableFolders-ParseSearchableFolders.cs" >}}
+```cs
+using (PersonalStorage pst = PersonalStorage.FromFile("my.pst"))
+        {
+            FolderInfoCollection folders = pst.RootFolder.GetSubFolders(FolderKind.Search | FolderKind.Normal);
+
+            // Browse through each folder to display folder name and number of messages
+            foreach (FolderInfo folder in folders)
+            {
+                Console.WriteLine($"Folder: {folder.DisplayName}");
+
+                FolderInfoCollection subFolders = folder.GetSubFolders(FolderKind.Search | FolderKind.Normal);
+                foreach (FolderInfo subFolder in subFolders)
+                {
+                    Console.WriteLine($"Sub-folder: {subFolder.DisplayName}");
+                }
+            }
+        }
+```
 
 ## **Retrieving Parent Folder Information from MessageInfo**
 
