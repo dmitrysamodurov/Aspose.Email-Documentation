@@ -416,7 +416,50 @@ client.DeleteAttachment(createdAttachment.ItemId);
 // list the message attachments
 var attachments = client.ListAttachments(messageInfo.ItemId);   
 ```
+## **Manage Calendar Events**
 
+Aspose.Email provides APIs to access, manage, and interact with calendar events. For these purposes, it offers the following methods in the [IGraphClient](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/#igraphclient-interface) interface:
+
+- **ListCalendars()** - Retrieves a collection of calendar information.
+
+- **ListCalendarItems(string id)** - Retrieves a collection of calendar items associated with the specified calendar ID.
+
+- **FetchCalendarItem(string id)** - Retrieves a specific calendar item based on the provided ID.
+
+- **CreateCalendarItem(string calId, MapiCalendar mapiCalendar)** - Creates a new calendar item in the specified calendar.
+
+- **UpdateCalendarItem(MapiCalendar mapiCalendar)** - Updates an existing calendar item.
+
+- **UpdateCalendarItem(MapiCalendar mapiCalendar, UpdateSettings updateSettings)** - Updates an existing calendar item with specified update settings.
+
+The following code sample demonstrates how to interact with calendar events in a Microsoft Graph API client using the methods provided by Aspose.Email:
+
+```cs
+
+// List Calendars
+CalendarInfoCollection calendars = graphClient.ListCalendars();
+
+// List Calendar Items
+MapiCalendarCollection calendarItems = graphClient.ListCalendarItems("calendarId");
+
+// Fetch Calendar Item
+MapiCalendar calendarItem = graphClient.FetchCalendarItem("calendarItemId");
+
+// Create Calendar Item
+MapiCalendar newCalendarItem = new MapiCalendar(
+    location: "Conference Room",
+    summary: "Team Meeting",
+    description: "Discuss project status and updates.",
+    startDate: startDate,
+    endDate: endDate
+);
+
+MapiCalendar createdCalendarItem = graphClient.CreateCalendarItem("calendarId", newCalendarItem);
+
+// Update Calendar Item
+createdCalendarItem.Location = "Zoom Meeting";
+MapiCalendar updatedCalendarItem = graphClient.UpdateCalendarItem(createdCalendarItem);
+```
 
 ## **Manage Categories**
 To manage categories with MS Graph by Aspose.Email for .NET, use the following methods:
@@ -446,6 +489,37 @@ foreach (var cat in categories)
 
 // delete a category
 client.Delete(fetchedCategory.Id);
+```
+## **Manage Contacts**
+
+Aspose.Email provides APIs to access, manage, and interact with contact items. For these purposes, it offers the following methods in the [IGraphClient](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/#igraphclient-interface) interface:
+
+- **ListContacts(string id)** - Retrieves a collection of MAPI contacts associated with the specified folder ID.
+
+- **FetchContact(string id)** - Retrieves a specific contact based on the provided item ID.
+
+- **CreateContact(string folderId, MapiContact contact)** - Creates a new contact in the specified folder.
+
+- **UpdateContact(MapiContact contact)** - Updates an existing contact.
+
+The following code sample demonstrates how to interact with contacts in a Microsoft Graph API client using the methods provided by Aspose.Email:
+
+```cs
+// List Contacts
+MapiContactCollection contacts = graphClient.ListContacts("contactFolderId");
+
+// Fetch Contact
+MapiContact contact = graphClient.FetchContact("contactId");
+
+// Create Contact
+MapiContact newContact = new MapiContact("Jane Smith", "jane.smith@example.com", "XYZ Corporation", "777-888-999");
+
+MapiContact createdContact = graphClient.CreateContact("contactFolderId", newContact);
+
+// Update Contact
+createdContact.Telephones.PrimaryTelephoneNumber = "888-888-999";
+
+MapiContact updatedContact = graphClient.UpdateContact(createdContact);
 ```
 
 ## **Manage Overrides**

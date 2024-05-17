@@ -44,9 +44,9 @@ After you have a [IGraphClient](https://apireference.aspose.com/email/java/com.a
 ~~~Java
 IGraphClient client = GraphClient.getClient(tokenProvider);
 ~~~
-## **Folder Api**
-### **List Folders**
+## **Work with Folders using Microsoft Graph**
 
+### **List Folders**
 
 ~~~Java
 GraphFolderInfoCollection folders = client.listFolders();
@@ -132,9 +132,7 @@ GraphFolderInfo folder = client.moveFolder(parentFolder.getItemId(), testFolder.
 ~~~Java
 client.delete(testFolder.getItemId());
 ~~~
-## **Messages Api**
-### **List Messages**
-
+## **List Messages using Microsoft Graph**
 
 ~~~Java
 GraphMessageInfoCollection messageInfoColl = client.listMessages(GraphKnownFolders.Inbox);
@@ -142,6 +140,22 @@ for (GraphMessageInfo messageInfo : messageInfoColl) {
     MapiMessage message = client.fetchMessage(messageInfo.getItemId());
 }
 ~~~
+
+### **List Messages by Date Sent**
+
+The [OrderBy](https://reference.aspose.com/email/java/com.aspose.email/comparisonfield/#orderBy-boolean-) feature is used to indicate that the messages should be ordered in ascending order by their sent date. This allows the client to retrieve the list of messages from the [GraphKnownFolders.Inbox](https://reference.aspose.com/email/java/com.aspose.email/graphknownfolders/#Inbox) folder in a specific order, in this case, based on the sent date.
+
+The following code sample demonstrates how to create a query that specifies ordering of messages by sent date, and then use this query to fetch a page of messages from the Inbox folder using the Graph API:
+
+```java
+// create orderby messages query 'ASC'
+GraphQueryBuilder builder = new GraphQueryBuilder();
+builder.getSentDate().orderBy(true);
+MailQuery query = builder.getQuery();
+
+GraphMessagePageInfo pageInfo = client.listMessages(GraphKnownFolders.Inbox, new PageInfo(10), query);
+```
+
 ### **Fetch Message**
 
 
@@ -149,6 +163,43 @@ for (GraphMessageInfo messageInfo : messageInfoColl) {
 GraphMessageInfo messageInfo = messageInfoColl.get(0);
 MapiMessage fetchedMessage = client.fetchMessage(messageInfo.getItemId());
 ~~~
+
+### **Pagination in Message Listing**
+
+The API provides the paging and filtering support for listing messages. This is very helpful when a mailbox has a large number of messages and requires a lot of time for retrieving the summary information about them. The code sample below will show you how to use paging for large message sets when listing messages from Exchange Server using IGraphClient:
+
+```java
+// send ping test messages
+for (int i = 0; i < 5; i++) {
+    MailMessage eml = new MailMessage(user.EMail, user.EMail, "ping" + i, "test body");
+    client.send(MapiMessage.fromMailMessage(eml));
+}
+// waiting for inbox
+Thread.sleep(10000);
+
+// paging option
+int itemsPerPage = 2;
+// create unread messages filter
+GraphQueryBuilder builder = new GraphQueryBuilder();
+builder.isRead().equals(false);
+MailQuery query = builder.getQuery();
+
+// list messages
+GraphMessagePageInfo pageInfo = client.listMessages(GraphKnownFolders.Inbox, new PageInfo(itemsPerPage), query);
+GraphMessageInfoCollection messages = pageInfo.getItems();
+while (!pageInfo.getLastPage())
+{
+    pageInfo = client.listMessages(GraphKnownFolders.Inbox, pageInfo.getNextPage(), query);
+    // add next page items to common collection
+    messages.addRange(pageInfo.getItems());
+}
+
+// set messages state as read
+for (GraphMessageInfo message : messages) {
+    client.setRead(message.getItemId());
+}
+```
+
 ### **Create Message**
 
 

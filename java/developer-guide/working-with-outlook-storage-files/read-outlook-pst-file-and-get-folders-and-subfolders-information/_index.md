@@ -29,6 +29,62 @@ A PST/OST files may contain folders that were created by the user. Aspose.Email 
 
 {{< gist "aspose-com-gists" "709d733586ce50505c3bca3f6e8bd18d" "Examples-src-main-java-com-aspose-email-examples-outlook-pst-GetFoldersCreatedByUserOnly-1.java" >}}
 
+## **Checking whether the folder is in a predefined folder**
+
+When opening and inspecting the folders within a PST (Personal Storage Table) file, you can check whether each folder is a predefined folder type or a subfolder of a predefined folder type, and obtain the information about each folder.
+
+The [FolderInfo.getPredefinedType(boolean getForTopLevelParent)](https://reference.aspose.com/email/java/com.aspose.email/folderinfo/#getPredefinedType-boolean-) method is used to check whether the folder is from [StandardIpmFolder](https://reference.aspose.com/email/java/com.aspose.email/standardipmfolder/). 
+
+If 'getForTopLevelParent' param is true, method returns a StandardIpmFolder enum value for the top-level parent folder. This determines whether the current folder is a subfolder of a predefined folder. If 'getForTopLevelParent' param is false, it returns a StandardIpmFolder enum value for the current folder.
+
+```java
+String fileName = "my.pst";
+
+try (PersonalStorage pst = PersonalStorage.fromFile(fileName)) {
+    checkFolders(pst.getRootFolder().getSubFolders());
+}
+
+private void checkFolders(FolderInfoCollection folders) {
+    for (FolderInfo folder : folders) {
+        System.out.println("Display Name: " + folder.getDisplayName());
+
+        // Determines whether the current folder is a predefined folder
+        int folderType = folder.getPredefinedType(false);
+        String answer = folderType == StandardIpmFolder.Unspecified ? "No" : "Yes, " + folderType;
+        System.out.println("Is StandardIpmFolder?: " + answer);
+
+        // Determines whether the current folder is a subfolder of a predefined folder
+        if (folderType == StandardIpmFolder.Unspecified) {
+            folderType = folder.getPredefinedType(true);
+            answer = folderType == StandardIpmFolder.Unspecified ? "No" : "Yes, " + folderType;
+            System.out.println("Is subfolder from StandardIpmFolder parent?: " + answer);
+        }
+
+        System.out.println();
+
+        checkFolders(folder.getSubFolders());
+    }
+}
+```
+## **Get or Add a standard RSS Feeds folder in a PST File**
+
+Aspose.Email makes it possible to retrieve a reference to the predefined folder that holds RSS feeds. This could be useful if you want to programmatically access and manipulate the RSS feeds stored in an Outlook PST file. Give the value of RssFeeds to the [StandardIpmFolder](https://reference.aspose.com/email/java/com.aspose.email/standardipmfolder/) enum.
+
+The following code example shows how to get an RSS Feeds folder:
+
+```java
+try (PersonalStorage pst = PersonalStorage.fromFile("my.pst", false)) {
+    FolderInfo rssFolder = pst.getPredefinedFolder(StandardIpmFolder.RssFeeds);
+}
+```
+And the code sample below demonstrates how to add an RSS Feeds folder:
+
+```java
+try (PersonalStorage pst = PersonalStorage.create("my.pst", FileFormatVersion.Unicode)) {
+    FolderInfo rssFolder = pst.createPredefinedFolder("RSS Feeds", StandardIpmFolder.RssFeeds);
+}
+```
+
 ## **Parse Searchable Folders**
 
 A PST/OST may contain searchable folders in addition to the normal type of folders. Aspose.Email provides the [FolderKind](https://reference.aspose.com/email/java/com.aspose.email/folderkind/) enumerator for specifying the messages from such search folders with [EnumerateFolders](https://reference.aspose.com/email/java/com.aspose.email/folderinfo/#enumerateFolders--) and [GetSubFolders](https://reference.aspose.com/email/java/com.aspose.email/folderinfo/#getSubFolders--) methods.

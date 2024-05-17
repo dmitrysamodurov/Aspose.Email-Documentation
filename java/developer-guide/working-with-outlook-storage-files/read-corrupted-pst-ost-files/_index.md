@@ -51,7 +51,7 @@ public static void exploreCorruptedPst(PersonalStorage pst, String rootFolderId)
     }
 }
 ```
-## **PST file traversal API**
+## **Extract PST Items from Corrupted Files**
 
 The traversal API allows extracting all PST items as far as possible, without throwing out exceptions, even if some data of the original file is corrupted.
 
@@ -76,8 +76,7 @@ The load method returns 'true' if the file has been loaded successfully and furt
 ```java
 if (currentPst.load(inputStream))
 ```
-The following code sample shows how to 
-implement PST file traversal API into a project:
+The following code sample shows how to implement PST file traversal API into a project:
 
 ```java
 public static void main(String[] args) {

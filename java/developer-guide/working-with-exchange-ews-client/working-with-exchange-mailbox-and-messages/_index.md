@@ -48,6 +48,22 @@ msg.setHtmlBody("<h3>sending message from exchange server</h3>");
 // Send the message
 client.send(msg);
 ~~~
+
+## **Getting Message Class**
+
+The [getMessageClass()](https://reference.aspose.com/email/java/com.aspose.email/exchangemessageinfo/#getMessageClass--) method of the [ExchangeMessageInfo](https://reference.aspose.com/email/java/com.aspose.email/exchangemessageinfo/) class gets a string representing the class for the message. The code sample below shows how to get the message class:
+
+```java
+try (IEWSClient client = EWSClient.getEWSClient(uri, credentials))
+{
+    ExchangeMessageInfoCollection messageInfoCollection = client.listMessagesFromPublicFolder(publicFolder);
+
+    for (ExchangeMessageInfo messageInfo : messageInfoCollection)
+    {
+        System.out.println("Message Class: " + messageInfo.getMessageClass());
+    }
+}
+```
 ## **Reading Emails from other User’s Mailbox**
 Some accounts on Exchange Servers have the right to access multiple mailboxes, and some users have multiple email accounts on the same Exchange Server. In both cases, users can access other user's mailboxes using Aspose.Email for Java. This API provides mechanism for accessing folders and emails from other mailboxes using the [IEWSClient](https://apireference.aspose.com/email/java/com.aspose.email/IEWSClient) class. This functionality can be achieved using the overloaded [getMailboxInfo()](https://apireference.aspose.com/email/java/com.aspose.email/ExchangeClient#getMailboxInfo\(\)) method and providing the user email address as a parameter.
 

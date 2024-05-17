@@ -50,6 +50,24 @@ MapiMessage msg = new MapiMessage("from@doamin.com", "to@domain.com", "subject",
 // this will reduce the message size
 msg.setBodyContent(htmlBody, BodyContentType.Html, true);
 ```
+## **Create PersonalStorage based on SeekableByteChannel Stream**
+
+Aspose.Email for Java makes it possible to work with Personal Storage (PST) files using java.nio.channels. It allows you create a PersonalStorage instance using a SeekableByteChannel stream. The following code snippet demonstrates how to create a PersonalStorage instance based on a FileChannel stream, add a subfolder named "messageFolder" to the root folder, and import messages from files in the "messageFolder" directory: 
+
+
+```cs
+try (RandomAccessFile raf = new RandomAccessFile("test.pst", "rw")) {
+    FileChannel channel = raf.getChannel();
+    try (PersonalStorage pst = PersonalStorage.create(channel, FileFormatVersion.Unicode)) {
+        FolderInfo messageFolder = pst.getRootFolder().addSubFolder("messageFolder");
+
+        for (File f : new File("messageFolder").listFiles()) {
+            messageFolder.addMessage(MapiMessage.load(f.getAbsolutePath()));
+        }
+    }
+}
+```
+
 
 ## **Changing a Folder Container Class**
 
@@ -68,7 +86,7 @@ try (PersonalStorage pst = PersonalStorage.fromFile("PersonalStorage1.pst")) {
 Adding individual messages to a PST implies more I/O operations to disc and may slow down the performance. For improved performance, messages can be added to the PST in bulk mode to minimize I/O operations. 
 The [addMessages(Iterable<MapiMessage> messages)](https://reference.aspose.com/email/java/com.aspose.email/folderinfo/#addMessages-java.lang.Iterable-com.aspose.email.MapiMessage--) method allows you to add messages in bulk and can be used as in the following scenarios. In addition, the [MessageAdded](https://reference.aspose.com/email/java/com.aspose.email/folderinfo/#MessageAdded) event occurs when a message is added to the folder.
 
-### Add Messages from Another PST
+### **Add Messages from Another PST**
 
 To add messages from another PST, use the [FolderInfo.enumerateMapiMessages()](https://reference.aspose.com/email/java/com.aspose.email/folderinfo/#enumerateMapiMessages--) method that returns `Iterable<MapiMessage>`:
 
@@ -91,7 +109,7 @@ try (PersonalStorage srcPst = PersonalStorage.fromFile("source.pst", false)) {
 }
 ```
 
-### Add Messages from Directory
+### **Add Messages from Directory**
 
 To add messages from directory, create the `getMessages(String pathToDir)` method that returns `Iterable<MapiMessage>`:
 

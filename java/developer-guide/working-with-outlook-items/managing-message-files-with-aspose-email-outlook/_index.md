@@ -127,40 +127,6 @@ try (MapiMessage mapi = new MapiMessage("test@from.to", "test@to.to", "template 
 }
 ~~~
 
-## **Managing Digitally Signed Messages**
-
-Aspose.Email implements the complete S/MIME email object algorithm. This gives the API complete power to preserve digital signatures while converting messages between formats.
-
-### **Preserving Signature when Converting from EML to MSG**
-
-Aspose.Email preserves the digital signature when converting from EML to MSG. The following code snippet shows you how to convert from EML to MSG.
-
-~~~Java
-// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
-// The path to the File directory.
-String dataDir = "outlook/";
-
-// Load mail message
-MailMessage message = MailMessage.load(dataDir + "Message.eml", new EmlLoadOptions());
-// Save as MSG
-message.save(dataDir + "ConvertEMLToMSG_out.msg", SaveOptions.getDefaultMsgUnicode());
-~~~
-
-### **Converting S/MIME Messages from MSG to EML**
-
-Aspose.Email preserves the digital signature when converting from MSG to EML as shown in the following code snippet.
-
-~~~Java
-// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-Java
-// The path to the File directory.
-String dataDir = "outlook/";
-
-MailMessage msg = MailMessage.load(dataDir + "message.eml");
-MapiMessage mapi = MapiMessage.fromMailMessage(msg, new MapiConversionOptions(OutlookMessageFormat.Unicode));
-// Save File to disk
-mapi.save(dataDir + "ConvertMIMEMessagesFromMSGToEML_out.msg");
-~~~
-
 ## **Setting Color Category for Outlook MSG Files**
 
 A color category marks an email message for some kind of importance or category. Microsoft Outlook lets users assign color categories to differentiate emails. To handle the color category, use the [FollowUpManager](https://reference.aspose.com/email/java/com.aspose.email/followupmanager/). It contains functions such as [addCategory](https://reference.aspose.com/email/java/com.aspose.email/followupmanager/#addCategory-com.aspose.email.MapiMessage-java.lang.String-), [removeCategory](https://reference.aspose.com/email/java/com.aspose.email/followupmanager/#removeCategory-com.aspose.email.MapiMessage-java.lang.String-), [clearCategories](https://reference.aspose.com/email/java/com.aspose.email/followupmanager/#clearCategories-com.aspose.email.MapiMessage-) and [getCategories](https://reference.aspose.com/email/java/com.aspose.email/followupmanager/#getCategories-com.aspose.email.MapiMessage-).
