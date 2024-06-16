@@ -196,8 +196,72 @@ try {
 
 }
 ```
+## **Extract Messages from OLM by Identifiers**
 
-## **Getting Message Modified Date**
+Sometimes it is required to extract selected messages by identifiers. For example, your application stores identifiers in a database and extracts a message on demand. This is the efficient way to avoid traversing through the entire storage each time to find a specific message to extract. To implement this feature for OLM files, Aspose.Email provides the following methods and classes:
+
+- [EntryId](https://reference.aspose.com/email/java/com.aspose.email/olmmessageinfo/#getEntryId--) property of the [OlmMessageInfo](https://reference.aspose.com/email/java/com.aspose.email/olmmessageinfo/) class - Gets the message entry identifier.
+- overloaded [extractMapiMessage(String id)](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/#extractMapiMessage-java.lang.String-) method of the [OlmStorage]() class - Gets the message from OLM.
+
+The code sample below demonstrates how to extract messages from OLM by identifiers:
+
+```java
+for (OlmMessageInfo msgInfo : olmFolder.enumerateMessages()) {
+    MapiMessage msg = storage.extractMapiMessage(msgInfo.getEntryId());
+}
+```
+**Note:** The message ID is unique within the storage file. IDs are created by Aspose.Email and cannot be used in other third-party OLM processing libs or apps.
+
+
+## **Extract OLM Items from Corrupted Files**
+
+Aspose.Email provides a traversal API which allows extracting all OLM items as far as possible, without throwing out exceptions, even if some data of the original file is corrupted.
+
+Use the [OlmStorage(TraversalExceptionsCallback callback)](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/#OlmStorage-com.aspose.email.TraversalExceptionsCallback-) constructor and the [load(String fileName)](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/#load-java.lang.String-) method instead of the [fromFile](https://reference.aspose.com/email/java/com.aspose.email/olmstorage/#fromFile-java.lang.String-) method.
+
+The constructor allows defining a callback method.
+
+```java
+OlmStorage olm = new OlmStorage(new TraversalExceptionsCallback() {
+    public void invoke(TraversalAsposeException exception, String itemId) {
+        /* Exception handling  code. */
+    }
+});
+```
+Loading and traversal exceptions will be available through the callback method.
+
+The load method returns 'true' if the file has been loaded successfully and further traversal is possible. If a file is corrupted and no traversal is possible, 'false' is returned.
+
+```java
+TraversalExceptionsCallback exceptionsCallback = new TraversalExceptionsCallback() {
+    public void invoke(TraversalAsposeException exception, String itemId) {
+        /* Exception handling  code. */
+    }
+};
+try (OlmStorage olm = new OlmStorage(exceptionsCallback)) {
+    if (olm.load(fileName)) {
+        List<OlmFolder> folderHierarchy = olm.getFolders();
+        extractItems(olm, folderHierarchy);
+    }
+}
+
+private static void extractItems(OlmStorage olm, List<OlmFolder> folders) {
+    for (OlmFolder folder : folders) {
+        if (folder.hasMessages()) {
+            System.out.println(folder);
+
+            for (MapiMessage msg : olm.enumerateMessages(folder)) {
+                System.out.println(msg.getSubject());
+            }
+        }
+
+        if (folder.getSubFolders().size() > 0) {
+            extractItems(olm, folder.getSubFolders());
+        }
+    }
+}
+```
+## **Get Message Modified Date**
 
 The [OlmMessageInfo.getModifiedDate](https://reference.aspose.com/email/java/com.aspose.email/olmmessageinfo/#getModifiedDate--) property allows you to get the message modified date.
 
@@ -206,4 +270,3 @@ for (OlmMessageInfo messageInfo : inboxFolder.enumerateMessages()) {
     Date modifiedDate = messageInfo.getModifiedDate();
 }
 ```
-

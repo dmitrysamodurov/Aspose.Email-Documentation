@@ -8,7 +8,7 @@ url: /java/working-with-distribution-lists/
 
 It is possible to create a Distribution list using Aspose.Email API that is a collection of multiple contacts. A distribution list can be saved to disk in Outlook MSG format and can be viewed/manipulated by opening it in MS Outlook.
 
-## **Creating and Saving a Distribution List**
+## **Creating and Saving Distribution Lists**
 
 The following code snippet shows you how to create and save a distribution list.
 
@@ -69,6 +69,19 @@ try (PersonalStorage personalStorage = PersonalStorage.create(dataDir + "CreateD
     contactFolder.addMapiMessageItem(oneOffMembersList);
 }
 ~~~
+
+## **Save Mapi Distribution List to a Single Multi Contact VCF File**
+
+The [void save(String fileName, MapiDistributionListSaveOptions options)](https://reference.aspose.com/email/java/com.aspose.email/mapidistributionlist/#save-java.lang.String-com.aspose.email.MapiDistributionListSaveOptions-) method allows you to save the Mapi Distribution List to a specified file name using the provided save options. You can provide the file name and an instance of the [MapiDistributionListSaveOptions](https://reference.aspose.com/email/java/com.aspose.email/mapidistributionlistsaveoptions/) class as parameters.
+The [MapiDistributionListSaveOptions](https://reference.aspose.com/email/java/com.aspose.email/mapidistributionlistsaveoptions/) class contains options for saving the Mapi Distribution List. In this case, you can specify the save format as VCard (ContactSaveFormat.VCard) to save the distribution list as a multi-contact VCF file.
+
+The following code snippet demonstrates how to save a distribution list to a multi-contact VCF file:
+
+```java
+MapiDistributionList dlist = (MapiDistributionList)msg.toMapiMessageItem();
+MapiDistributionListSaveOptions options = new MapiDistributionListSaveOptions(ContactSaveFormat.VCard);
+dlist.save("distribution_list.vcf", options);
+```
 
 ## **Reading a Distribution List from a PST**
 

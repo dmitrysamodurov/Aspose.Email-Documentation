@@ -304,6 +304,18 @@ FolderInfo inbox = personalStorage.getRootFolder().getSubFolder("Inbox");
 MessageInfoCollection messages = inbox.getContents(10, 100);
 ~~~
 
+### **Get Total Number of Items from a PST File**
+
+Aspose.Email provides the [GetTotalItemsCount()](https://reference.aspose.com/email/java/com.aspose.email/messagestore/#getTotalItemsCount--) method of the [PersonalStorage.Store](https://reference.aspose.com/email/java/com.aspose.email/personalstorage/#getStore--) property. It returns the total number of message items contained in the PST.
+
+The following code sample shows how to retrieve the total count of items (messages, appointments, contacts, etc.) stored within the PST file:
+
+```java
+try (PersonalStorage pst = PersonalStorage.fromFile("my.pst", false)) {
+    int count = pst.getStore().getTotalItemsCount();
+}
+```
+
 ## **Delete Items from PST Files**
 
 [Add Messages to PST Files](#adding-messages-to-pst-files) showed how to add messages to PST files. It is, of course, also possible to delete items (contents) from a PST file and it may also be desirable to delete messages in bulk. Items from a PST file can be deleted using the [FolderInfo.deleteChildItem()](https://reference.aspose.com/email/java/com.aspose.email/folderinfo/#deleteChildItem-byte---) method. The API also provides [FolderInfo.deleteChildItems()](https://reference.aspose.com/email/java/com.aspose.email/folderinfo/#deleteChildItems-java.lang.Iterable-java.lang.String--) method to delete items in bulk from the PST file.

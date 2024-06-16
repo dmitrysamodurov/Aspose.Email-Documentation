@@ -135,6 +135,19 @@ System.out.println(eml.getAttachments().get_Item(0).isEmbeddedMessage()
         ? "Attachment is an embedded message."
         : "Attachment isn't an embedded message.");
 ```
+#### **Determine TNEF Formatted Attachments**
+
+The [Attachment.isTnef](https://reference.aspose.com/email/java/com.aspose.email/attachment/#isTnef--) property of the Aspose.Email Java API indicates whether the message attachment is a TNEF formatted message.
+
+The following code snippet demonstrates how to determine if an attachment is TNEF formatted:
+
+```java
+MailMessage eml = MailMessage.load(fileName);
+
+for (Attachment attachment : eml.getAttachments()) {
+    System.out.println("Is Attachment TNEF?: " + attachment.isTnef());
+}
+```
 
 #### **Extracting Attachment URI if Attachment is URI-attachment**
 
@@ -150,6 +163,27 @@ if (attachment.isUri()) {
     System.out.println("Attachment URI: " + uri);
 }
 ~~~
+
+### **Adding Reference Attachments**
+
+A reference attachment is an alternative to the local file attachment. In some cases, reference attachments may be preferable, for example, if you want to manage its access. The classes below are used to manage and manipulate email messages and their attachments:
+
+- [ReferenceAttachment](https://reference.aspose.com/email/java/com.aspose.email/referenceattachment/) - Represents a reference attachment. 
+- [AttachmentPermissionType](https://reference.aspose.com/email/java/com.aspose.email/attachmentpermissiontype/) - The permission type data associated with a web reference attachment. 
+- [AttachmentProviderType](https://reference.aspose.com/email/java/com.aspose.email/attachmentprovidertype/) - The type of web service manipulating the attachment.
+
+The following code sample demonstrates how to load an email message from a file, create a reference attachment with specific properties, and add the attachment to the email message:
+
+```java
+MailMessage eml = MailMessage.load("fileName");
+
+ReferenceAttachment refAttach = new ReferenceAttachment("https://[attach_uri]")
+refAttach.setName("Document.docx");
+refAttach.setProviderType(AttachmentProviderType.OneDrivePro);
+refAttach.setPermissionType(AttachmentPermissionType.AnyoneCanEdit);
+
+eml.getAttachments().addItem(refAttach);
+```
 
 ## **Working with Embedded Objects**
 

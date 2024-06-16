@@ -21,6 +21,25 @@ The following code snippet shows you how to create a PST file and add a subfolde
 
 
 {{< gist "aspose-email" "356f0e128b9d45a7ee779fc813eb87e5" "Examples-WorkingWithOutlookStorageFiles-CreateNewPSTFileAndAddingSubfolders-CreateNewPSTFileAndAddingSubfolders.py" >}}
+
+## **Container Class Matching Check when Adding a Folder to PST**
+
+Aspose.Email for Python offers a solution that enhances the validation process during folder creation in PST files. With the 'EnforceContainerClassMatching' property of the [FolderCreationOptions](https://reference.aspose.com/email/python-net/aspose.email.storage.pst/foldercreationoptions/#foldercreationoptions-class) class, you can ensure strict matching of container classes when adding a new folder to the PST storage. This feature helps maintain the organizational hierarchy within the PST file by preventing mismatches in container classes. By setting 'EnforceContainerClassMatching' to 'true', an exception will be thrown if the container classes of the parent and child folders do not match, providing a safeguard against incorrect folder structures. The default behavior of this property is 'false', allowing flexibility in folder creation while enabling you to enforce strict container class matching when required. 
+
+The following code sample demonstrates the use of the 'EnforceContainerClassMatching' property to control whether an exception should be thrown when adding folders with mismatching container classes:
+
+```py
+with PersonalStorage.create("storage.pst", FileFormatVersion.Unicode) as pst:
+    contacts = pst.createpredefinedfolder("Contacts", StandardIpmFolder.Contacts)
+    
+    # An exception will not arise. EnforceContainerClassMatching is False by default.
+    contacts.addsubfolder("Subfolder1", "IPF.Note")
+    
+    # An exception will occur as the container class of the subfolder being added (IPF.Note)
+    # does not match the container class of the parent folder (IPF.Contact).
+    contacts.addsubfolder("Subfolder3", FolderCreationOptions(enforcecontainerclassmatching=True, containerclass="IPF.Note"))
+```
+
 ## **Changing a Folder's Container Class**
 Sometimes it is necessary to change a folder's folder class. A common example is where messages of different types (appointments, messages, etc.) are added to the same folder. In such cases, the folder class needs to be changed for all elements in the folder to display properly. The following code snippet shows you how to change the container class of a folder in PST for this purpose.
 

@@ -24,6 +24,20 @@ Aspose.Email [MailMessage](https://reference.aspose.com/email/java/com.aspose.em
 
 {{< gist "aspose-com-gists" "709d733586ce50505c3bca3f6e8bd18d" "Examples-src-main-java-com-aspose-email-examples-email-CheckMessageForEncryption-CheckMessageForEncryption.java" >}}
 
+## **Message Encryption with X509Certificate**
+
+Aspose.Email provides the API for working with Encrypted Messages with X509Certificate:
+
+[MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class has the following methods to work with message encryption:
+
+- public MailMessage [attachSignature(X509Certificate2 certificate, boolean detached)](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/#attachSignature-com.aspose.ms.System.Security.Cryptography.X509Certificates.X509Certificate2-boolean-) - Creates a signed message.
+- public MailMessage [attachSignature(X509Certificate2 certificate)](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/#attachSignature-com.aspose.ms.System.Security.Cryptography.X509Certificates.X509Certificate2-) - Creates a signed message.
+- public X509Certificate2[] [checkSignatureCert()](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/#checkSignatureCert--) - Checks signature exsisting MailMessage.
+- public MailMessage [decrypt(X509Certificate2 certificate)](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/#decrypt-com.aspose.ms.System.Security.Cryptography.X509Certificates.X509Certificate2-)
+- public MailMessage [encrypt(X509Certificate2 certificate)](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/#encrypt-com.aspose.ms.System.Security.Cryptography.X509Certificates.X509Certificate2-)
+- public MailMessage [encrypt(X509Certificate2[] certificates)](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/#encrypt-com.aspose.ms.System.Security.Cryptography.X509Certificates.X509Certificate2---)
+
+
 ## **Configure Locale Options for Aspose.Email**
 
 You can use [LocaleOptions](https://reference.aspose.com/email/java/com.aspose.email/localeoptions/) class in case of unrecognised default locale and set most appropriate locale for Aspose Email lib. It offers the following methods to perform the task:

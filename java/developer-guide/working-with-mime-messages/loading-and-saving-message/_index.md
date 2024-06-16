@@ -164,6 +164,60 @@ The [HtmlSaveOptions](https://reference.aspose.com/email/java/com.aspose.email/h
 
 {{< gist "aspose-com-gists" "709d733586ce50505c3bca3f6e8bd18d" "Examples-src-main-java-com-aspose-email-examples-email-ConvertEmailMessages-SavingMessageAsHTML.java" >}}
 
+### **Save Email Message as HTML with Relative Path to Resources**
+
+When exporting email messages to HTML format, it is possible to choose to save email resources with relative paths. This feature provides more flexibility in how resources are linked in the output HTML file, making it easier to share and display saved emails on different systems. The [HtmlSaveOptions.UseRelativePathToResources](https://reference.aspose.com/email/java/com.aspose.email/htmlsaveoptions/#getUseRelativePathToResources--) property provides ability to save resources with relative paths. Default property value is false (resources are saved with absolute paths). When set to true, resources are saved with relative paths. HTML files with relative paths are more portable and can be viewed correctly regardless of the hosting environment file structure. You can choose between absolute and relative paths depending on the requirements. You can define custom paths for resources using the [ResourceHtmlRenderingHandler](https://reference.aspose.com/email/java/com.aspose.email/resourcehtmlrenderinghandler/) event.
+
+**Save with Default Relative Path to Resources**
+
+```java
+MapiMessage msg = MapiMessage.load(sourceFileName);
+
+HtmlSaveOptions htmlSaveOptions = new HtmlSaveOptions();
+htmlSaveOptions.setResourceRenderingMode(ResourceRenderingMode.SaveToFile);
+htmlSaveOptions.setUseRelativePathToResources(true);
+
+msg.save("target.html", htmlSaveOptions);
+```
+In this case, resources will be saved in the [html file name].files folder, in the same path as the .html file and the HTML will reference the resources via relative paths.
+
+**Save with Absolute Path to Resources**
+
+```java
+MapiMessage msg = MapiMessage.load(sourceFileName);
+
+HtmlSaveOptions htmlSaveOptions = new HtmlSaveOptions();
+htmlSaveOptions.setResourceRenderingMode(ResourceRenderingMode.SaveToFile);
+htmlSaveOptions.setUseRelativePathToResources(false);
+
+msg.save("target.html", htmlSaveOptions);
+```
+As in the first case, resources will be saved in the [html file name].files folder by default, but the HTML will reference resources using absolute paths.
+
+**Custom Relative Path using ResourceHtmlRenderingHandler Event**
+
+```java
+MapiMessage msg = MapiMessage.load(sourceFileName);
+
+HtmlSaveOptions htmlSaveOptions = new HtmlSaveOptions();
+htmlSaveOptions.setResourceRenderingMode(ResourceRenderingMode.SaveToFile);
+htmlSaveOptions.setUseRelativePathToResources(false);
+
+htmlSaveOptions.setResourceHtmlRenderingHandler(new ResourceHtmlRenderingHandler() {
+    @Override
+    public void invoke(Object sender, ResourceHtmlRenderingEventArgs args) {
+        if (sender instanceof AttachmentBase) {
+            AttachmentBase attachment = (AttachmentBase) sender;
+            // Since UseRelativePathToResources = true, you should assign a relative path to the PathToResourceFile property.
+            args.setPathToResourceFile("images\\" + attachment.getContentType().getName());
+        }
+    }
+});
+
+msg.save(targetPath + "A Day in the Park.html", htmlSaveOptions);
+```
+By using the [ResourceHtmlRenderingHandler](https://reference.aspose.com/email/java/com.aspose.email/resourcehtmlrenderinghandler/) event, you can set custom relative or absolute paths for resources. When customizing paths with the [ResourceHtmlRenderingHandler](https://reference.aspose.com/email/java/com.aspose.email/resourcehtmlrenderinghandler/) event handler, and since [UseRelativePathToResources](https://reference.aspose.com/email/java/com.aspose.email/htmlsaveoptions/#getUseRelativePathToResources--) is set to true, you should assign a relative path to the [PathToResourceFile](https://reference.aspose.com/email/java/com.aspose.email/resourcehtmlrenderingeventargs/#setPathToResourceFile-java.lang.String-) property to ensure correct referencing.
+
 #### **Preserve Custom Icons in a Message while Converting to HTML** 
 
 Sometimes, the message contains in-line attachments, that are displayed as icon images in a message body. Such messages may create problems while converting them to HTML, since the icon images are lost. This is because attachment’s icons are not held directly in the message.

@@ -51,3 +51,29 @@ This can be used to replace embedded attachment contents with the new ones using
 Aspose.Email API provides the capability to get or set a value indicating whether clear-signed message will be decoded. 
 
 {{< gist "" "e3443fa9baa07df6d929fc4a408add67" "Examples-src-main-java-com-aspose-email-examples-outlook-msg-DecodeClearSignedContent-DecodeClearSignedContent.java" >}}
+
+## **Rename an Attachment in a MapiMessage**
+
+Aspose.Email makes it possible to edit the [DisplayName](https://reference.aspose.com/email/java/com.aspose.email/mapiattachment/#setDisplayName-java.lang.String-) property value in [MapiMessage attachments](https://reference.aspose.com/email/java/com.aspose.email/mapiattachment/).
+
+The following code sample demonstrates how to update the display names of the first and second attachments within the loaded Mapi message:
+
+```java
+MapiMessage msg = MapiMessage.load(fileName);
+msg.getAttachments().get_Item(0).setDisplayName("New display name 1");
+msg.getAttachments().get_Item(1).setDisplayName("New display name 2");
+```
+## **Check if an Attachment is Inline or Regular**
+
+The difference between inline and regular attachments is how they are presented within an email. Inline attachments are embedded within the body of the email and can be viewed without having to open a separate file or download anything. Regular attachments, on the other hand, are separate files that are attached to the email but are not displayed directly within the body of the message and need to be downloaded and opened externally. The [MapiAttachment.IsInline](https://reference.aspose.com/email/java/com.aspose.email/mapiattachment/#isInline--) property of the [MapiAttachment](https://reference.aspose.com/email/java/com.aspose.email/mapiattachment/) class gets a value indicating whether the attachment is inline or regular.
+
+The following code sample loads an email message from a file and then retrieves information about the attachments, specifically printing the display name of each attachment and whether it is inline within the message or not:
+
+```java
+MapiMessage message = MapiMessage.load("fileName");
+
+for (MapiAttachment attach : message.getAttachments()) {
+    System.out.println(attach.getDisplayName() + ": " + attach.isInline());
+}
+```
+

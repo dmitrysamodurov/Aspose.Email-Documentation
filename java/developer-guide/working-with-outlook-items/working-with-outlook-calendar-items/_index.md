@@ -55,6 +55,20 @@ The following code snippet shows you how to save the calendar item as MSG.
 calendar.save(dataDir + "CalendarItemAsMSG_out.Msg", AppointmentSaveFormat.Msg);
 ~~~
 
+### **Setting a product ID when saving a Calendar Item to ICS**
+
+The [ProductIdentifier](https://reference.aspose.com/email/java/com.aspose.email/mapicalendaricssaveoptions/#getProductIdentifier--) property of the [MapiCalendarIcsSaveOptions](https://reference.aspose.com/email/java/com.aspose.email/mapicalendaricssaveoptions/) class is used to save a MAPI calendar item to an iCalendar (ICS) file preserving original date and time information as well as a custom product identifier. The property specifies the identifier for the product that created the iCalendar object.
+
+The following code sample shows how to work with iCalendar (ICS) data within a MAPI calendar object:
+
+```java
+MapiCalendarIcsSaveOptions icsSaveOptions = new MapiCalendarIcsSaveOptions();
+icsSaveOptions.setKeepOriginalDateTimeStamp(true);
+icsSaveOptions.setProductIdentifier("Foo Ltd");
+
+mapiCalendar.save("my.ics", icsSaveOptions);
+```
+
 ### **Adding Display Reminder to a Calendar**
 
 The following code snippet shows you how to add display reminder to a calendar.
