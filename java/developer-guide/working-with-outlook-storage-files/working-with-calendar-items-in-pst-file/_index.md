@@ -40,6 +40,26 @@ The program below loads a PST file from disk and saves all the calendar items in
 |**Figure: Calendar item saved with Aspose.Email**|
 {{< gist "aspose-com-gists" "709d733586ce50505c3bca3f6e8bd18d" "Examples-src-main-java-com-aspose-email-examples-outlook-pst-SaveCalendarItemsFromOutlookPSTToDiskInICSFormat-.java" >}}
 
+## **Extract Calendar Items from a PST File**
+
+MapiCalendar class represents a calendar item in the Microsoft Outlook MAPI format. Extract a message from a PST file and convert it into a MAPI message item. The following code sample extracts a calendar item from a PST file and converts it into a MapiCalendar object for further manipulation or processing:
+
+```java
+MapiCalendar cal = (MapiCalendar) pst.extractMessage(messageInfo).toMapiMessageItem();
+```
+## **Save Calendar Items in ICS format with Original Timestamp**
+
+Use the above code sample to extract a calendar item from a PST file and then specify additional options to save it as ICS with original timestamp using the [setKeepOriginalDateTimeStamp](https://reference.aspose.com/email/java/com.aspose.email/mapicalendaricssaveoptions/#setKeepOriginalDateTimeStamp-boolean-) method of the [MapiCalendarIcsSaveOptions](https://reference.aspose.com/email/java/com.aspose.email/mapicalendaricssaveoptions/) class:
+
+```java
+MapiCalendar cal = (MapiCalendar) pst.extractMessage(messageInfo).toMapiMessageItem();
+
+if (cal != null) {
+    MapiCalendarIcsSaveOptions so = new MapiCalendarIcsSaveOptions();
+    so.setKeepOriginalDateTimeStamp(true);
+    cal.save("cal.ics", so);
+}
+```
 ## **Modify/Delete Occurrences from Recurrences**
 
 {{< gist "aspose-com-gists" "709d733586ce50505c3bca3f6e8bd18d" "Examples-src-main-java-com-aspose-email-examples-outlook-pst-ModifyDeleteOccurrencesFromRecurrence-ModifyDeleteOccurrencesFromRecurrence.java" >}}

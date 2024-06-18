@@ -253,7 +253,7 @@ public static void PrintPath(OlmStorage storage, List<OlmFolder> folders)
 }
 ```
 
-## **Count the number of items in the folder**
+## **Count the Number of Items in the Folder**
 
 You may also count the number of items in the folder. Aspose.Email provides [OlmFolder.MessageCount](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmfolder/messagecount/) property which returns the number of items in the folder. The following code snippet demonstrates the use of [OlmFolder.MessageCount](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmfolder/messagecount/) property to get the number of items in the folders of the OML file.
 
@@ -299,4 +299,43 @@ The retrieved MapiMessage object can be used to access and manipulate the conten
   {
       MapiMessage msg = storage.ExtractMapiMessage(msgInfo.EntryId);
   }
+```
+## **Outlook Category Colours Retrieval**
+
+To work with category colors or Outlook item categories stored in OLM files, Aspose.Email offers the following solutions:
+
+- [OlmItemCategory](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmitemcategory/#olmitemcategory-class) class - represents Outlook item categories which are available by their name and associated colors, represented in hexadecimal format.
+- [GetCategories()](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/getcategories/) method of the [OlmStorage](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/#olmstorage-class) class - retrieves category list.
+
+The following code sample demonstrates how to get all used categories from OML storage:
+
+```cs
+using (var olm = OlmStorage.FromFile("storage.olm"))
+{
+    var categories = olm.GetCategories();
+    
+    foreach (var category in categories)
+    {
+        Console.WriteLine($"Category name: {category.Name}");
+        
+		//Color is represented as a hexadecimal value: #rrggbb
+        Console.WriteLine($"Category color: {category.Color}");
+    }
+}
+```
+The code sample below shows how to get a message category color:
+
+```cs
+foreach (var msg in olm.EnumerateMessages(folder))
+{
+    if (msg.Categories != null)
+    {
+        foreach (var msgCategory in msg.Categories)
+        {
+            Console.WriteLine($"Category name: {msgCategory}");
+            var categoryColor = cat.First(c => c.Name.Equals(msgCategory, StringComparison.OrdinalIgnoreCase)).Color;
+            Console.WriteLine($"Category color: {categoryColor}");
+        }
+    }
+}
 ```

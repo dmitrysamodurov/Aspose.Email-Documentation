@@ -9,6 +9,17 @@ url: /java/working-with-appointments/
 
 The [Appointment](https://reference.aspose.com/email/java/com.aspose.email/appointment/) class in Aspose.Email for Java can be used to load an appointment in ICS format as well as to create a new appointment and save it to a disk in ICS format. In this article, we first create an appointment and save it to a disk in ICS format and then we load it.
 
+### **Load an Appointment in ICS Format**
+
+To load an appointment in ICS format, the following steps are required:
+
+1. Create an instance of the [Appointment](https://reference.aspose.com/email/java/com.aspose.email/appointment/) class.
+1. Call the [Load()](https://reference.aspose.com/email/java/com.aspose.email/appointment/#load-java.io.InputStream-) method by providing the path of the ICS file.
+1. Read any property to get any information from the appointment (ICS file).
+
+The following code snippets show how to load an appointment in ICS format.
+
+{{< gist "" "e3443fa9baa07df6d929fc4a408add67" "Examples-src-main-java-com-aspose-email-examples-appointment-WorkingWithAppointments-LoadAppointment.java" >}}
 
 ### **Create an Appointment and Save to Disk in ICS Format**
 
@@ -33,18 +44,6 @@ The following code snippets show how to create and save an appointment to a disk
 
 {{< gist "" "e3443fa9baa07df6d929fc4a408add67" "Examples-src-main-java-com-aspose-email-examples-appointment-WorkingWithAppointments-CreateAppointment.java" >}}
 
-### **Load an Appointment in ICS Format**
-
-To load an appointment in ICS format, the following steps are required:
-
-1. Create an instance of the [Appointment](https://reference.aspose.com/email/java/com.aspose.email/appointment/) class.
-1. Call the [Load()](https://reference.aspose.com/email/java/com.aspose.email/appointment/#load-java.io.InputStream-) method by providing the path of the ICS file.
-1. Read any property to get any information from the appointment (ICS file).
-
-The following code snippets show how to load an appointment in ICS format.
-
-{{< gist "" "e3443fa9baa07df6d929fc4a408add67" "Examples-src-main-java-com-aspose-email-examples-appointment-WorkingWithAppointments-LoadAppointment.java" >}}
-
 ## **Saving Appointments to MSG Format**
 
 Aspose.Email makes it possible to save appointments directly to .msg files. The following public classes are available for customizing the saving process of apppointments:
@@ -58,6 +57,31 @@ The code sample below shows how to load an appointment from a file, and then sav
 Appointment appointment = Appointment.load("fileName");
 appointment.save("fileName.ics", new AppointmentIcsSaveOptions());
 appointment.save("fileName.msg", new AppointmentMsgSaveOptions());
+```
+
+## **Create an Appointment with HTML Content**
+
+It's a common practice to use the X-ALT-DESC header in iCalendar (RFC 5545) format. It is an extended property that provides an alternative human-readable description of a calendar item or event. This header is often used to include a plain text or HTML representation of the event description, which can be useful for compatibility with older calendar software or for providing a simplified version of the description. In cases, when the primary description is not supported or displayed correctly by the recipient's calendar application, X-ALT-DESC header is used to provide an alternative description of the event. It allows the sender to include different representations of the event description to ensure better compatibility and accessibility across different calendar software and platforms. To create an appointment with HTML content, set the [HtmlDescription](https://reference.aspose.com/email/java/com.aspose.email/appointment/#setHtmlDescription-java.lang.String-) property to 'true'. Try the following code sample that demonstrates how to create and define an appointment object with specific details and settings, including the date, time, location, organizer, attendees, and a formatted description:
+
+```java
+Date startDate = new Date();
+Appointment appointment = new Appointment("Bygget 83",
+        startDate, // start date
+        addHours(startDate, 1), // end date
+        new MailAddress("TintinStrom@from.com", "Tintin Strom"), // organizer
+        MailAddressCollection.to_MailAddressCollection(
+                new MailAddress("AinaMartensson@to.com", "Aina Martensson"))); // attendee
+appointment.setHtmlDescription("<html>\n"
+        + "     <style type=\"\"text/css\"\">\n"
+        + "      .text {\n"
+        + "             font-family:'Comic Sans MS';\n"
+        + "             font-size:16px;\n"
+        + "            }\n"
+        + "     </style>\n"
+        + "    <body>\n"
+        + "     <p class=\"\"text\"\">Hi, I'm happy to invite you to our party.</p>\n"
+        + "    </body>\n"
+        + "    </html>");
 ```
 
 ## **Create a Draft Appointment Request**

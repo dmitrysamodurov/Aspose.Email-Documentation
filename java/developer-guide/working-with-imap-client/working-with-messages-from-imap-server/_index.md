@@ -461,6 +461,34 @@ private static void listMessagesInFolder(ImapFolderInfo folderInfo, String rootF
 }
 ~~~
 
+## **Get Message UID or Sequence Number**
+
+Aspose.Email public API provides the following features to get the message identification info such as UID or sequence number which might be required when processing messages received from the server:
+
+[MailboxInfo](https://reference.aspose.com/email/java/com.aspose.email/mailboxinfo/) class - Represents identification information about a message in a mailbox.
+- [getSequenceNumber()](https://reference.aspose.com/email/java/com.aspose.email/mailboxinfo/#getSequenceNumber--) method - Gets the sequence number of a message.
+- [getUniqueId()](https://reference.aspose.com/email/java/com.aspose.email/mailboxinfo/#getUniqueId--) method - Gets the unique id of a message.
+
+[MailMessage](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/) class - Represents an e-mail message and allows to access message properties, ex. subject, body, sender and recipients addreses, etc.
+- [getItemId](https://reference.aspose.com/email/java/com.aspose.email/mailmessage/#getItemId--) method - Represents identification information about a message in a mailbox.
+
+The code sample below demonstrates how to fetch and display the details of messages from the "INBOX" folder on an IMAP server using the [ImapClient](https://reference.aspose.com/email/java/com.aspose.email/imapclient/) class:
+
+```java
+try (ImapClient client = new ImapClient(imapHost, port, emailAddress, password, securityOption)) {
+    ImapMessageInfoCollection msgs = client.listMessages("INBOX");
+    List<Integer> seqIds = new ArrayList<>();
+    for (ImapMessageInfo msg : msgs) {
+        seqIds.add(msg.getSequenceNumber());
+    }
+    Iterable<MailMessage> msgsViaFetch = client.fetchMessagesBySequences(seqIds);
+    for (MailMessage thisMsg : msgsViaFetch) {
+        System.out.println("Message ID: " + thisMsg.getItemId().getUniqueId()
+                + " SequenceNumber: " + thisMsg.getItemId().getSequenceNumber()
+                + " Subject: " + thisMsg.getSubject());
+    }
+}
+```
 ## **Retrieving Extra Parameters as Summary Information**
 
 ~~~Java

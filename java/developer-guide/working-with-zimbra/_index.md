@@ -21,3 +21,15 @@ The following code snippet demonstrates the use of the [TgzReader.ExportTo](htt
 
 
 {{< gist "aspose-com-gists" "709d733586ce50505c3bca3f6e8bd18d" "Examples-src-main-java-com-aspose-email-examples-email-SaveMessagesFromZimbraTgzStorage-1.java" >}}
+
+## **Export calendar and contact items from Zimbra backup files**
+
+Aspose.Email makes it possible to export Zimbra’s calendar and contacts to iCalendar and VCard formats. The code sample below shows how to implement this feature into our project:
+
+```java
+try (TgzReader reader = new TgzReader("test2.tgz")) {
+    //contacts files can be found in Contacts and Emailed Contacts subfolders
+    //calendar files can be found in Calendar subfolder
+    reader.exportTo("out");
+}
+```

@@ -11,38 +11,80 @@ url: /net/product-overview/
 
 **Welcome to Aspose.Email for .NET**
 
-Aspose.Email for .NET is a suite of flexible and easy to use .NET class libraries brought together to produce the most unique and powerful email programming component. Aspose.Email saves you time and effort by allowing you to code complex message file handling into your applications quickly and easily.
+Aspose.Email for .NET is a suite of flexible and easy to use .NET classes brought together to produce the unique and powerful email programming component. Aspose.Email saves you time and effort by allowing you to code complex message file handling into your applications quickly and easily.
 
 Aspose.Email implements a number of network protocols, for example, SMTP, MIME, POP3, IMAP; message file formats, for example, EML, MSG, MHT; mail storage formats such as PST and MBOX; and Exchange Servers to allow developers to create a wide variety of email processing applications. Aspose.Email helps developers program without getting lost in the complexities of message format detail.
 
-Aspose.Email for .NET also provides classes and algorithms that are useful for time-oriented recurrence patterns, or schedules. Many applications need to manage this type of information and describing and manipulating events is often a complex task. Aspose.Email frees programmers from these details by providing a simple, standards-based interface that supports complex patterns. The central concepts are coherent with the iCalendar RFC (2445), so it is easy to incorporate iCalendar features into your .NET applications.
-
 {{% /alert %}} 
 ## **Product Description**
-Aspose.Email for .NET is implemented using Managed C# and can be used with any .NET language like C#, VB.NET and J# and so on. Aspose.Email for .NET can be integrated with any kind of application, from ASP.NET web applications to Windows applications. Aspose.Email also provides fully featured examples written in C#  so that developers can get up and running quickly. Aspose.Email can be used to perform a variety of tasks in applications. For example:
+Aspose.Email for .NET is implemented using Managed C# and can be used with any .NET language like C#, VB.NET and J# and so on. The library can be integrated with any kind of application, from ASP.NET web applications to Windows applications. Aspose.Email also provides fully featured examples written in C#  so that developers could get up and run quickly. It can be used to perform a variety of tasks in applications:
 
-- Opening or saving emails in the form of EML or MHT files.
-- Parsing/reading and saving Microsoft Outlook Messages and Outlook PST files.
-- Dealing with MIME messages.
-- Embedding objects in email messages.
-- Sending bulk emails.
-- Creating emails by mail merges from different types of data sources (DataTable or DataReader, and others).
-- Sending iCalendar compliant messages.
-- Working in asynchronous mode.
-- Receiving and managing emails using POP3.
-- Accessing and managing emails using IMAP.
-- Verifying email addresses.
-- Receiving and managing emails using Microsoft Exchange Server and other email servers.
-## **Declaration**
-All Aspose .NET components require Full Trust permission set. The reason is, Aspose .NET components need to access registry settings, system files other than virtual directory for certain operations like parsing fonts, etc. Moreover, Aspose .NET Components are based on core .NET system classes that also require Full Trust permission set in many cases.
+- **Read and parse email messages** from various formats such as EML, MSG, PST, OST, and MBOX.
 
-Internet Service Providers hosting multiple applications from different companies mostly enforce Medium Trust security level. In the case of .NET 2.0, such security level applies the following constraints:
+- **Composing and Sending Email Messages.** Create and send email messages programmatically.
 
-- OleDbPermission is not available. This means you cannot use the ADO.NET managed OLE DB data provider to access databases.
-- EventLogPermission is not available. This means you cannot access the Windows event log.
-- ReflectionPermission is not available. This means you cannot use reflection.
-- RegistryPermission is not available. This means you cannot access the registry.
-- WebPermission is restricted. This means your application can only communicate with an address or range of addresses that you define in the <trust> element.
-- FileIOPermission is restricted. This means you can only access files in your application's virtual directory hierarchy.
+- **Extract attachments** from email messages and save them separately.
 
-Due to the reasons specified above, Aspose .NET components cannot be used on servers granting permission set other than Full Trust.
+- **Handling Outlook Items**, such as calendar events, contacts, distribution lists, tasks, notes, etc.
+
+- **Manipulate Email Properties** such as sender, recipient, subject, body, and attachments.
+
+- **Convert email messages between different email formats**, such as EML, EMLX, HTML, ICS, MBOX, MHT, MSG, OFT, OST, PST, and VCF.
+
+- **Working with Email Folders** within PST, OST, and MBOX files, perform operations like adding, deleting, and moving emails.
+
+- **Handling Email Signatures and Encryption**. Use various security features such as digital (SMIME) signatures, encryption, and decryption to ensure secure email processing.
+
+- **Interaction with Email Servers** using protocols like POP3, IMAP, SMTP, Exchange Web Services (EWS), and MS Graph.
+
+- **Sending Emails via SendGrid and MailGun**. Integrate with delivery services SendGrid and MailGun, optimize email delivery processes directly within your .NET applications. 
+
+- **Extraction and Generation of Calendar Data:** Extract and generate calendar data like invitations and appointments in ICS format, enabling integration with calendar applications. 
+
+- **Search and Filtering of Emails** based on criteria like sender, recipient, subject, date, etc.
+
+- **Handling Email Headers** , for example, add custom headers or modify existing ones.
+
+- **Managing Contacts**. Work easily with contact information files in VCF format, including reading, writing, and modifying contacts.
+
+- **Working in asynchronous mode**. Handle email operations efficiently without blocking the main thread.
+
+- **Mail Merge**. Create personalized emails through mail merges from various data sources such as DataTable, DataReader, and more. 
+
+- **Sending bulk emails**. Send personalized messages to multiple recipients simultaneously managing large-scale email campaigns efficiently. 
+
+## **What Makes Aspose.Email for .NET Outstanding?** 
+
+There are several compelling reasons to use Aspose.Email for .NET in your applications:
+
+-  Aspose.Email provides a wide range of features for handling various aspects of email processing, including reading, writing, parsing, converting, and manipulating email messages in different formats. 
+
+- Aspose.Email for .NET is designed to work seamlessly across different platforms, including Windows, Linux, and macOS.
+
+- Supporting a diverse array of email file formats such as EML, MSG, PST, OST, MBOX, EMLX, and more. This broad support enables you to work with emails from various sources and systems, enhancing the  versatility of your applications.
+
+- Aspose.Email integrates with popular development environments like Visual Studio.
+
+- Aspose.Email is backed by a team of developers who continually enhance and optimize the library. It receives regular updates and enhancements to incorporate new features, address bug fixes. Additionally, Aspose provides comprehensive technical support to assist you with any questions or issues you may encounter while using the library.
+
+## **Technical Support**
+
+Aspose provides unlimited free technical support for all its products. The support is available to all users, including ones running an evaluation.
+
+If you need help, [**visit the Aspose.Forums**](https://forum.aspose.com/c/email). Post your question in the Aspose.Email for .NET forum and it will be answered within few hours.
+
+### **Reporting an Issue**
+
+If you have an issue, follow these simple steps to make sure it is resolved efficiently:
+
+- Make sure you use the latest version of the product before reporting the issue. See the [Aspose.Email for .NET download page](https://downloads.aspose.com/email/net) to find out about the latest version.
+- Have a look through the [forums](http://www.aspose.com/community/forums/default.aspx), this documentation Wiki and the [API Reference](https://apireference.aspose.com/email/net) before reporting an issue. Your question may already have an answer.
+- When reporting an issue, please include the original document and possibly a fragment of your code that causes the problem. If you need to attach multiple files, zip them into one. It is safe to attach your documents in the forums since only you and Aspose's developers have access to attached files.
+- Please try to report one issue per thread. If you have another issue, report it in a separate thread.
+
+{{% alert color="primary" %}} 
+
+Aspose does not provide technical support over the phone. Phone support is only available for sales and purchase questions.
+
+{{% /alert %}}
+

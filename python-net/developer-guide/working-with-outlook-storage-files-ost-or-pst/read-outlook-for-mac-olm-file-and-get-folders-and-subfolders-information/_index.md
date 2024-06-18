@@ -256,7 +256,7 @@ olm = ae.storage.olm.OlmStorage(fileName)
 print_path(olm, olm.folder_hierarchy)
 ```
 
-## **Count the number of items in the folder**
+## **Count the Number of Items in the Folder**
 
 Aspose.Email provides the ability to count the total number of email messages contained within the specific folder of an Outlook OLM file. The 'message_count' property of the [OlmFolder](https://reference.aspose.com/email/python-net/aspose.email.storage.olm/olmfolder/#olmfolder-class) class returns the total items (email messages) count stored within a specific folder in the OLM file. The following code snippet demonstrates the use of this property:
 
@@ -286,3 +286,29 @@ olm = ae.storage.olm.OlmStorage(fileName)
 count = olm.get_total_items_count()
 ```
 
+## **Retrieve Outlook Category Colours**
+
+With Aspose.Email, you can easily retrieve and utilize category colors associated with Outlook item categories stored in OLM files. The [OlmItemCategory](https://reference.aspose.com/email/python-net/aspose.email.storage.olm/olmitemcategory/) class allows you to access category names and their respective colors represented in hexadecimal format. The [OlmStorage](https://reference.aspose.com/email/python-net/aspose.email.storage.olm/olmstorage/#olmstorage-class) class features the 'GetCategories()' method for retrieving a list of categories from OLM storage. By implementing the code sample below, you can effortlessly retrieve all used categories from an OML storage file and access the category name along with its color. 
+
+```py
+with OlmStorage.FromFile("storage.olm") as olm:
+    categories = olm.GetCategories()
+    
+    for category in categories:
+        print(f"Category name: {category.Name}")
+        
+        # Color is represented as a hexadecimal value: #rrggbb
+        print(f"Category color: {category.Color}")
+```
+
+Additionally, you can retrieve the category color associated with specific messages by iterating through the messages in a folder and accessing the corresponding category color based on the category name.
+
+```py
+for msg in olm.EnumerateMessages(folder):
+    if msg.Categories is not None:
+        for msgCategory in msg.Categories:
+            print(f"Category name: {msgCategory}")
+            categoryColor = next((c.Color for c in categories if c.Name.lower() == msgCategory.lower()), None)
+            if categoryColor is not None:
+                print(f"Category color: {categoryColor}")
+```

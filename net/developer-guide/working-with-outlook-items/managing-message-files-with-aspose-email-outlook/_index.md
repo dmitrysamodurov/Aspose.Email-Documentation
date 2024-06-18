@@ -52,6 +52,67 @@ foreach (var messageInfo in folder.EnumerateMessages())
     }
 }
 ```
+## **Saving Email as HTML**
+
+Aspose.Email makes it possible to save email resources with relative paths when exporting messages to HTML format. This feature provides more flexibility in how resources are linked in the output HTML file, making it easier to share and display saved emails on different systems. In order to save resources with relative paths, use [HtmlSaveOptions.UseRelativePathToResources](https://reference.aspose.com/email/net/aspose.email/htmlsaveoptions/userelativepathtoresources/) property. The default property value is false (resources are saved with absolute paths). When set to true, resources are saved with relative paths.
+
+HTML files with relative paths are more portable and can be viewed correctly regardless of the hosting environment’s file structure. You can choose between absolute and relative paths depending on the requirements. You can define custom paths for resources using the [ResourceHtmlRendering](https://reference.aspose.com/email/net/aspose.email/resourcehtmlrenderingeventargs/) event.
+
+The following code sample demonstrates how to **save an email with default relative path to resources**:
+
+```cs
+var msg = MapiMessage.Load(sourceFileName);
+
+var htmlSaveOptions = new HtmlSaveOptions
+{
+    ResourceRenderingMode = ResourceRenderingMode.SaveToFile,
+    UseRelativePathToResources = true
+};
+
+msg.Save(Path.Combine("target_files"), htmlSaveOptions);
+```
+In this case, resources will be saved in the [html file name]_files folder, in the same path as the .html file and the HTML will reference the resources via relative paths.
+
+The code sample below demonstrates how to **save with absolute path to resources**:
+
+```cs
+var msg = MapiMessage.Load(sourceFileName);
+
+var htmlSaveOptions = new HtmlSaveOptions
+{
+    ResourceRenderingMode = ResourceRenderingMode.SaveToFile,
+    UseRelativePathToResources = false
+};
+
+msg.Save(Path.Combine("target_files"), htmlSaveOptions);
+```
+As in the first case, resources will be saved in the [html file name]_files folder by default, but the HTML will reference resources using absolute paths.
+
+By using the [ResourceHtmlRendering](https://reference.aspose.com/email/net/aspose.email/resourcehtmlrenderingeventargs/) event, you can set custom relative or absolute paths for resources. When customizing paths with the [ResourceHtmlRendering](https://reference.aspose.com/email/net/aspose.email/resourcehtmlrenderingeventargs/) event handler, and since [UseRelativePathToResources](https://reference.aspose.com/email/net/aspose.email/htmlsaveoptions/userelativepathtoresources/) is set to true, you should assign a relative path to the [PathToResourceFile](https://reference.aspose.com/email/net/aspose.email/resourcehtmlrenderingeventargs/pathtoresourcefile/) property to ensure correct referencing.
+
+The following code sample demonstrates how to **custom relative path using ResourceHtmlRendering Event**
+
+```cs
+var msg = MapiMessage.Load(sourceFileName);
+
+var htmlSaveOptions = new HtmlSaveOptions
+{
+    ResourceRenderingMode = ResourceRenderingMode.SaveToFile,
+    UseRelativePathToResources = true
+};
+
+htmlSaveOptions.ResourceHtmlRendering += (o, args) =>
+{
+    if (o is AttachmentBase attachment)
+    {
+	    // Since UseRelativePathToResources = true, you should assign a relative path to the PathToResourceFile property.
+        args.PathToResourceFile = $@"images\{attachment.ContentType.Name}";
+    }
+};
+
+msg.Save(Path.Combine(targetPath, "A Day in the Park.html"), htmlSaveOptions);
+```
+
 
 ## **Converting MSG to MIME message**
 

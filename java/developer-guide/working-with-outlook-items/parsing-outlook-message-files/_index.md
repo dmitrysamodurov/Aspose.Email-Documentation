@@ -58,3 +58,50 @@ for (int i = 0; i < outlookMessageFile.getRecipients().size(); i++) {
 
 Parse email files online with the free [**Aspose.Email Parser App**](https://products.aspose.app/email/parser).
 {{% /alert %}}
+
+## **Get an Item Type of a MAPI Message**
+
+Aspose.Email offers a [MapiItemType](https://reference.aspose.com/email/java/com.aspose.email/mapiitemtype/) enum that represents an item type. It can be used for message conversion into an object of a corresponding class derived from the [IMapiMessageItem](https://reference.aspose.com/email/java/com.aspose.email/imapimessageitem) interface. This avoids users from checking the MessageClass property value before message conversion.
+
+The following code sample demonstrates how to iterate through the messages in a folder and convert each MAPI message to a corresponding MAPI item type, depending on the type of the message:
+
+```java
+for (MessageInfo messageInfo : folder.enumerateMessages()) {
+    MapiMessage msg = pst.extractMessage(messageInfo);
+
+    switch (msg.getSupportedType()) {
+        // Non-supported type. MapiMessage cannot be converted to an appropriate item type.
+        // Just use in MSG format.
+        case MapiItemType.None:
+            break;
+        // An email message. Conversion isn't required.
+        case MapiItemType.Message:
+            break;
+        // A contact item. Can be converted to MapiContact.
+        case MapiItemType.Contact:
+            MapiContact contact = (MapiContact) msg.toMapiMessageItem();
+            break;
+        // A calendar item. Can be converted to MapiCalendar.
+        case MapiItemType.Calendar:
+            MapiCalendar calendar = (MapiCalendar) msg.toMapiMessageItem();
+            break;
+        // A distribution list. Can be converted to MapiDistributionList.
+        case MapiItemType.DistList:
+            MapiDistributionList dl = (MapiDistributionList) msg.toMapiMessageItem();
+            break;
+        // A Journal entry. Can be converted to MapiJournal.
+        case MapiItemType.Journal:
+            MapiJournal journal = (MapiJournal) msg.toMapiMessageItem();
+            break;
+        // A StickyNote. Can be converted to MapiNote.
+        case MapiItemType.Note:
+            MapiNote note = (MapiNote) msg.toMapiMessageItem();
+            break;
+        // A Task item. Can be converted to MapiTask.
+        case MapiItemType.Task:
+            MapiTask task = (MapiTask) msg.toMapiMessageItem();
+            break;
+    }
+}
+```
+

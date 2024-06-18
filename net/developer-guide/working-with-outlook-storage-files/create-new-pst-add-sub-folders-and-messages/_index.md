@@ -17,7 +17,7 @@ As well as parsing an existing PST file, Aspose.Email provides the means to crea
 Use the [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/) class to create a PST file at some location on a local disk. To create a PST file from scratch:
 
 1. Create a PST using the [PersonalStorage.Create()](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/create/#create/) method.
-1. Add a sub-folder at the root of the PST file by accessing the Root folder and then calling the [AddSubFolder](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/addsubfolder/#addsubfolder/) method.
+1. Add a sub-folder at the root of the PST file by accessing the Root folder and then calling the [AddSubFolder](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/addsubfolder/#addsubfolder/) method. 
 
 The following code snippet shows you how to create a PST file and add a subfolder called Inbox.
 
@@ -27,8 +27,29 @@ using var pst = PersonalStorage.Create(path, FileFormatVersion.Unicode);
 
 // Add new folder "Test"
 pst.RootFolder.AddSubFolder("Inbox");
-    
 ```
+## **Container Class Matching Check when Adding a Folder to PST**
+
+When creating new folders or adding items to existing folders, it is important to ensure that the container class of the new item or folder aligns with the container class of the parent folder to maintain the organizational hierarchy within the PST storage file. For this purpose, Aspose.Email has the [EnforceContainerClassMatching](https://reference.aspose.com/email/net/aspose.email.storage.pst/foldercreationoptions/enforcecontainerclassmatching/) property of the [FolderCreationOptions](https://reference.aspose.com/email/net/aspose.email.storage.pst/foldercreationoptions/#foldercreationoptions-class) class. The property specifies whether to enforce checking the container class of the folder being added against the container class of the parent folder. If set to 'true', an exception will be thrown if the container classes do not match. Default is 'false'.
+
+The following code sample demonstrates the use of the [EnforceContainerClassMatching](https://reference.aspose.com/email/net/aspose.email.storage.pst/foldercreationoptions/enforcecontainerclassmatching/) property to control whether an exception should be thrown when adding folders with mismatching container classes: 
+
+```cs
+using (var pst = PersonalStorage.Create("storage.pst", FileFormatVersion.Unicode))
+{
+    // Create a standard Contacts folder with the IPF.Contacts container class.
+    var contacts = pst.CreatePredefinedFolder("Contacts", StandardIpmFolder.Contacts);
+    
+    // An exception will not arise. EnforceContainerClassMatching is false by default.
+    contacts.AddSubFolder("Subfolder1", "IPF.Note");
+    
+    // An exception will occur as the container class of the subfolder being added (IPF.Note) 
+    // does not match the container class of the parent folder (IPF.Contact).
+    contacts.AddSubFolder("Subfolder3", new FolderCreationOptions {EnforceContainerClassMatching = true, ContainerClass = "IPF.Note"});
+}
+```
+
+>Note: Ensure proper handling of exceptions when enforcing container class matching to prevent unexpected behavior during folder creation in PST.
 
 ## **Changing the Folder Container Class**
 
