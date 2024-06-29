@@ -5,9 +5,7 @@ weight: 24
 url: /net/how-to-run-aspose-email/
 ---
 
-## **How to Run Aspose.Email for .NET**
-
-Aspose.Email for .NET is a comprehensive and versatile email processing library that provides a wide range of features for creating, sending, receiving, and managing email messages within .NET applications. The library supports various email formats and protocols, making it a complete toolkit for email handling. Below, we provide a step-by-step guide for setting up and running Aspose.Email on Linux and in a Docker container, starting with a simple "Hello World" example.
+Below, we provide a step-by-step guide for setting up and running Aspose.Email on Linux and Windows, starting with a simple "Hello World" example.
 
 To start utilizing the library, just follow the steps.
 
