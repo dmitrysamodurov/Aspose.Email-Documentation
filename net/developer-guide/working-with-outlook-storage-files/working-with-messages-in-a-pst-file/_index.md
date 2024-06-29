@@ -236,7 +236,17 @@ private static void DisplayFolderContents(FolderInfo folderInfo, PersonalStorage
 
 ## **Extracting Messages Form PST Files**
 
-This article shows how to read Microsoft Outlook PST files and [extract messages](https://docs.aspose.com/email/net/working-with-messages-in-a-pst-file/#extracting-messages-form-pst-files). The messages are then saved to a disk in MSG format. The article also shows how to [extract a specific number of messages](https://docs.aspose.com/email/net/working-with-messages-in-a-pst-file/#extracting-n-number-of-messages-from-a-pst-file) from a PST file. Use a recursive method to browse all the folders (including any nested folders) and call the PersonalStorage.ExtractMessage() method to get Outlook messages into an instance of the [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) class. After that, call the MapiMessage.Save() method to save the message to either a disk or a stream in MSG format. The following code snippet shows you how to extract messages from a PST file.
+This article shows how to read Microsoft Outlook PST files and extract messages. The messages are then saved to a disk in MSG format. 
+
+{{% alert %}}
+**Try it out!**
+
+Run the [ConversationThread](https://github.com/aspose-email/Aspose.Email-for-.NET/tree/master/Sample%20Apps/ConversationThread) simple app project, and explore an interesting usage of Aspose.Email's features to read emails from PST and find conversation threads.
+{{% /alert %}}
+
+The following code snippet shows you how to extract messages from a PST file: 
+- Use a recursive method to browse all the folders (including any nested folders) and call the PersonalStorage.ExtractMessage() method to get Outlook messages into an instance of the [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) class. 
+- After that, call the MapiMessage.Save() method to save the message to either a disk or a stream in MSG format.
 
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET

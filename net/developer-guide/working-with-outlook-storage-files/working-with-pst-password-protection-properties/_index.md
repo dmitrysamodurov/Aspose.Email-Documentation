@@ -9,6 +9,12 @@ url: /net/working-with-pst-password-protection-properties/
 
 Microsoft Outlook lets users to protect PST files with a password to restrict access to them. Aspose.Email can detect password protection on a PST file. The password protection is actually only implemented in Outlook; the data are not encrypted at all. And it makes it possible to use the API to extract emails without knowing the password.
 
+{{% alert %}}
+**Try it out!**
+
+Run the [PstPasswordManager](https://github.com/aspose-email/Aspose.Email-for-.NET/tree/master/Sample%20Apps/PstPasswordManager/PstPasswordManager) simple app project, and experience Aspose.Email's features for managing PST passwords.
+{{% /alert %}}
+
 ### **Read Password Protected PST Files**
 
 You can read password-protected files just like regular unprotected pst files.
