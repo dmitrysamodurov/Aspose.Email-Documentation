@@ -118,7 +118,13 @@ The following code snippet shows you how to read embedded messages from attachme
 
 ## **Attachments Insertion and Replacement**
 
-Aspose.Email API provides the capability to insert attachments at specific index in the parent message. It also provides the facility to replace contents of an attachment with another message attachment. The following code snippet shows you how to insert and replace attachments.
+Aspose.Email API provides the capability to insert attachments at specific index in the parent message. It also provides the facility to replace contents of an attachment with another message attachment.
+
+{{% alert %}}
+**Try it out!**
+
+Run the [ReplaceAttach](https://github.com/aspose-email/Aspose.Email-for-.NET/tree/master/Sample%20Apps/ReplaceAttach/ReplaceAttach) simple app project, and try the Aspose.Email capabilities to replace attachments in action.
+{{% /alert %}} 
 
 ### **Insert at Specific location**
 

@@ -118,6 +118,11 @@ using var client = EWSClient.GetEWSClient("https://outlook.office365.com/EWS/Exc
 
 ```
 
+{{% alert %}}
+**Try it out!**
+Run the [EWSModernAuthenticationDelegated](https://github.com/aspose-email/Aspose.Email-for-.NET/tree/master/Sample%20Apps/EWSModernAuthenticationDelegated) simple app project, Connect to Microsoft 365 with delegated auth, and read your Inbox.
+{{% /alert %}}
+
 **Using the token with app auth**
 
 ```csharp
@@ -127,6 +132,11 @@ NetworkCredential credentials = new OAuthNetworkCredential(username, accessToken
 using var client = EWSClient.GetEWSClient("https://outlook.office365.com/EWS/Exchange.asmx", credentials);
 
 ```
+
+{{% alert %}}
+**Try it out!**
+Run the [EWSModernAuthenticationApp](https://github.com/aspose-email/Aspose.Email-for-.NET/tree/master/Sample%20Apps/EWSModernAuthenticationApp) simple app project, connect to Microsoft 365 with app auth, and read your Inbox.
+{{% /alert %}}
 
 ## **Use Modern Authentication with IMAP, POP or SMTP Clients**
 
@@ -210,6 +220,12 @@ var smtpClient = new SmtpClient(
     true);
 
 ```
+
+{{% alert %}}
+**Try it out!**
+Run the [EWSModernAuthenticationImapSmtp](https://github.com/aspose-email/Aspose.Email-for-.NET/tree/master/Sample%20Apps/EWSModernAuthenticationImapSmtp) simple app project, connect to Microsoft 365 via IMAP and SMTP, and read your Inbox.
+{{% /alert %}}
+
 ## **Return the Client Request ID**
 
  The [ReturnClientRequestId](https://reference.aspose.com/email/net/aspose.email.clients.exchange/autodiscoverservicebase/returnclientrequestid/) property was added to EWSClient for your convenience to specify whether the client request ID should be returned in the response from Exchange Web Services (EWS) calls. The client request ID is a unique identifier that you can set for each EWS request sent from your application. By setting the [ReturnClientRequestId](https://reference.aspose.com/email/net/aspose.email.clients.exchange/autodiscoverservicebase/returnclientrequestid/) property to *true*, you indicate that you want the client request ID to be included in the response from the EWS server. This can be useful for tracking and correlating requests and responses in scenarios where multiple requests are made and processed asynchronously.
