@@ -211,9 +211,17 @@ Aspose.Email for .NET provides an array of **special features** that enhance the
 
 ## **Convert MSG to OFT**
 
+Converting MSG files to OFT (Outlook Template File) can be essential for creating reusable email templates in Microsoft Outlook. Aspose.Email for .NET provides a way to perform this conversion with minimal code. By utilizing the [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) class, you can convert an MSG file to an OFT format. Here's a code snippet that demonstrates how to achieve this:
 
-
-
+1. Create a new [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) object with the sender's email, recipient's email, subject, and body of the email template.
+2. Use the [SaveAsTemplate]() method to save the MapiMessage as an OFT file (OFT Template).
+```cs
+using (MapiMessage mapi = new MapiMessage("test@from.to", "test@to.to", "template subject", "Template body"))
+{
+    string oftMapiFileName = "mapiToOft.msg";
+    mapi.SaveAsTemplate(oftMapiFileName);
+} 
+```
 
 ## **Convert MHTML to OST**
 
@@ -285,64 +293,9 @@ For more options to be used while converting MHTML files to PST format see [Conv
 
 
 
-## **Convert MHTML to VCF**
+## **Convert MSG to VCF**
 
-Converting MHTML files to VCF (vCard) format is a common solution if you need to extract and save contact information from emails. Aspose.Email for .NET
 
-1. Use the [MailMessage.Load](https://reference.aspose.com/email/net/aspose.email/mailmessage/load/#load_3) method to load the MHTML file. This method reads the content of the MHTML file and converts it to a MailMessage object.
-2. Use the [GetAlternateViewContent](https://reference.aspose.com/email/net/aspose.email/mailmessage/getalternateviewcontent/) method to find the alternate view with the media type "text/vcard". This method extracts the vCard content from the email message.
-3. Check if the vCard content is found, and if so, save it to a VCF file using File.WriteAllText.
-
-```cs
-var eml = MailMessage.Load("message.mhtml", new MhtmlLoadOptions());
-
-var vcfView = eml.GetAlternateViewContent("text/vcard");
-
-if (vcfView != null)
-{
-    File.WriteAllText("contact.vcf", vcfView);
-}
-```
-
-### **Special Features for MHTML to VCF Conversion**
-
-- **Custom Property Handling:**
-Modify or add custom properties to the vCard before saving it. This can include custom fields, additional contact information, or personalized data.
-
-- **Multi-Contact Extraction:**
-Extract multiple contact entries if the MHTML file contains several vCard entries, and save each contact as a separate VCF file.
-
-- **Encoding Options:**
-Ensure proper encoding of contact information to support various character sets and internationalization.
-
-- **vCard Versions:**
-Convert and save the vCard in different versions (v2.1, v3.0, v4.0) based on the target application's compatibility requirements.
-
-- **Handling Embedded Images:**
-Extract and save embedded images or photos associated with the contacts in the vCard.
-
-- **Merging Contacts:**
-Combine multiple vCard entries into a single VCF file for streamlined contact management.
-
-Below is an example demonstrating how to use some of these special features when converting MHTML to VCF:
-
-```cs
-// Load the MHTML file
-var eml = MailMessage.Load("message.mhtml", new MhtmlLoadOptions());
-
-// Find the alternate view with MediaType "text/vcard" (VCF)
-var vcfView = eml.GetAlternateViewContent("text/vcard");
-
-// If a VCF view is found, save it to a file
-if (vcfView != null)
-    {
-    // Ensure proper encoding
-    var encodedVcfView = Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(vcfView));
-
-    // Save the vCard to a file
-    File.WriteAllText("contact.vcf", encodedVcfView);
-    }
-```
 
 
 
