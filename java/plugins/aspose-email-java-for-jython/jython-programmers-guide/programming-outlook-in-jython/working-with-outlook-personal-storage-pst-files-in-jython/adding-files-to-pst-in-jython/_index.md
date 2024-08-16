@@ -1,5 +1,6 @@
 ---
 title: Adding Files to PST in Jython
+ArticleTitle: Adding Files to PST in Jython
 type: docs
 weight: 10
 url: /java/adding-files-to-pst-in-jython/

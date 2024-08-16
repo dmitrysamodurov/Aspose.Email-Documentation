@@ -1,5 +1,6 @@
 ---
 title: Adding MapiContact to PST in Jython
+ArticleTitle: Adding MapiContact to PST in Jython
 type: docs
 weight: 30
 url: /java/adding-mapicontact-to-pst-in-jython/

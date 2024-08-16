@@ -1,5 +1,6 @@
 ---
 title: Adding MapiContact to PST in Python
+ArticleTitle: Adding MapiContact to PST in Python
 type: docs
 weight: 20
 url: /java/adding-mapicontact-to-pst-in-python/

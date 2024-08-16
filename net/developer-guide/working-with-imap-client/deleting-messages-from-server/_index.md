@@ -1,8 +1,9 @@
 ---
-title: Deleting Messages from Server
+title: How to Delete Messages from IMAP Server using .NET Core
+ArticleTitle: Delete Single and Multiple Email Messages with ImapClient
 type: docs
-weight: 50
-url: /net/deleting-messages-from-server/
+weight: 100
+url: /net/delete-messages-from-imap-server/
 ---
 
 

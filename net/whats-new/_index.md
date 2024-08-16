@@ -1,5 +1,6 @@
 ---
 title: What's New in Aspose.Email for .NET
+ArticleTitle: What's New in Aspose.Email for .NET
 type: docs
 weight: 5
 url: /net/whats-new/

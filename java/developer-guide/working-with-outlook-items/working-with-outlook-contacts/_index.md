@@ -1,5 +1,6 @@
 ---
 title: Working with Outlook Contacts
+ArticleTitle: Working with Outlook Contacts
 type: docs
 weight: 80
 url: /java/working-with-outlook-contacts/

@@ -1,5 +1,6 @@
 ---
 title: Convert Outlook Offline Folder File (OST) to Other Formats
+ArticleTitle: Convert Outlook Offline Folder File (OST) to Other Formats
 type: docs
 weight: 20
 url: /java/convert-outlook-offline-folder-file-ost-to-other-formats/

@@ -1,5 +1,6 @@
 ---
 title: Read Outlook PST and Get Folders and Subfolders Information
+ArticleTitle: Read Outlook PST and Get Folders and Subfolders Information
 type: docs
 weight: 20
 url: /java/read-outlook-pst-and-get-folders-and-subfolders-information/

@@ -1,5 +1,6 @@
 ---
 title: Send Selected Files to Dropbox
+ArticleTitle: Send Selected Files to Dropbox
 type: docs
 weight: 60
 url: /sharepoint/send-selected-files-to-dropbox/

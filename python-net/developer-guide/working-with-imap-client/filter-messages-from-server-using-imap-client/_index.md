@@ -1,5 +1,6 @@
 ---
 title: Filter Messages from Server using IMAP Client
+ArticleTitle: Filter Messages from Server using IMAP Client
 type: docs
 weight: 30
 url: /python-net/filter-messages-from-server-using-imap-client/

@@ -1,5 +1,6 @@
 ---
 title: Save Email Message using Aspose.Email and Apache POI HSMF
+ArticleTitle: Save Email Message using Aspose.Email and Apache POI HSMF
 type: docs
 weight: 50
 url: /java/save-email-message-using-aspose-email-and-apache-poi-hsmf/

@@ -1,5 +1,6 @@
 ---
 title: iCalendar RFC 2445
+ArticleTitle: iCalendar RFC 2445
 type: docs
 weight: 30
 url: /java/icalendar-rfc-2445/

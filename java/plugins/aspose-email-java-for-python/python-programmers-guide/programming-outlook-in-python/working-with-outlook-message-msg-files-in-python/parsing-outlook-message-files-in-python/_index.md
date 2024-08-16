@@ -1,5 +1,6 @@
 ---
 title: Parsing Outlook Message Files in Python
+ArticleTitle: Parsing Outlook Message Files in Python
 type: docs
 weight: 30
 url: /java/parsing-outlook-message-files-in-python/

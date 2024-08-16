@@ -1,5 +1,6 @@
 ---
 title: Connection Pool Refactored
+ArticleTitle: Connection Pool Refactored
 type: docs
 weight: 290
 url: /net/connection-pool-refactored/

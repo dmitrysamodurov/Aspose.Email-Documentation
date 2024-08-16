@@ -1,5 +1,6 @@
 ---
 title: Viewing Emails from within a SharePoint Document Library
+ArticleTitle: Viewing Emails from within a SharePoint Document Library
 type: docs
 weight: 20
 url: /sharepoint/viewing-emails-from-within-a-sharepoint-document-library/

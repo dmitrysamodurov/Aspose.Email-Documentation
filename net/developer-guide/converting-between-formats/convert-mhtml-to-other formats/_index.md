@@ -1,5 +1,6 @@
 ---
 title: Convert MHTML Files to Various Formats in C#  
+ArticleTitle: Convert MHTML Files to Various Formats in C#  
 type: docs
 weight: 60
 url: /net/converting-between-formats/convert-mhtml-to-other-formats

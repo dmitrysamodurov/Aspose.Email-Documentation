@@ -1,5 +1,6 @@
 ---
 title: Search Messages and Folders in a PST by Some Criteria in Ruby
+ArticleTitle: Search Messages and Folders in a PST by Some Criteria in Ruby
 type: docs
 weight: 80
 url: /java/search-messages-and-folders-in-a-pst-by-some-criteria-in-ruby/

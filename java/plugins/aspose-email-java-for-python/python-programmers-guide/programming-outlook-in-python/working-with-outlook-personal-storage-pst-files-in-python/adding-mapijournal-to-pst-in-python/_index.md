@@ -1,5 +1,6 @@
 ---
 title: Adding MapiJournal to PST in Python
+ArticleTitle: Adding MapiJournal to PST in Python
 type: docs
 weight: 30
 url: /java/adding-mapijournal-to-pst-in-python/

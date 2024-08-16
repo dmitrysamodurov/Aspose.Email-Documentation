@@ -1,5 +1,6 @@
 ---
 title: Creating and Saving Outlook Contacts in Ruby
+ArticleTitle: Creating and Saving Outlook Contacts in Ruby
 type: docs
 weight: 10
 url: /java/creating-and-saving-outlook-contacts-in-ruby/

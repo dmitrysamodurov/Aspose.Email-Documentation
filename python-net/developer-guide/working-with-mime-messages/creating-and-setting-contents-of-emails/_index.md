@@ -1,5 +1,6 @@
 ---
 title: Creating and setting contents of Emails
+ArticleTitle: Creating and setting contents of Emails
 type: docs
 weight: 10
 url: /python-net/creating-and-setting-contents-of-emails/

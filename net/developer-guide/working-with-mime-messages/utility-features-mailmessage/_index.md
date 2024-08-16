@@ -1,12 +1,13 @@
 ---
 title: Utility Features - MailMessage
+ArticleTitle: Utility Features - MailMessage
 type: docs
 weight: 50
 url: /net/utility-features-mailmessage/
 ---
 
 
-## **Encrypting and Decrypting Messages**
+## **Encrypt/Decrypt Messages**
 
 Aspose.Email provides the facility to encrypt and decrypt email messages using the X509Certificates. This article shows how an existing or new message can be loaded and encrypted using [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/). The [Encrypt()](https://reference.aspose.com/email/net/aspose.email/mailmessage/encrypt/#encrypt/) and [Decrypt()](https://reference.aspose.com/email/net/aspose.email/mailmessage/decrypt/#decrypt/) methods return a [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) object for the applied effects and need to be taken care of while encrypting/decrypting messages. Encrypting and decrypting messages involves the following steps:
 
@@ -20,35 +21,35 @@ The following code snippet shows you how to encrypt and decrypt messages.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-EncryptAndDecryptMessage-EncryptAndDecryptMessage.cs" >}}
 
-### **Check a Message for Encryption**
+### **Verify Message Encryption**
 
 Aspose.Email [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class allows you to check if a message is encrypted or not. The [IsEncrypted ](https://reference.aspose.com/email/net/aspose.email/mailmessage/isencrypted/)property of [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) allows you to check this as shown in the following code sample.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-CheckMessageForEncryption-CheckMessageForEncryption.cs" >}}
 
-## **Email messages containing TNEF attachments**
+## **TNEF Attachments Handling**
 
 Transport Neutral Encapsulation Format (TNEF) is a proprietary email attachment format used by Microsoft Outlook and Microsoft Exchange Server. The Aspose.Email API allows you to read email messages that have TNEF attachments and modify the contents of the attachment. The email can then be saved as a normal email or to the same format, preserving TNEF attachments. This article shows different code samples for working with messages containing TNEF attachments. This article also shows how to create TNEF EML files from Outlook MSG files.
 
-### **Read a Message Preserving TNEF Attachments**
+### **Read a Message with TNEF Attachment**
 
 The following code snippet shows you how to read a message preserving TNEF attachments.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-ReadMessageByPreservingTNEFAttachments-ReadMessageByPreservingTNEFAttachments.cs" >}}
 
-### **Read a Message without Preserving TNEF Attachments**
+### **Read a Message without TNEF Attachment**
 
 The following code snippet shows you how to read a message without preserving TNEF attachments.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-ReadingMessageByPreservingTNEFAttachments-ReadingMessageByPreservingTNEFAttachments.cs" >}}
 
-### **Updating Resources in a TNEF Attachment and Preserving TNEF Format**
+### **Update Resources in TNEF Attachment**
 
 The following code snippet shows you how to update resources in a TNEF attachment and preserve TNEF format.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-UpdateTNEFAttachments-UpdateTNEFAttachments.cs" >}}
 
-### **Adding New Attachments to the Main Message Containing TNEF**
+### **Add Attachment to TNEF Message**
 
 The following code snippet shows you how to add new attachments to the main message containing TNEF.
 
@@ -64,13 +65,13 @@ For creating the TNEF, the following sample code can be used.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-CreateTNEF-CreateTNEF.cs" >}}
 
-### **Detect If a Message is TNEF**
+### **Identify TNEF Format Messages**
 
 The following code snippet shows you how to detect if a message is TNEF.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-DetectMessageIsTNEF-DetectMessageIsTNEF.cs" >}}
 
-### **Check whether Attachment is in TNEF format**
+### **Identify TNEF Format Attachments**
 
 The [Attachment.IsTnef](https://reference.aspose.com/email/net/aspose.email/attachment/istnef/#attachmentistnef-property) property allows to detect whether the message attachment is TNEF formatted message.
 
@@ -96,7 +97,7 @@ Aspose.Email provides email filtering using a Bayesian spam analyzer. It provide
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-BayesianSpamAnalyzer-BayesianSpamAnalyzer.cs" >}}
 
-## **Obtaining preamble and epilogue from eml messages**
+## **Obtain Preamble and Epilogue from EML Messages**
 
 An email message may contain some hidden information as a plain text before the message body (i.e. preamble) or after the body (i.e. epilogue). It is typically some additional information or context to the recipient before or after they read the main content of the email. You can obtain this information using [MailMessage.Preamble](https://reference.aspose.com/email/net/aspose.email/mailmessage/preamble/) or/and [MailMessage.Epilogue](https://reference.aspose.com/email/net/aspose.email/mailmessage/epilogue/#mailmessageepilogue-property) properties respectively. 
 

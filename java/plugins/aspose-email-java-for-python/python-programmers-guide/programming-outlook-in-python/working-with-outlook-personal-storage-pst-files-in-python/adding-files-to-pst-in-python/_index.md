@@ -1,5 +1,6 @@
 ---
 title: Adding Files to PST in Python
+ArticleTitle: Adding Files to PST in Python
 type: docs
 weight: 10
 url: /java/adding-files-to-pst-in-python/

@@ -1,5 +1,6 @@
 ---
 title: Programming Email Verification
+ArticleTitle: Programming Email Verification
 type: docs
 weight: 140
 url: /net/programming-email-verification/

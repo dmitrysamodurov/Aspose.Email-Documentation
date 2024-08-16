@@ -1,5 +1,6 @@
 ---
 title: Setup Key and Secret for Transferring files with Dropbox
+ArticleTitle: Setup Key and Secret for Transferring files with Dropbox
 type: docs
 weight: 50
 url: /sharepoint/setup-key-and-secret-for-transferring-files-with-dropbox/

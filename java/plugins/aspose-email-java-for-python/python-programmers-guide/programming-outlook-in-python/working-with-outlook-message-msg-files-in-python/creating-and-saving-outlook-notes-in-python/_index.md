@@ -1,5 +1,6 @@
 ---
 title: Creating and Saving Outlook Notes in Python
+ArticleTitle: Creating and Saving Outlook Notes in Python
 type: docs
 weight: 20
 url: /java/creating-and-saving-outlook-notes-in-python/

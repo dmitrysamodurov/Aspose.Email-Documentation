@@ -1,5 +1,6 @@
 ---
 title: Synchronize Emails with Gmail
+ArticleTitle: Synchronize Emails with Gmail
 type: docs
 weight: 10
 url: /sharepoint/synchronize-emails-with-gmail/

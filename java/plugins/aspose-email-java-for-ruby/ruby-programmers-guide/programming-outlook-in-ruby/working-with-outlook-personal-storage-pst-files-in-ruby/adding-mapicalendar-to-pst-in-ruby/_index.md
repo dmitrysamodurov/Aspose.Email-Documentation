@@ -1,5 +1,6 @@
 ---
 title: Adding MapiCalendar to PST in Ruby
+ArticleTitle: Adding MapiCalendar to PST in Ruby
 type: docs
 weight: 20
 url: /java/adding-mapicalendar-to-pst-in-ruby/

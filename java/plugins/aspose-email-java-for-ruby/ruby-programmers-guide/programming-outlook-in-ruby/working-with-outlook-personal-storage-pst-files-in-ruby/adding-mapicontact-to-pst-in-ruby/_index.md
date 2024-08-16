@@ -1,5 +1,6 @@
 ---
 title: Adding MapiContact to PST in Ruby
+ArticleTitle: Adding MapiContact to PST in Ruby
 type: docs
 weight: 30
 url: /java/adding-mapicontact-to-pst-in-ruby/

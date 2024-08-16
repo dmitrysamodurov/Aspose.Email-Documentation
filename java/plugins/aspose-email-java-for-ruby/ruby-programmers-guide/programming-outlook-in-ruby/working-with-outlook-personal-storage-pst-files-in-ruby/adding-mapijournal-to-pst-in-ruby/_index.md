@@ -1,5 +1,6 @@
 ---
 title: Adding MapiJournal to PST in Ruby
+ArticleTitle: Adding MapiJournal to PST in Ruby
 type: docs
 weight: 40
 url: /java/adding-mapijournal-to-pst-in-ruby/

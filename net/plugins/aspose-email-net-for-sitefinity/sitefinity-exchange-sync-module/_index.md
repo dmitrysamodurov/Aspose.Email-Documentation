@@ -1,5 +1,6 @@
 ---
 title: Sitefinity Exchange Sync Module
+ArticleTitle: Sitefinity Exchange Sync Module
 type: docs
 weight: 10
 url: /net/sitefinity-exchange-sync-module/

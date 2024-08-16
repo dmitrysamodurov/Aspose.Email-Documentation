@@ -1,5 +1,6 @@
 ---
 title: Installing and Using Aspose.Email Java for Eclipse - Maven
+ArticleTitle: Installing and Using Aspose.Email Java for Eclipse - Maven
 type: docs
 weight: 10
 url: /java/installing-and-using-aspose-email-java-for-eclipse-maven/

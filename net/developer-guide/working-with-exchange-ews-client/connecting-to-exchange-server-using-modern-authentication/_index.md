@@ -1,5 +1,6 @@
 ---
 title: Connecting to Exchange Server using Modern Authentication
+ArticleTitle: Connecting to Exchange Server using Modern Authentication
 type: docs
 weight: 5
 url: /net/connecting-to-exchange-server-using-modern-authentication/

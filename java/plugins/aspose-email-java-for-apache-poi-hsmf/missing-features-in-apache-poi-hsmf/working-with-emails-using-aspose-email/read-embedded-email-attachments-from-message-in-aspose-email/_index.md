@@ -1,5 +1,6 @@
 ---
 title: Read Embedded Email Attachments from Message in Aspose.Email
+ArticleTitle: Read Embedded Email Attachments from Message in Aspose.Email
 type: docs
 weight: 30
 url: /java/read-embedded-email-attachments-from-message-in-aspose-email/

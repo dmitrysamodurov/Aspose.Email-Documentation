@@ -1,5 +1,6 @@
----
+0---
 title: Convert MSG Files to Various Formats in C#  
+ArticleTitle: Convert MSG Files to Various Formats in C#  
 type: docs
 weight: 60
 url: /net/converting-between-formats/convert-msg-to-other-formats
@@ -24,7 +25,7 @@ The primary components involved in these conversion processes include classes, m
 - [MapiMessage.ToMailMessage(Email.MailConversionOptions options = null)](): Converts the MapiMessage object to a MailMessage object. It is called on the MapiMessage object to transform it into a MailMessage for further processing and saving.
 - [MailMessage.Save(string fileName, SaveOptions options)](): Saves the MailMessage object to the specified file path in the desired format. It is used to save the converted email message in various formats. Different SaveOptions are used depending on the target format.
 
-By leveraging these components, developers can efficiently convert MSG files to a variety of formats, ensuring compatibility and flexibility in their applications. In the following sections, we will provide detailed examples and step-by-step instructions on how to perform these conversions using Aspose.Email for .NET.
+By leveraging these components, developers can convert MSG files to a variety of formats, ensuring compatibility and flexibility in their applications. In the following sections, we will provide detailed examples and step-by-step instructions on how to perform these conversions using Aspose.Email for .NET.
 
 **Before you start:**
 

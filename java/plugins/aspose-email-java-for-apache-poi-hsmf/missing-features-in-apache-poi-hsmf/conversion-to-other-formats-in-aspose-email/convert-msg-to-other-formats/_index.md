@@ -1,5 +1,6 @@
 ---
 title: Convert MSG to Other Formats
+ArticleTitle: Convert MSG to Other Formats
 type: docs
 weight: 10
 url: /java/convert-msg-to-other-formats/

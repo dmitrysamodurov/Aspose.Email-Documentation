@@ -1,5 +1,6 @@
 ---
 title: Send Selected Files to FTP Server
+ArticleTitle: Send Selected Files to FTP Server
 type: docs
 weight: 20
 url: /sharepoint/send-selected-files-to-ftp-server/

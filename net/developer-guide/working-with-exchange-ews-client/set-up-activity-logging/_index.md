@@ -1,5 +1,6 @@
 ---
 title: Set Up Activity Logging
+ArticleTitle: Set Up Activity Logging
 type: docs
 weight: 41
 url: /net/set-up-activity-logging/

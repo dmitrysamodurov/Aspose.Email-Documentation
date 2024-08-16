@@ -1,5 +1,6 @@
 ---
 title: Features Overview
+ArticleTitle: Features Overview
 type: docs
 weight: 25
 url: /net/features-overview/

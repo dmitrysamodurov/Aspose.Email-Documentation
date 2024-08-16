@@ -1,5 +1,6 @@
 ---
 title: Extract Message Attachments using Aspose.Email and Apache POI HSMF
+ArticleTitle: Extract Message Attachments using Aspose.Email and Apache POI HSMF
 type: docs
 weight: 10
 url: /java/extract-message-attachments-using-aspose-email-and-apache-poi-hsmf/

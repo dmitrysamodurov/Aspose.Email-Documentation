@@ -1,5 +1,6 @@
 ---
 title: Convert MBOX Files to Various Formats in C#  
+ArticleTitle: Convert MBOX Files to Various Formats in C#  
 type: docs
 weight: 60
 url: /net/converting-between-formats/convert-mbox-to-other-formats

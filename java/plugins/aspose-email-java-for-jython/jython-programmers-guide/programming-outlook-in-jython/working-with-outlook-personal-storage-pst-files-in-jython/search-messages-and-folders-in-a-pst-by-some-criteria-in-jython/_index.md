@@ -1,5 +1,6 @@
 ---
 title: Search Messages and Folders in a PST by Some Criteria in Jython
+ArticleTitle: Search Messages and Folders in a PST by Some Criteria in Jython
 type: docs
 weight: 70
 url: /java/search-messages-and-folders-in-a-pst-by-some-criteria-in-jython/

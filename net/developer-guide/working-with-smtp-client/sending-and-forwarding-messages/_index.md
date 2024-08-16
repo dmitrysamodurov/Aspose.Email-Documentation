@@ -1,30 +1,32 @@
 ---
-title: Sending and Forwarding Messages - Send Outlook Emails using C#
+title: Send Emails & Forward Messages using SMTP Client in C#
+ArticleTitle: Use SMTP Client to Send Emails, Forward Messages & Perform Mail Merge in C#
 linktitle: Sending and Forwarding Messages
 type: docs
 weight: 20
 url: /net/sending-and-forwarding-messages/
 ---
 
+## **Sending Emails**
 
-The [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class allows applications to send email using the Simple Mail Transfer Protocol (SMTP).
+### **Send Emails with SmtpClient Class**
 
-- The [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class is the only major entry developers use to send mail messages.
-- The [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class also provides other common email delivery methods, including writing email messages to the file system, message queue etc.
-- The [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class fully supports these two programming models:
-  - [Synchronous](https://docs.aspose.com/email/net/sending-and-forwarding-messages/#sending-emails-synchronously)
-  - [Asynchronous](https://docs.aspose.com/email/net/sending-and-forwarding-messages/#sending-emails-asynchronously)
-- The [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class also supports [sending messages as TNEF](https://docs.aspose.com/email/net/sending-and-forwarding-messages/#sending-message-as-tnef)
+For .NET developers looking to implement email functionalities in their applications, Aspose.Email offers the [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class. This class enables applications to send emails through the Simple Mail Transfer Protocol (SMTP), serving as the primary gateway for email messaging.
 
-To send the email message and block while waiting for the email to be transmitted to the SMTP server, use one of the synchronous Send methods. To allow your program's main thread to continue executing while the email is transmitted, use the [SendAsync](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/sendasync/) method.
+One of its key features is the ability to [send messages in bulk](#send-bulk-emails). 
 
-## **Sending Emails Synchronously**
+It also fully supports [synchronous](#send-emails-synchronously) and [asynchronous](#send-emails-asynchronously) programming models, giving developers the flexibility to choose the most suitable approach for their needs. To transmit an email blocking the main thread until the operation is complete, developers can use one of the synchronous [Send](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/#methods) methods. Alternatively, to allow the main thread to continue executing while the email is being sent, developers can use the [SendAsync](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/#methods) method. 
 
-An email message can be sent synchronously using the [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class [Send](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/send/#send/) method. It sends the specified email message through an SMTP server for delivery. The message sender, recipients, subject, and message body are specified using String objects. To send an email message synchronously, follow the steps given below:
+Additionally, [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) supports sending messages in [Transport Neutral Encapsulation Format (TNEF)](#send-messages-as-tnef).
+
+
+### **Send Emails Synchronously**
+
+An email message can be sent synchronously using the [Send](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/send/#send/) method of the [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class. It sends the specified email message through an SMTP server for delivery. The message sender, recipients, subject, and message body are specified using String objects. To send an email message synchronously, follow the steps given below:
 
 1. Create an instance of [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class and set its properties.
 1. Create an instance of [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class and specify the Host, port, username & Password.
-1. Send the Message using the [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class [Send](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/send/#send/) method and pass the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) instance.
+1. Send the Message using the [Send](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/send/#send/) method of the [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class  and pass the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) instance.
 
 The following C# code snippet shows you how to send outlook emails synchronously.
 
@@ -55,10 +57,10 @@ catch (Exception ex)
 }
 ```
 
-## **Sending Emails Asynchronously**
+### **Send Emails Asynchronously**
 
 Sometimes, you may want to send mail asynchronously to let program continue executing other operations while the email is being sent in the background. Especially, if you are sending a lot of mail through your application, the synchronous approach might not work. 
-Starting with .NET Framework 4.5, you can use asynchronous methods implemented according to [TAP](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) model. The C# code snippet below shows how to send outlook email messages using the task-based asynchronous pattern methods:
+Starting with .NET Framework 4.5, you can use asynchronous methods implemented according to [TAP](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) model. The C# code snippet below shows how to send Outlook email messages using the task-based asynchronous pattern methods:
 
 - [SendAsync](https://reference.aspose.com/email/net/aspose.email.clients.smtp/iasyncsmtpclient/sendasync/)
 Sends the specified messages.
@@ -160,9 +162,9 @@ public class TokenProvider : IAsyncTokenProvider
 }
 ```
 
-## **Sending Stored Messages from Disc**
+### **Send Messages from Disc**
 
-EML files, (Outlook Express Electronic Mail files) contains an email's header, message body, and any attachments. Aspose.Email lets developers work with EML files in different ways. This article shows how to load EML files from disk and send them as emails with SMTP. You can load .eml files from disk or stream into the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class and send the email message using the [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class. The [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class is the main class for creating new email messages, loading email message files from disk or stream and saving the messages. The following C# code snippet shows how to send stored messages from the disc.
+EML files (Outlook Express Electronic Mail files) contain a header, message body, and attachments. Aspose.Email lets developers work with EML files in different ways. This article shows how to load EML files from disk and send them as emails with SMTP. You can load .eml files from disk or stream into the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class and send the email message using the [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class. The [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class is the main class for creating new email messages, loading email message files from disk or stream and saving the messages. The following C# code snippet shows how to send stored messages from the disc.
 
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
@@ -182,7 +184,7 @@ catch (Exception ex)
 }            
 ```
 
-## **Sending Plain Text Email**
+### **Send Emails in Plain Text**
 
 The programming samples below show how to send a plain text email message. The [Body](https://reference.aspose.com/email/net/aspose.email/mailmessage/body/) property, a property of the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class, is used to specify the plain text content of the message body. To send a plain text email message, follow these steps:
 
@@ -224,7 +226,7 @@ catch (Exception ex)
 }
 ```
 
-## **Sending Email with HTML body**
+### **Send Emails with HTML Body**
 
 The programming samples below show how you can send a simple HTML email message. The [HtmlBody](https://reference.aspose.com/email/net/aspose.email/mailmessage/body/), a property of the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class, is used to specify the HTML content of the message body. To send a simple HTML email, follow these steps:
 
@@ -270,7 +272,7 @@ private static SmtpClient GetSmtpClient()
 }
 ```
 
-## **Sending Email with Alternate Message Text**
+### **Send HTML Emails with Alternate Text**
 
 The programming samples below show how to send a simple HTML email message with alternative content. Use the [AlternateView](https://reference.aspose.com/email/net/aspose.email/alternateview/) class to specify copies of an email message in different formats. For example, if you send a message in HTML, you might also want to provide a plain text version for recipients who use email readers that cannot display HTML content. Or, if you are sending a newsletter, you might want to provide a plain text copy of the text for those recipients who have chosen to receive a plain text version. To send an email with alternate text, follow these steps:
 
@@ -297,7 +299,7 @@ AlternateView alternate = AlternateView.CreateAlternateViewFromString("Alternate
 message.AlternateViews.Add(alternate);
 ```
 
-## **Sending Bulk Emails**
+### **Send Bulk Emails**
 
 Sending emails in bulk means sending a batch of emails in one message. We can send a batch of emails using the  [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class of the [Send](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/send/#send/) method overload that accepts a [MailMessageCollection](https://reference.aspose.com/email/net/aspose.email/mailmessagecollection/):
 
@@ -341,7 +343,7 @@ catch (Exception ex)
 }
 ```
 
-### Getting information about bulk messages sent
+#### **Track Bulk Email Success**
 
 When you send messages in bulk, you can get an information about the number of successfully sent messages and even get a list of these messages. A new [SucceededSending](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient//events/succeededsending) event was added to [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) for this purpose.
 
@@ -363,7 +365,7 @@ using (SmtpClient client = new SmtpClient(host, SecurityOptions.Auto))
 }
 ```
 
-## **Sending Emails with MultiConnection**
+### **Send Emails with MultiConnection**
 
 [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) provides a [UseMultiConnection](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/usemulticonnection/) property which can be used to create multiple connections for heavy operations. You may also set the number of connections to be used during multiconnection mode by using [SmtpClient.ConnectionsQuantity](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/connectionsquantity/). The following code snippet demonstrates the use of the multiconnection mode for sending multiple messages.
 
@@ -399,7 +401,7 @@ Please note that the usage of multiconnection mode does not guarantee performanc
 
 {{% /alert %}} 
 
-## **Sending Message as TNEF**
+### **Send Messages as TNEF**
 
 TNEF emails have special formatting which may be lost if sent using the standard API. Aspose.Email provides the capability to send emails as TNEF, thus preserving the format. The [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) class [UseTnef](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/usetnef/) property can be set to send the email as TNEF. The following code snippet shows you how to send a message as TNEF.
 
@@ -420,11 +422,11 @@ client.UseTnef = true;     // Use this flag to send as TNEF
 client.Send(eml1);
 ```
 
-## **Sending Meeting Requests**
+### **Send Meeting Requests**
 
 Microsoft Outlook offers calendar functions as well as email management. When a user opens an email with an invitation to an event, Outlook prompts them to accept or reject the invitation. Aspose.Email lets developers add calendar functions to your emails.
 
-### **Sending Requests via Email**
+#### **Send Requests via Email**
 
 To send meeting requests via email, follow these steps:
 
@@ -469,15 +471,15 @@ catch (Exception ex)
 }
 ```
 
-### **iCalendar supports for IBM Lotus Notes**
+### **iCalendar Support for IBM Lotus Notes**
 
 Aspose.Email calendar feature is based on the iCalendar standard, a standard for calendar data exchange (RFC 2445 or RFC2445 Syntax Reference). Therefore, it supports not only Microsoft Outlook but also IBM Lotus Notes. To send a meeting request in Lotus Notes, follow the same steps as mentioned above.
 
-## **Forward an Email using SMTP Client**
+## **Forward Messages**
 
-### **Forwarding Email with SMTP client**
+### **Forward Messages with SMTP Client**
 
-Forwarding an email is common practice in daily life digital communication. An email received can be forwarded to specific recipients without sharing with the original senders. Aspose.Email API's [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) provides the capability to forward an email to specific recipients. Its Forward method can be used to forward a received or saved email to desired recipients as shown in this article. The following code snippet shows you how to Forward an Email using SMTP Client.
+Forwarding an email is common practice in daily life digital communication. An email received can be forwarded to specific recipients without sharing with the original senders. The [SmtpClient](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/) by Aspose.Email provides the capability to forward emails to specific recipients. Its [Forward](https://reference.aspose.com/email/net/aspose.email.clients.smtp/smtpclient/forward/#forward_5) method can be used to forward a received or saved email to desired recipients as shown in this article. The following code snippet shows you how to forward an email using SMTP Client.
 
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
@@ -497,7 +499,7 @@ MailMessage message = MailMessage.Load(dataDir + "Message.eml");
 client.Forward("Recipient1@domain.com", "Recipient2@domain.com", message);
 ```
 
-### **Forwarding Email without using MailMessage**
+### **Forward Messages without MailMessage**
 
 The API also supports forwarding EML messages without first loading into [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/). This is useful in cases where there are limited resources in terms of system memory.
 
@@ -512,7 +514,7 @@ using (var client = new SmtpClient(host, smtpPort, username, password, SecurityO
 }
 ```
 
-### **Forwarding Email without using MailMessage Asynchronously**
+### **Forward Messages Asynchronously without MailMessage**
 
 ```csharp
 using (var client = new SmtpClient(host, smtpPort, username, password))
@@ -524,7 +526,9 @@ using (var client = new SmtpClient(host, smtpPort, username, password))
 }
 ```
 
-## **Performing Mail Merge**
+## **Mail Merge**
+
+### **How to Merge Emails**
 
 Mail merges help you create and send a batch of similar email messages. The core of the emails are the same, but the content can be personalized. Typically, a recipient's contact details (first name, second name, company and so on) are used to personalize the email.
 
@@ -634,7 +638,7 @@ static object GetSignature(object[] args)
 }
 ```
 
-## **Performing Row-Wise Mail Merge**
+## **How to Perform Row-Wise Mail Merge**
 
 User can merge individual data row as well as to get a complete and prepared [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) object. The [TemplateEngine.Merge](https://reference.aspose.com/email/net/aspose.email.tools.merging/templateengine/merge/#merge/) method can be used to perform a row-wise mail merge.
 

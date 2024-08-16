@@ -1,5 +1,6 @@
 ---
 title: Adding MapiTask to PST in Jython
+ArticleTitle: Adding MapiTask to PST in Jython
 type: docs
 weight: 50
 url: /java/adding-mapitask-to-pst-in-jython/

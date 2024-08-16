@@ -1,5 +1,6 @@
 ---
 title: String Searching in PST with Ignore Case in Ruby
+ArticleTitle: String Searching in PST with Ignore Case in Ruby
 type: docs
 weight: 90
 url: /java/string-searching-in-pst-with-ignore-case-in-ruby/

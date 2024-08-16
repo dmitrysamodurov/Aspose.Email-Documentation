@@ -1,5 +1,6 @@
 ---
 title: Sitefinity Google Sync Module
+ArticleTitle: Sitefinity Google Sync Module
 type: docs
 weight: 20
 url: /net/sitefinity-google-sync-module/

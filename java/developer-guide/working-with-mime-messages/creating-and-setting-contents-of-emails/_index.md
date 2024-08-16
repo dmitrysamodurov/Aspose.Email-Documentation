@@ -1,5 +1,6 @@
 ---
 title: Creating and Setting Contents of Emails
+ArticleTitle: Creating and Setting Contents of Emails
 type: docs
 weight: 10
 url: /java/creating-and-setting-contents-of-emails/

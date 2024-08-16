@@ -1,5 +1,6 @@
 ---
 title: Send Email Messages via MailGun and SendGrid
+ArticleTitle: Send Email Messages via MailGun and SendGrid
 type: docs
 weight: 10
 url: /net/send-email-messages-via-mailgun-and-sendgrid/

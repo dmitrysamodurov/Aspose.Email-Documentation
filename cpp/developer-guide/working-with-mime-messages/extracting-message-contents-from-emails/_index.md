@@ -1,5 +1,6 @@
 ---
 title: Extracting Message Contents from Emails in C++
+ArticleTitle: Extracting Message Contents from Emails in C++
 linktitle: Extracting Message Contents from Emails
 type: docs
 weight: 20

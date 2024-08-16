@@ -1,5 +1,6 @@
 ---
 title: Synchronize Emails using POP3
+ArticleTitle: Synchronize Emails using POP3
 type: docs
 weight: 20
 url: /sharepoint/synchronize-emails-using-pop3/

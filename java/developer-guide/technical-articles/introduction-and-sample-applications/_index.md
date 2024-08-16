@@ -1,5 +1,6 @@
 ---
 title: Introduction and Sample Applications
+ArticleTitle: Introduction and Sample Applications
 type: docs
 weight: 260
 url: /java/introduction-and-sample-applications/

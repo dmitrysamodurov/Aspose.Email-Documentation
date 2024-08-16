@@ -1,5 +1,6 @@
 ---
 title: Synchronize Files with Dropbox
+ArticleTitle: Synchronize Files with Dropbox
 type: docs
 weight: 70
 url: /sharepoint/synchronize-files-with-dropbox/

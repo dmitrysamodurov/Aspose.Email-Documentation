@@ -1,5 +1,6 @@
 ---
 title: Extracting Message Contents from Emails
+ArticleTitle: Extracting Message Contents from Emails
 type: docs
 weight: 30
 url: /java/extracting-message-contents-from-emails/

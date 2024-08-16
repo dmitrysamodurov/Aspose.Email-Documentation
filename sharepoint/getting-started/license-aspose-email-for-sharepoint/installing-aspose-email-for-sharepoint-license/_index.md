@@ -1,5 +1,6 @@
 ---
 title: Installing Aspose.Email for SharePoint License
+ArticleTitle: Installing Aspose.Email for SharePoint License
 type: docs
 weight: 10
 url: /sharepoint/installing-aspose-email-for-sharepoint-license/

@@ -1,5 +1,6 @@
 ---
 title: Search Messages and Folders in a PST by Some Criteria in Python
+ArticleTitle: Search Messages and Folders in a PST by Some Criteria in Python
 type: docs
 weight: 60
 url: /java/search-messages-and-folders-in-a-pst-by-some-criteria-in-python/

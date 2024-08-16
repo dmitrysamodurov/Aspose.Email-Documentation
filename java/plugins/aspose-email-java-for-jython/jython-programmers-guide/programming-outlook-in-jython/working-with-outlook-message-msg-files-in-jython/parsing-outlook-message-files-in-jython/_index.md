@@ -1,5 +1,6 @@
 ---
 title: Parsing Outlook Message Files in Jython
+ArticleTitle: Parsing Outlook Message Files in Jython
 type: docs
 weight: 30
 url: /java/parsing-outlook-message-files-in-jython/

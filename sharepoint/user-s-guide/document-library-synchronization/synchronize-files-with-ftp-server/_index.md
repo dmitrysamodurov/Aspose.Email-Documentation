@@ -1,5 +1,6 @@
 ---
 title: Synchronize Files with FTP Server
+ArticleTitle: Synchronize Files with FTP Server
 type: docs
 weight: 40
 url: /sharepoint/synchronize-files-with-ftp-server/

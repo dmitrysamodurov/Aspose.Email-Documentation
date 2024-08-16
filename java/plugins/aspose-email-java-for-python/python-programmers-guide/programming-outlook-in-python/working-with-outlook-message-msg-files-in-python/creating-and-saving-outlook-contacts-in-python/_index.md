@@ -1,5 +1,6 @@
 ---
 title: Creating and Saving Outlook Contacts in Python
+ArticleTitle: Creating and Saving Outlook Contacts in Python
 type: docs
 weight: 10
 url: /java/creating-and-saving-outlook-contacts-in-python/

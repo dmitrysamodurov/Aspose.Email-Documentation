@@ -1,5 +1,6 @@
 ---
 title: Working with Folders on IMAP Server
+ArticleTitle: Working with Folders on IMAP Server
 type: docs
 weight: 60
 url: /java/working-with-folders-on-imap-server/

@@ -1,5 +1,6 @@
 ---
 title: Adding MapiTask to PST in Python
+ArticleTitle: Adding MapiTask to PST in Python
 type: docs
 weight: 40
 url: /java/adding-mapitask-to-pst-in-python/

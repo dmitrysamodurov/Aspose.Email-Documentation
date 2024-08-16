@@ -1,5 +1,6 @@
 ---
 title: Outlook MSG File Viewer
+ArticleTitle: Outlook MSG File Viewer
 type: docs
 weight: 50
 url: /net/outlook-msg-file-viewer/

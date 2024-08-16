@@ -1,5 +1,6 @@
 ---
 title: EML to MSG and MSG to EML File Conversion
+ArticleTitle: EML to MSG and MSG to EML File Conversion
 type: docs
 weight: 20
 url: /sharepoint/eml-to-msg-and-msg-to-eml-file-conversion/

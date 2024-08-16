@@ -1,5 +1,6 @@
 ---
 title: String Searching in PST with Ignore Case in Python
+ArticleTitle: String Searching in PST with Ignore Case in Python
 type: docs
 weight: 70
 url: /java/string-searching-in-pst-with-ignore-case-in-python/

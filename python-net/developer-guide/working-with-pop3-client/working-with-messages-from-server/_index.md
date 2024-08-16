@@ -1,5 +1,6 @@
 ---
 title: Working with Messages from Server
+ArticleTitle: Working with Messages from Server
 type: docs
 weight: 40
 url: /python-net/working-with-messages-from-server/

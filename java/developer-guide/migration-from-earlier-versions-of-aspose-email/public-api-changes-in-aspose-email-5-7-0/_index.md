@@ -1,5 +1,6 @@
 ---
 title: Public API Changes in Aspose.Email 5.7.0
+ArticleTitle: Public API Changes in Aspose.Email 5.7.0
 type: docs
 weight: 180
 url: /java/public-api-changes-in-aspose-email-5-7-0/

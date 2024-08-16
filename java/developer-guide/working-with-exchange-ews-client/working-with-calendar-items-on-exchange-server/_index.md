@@ -1,5 +1,6 @@
 ---
 title: Working with Calendar Items on Exchange Server
+ArticleTitle: Working with Calendar Items on Exchange Server
 type: docs
 weight: 50
 url: /java/working-with-calendar-items-on-exchange-server/

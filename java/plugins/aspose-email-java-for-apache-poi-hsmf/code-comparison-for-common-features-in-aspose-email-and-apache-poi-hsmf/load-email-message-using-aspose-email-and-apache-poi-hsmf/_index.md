@@ -1,5 +1,6 @@
 ---
 title: Load Email Message using Aspose.Email and Apache POI HSMF
+ArticleTitle: Load Email Message using Aspose.Email and Apache POI HSMF
 type: docs
 weight: 40
 url: /java/load-email-message-using-aspose-email-and-apache-poi-hsmf/

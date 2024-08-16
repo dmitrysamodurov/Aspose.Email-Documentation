@@ -1,5 +1,6 @@
 ---
 title: Adding MapiJournal to PST in Jython
+ArticleTitle: Adding MapiJournal to PST in Jython
 type: docs
 weight: 40
 url: /java/adding-mapijournal-to-pst-in-jython/

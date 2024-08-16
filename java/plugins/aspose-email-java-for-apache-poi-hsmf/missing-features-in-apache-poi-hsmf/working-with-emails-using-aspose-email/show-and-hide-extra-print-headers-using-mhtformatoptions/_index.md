@@ -1,5 +1,6 @@
 ---
 title: Show and Hide Extra Print Headers using MHTFormatOptions
+ArticleTitle: Show and Hide Extra Print Headers using MHTFormatOptions
 type: docs
 weight: 40
 url: /java/show-and-hide-extra-print-headers-using-mhtformatoptions/

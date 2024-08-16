@@ -1,5 +1,6 @@
 ---
 title: Microsoft Graph Utility Features
+ArticleTitle: Microsoft Graph Utility Features
 type: docs
 weight: 10
 url: /net/microsoft-graph-utility-features/

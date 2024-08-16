@@ -1,5 +1,6 @@
 ---
 title: Working with Messages from IMAP Server
+ArticleTitle: Working with Messages from IMAP Server
 type: docs
 weight: 70
 url: /python-net/working-with-messages-from-imap-server/

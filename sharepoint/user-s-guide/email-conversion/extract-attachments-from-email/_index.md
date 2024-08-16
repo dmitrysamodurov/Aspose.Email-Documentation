@@ -1,5 +1,6 @@
 ---
 title: Extract Attachments from Email
+ArticleTitle: Extract Attachments from Email
 type: docs
 weight: 30
 url: /sharepoint/extract-attachments-from-email/

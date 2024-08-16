@@ -1,5 +1,6 @@
 ---
 title: Extract Message Body using Aspose.Email and Apache POI HSMF
+ArticleTitle: Extract Message Body using Aspose.Email and Apache POI HSMF
 type: docs
 weight: 20
 url: /java/extract-message-body-using-aspose-email-and-apache-poi-hsmf/

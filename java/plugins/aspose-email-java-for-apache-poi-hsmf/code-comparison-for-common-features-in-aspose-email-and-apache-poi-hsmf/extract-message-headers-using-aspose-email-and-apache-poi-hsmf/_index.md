@@ -1,5 +1,6 @@
 ---
 title: Extract Message Headers using Aspose.Email and Apache POI HSMF
+ArticleTitle: Extract Message Headers using Aspose.Email and Apache POI HSMF
 type: docs
 weight: 30
 url: /java/extract-message-headers-using-aspose-email-and-apache-poi-hsmf/

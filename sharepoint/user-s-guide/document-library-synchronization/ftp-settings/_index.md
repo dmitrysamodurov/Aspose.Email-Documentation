@@ -1,5 +1,6 @@
 ---
 title: FTP Settings
+ArticleTitle: FTP Settings
 type: docs
 weight: 30
 url: /sharepoint/ftp-settings/

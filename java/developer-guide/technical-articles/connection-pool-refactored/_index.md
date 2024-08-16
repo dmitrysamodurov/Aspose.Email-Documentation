@@ -1,5 +1,6 @@
 ---
 title: Connection Pool Refactored
+ArticleTitle: Connection Pool Refactored
 type: docs
 weight: 40
 url: /java/connection-pool-refactored/

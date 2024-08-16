@@ -1,5 +1,6 @@
 ---
 title: System Requirements
+ArticleTitle: System Requirements
 type: docs
 weight: 60
 url: /net/system-requirements/
