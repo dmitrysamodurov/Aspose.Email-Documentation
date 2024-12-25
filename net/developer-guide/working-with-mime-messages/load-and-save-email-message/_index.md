@@ -221,6 +221,21 @@ var tnef = MailMessage.Load("file.eml", loadOptions);
 - [PreserveEmbeddedMessageFormat](https://reference.aspose.com/email/net/aspose.email/loadoptions/preserveembeddedmessageformat/): Indicates whether to preserve the format of embedded messages. Default is `false`.
 - [RemoveSignature](https://reference.aspose.com/email/net/aspose.email/loadoptions/removesignature/): Specifies whether to remove the signature during loading. Default is `false`.
 
+## **Detecting File Formats**
+
+Aspose.Email API provides the capability to detect the file format of the provided message file. The [DetectFileFormat](https://reference.aspose.com/email/net/aspose.email/fileformattype/) method of [FileFormatUtil](https://reference.aspose.com/email/net/aspose.email.tools/fileformatutil/) class can be used to achieve this. The following classes and methods can be used to detect the loaded file format.
+
+- [FileFormatType](https://reference.aspose.com/email/net/aspose.email/fileformattype/) Class
+- [FileFormatInfo](https://reference.aspose.com/email/net/aspose.email/fileformatinfo/) Class
+- [FileFormatUtil](https://reference.aspose.com/email/net/aspose.email.tools/fileformatutil/) Class
+- [FileFormatUtil.DetectFileFormat(Stream)](https://reference.aspose.com/email/net/aspose.email.tools/fileformatutil/detectfileformat/#detectfileformat) Method
+- [FileFormatUtil.DetectFileFormat(String)](https://reference.aspose.com/email/net/aspose.email.tools/fileformatutil/detectfileformat/#detectfileformat_1) Method
+
+The following code snippet shows you how to detect file formats.
+
+{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-DetectDifferentFileFormats-DetectDifferentFileFormats.cs" >}}
+
+
 ## **Save and Convert Messages**
 
 Aspose.Email makes it easy to convert any message type to another format. To demonstrate this feature, the code in this article loads three types of messages from disk and saves them back in other formats. The base class [SaveOptions](https://reference.aspose.com/email/net/aspose.email/saveoptions/) and the classes [EmlSaveOptions](https://reference.aspose.com/email/net/aspose.email/emlsaveoptions/), [MsgSaveOptions](https://reference.aspose.com/email/net/aspose.email/msgsaveoptions/), [MhtSaveOptions](https://reference.aspose.com/email/net/aspose.email/mhtsaveoptions/), [HtmlSaveOptions](https://reference.aspose.com/email/net/aspose.email/htmlsaveoptions/) for additional settings when saving [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) can be used for saving messages to other formats. The article shows how to use these classes to save a sample email as:

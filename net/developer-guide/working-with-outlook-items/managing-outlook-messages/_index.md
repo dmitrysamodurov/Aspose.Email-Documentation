@@ -104,6 +104,38 @@ options.TimeoutReached += (object sender, EventArgs args) =>
 var mailMessage = mapiMessage.ToMailMessage(options);
 ```
 
+### **MSG to EML Convertion Preserving RTF body**
+
+The convertion of a MSG file to EML preserving RTF body can be done in two ways:
+
+- using [MsgLoadOptions.PreserveRtfContent](https://reference.aspose.com/email/net/aspose.email/msgloadoptions/preservertfcontent/) property of the [MsgLoadOptions](https://reference.aspose.com/email/net/aspose.email/msgloadoptions/) class;
+
+- using [MailConversionOptions.PreserveRtfContent](https://reference.aspose.com/email/net/aspose.email.mapi/mailconversionoptions/preservertfcontent/) property of the [MailConversionOptions](https://reference.aspose.com/email/net/aspose.email.mapi/mailconversionoptions/) class;
+
+Both properties get or set a value indicating whether to keep the rtf body in MailMessage.
+
+The following code snippets show how to convert a MSG file to EML and preserve RTF body:
+
+```cs
+var loadOptions = new MsgLoadOptions
+{
+    PreserveRtfContent = true
+};
+
+var eml = MailMessage.Load("my.msg", loadOptions);
+```
+
+```cs
+var conversionOptions = new MailConversionOptions
+{
+    PreserveRtfContent = true
+};
+
+var msg = MapiMessage.Load("my.msg");
+
+var eml = msg.ToMailMessage(conversionOptions);
+```
+
 ## **Handling Outlook Template Files (.OFT)**
 
 Outlook templates are very useful when you want to send a similar email message again and again. Instead of preparing the message from scratch each time, first, prepare the message in Outlook and save it as an Outlook Template (OFT). After that, whenever you need to send the message, you can create it from the template, saving time writing the same text in the body or the subject line, setting formatting and so on. Aspose.Email’s [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class can be used to load and read an Outlook template (OFT) file. Once the Outlook template is loaded in an instance of the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class, you can update the sender, recipient, body, subject and other properties. After updating the properties:

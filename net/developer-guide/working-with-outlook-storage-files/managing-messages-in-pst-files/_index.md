@@ -199,6 +199,14 @@ foreach (var messageInfo in folder.EnumerateMessages())
 }
 ```
 
+### **Message Search and Retrieval**
+
+Aspose.Email provides the following overloaded methods of the [FolderInfo](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/) class to filter and retrieve messages:
+
+- IEnumerable<MessageInfo> [EnumerateMessages(MailQuery mailQuery)](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/enumeratemessages/#enumeratemessages_2) - Filter messages using a MailQuery.
+- IEnumerable<MessageInfo> [EnumerateMessages(MessageKind kind)](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/enumeratemessages/#enumeratemessages_1) - Retrieve messages by type (MessageKind).
+- IEnumerable<MessageInfo> [EnumerateMessages(int startIndex, int count)](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/enumeratemessages/#enumeratemessages_3) - Paginate message retrieval using a starting index and count.
+
 ### **Save Messages Directly from PST to Stream**
 
 To save messages from a PST file directly to a stream, without extracting the MsgInfo for messages, use the SaveMessageToStream() method. The following code snippet shows you how to save messages directly from PST to a stream.
@@ -310,6 +318,37 @@ using (PersonalStorage personalstorage = PersonalStorage.FromFile(dataDir + "Out
                 }
             }
         }
+    }
+}
+```
+
+## **Extract Message Recipients from PST Files**
+
+Recipients of a message can be extracted from PST files using a message entry ID. This feature is available in the [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/) class. The code samples below demonstrate how to extract message recipients:
+
+**by EntryD** (using the [ExtractRecipients(string entryId)](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/extractrecipients/#extractrecipients_1) method of the [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/) class)
+
+```cs
+using (var pst = PersonalStorage.FromFile(fileName))
+{  
+    // Recipients are extracted using the entry ID
+    var recipients = pst.ExtractRecipients("AAAAADzSMygQQFJOkKwVhb8v5EUkASAA");
+}
+```
+
+**from MessageInfo** (using the [MapiRecipientCollection ExtractRecipients(MessageInfo messageInfo)](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/extractrecipients/#extractrecipients) method)
+
+```cs
+using (var pst = PersonalStorage.FromFile(fileName))
+{  
+    // The "Inbox" folder is obtained
+    var folder = pst.RootFolder.GetSubfolder("Inbox");
+
+    // Each message in the "Inbox" folder is iterated
+    foreach (var messageInfo in folder.EnumerateMessages())
+    {
+        // Recipients are extracted from each message
+        var recipients = pst.ExtractRecipients(messageInfo);
     }
 }
 ```
@@ -661,6 +700,37 @@ using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir))
 
     // delete messages having From = "someuser@domain.com"
     inbox.DeleteChildItems(deleteList);
+}
+```
+
+## **Recover Soft Deleted Items from PST and OST Files**
+
+Aspose.Email for .NET provides a method to recover soft deleted items from PST and OST files. This functionality is implemented through the `PersonalStorage` class, which includes the [FindAndExtractSoftDeletedItems](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/findandextractsoftdeleteditems/) method. This method allows you to locate and restore items that have been soft deleted, enabling you to recover important data that might otherwise be lost. The recovered items are saved in their respective folders as `.msg` files, ensuring that the original folder structure is maintained. The code sample below demonstrates how to implement this feature into your project:
+
+```csharp
+using (var pst = PersonalStorage.FromFile(fileName))
+{
+    // Soft deleted items are found and extracted
+    var entries = pst.FindAndExtractSoftDeletedItems();
+
+    // The recovered items are iterated through
+    for (var index = 0; index < entries.Count; index++)
+    {
+        // Folder information is obtained by ID
+        var folderInfo = pst.GetFolderById(entries[index].FolderId);
+
+        // A directory for the folder is created if it doesn't exist
+        if (!Directory.Exists(folderInfo.DisplayName))
+        {
+            Directory.CreateDirectory(Path.Combine(path, folderInfo.DisplayName));
+        }
+        
+        // The restored item is obtained
+        var msg = entries[index].Item;
+        
+        // The restored item is saved as a .msg file
+        msg.Save(Path.Combine(path, folderInfo.DisplayName, $"{index}.msg"));
+    }
 }
 ```
 

@@ -6,7 +6,7 @@ weight: 30
 url: /net/extract-email-message-content/
 ---
 
-## **Displaying Email Information**
+## **Display Email Information**
 
 The [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) represents an email message and allows developers to access email message properties. The header information (discussed in [Extracting Email Headers](https://docs.aspose.com/email/net/extracting-message-contents-from-emails/#extracting-email-headers)) can be extracted and manipulated in different ways. This article explains how to display selected email header information and the email body on screen. To Display Email Information on Screen, follow these steps:
 

@@ -6,8 +6,7 @@ weight: 90
 url: /net/working-with-outlook-contacts/
 ---
 
-
-## **Creating, Saving and Reading Contacts**
+## **Outlook Contacts Management**
 
 Like MapiMessage, Aspose.Email allows you to create Outlook contacts. The [MapiContact](https://reference.aspose.com/email/net/aspose.email.mapi/mapicontact/) class provides all the contact related properties required to create an Outlook contact. This article shows how to create, save and read an Outlook contact using the [MapiContact](https://reference.aspose.com/email/net/aspose.email.mapi/mapicontact/) class.
 
@@ -37,6 +36,19 @@ var options = new MapiDistributionListSaveOptions(ContactSaveFormat.VCard);
 dlist.Save("distribution_list.vcf", options);
 ```
 
+### **Convert Multi-Contact VCF Files to MapiDistributionList**
+
+Aspose.Email supports the conversion of multi-contact VCF files into `MapiDistributionList` objects, making it easy to manage and import multiple contacts directly into your applications. This feature is accessible through the following static methods in the [MapiDistributionList](https://reference.aspose.com/email/net/aspose.email.mapi/mapidistributionlist/#mapidistributionlist-class) class:
+
+- [static MapiDistributionList FromVCF(string filePath)](https://reference.aspose.com/email/net/aspose.email.mapi/mapidistributionlist/fromvcf/#fromvcf_1)
+- [static MapiDistributionList FromVCF(Stream stream)](https://reference.aspose.com/email/net/aspose.email.mapi/mapidistributionlist/fromvcf/#fromvcf)
+
+The code sample below demonstrates how to use this feature:
+
+```csharp
+// Convert a multi-contact VCF file to a MapiDistributionList
+MapiDistributionList dlist = MapiDistributionList.FromVCF(fileName);
+```
 
 ### **Save Contacts in VCF Format**
 
@@ -115,4 +127,23 @@ using (FileStream stream = new FileStream("test.vcf", FileMode.Open, FileAccess.
 
 Outlook Contact can be converted to MHTML using Aspose.Email API. This example shows how a VCard is loaded into [MapiContact](https://reference.aspose.com/email/net/aspose.email.mapi/mapicontact/) and then converted to MHTML with the help of [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) API.
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-RenderingContactInformationToMhtml-RenderingContactInformationToMhtml.cs" >}}
+```cs
+//Load VCF Contact and convert to MailMessage for rendering to MHTML
+var contact = MapiContact.FromVCard("Contact.vcf");
+
+MemoryStream ms = new MemoryStream();
+contact.Save(ms, ContactSaveFormat.Msg);
+ms.Position = 0;
+MapiMessage msg = MapiMessage.Load(ms, new MsgLoadOptions());
+MailConversionOptions op = new MailConversionOptions();
+MailMessage eml = msg.ToMailMessage(op);
+
+//Prepare the MHT format options
+MhtSaveOptions mhtSaveOptions = new MhtSaveOptions();
+mhtSaveOptions.CheckBodyContentEncoding = true;
+mhtSaveOptions.PreserveOriginalBoundaries = true;
+MhtFormatOptions formatOp = MhtFormatOptions.WriteHeader | MhtFormatOptions.RenderVCardInfo;
+mhtSaveOptions.RenderedContactFields = ContactFieldsSet.NameInfo | ContactFieldsSet.PersonalInfo | ContactFieldsSet.Telephones | ContactFieldsSet.Events;
+mhtSaveOptions.MhtFormatOptions = formatOp;
+eml.Save("ContactMhtml_out.mhtml", mhtSaveOptions);
+```

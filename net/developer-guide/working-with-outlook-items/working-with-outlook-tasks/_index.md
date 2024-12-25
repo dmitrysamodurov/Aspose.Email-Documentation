@@ -54,3 +54,14 @@ Aspose.Email allows creating a recurring task where the recurrence can be daily,
 Aspose.Email can generate [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) like output during the conversion of a [MapiTask](https://reference.aspose.com/email/net/aspose.email.mapi/mapitask/) to MHT.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-ConvertMapiTaskToMHT-ConvertMapiTaskToMHT.cs" >}}
+
+## **MSG to HTML Convertion Preserving Task Fields**
+
+The [HtmlFormatOptions.RenderTaskFields](https://reference.aspose.com/email/net/aspose.email/htmlformatoptions/#htmlformatoptions-enumeration) enumeration allows you to specify that task fields should be included in the header of the saved HTML file. The following code snippet shows how to preserve task fields in a header when saving a html file:
+
+```cs
+var msg = MapiMessage.Load("task.msg");
+HtmlSaveOptions opt = SaveOptions.DefaultHtml;
+opt.HtmlFormatOptions = HtmlFormatOptions.WriteHeader | HtmlFormatOptions.RenderTaskFields;
+msg.Save("task.html", opt);
+```

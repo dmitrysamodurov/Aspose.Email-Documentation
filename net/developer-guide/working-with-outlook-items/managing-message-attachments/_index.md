@@ -10,7 +10,7 @@ url: /net/managing-message-attachments/
 
 [Creating and Saving Outlook Message (MSG) Files](https://docs.aspose.com/email/net/creating-and-saving-msg-files/) explains how to create and save messages, and how to create MSG files with attachments. This article explains how to manage Microsoft Outlook attachments with Aspose.Email. Attachments from a message file are accessed and saved to disk using the [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) class [Attachments](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessageitembase/attachments/) property. The [Attachments](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessageitembase/attachments/) property is a collection of type [MapiAttachmentCollection](https://reference.aspose.com/email/net/aspose.email.mapi/mapiattachmentcollection/) class.
 
-### **Check Attachment Types (Inline or Regular)**
+### **Check Attachment Type (Inline or Regular)**
 
 Inline and regular attachments serve different purposes. Inline attachments are visually integrated into the email message and are typically images or media files. Meanwhile, regular attachments are separate files attached to the email and can include various types of files. The [MapiAttachment.IsInline](https://reference.aspose.com/email/net/aspose.email.mapi/mapiattachment/isinline/) property of the [MapiAttachment](https://reference.aspose.com/email/net/aspose.email.mapi/mapiattachment/#mapiattachment-class) class gets a value indicating whether the attachment is inline or regular.
 
@@ -25,6 +25,20 @@ foreach (var attach in message.Attachments)
 }
 ```
 
+### **Check Attachment Type (IsReference)**
+
+The [MapiAttachment](https://reference.aspose.com/email/net/aspose.email.mapi/mapiattachment/#mapiattachment-class) class includes the [IsReference](https://reference.aspose.com/email/net/aspose.email.mapi/mapiattachment/isreference/) property which allows developers to identify reference attachments in a message. With thefollowing code sample, you can check if an attachment is a reference attachment:
+
+```cs
+foreach (var attachment in msg.Attachments)
+{
+    if (attachment.IsReference)
+    {
+        // Process reference attachment
+    }
+}
+```
+
 ### **Save Attachments from MSG Files**
 
 To save attachments from an MSG file:
@@ -35,6 +49,55 @@ To save attachments from an MSG file:
 The following code snippet shows you how to save attachments to the local disk.
 
 {{< gist "aspose-email" "9e8fbeb51a8cbc4129dc71ca8cd55f0b" "Examples-CSharp-Outlook-SaveAttachmentsFromOutlookMSGFile-SaveAttachmentsFromOutlookMSGFile.cs" >}}
+
+### **Extract Attachments from RTF-Formatted MSG Files**
+
+For messages formatted as RTF, the following code can be used to differentiate and extract attachments that are either Inline or appear as Icon in the message body. The following code snippet shows you how to Identify and Extract an embedded attachment from MSG formatted as RTF.
+
+```csharp
+
+var eml = MapiMessage.Load("MSG file with RTF Formatting.msg");
+
+foreach (var attachment in eml.Attachments)
+{
+    if (IsAttachmentInline(attachment))
+    {
+        try
+        {
+            SaveAttachment(attachment, Data.Out/new Guid().ToString());
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+}
+
+static bool IsAttachmentInline(MapiAttachment attachment)
+{
+    foreach (var property in attachment.ObjectData.Properties.Values)
+    {
+        if (property.Name == "\x0003ObjInfo")
+        {
+            var odtPersist1 = BitConverter.ToUInt16(property.Data, 0);
+            return (odtPersist1 & (1 << (7 - 1))) == 0;
+        }
+    }
+    return false;
+}
+
+static void SaveAttachment(MapiAttachment attachment, string fileName)
+{
+    foreach (var property in attachment.ObjectData.Properties.Values)
+    {
+        if (property.Name == "Package")
+        {
+            using var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write);
+            fs.Write(property.Data, 0, property.Data.Length);
+        }
+    }
+}
+```
 
 ### **Get Nested Mail Message Attachments**
 
@@ -68,40 +131,23 @@ Add or remove email attachments with the free [**Aspose.Email Editor App**](http
 
 ### **Add Reference Attachments to MapiMessages**
 
-The [MapiAttachmentCollection.Add(string name, string sharedLink, string url, string providerName)](https://reference.aspose.com/email/net/aspose.email.mapi/mapiattachmentcollection/add/#add_4) method of the [MapiAttachmentCollection](https://reference.aspose.com/email/net/aspose.email.mapi/mapiattachmentcollection/#mapiattachmentcollection-class) class allows adding a reference attachment in a MapiMessage. When the recipients of the email click on the reference attachment, they will be able to access the linked file if they have the appropriate permissions to do so. By using a reference attachment, you can send a smaller email message and ensure that everyone has access to the most up-to-date version of the file or item.
+The [ReferenceAttachmentOptions](https://reference.aspose.com/email/net/aspose.email.mapi/referenceattachmentoptions/) class simplifies the addition of reference attachments by encapsulating all necessary properties in a single object.
 
-The method has the following parameters:
+**Parameters of ReferenceAttachmentOptions:**
 
-- *name* - the name of attachment
-- *sharedLink* - a fully qualified shared link to the attachment provided by web service manipulating the attachment
-- *url* - a file location
-- *providerName* - a name of reference attachment provider
-
-The code example below demonstrates how to add a reference attachment to a message:
+- **sharedLink**: A fully qualified shared link to the attachment provided by the web service hosting the file.
+- **url**: The file location or resource URL.
+- **providerName**: The name of the reference attachment provider (e.g., Google Drive, Dropbox).
+- **Example**: Adding a Reference Attachment with ReferenceAttachmentOptions
 
 ```cs
-// Let's say you want to send an email message that includes a link to a Document.pdf file stored on a Google Drive.
-// Instead of attaching the document directly to the email message,
-// you can create a reference attachment that links to the file on the Google Drive.
-
-// Create a message
-var msg = new MapiMessage("from@domain.com", "to@domain.com", "Outlook message file",
-    "This message is created by Aspose.Email", OutlookMessageFormat.Unicode);
-
-// Add reference attachment
-msg.Attachments.Add("Document.pdf",
+var options = new ReferenceAttachmentOptions(
     "https://drive.google.com/file/d/1HJ-M3F2qq1oRrTZ2GZhUdErJNy2CT3DF/",
     "https://drive.google.com/drive/my-drive",
     "GoogleDrive");
-//Also, you can set additional attachment properties
-msg.Attachments[0].SetProperty(KnownPropertyList.AttachmentPermissionType, AttachmentPermissionType.AnyoneCanEdit);
-msg.Attachments[0].SetProperty(KnownPropertyList.AttachmentOriginalPermissionType, 0);
-msg.Attachments[0].SetProperty(KnownPropertyList.AttachmentIsFolder, false);
-msg.Attachments[0].SetProperty(KnownPropertyList.AttachmentProviderEndpointUrl, "");
-msg.Attachments[0].SetProperty(KnownPropertyList.AttachmentPreviewUrl, "");
-msg.Attachments[0].SetProperty(KnownPropertyList.AttachmentThumbnailUrl, "");
-// Finally save the message
-msg.Save(@"my.msg");
+
+// Add reference attachment
+msg.Attachments.Add("Document.pdf", options);
 ```
 
 ### **Embed Messages as Attachments**

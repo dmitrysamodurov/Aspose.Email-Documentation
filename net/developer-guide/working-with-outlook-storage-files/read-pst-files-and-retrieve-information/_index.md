@@ -165,3 +165,56 @@ private static void GetAllMessages(PersonalStorage pst, FolderInfo folder)
     }
 }
 ```
+
+## **Retrieve Item Category Colors from PST Files**
+
+Aspose.Email allows users to retrieve category information, including names and colors, from PST files. Category data can be extracted and matched with individual PST items. Use the following API members:
+
+- [OutlookCategoryColor](https://reference.aspose.com/email/net/aspose.email.storage.pst/outlookcategorycolor/) enum - Represents the color associated with a category.
+- [PstItemCategory](https://reference.aspose.com/email/net/aspose.email.storage.pst/pstitemcategory/) class - Provides properties for category name and color.
+- [GetCategories](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/getcategories/) method - Retrieves a list of categories with their names and colors.
+
+The following code samples demonstrate how to retrieve all available categories from a PST file and match those associated with a specific email message.
+
+### **Retrieve available Categories from PST**
+
+```cs
+using (var pst = PersonalStorage.FromFile("mailbox.pst"))
+{
+   var categories = pst.GetCategories();
+   
+   foreach(var category in categories)
+   {
+       Console.WriteLine(category);
+   }
+}
+```
+
+### **Match a Category Name with its Color**
+
+```cs
+using (var pst = PersonalStorage.FromFile("mailbox.pst"))
+{
+    // Get all categories from the PST
+    var availableCategories = pst.GetCategories();
+    
+    // Extract a message from the PST and retrieve the list of category names for the message
+    var messageCategoryList = FollowUpManager.GetCategories(pst.ExtractMessage(messageInfo));
+    
+    // Iterate through each category in the message and match it with the PST category list
+    foreach (var messageCategory in messageCategoryList)
+    {
+        var category = availableCategories.Find(c => c.Name.Equals(messageCategory, StringComparison.OrdinalIgnoreCase));
+
+        if (category != null)
+        {
+            // Print the category name and its associated color
+            Console.WriteLine(category);
+        }
+        else
+        {
+            Console.WriteLine($"Category: {messageCategory}, Color: Not found");
+        }
+    }
+}
+```
