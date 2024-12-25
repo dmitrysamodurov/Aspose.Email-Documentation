@@ -16,15 +16,14 @@ Aspose.Email for .NET provides robust capabilities to convert email messages sto
 
 ## **Convert MBOX to EML**
 
-EML files are used by several email clients to store email messages in plain text. Converting MBOX to EML allows for easy transfer and reading of email messages. 
+EML files are used by several email clients to store email messages in plain text. Converting MBOX to EML allows for easy transfer and reading of email messages.
 
-Below is the sample code demonstrating the conversion of MBOX to EML using Aspose.Email for .NET:
+Below is the sample code demonstrating the conversion of MBOX to EML:
 
 1. Create an instance of MboxrdStorageReader for the specified MBOX file ("sourceFile.mbox").
 2. Use the [reader.GetTotalItemsCount()](https://reference.aspose.com/email/net/aspose.email.storage.mbox/mboxrdstoragereader/gettotalitemscount/) method to iterate through all emails in the file to get the total number of items starting from 0.
 3. Read each message using the [reader.ReadNextMessage()](https://reference.aspose.com/email/net/aspose.email.storage.mbox/mboxrdstoragereader/readnextmessage/#readnextmessage) method.
 4. Save each email as a .eml file with a unique name ("outputMessage"+i+".eml") using [SaveOptions.DefaultEml](https://reference.aspose.com/email/net/aspose.email/saveoptions/defaulteml/).
-
 
 ```cs
 using (var reader = new MboxrdStorageReader("sourceFile.mbox", false)){
@@ -52,7 +51,6 @@ using (var reader = new MboxrdStorageReader("sourceFile.mbox", false)){
 
 ## **Convert MBOX to HTML**
 
- 
 HTML format is widely used for displaying emails in web browsers. Converting MBOX to HTML allows for viewing emails in a web-friendly format.
 
 The following code sample demonstrates how to read messages from an MBOX file and save each message as an HTML file.
@@ -83,7 +81,8 @@ foreach (var eml in mbox.EnumerateMessages())
     };
     eml.Save(htmlFilePath, htmlSaveOptions);
 ```
-### **Special Features** 
+
+### **Special Features**
 
 1. **High Fidelity**:
     - Aspose.Email ensures that the conversion from MBOX to HTML retains the original formatting, layout, and embedded elements of the email messages. This includes preserving the text formatting, images, hyperlinks, and attachments, ensuring that the HTML representation closely mirrors the original email content.
@@ -96,7 +95,6 @@ foreach (var eml in mbox.EnumerateMessages())
 
 4. **Metadata Preservation**:
     - Aspose.Email ensures that important metadata such as subject, sender, recipient, date, and headers are preserved during the conversion. This ensures that the context and details of each email message are not lost in the process.
-
 
 ## **Convert MBOX to ICS**
 
@@ -131,14 +129,13 @@ foreach (var eml in mbox.EnumerateMessages())
     }
 }
 ```
+
 ### **MBOX to ICS Conversion Capabilities**
 
-- All critical metadata associated with calendar events, such as event descriptions, locations, and organizer details, are preserved during the conversion process. This ensures that no important information is lost.
 - The SaveOptions class allows developers to customize how data is saved during the conversion. This includes options for controlling the formatting and structure of the resulting ICS files.
 - Aspose.Email provides the ability to extract calendar events from email messages. Using the MailMessage and Appointment classes, events embedded in emails can be accurately identified and converted to the ICS format.
 - The library is designed to handle large MBOX files efficiently. It can process numerous email messages quickly, making it suitable for applications that require converting large volumes of data.
 - Aspose.Email ensures that all relevant data within the MBOX file is accurately converted to the ICS format. This includes preserving event details such as the event summary, start and end times, recurrence patterns, attendees, and more.
-
 
 ## **Convert MBOX to MHT/MHTML**
 
@@ -150,7 +147,6 @@ Below is the sample code demonstrating the MBOX to MHT conversion:
 2. Iterate over each email message in the MBOX file with the [GetTotalItemsCount()](https://reference.aspose.com/email/net/aspose.email.storage.mbox/mboxstoragereader/gettotalitemscount/) method of the [MboxStorageReader](https://reference.aspose.com/email/net/aspose.email.storage.mbox/mboxrdstoragereader/) class. Read the next email message in the iteration using the [ReadNextMessage()](https://reference.aspose.com/email/net/aspose.email.storage.mbox/mboxstoragereader/readnextmessage/#readnextmessage) method.
 3. Save the email message as an MHTML file with the [Save](https://reference.aspose.com/email/net/aspose.email/mailmessage/save/#save_3) method, using the iteration index for the file name and the [SaveOptions.DefaultMhtml](https://reference.aspose.com/email/net/aspose.email/saveoptions/defaultmhtml/), a predefined option for saving messages in MHT format.
 
-
 ```cs
 using (var reader = new MboxrdStorageReader("sourcFile.mbox", false)){
   for (int i = 0; i < reader.GetTotalItemsCount(); i++){
@@ -160,6 +156,7 @@ using (var reader = new MboxrdStorageReader("sourcFile.mbox", false)){
   }
 }
 ```
+
 ### **Additional Features**
 
 While converting from MBOX to MHT/MHTML, developers can also take advantage of other useful features provided by Aspose.Email for .NET:
@@ -168,7 +165,6 @@ While converting from MBOX to MHT/MHTML, developers can also take advantage of o
 - Aspose.Email can handle inline and embedded resources (such as images and attachments) within email messages. These resources are preserved and correctly referenced in the resulting MHT files.
 - During the conversion process, important metadata such as email headers, subject, sender, recipient, and date are preserved, ensuring that no critical information is lost.
 - Developers can programmatically change the subject, body, and other properties of email messages before saving them in the desired format using the rich functionality of the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/#mailmessage-class) class to manipulate email properties. 
-
 
 ## **Convert MBOX to MSG**
 
@@ -208,7 +204,6 @@ The code snippet below outlines a process to convert email messages from an MBOX
 4. Iterate through each email message (eml) in the MBOX file using [mbox.EnumerateMessages()](https://reference.aspose.com/email/net/aspose.email.storage.mbox/mboxstoragereader/enumeratemessages/#enumeratemessages). This method returns each message as a MailMessage object.
 5. Use the [Save](https://reference.aspose.com/email/net/aspose.email/mailmessage/save/#save_3) method to save each email as an OFT file at the specified file path. The [SaveOptions.DefaultOft](https://reference.aspose.com/email/net/aspose.email/saveoptions/defaultoft/) ensures that the email message is converted and saved in the OFT format with default options.
 
-
 ```cs
 var mbox = MboxStorageReader.CreateReader(mboxFilePath, new MboxLoadOptions());
 
@@ -235,7 +230,6 @@ The process of converting MBOX to OST using Aspose.Email for .NET involves sever
 4. Iteratively, each message in the MBOX file is processed using [mbox.EnumerateMessages()](https://reference.aspose.com/email/net/aspose.email.storage.mbox/mboxstoragereader/enumeratemessages/#enumeratemessages). For each message, it undergoes transformation into a MapiMessage object using [MapiMessage.FromMailMessage(eml)](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/frommailmessage/#frommailmessage_3), where eml represents the extracted email in MailMessage format. 
 5. Finally, each MapiMessage is added to the Inbox folder within the OST file using [folderInfo.AddMessage(msg)](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/addmessage/).
 
-
 ```cs
 var mbox = MboxStorageReader.CreateReader(mboxFilePath, new MboxLoadOptions());
 
@@ -256,12 +250,12 @@ using (var ost = PersonalStorage.FromFile(ostFilePath))
 The PST (Personal Storage Table) format is a data file used by Microsoft Outlook to store local copies of messages, calendar events, and other items. Converting MBOX files to PST format allows for seamless email data integration into Microsoft Outlook's ecosystem, ensuring compatibility and ease of access. 
 
 The process of converting MBOX to PST is similar to [MBOX to OST conversion](#convert-mbox-to-ost) and involves the following components and steps:
-1. Firstly, the [MboxStorageReader](https://reference.aspose.com/email/net/aspose.email.storage.mbox/mboxstoragereader/#mboxstoragereader-class) is employed to read the MBOX file specified by mboxFilePath.
-2. Once the messages are ready, a [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/#personalstorage-class) instance is created using the [PersonalStorage.Create](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/create/#create_4) method, targeting the PST file specified by pstFilePath and specifying the Unicode format for better compatibility. 
+
+1. The [MboxStorageReader](https://reference.aspose.com/email/net/aspose.email.storage.mbox/mboxstoragereader/#mboxstoragereader-class) is employed to read the MBOX file specified by mboxFilePath.
+2. The [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/#personalstorage-class) instance is created using the [PersonalStorage.Create](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/create/#create_4) method, targeting the PST file specified by pstFilePath and specifying the Unicode format for better compatibility.
 3. Within this PST file, an "Inbox" folder is created using the [CreatePredefinedFolder](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/createpredefinedfolder/#createpredefinedfolder) method, setting it up as the destination for the converted messages. 
 4. Iteratively, each message in the MBOX file is processed using [mbox.EnumerateMessages()](https://reference.aspose.com/email/net/aspose.email.storage.mbox/mboxstoragereader/enumeratemessages/#enumeratemessages). For each message, it is converted into a MapiMessage object using [MapiMessage.FromMailMessage(eml)](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/frommailmessage/#frommailmessage_3), where eml represents the extracted email in MailMessage format. 
 5. Finally, each MapiMessage is added to the "Inbox" folder within the PST file using [folderInfo.AddMessage(msg)](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/addmessage/), completing the conversion process.
-
 
 ```cs
 var mbox = MboxStorageReader.CreateReader(mboxFilePath, new MboxLoadOptions());
@@ -348,7 +342,6 @@ Aspose.Email provides a set of features for your .NET applications to implement 
 
 Print a message to the console confirming the VCF file has been saved.
 
-
 ```cs
 var mbox = MboxStorageReader.CreateReader(mboxFilePath, new MboxLoadOptions());
 
@@ -413,6 +406,3 @@ foreach (var eml in mbox.EnumerateMessages())
     count++;
 }
 ```
-
-
-

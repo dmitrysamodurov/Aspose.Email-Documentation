@@ -2,7 +2,7 @@
 title: Convert MHTML Files to Various Formats in C#  
 ArticleTitle: Convert MHTML Files to Various Formats in C#  
 type: docs
-weight: 60
+weight: 40
 url: /net/converting-between-formats/convert-mhtml-to-other-formats
 --- 
 
@@ -11,28 +11,10 @@ Converting MHTML files to various formats is a common requirement in many applic
 Aspose.Email for .NET simplifies the conversion process through its rich set of features and methods. The main components involved in the MHTML conversion process include:
 
 - [MhtmlLoadOptions](https://reference.aspose.com/email/net/aspose.email/mhtmlloadoptions/): This component specifies the options for loading MHTML files. It allows for customization of how the MHTML content is interpreted and processed.
-
 - [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/): This class represents an email message and serves as a bridge for loading MHTML content. It facilitates the extraction and manipulation of the email data within the MHTML file.
-
 - [Save Options](https://reference.aspose.com/email/net/aspose.email/saveoptions/): Depending on the target format, Aspose.Email for .NET provides various save options such as EmlSaveOptions, MsgSaveOptions, etc. These options determine the parameters and settings for saving the converted file in the desired format.
 
 File format conversion methods are also used to streamline the conversion process, allowing for seamless transformation from MHTML to formats like EML, MSG, PST, and others.
-
-By leveraging these components, developers can efficiently convert MHTML files to a variety of formats, ensuring compatibility and flexibility in their applications. In the following sections, we will provide detailed examples and step-by-step instructions on how to perform these conversions using Aspose.Email for .NET.
-
-**Before you start:**
-
-1. Ensure you have Visual Studio or any other .NET IDE installed. Additionally, install the Aspose.Email for .NET library by downloading its [DLL](https://releases.aspose.com/email/net/) or via [NuGet](https://nuget.org/packages/Aspose.Email):
-
-```
-Install-Package Aspose.Email
-```
-2. Add the required namespaces to your code file to access Aspose.Email functionalities.
-
-```csharp
-using Aspose.Email;
-using Aspose.Email.Mime;
-```
 
 ## **Convert MHTML to EML**
 
@@ -73,6 +55,7 @@ Converting MHTML files to HTML format is often necessary for displaying email co
 var message = MailMessage.Load("myMessage.mhtml");
 message.Save("output.html", SaveOptions.DefaultHtml);
 ```
+
 The library also allows modifying or adding custom properties to the HTML output, such as custom headers, subject, or body content. You can also embed attachments within the HTML content if needed. To ensure that the email content is correctly displayed in web browsers or email clients, customize the HTML formatting: inline styles, external CSS, and HTML tags.
 
 ## **Convert MHTML to ICS**
@@ -139,6 +122,7 @@ Below is an example demonstrating how to create an Appointment object from the I
             File.WriteAllText("custom_appointment.ics", icsContent);
         }
 ```
+
 The customization, in this case, is achieved by utilizing the [Appointment](https://reference.aspose.com/email/net/aspose.email.calendar/appointment/#appointment-class) class, representing a calendar to an e-mail, and its extensive methods and properties.  
 
 ## **Convert MHTML to MBOX**
@@ -156,6 +140,7 @@ using (var writer = new MboxrdStorageWriter("output.mbox", false)){
     }
 }
 ```
+
 ### **Additional Options**
 
 - **Appending to Existing MBOX Files:**
@@ -243,7 +228,6 @@ eml.Priority = MailPriority.High; // Set high priority
 eml.Save("message.msg", SaveOptions.DefaultMsgUnicode);
 ```
 
-
 ## **Convert MHTML to OFT**
 
 Converting MHTML files to OFT format is useful for scenarios where you need to create email templates for Microsoft Outlook. Aspose.Email for .NET is a robust solution for performing this conversion. The following code sample shows how to convert an MHTML file to OFT format using Aspose.Email for .NET:
@@ -266,21 +250,22 @@ Aspose.Email for .NET offers several special features that can be implemented in
 eml.Subject = "Customized Subject";
 eml.Headers.Add("X-Custom-Header", "CustomHeaderValue");
 ```
+
 These lines demonstrate how to modify the subject and add a custom header to the message before saving it as an OFT file.
 
 ```cs
 var attachment = new Attachment("path/to/attachment.txt");
 eml.Attachments.Add(attachment);
 ```
+
 This code adds a new attachment to the email message.
 
 ```cs
 eml.IsRead = true; // Mark as read
 eml.Priority = MailPriority.High; // Set high priority
 ```
+
 These lines set the message as read and assign it a high priority.
-
-
 
 ## **Convert MHTML to OST**
 
@@ -289,7 +274,6 @@ If you need to store and manage email messages within Microsoft Outlook while of
 1. Use the [PersonalStorage.FromFile](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/fromfile/#fromfile) method to load an existing OST file.
 2. Use the [MapiMessage.Load](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/load/#load_3) method to load the MHTML file. This method reads the content of the MHTML file and converts it to a MapiMessage object.
 3. Locate the target folder within the OST file (e.g., "Inbox") and use the [AddMessage](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/addmessage/) method to add the converted MHTML message to that folder.
-
 
 ```cs
 using (var ost = PersonalStorage.FromFile("storage.ost"))
@@ -302,6 +286,7 @@ using (var ost = PersonalStorage.FromFile("storage.ost"))
     folderInfo.AddMessage(msg);
 }
 ```
+
 Apart from the ability to modify or add custom properties, such as custom headers, subject, or body content, to the MHTML file before saving it as an OST message, Aspose.Email also allows adding new attachments or modifying existing ones, setting classification flags, such as read/unread status, importance level, or follow-up flags; preserving the rich HTML formatting of the email content, including styles, images, and embedded resources; creating new folders or organizing messages into existing folders within the OST file to maintain an organized structure.
 
 ```cs
@@ -329,7 +314,7 @@ using (var ost = PersonalStorage.FromFile("storage.ost"))
     // Add the customized message to the OST file
     folderInfo.AddMessage(msg);
     }
-```    
+```
 
 ## **Convert MHTML to PST**
 
@@ -348,9 +333,8 @@ using (var pst = PersonalStorage.Create("outputFile.pst", FileFormatVersion.Unic
     inbox.AddMessage(msg);
 }
 ```
-For more options to be used while converting MHTML files to PST format see [Convert MHTML to OST](#convert-mhtml-to-ost). 
 
-
+For more options to be used while converting MHTML files to PST format see [Convert MHTML to OST](#convert-mhtml-to-ost).
 
 ## **Convert MHTML to VCF**
 
@@ -410,10 +394,3 @@ if (vcfView != null)
     File.WriteAllText("contact.vcf", encodedVcfView);
     }
 ```
-
-
-
-
-
-
-

@@ -1,12 +1,12 @@
 ---
-title: Convert MSG Files to Various Formats in C#  
-ArticleTitle: Convert MSG Files to Various Formats in C#  
+title: Convert OFT Files to Various Formats in C#  
+ArticleTitle: Convert OFT Files to Various Formats in C#  
 type: docs
-weight: 60
-url: /net/converting-between-formats/convert-msg-to-other-formats
+weight: 35
+url: /net/converting-between-formats/convert-oft-to-other-formats
 --- 
 
-Aspose.Email for .NET offers comprehensive functionality for working with a wide range of email formats. One of the essential features is the ability to convert OFT (Outlook File Template) files to various other formats, such as EML, EMLX, MSG, MHTML, and more. This capability is invaluable for developers looking to streamline email processing and ensure compatibility across different email clients and platforms. In this section, we will guide you through the process of converting OFT files to these formats, highlighting the straightforward and efficient methods provided by Aspose.Email for .NET.
+One of the essential features is the ability to convert OFT (Outlook File Template) files to various other formats, such as EML, EMLX, MSG, MHTML, and more. In this section, we will guide you through the process of converting OFT files to these formats, highlighting the straightforward and efficient methods provided by Aspose.Email for .NET.
 
 When converting OFT files to other formats using Aspose.Email for .NET, several key components are involved in the process. Here's a detailed breakdown of these components:
 
@@ -18,23 +18,9 @@ When converting OFT files to other formats using Aspose.Email for .NET, several 
 
 - [SaveOptions](https://reference.aspose.com/email/net/aspose.email/saveoptions/) class - Provides options for saving the message in different formats. It contains predefined options for various formats like EML, MSG, and MHTML and ensures that the message is saved with the correct format settings.
 
-**To get started** with the library, follow these steps:
-
-1. Install via NuGet Package Manager:
-Open Visual Studio and your project.
-Navigate to Tools -> NuGet Package Manager -> Manage NuGet Packages for Solution.
-Search for "Aspose.Email" and install the package.
-
-2. Add the Aspose.Email Namespace:
-
-```csharp
-using Aspose.Email;
-using Aspose.Email.Mapi;
-```
-
 ## **Convert OFT to EML**
 
-Converting OFT files to EML format is often essential for email data migration, archiving, or ensuring compatibility with various email clients. The EML format is widely supported and can be opened by numerous email applications. Aspose.Email for .NET allows you to easily transform OFT files into EML format. To perform the conversion, consider the following code sample with steps:
+Converting OFT files to EML format is often essential for email data migration, archiving, or ensuring compatibility with various email clients. The EML format is widely supported and can be opened by numerous email applications. To perform the conversion, consider the following code sample with steps:
 
 1. Load the OFT file into a MapiMessage object using the [MapiMessage.Load](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/load/#load_2).
 2. Save the loaded file using the [Save](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/save/#save_3) method specifying the target file name and saving options.
@@ -94,7 +80,6 @@ oft.Save("message_with_attachments.eml", SaveOptions.DefaultEml);
 
 The range of options also includes setting encoding, managing headers, and more all of which help tailor the conversion process to meet specific requirements.
 
-
 ## **Convert OFT to EMLX**
 
 1. Use the [MapiMessage.Load](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/load/#load_2) method to load the OFT file into a MapiMessage object. This method reads the OFT file from the specified path.
@@ -104,7 +89,6 @@ The range of options also includes setting encoding, managing headers, and more 
 var oft = MapiMessage.Load("template.oft");
 oft.Save("message.emlx", SaveOptions.DefaultEmlx);
 ```
-
 
 ### **Customize Message Properties**
 
@@ -184,12 +168,3 @@ oft.Save("message_utf8.html", options);
 ### **Inline Images**
 
 To include images as inline base64 encoded strings within the HTML file, you can set the HtmlFormatOptions property to WriteInlineImages.
-
-
-
-
-
-
-
-
-

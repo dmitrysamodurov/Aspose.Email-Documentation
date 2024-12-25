@@ -1,17 +1,14 @@
-0---
+---
 title: Convert MSG Files to Various Formats in C#  
 ArticleTitle: Convert MSG Files to Various Formats in C#  
 type: docs
-weight: 60
+weight: 20
 url: /net/converting-between-formats/convert-msg-to-other-formats
 --- 
 
-For Aspose.Email for .NET, dealing with various email file formats is a common task. It is designed to simplify email files management and manipulation including conversion between formats such as EML, EMLX, ICS, HTML, MHTML, MBOX, OFT, OST, PST, VCF and more. This article will guide you through the process of converting MSG files using Aspose.Email for .NET, highlighting the main components involved in the conversion process.
-
-MSG is a file format used by Microsoft Outlook and Exchange to store individual email messages. An MSG file contains the email's data, including headers, body, attachments, and metadata. These files are typically created when an email is saved to disk from an Outlook email client. However, there are scenarios where you may need to convert MSG files to other formats for compatibility, archival, or sharing purposes. 
+MSG is a file format used by Microsoft Outlook and Exchange to store individual email messages. An MSG file contains the email's data, including headers, body, attachments, and metadata. These files are typically created when an email is saved to disk from an Outlook email client. However, there are scenarios where you may need to convert MSG files to other formats for compatibility, archival, or sharing purposes.
 
 The primary components involved in these conversion processes include classes, methods, and enumerations that facilitate the loading, manipulation, and saving of MSG files:
-
 
 - [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) class - represents an MSG file, providing properties and methods specific to MSG format. It is used to load and manipulate MSG files before conversion.
 
@@ -27,20 +24,6 @@ The primary components involved in these conversion processes include classes, m
 
 By leveraging these components, developers can convert MSG files to a variety of formats, ensuring compatibility and flexibility in their applications. In the following sections, we will provide detailed examples and step-by-step instructions on how to perform these conversions using Aspose.Email for .NET.
 
-**Before you start:**
-
-1. Ensure you have Visual Studio or any other .NET IDE installed. Additionally, install the Aspose.Email for .NET library by downloading its [DLL](https://releases.aspose.com/email/net/) or via [NuGet](https://nuget.org/packages/Aspose.Email):
-
-```
-Install-Package Aspose.Email
-```
-2. Add the required namespaces to your code file to access Aspose.Email functionalities.
-
-```csharp
-using Aspose.Email;
-using Aspose.Email.Mime;
-```
-
 ## **Convert MSG to EML**
 
 EML files are widely supported across different email clients, making it easier to share and access emails on various platforms. Converting to EML format allows for easier manipulation and processing of email data, especially when integrating with other systems or applications. Aspose.Email for .NET provides a straightforward and efficient way to perform this conversion. The code sample below demonstrates how to load an MSG file and save it as an EML file:
@@ -53,10 +36,10 @@ EML files are widely supported across different email clients, making it easier 
 var message = MailMessage.Load("myMessage.msg");
 message.Save("output.eml", SaveOptions.DefaultEml); 
 ```
+
 >**Note:** Attachments in the MSG file are automatically included in the EML file, maintaining their integrity and accessibility. Inline images and embedded objects within the MSG file are accurately converted and preserved in the EML file.
 
 You can customize email headers and footers before saving the email in EML format. This is useful for adding metadata or additional information. You can use the [Save Options](https://reference.aspose.com/email/net/aspose.email/saveoptions/#saveoptions-class) class to specify additional settings when saving the email. For instance, you can control how the email body is saved, manage encoding, and specify if inline attachments should be preserved.
-
 
 ## **Convert MSG to EMLX**
 
@@ -71,6 +54,7 @@ var message = MailMessage.Load("My File.msg");
 // save MSG as a EMLX 
 message.Save("Saved File.emlx", SaveOptions.CreateSaveOptions(MailMessageSaveType.EmlxFormat)); 
 ```
+
 Aspose.Email for .NET offers several special features that can be applied in the process of converting MSG to EMLX. These features enhance the conversion process by providing additional control, customization, and handling of various aspects of email messages. The code sample below demonstrates the implementation of some of them:
 
 ```cs
@@ -147,6 +131,7 @@ if (msg.SupportedType == MapiItemType.Calendar)
     calendar.Save("appointment.ics", AppointmentSaveFormat.Ics);
 }
 ```
+
 ### **Advanced MSG to ICS Conversion Features**
 
 Aspose.Email for .NET offers several advanced features that enhance the process of converting MSG files containing calendar appointments to ICS format. These features provide greater flexibility and control over the conversion, ensuring that the output meets specific requirements and maintains the integrity of the original appointment data. Below are some notable features:
@@ -160,7 +145,6 @@ Aspose.Email for .NET offers several advanced features that enhance the process 
 - **Managing Attachments**: all relevant documents and files are included within an ICS file. 
 
 - **Setting Time Zones**: set and adjust time zones for the appointment to make time-related data accurate and consistent across different regions. 
- 
 
 ## **Convert MSG to MBOX**
 
@@ -185,15 +169,10 @@ using (var message = MailMessage.Load("inputFile.msg", new MsgLoadOptions())){
 The advanced features provided by Aspose.Email for .NET to enhance the process of converting MSG files to MBOX format include:
 
 - Preserving email properties
-
 - Attachments handling
-
 - Email headers customization
-
 - Multiple MSG files conversion
-
 - Setting email save options
-
 
 ## **Convert MSG to MHT/MHTML**
 
@@ -209,98 +188,17 @@ msg.Save("file.mht", SaveOptions.DefaultMhtml);
 
 Aspose.Email for .NET provides an array of **special features** that enhance the conversion of MSG files to MHT format. It ensures the preservation of the email’s original formatting and allows for the inclusion of attachments within the MHT file. Customization options through [MhtSaveOptions](https://reference.aspose.com/email/net/aspose.email/mhtsaveoptions/#mhtsaveoptions-class) enable embedded resources, management of inline images, and the addition of custom headers and footers. Furthermore, it handles embedded objects and offers detailed control over encoding for a flawless conversion experience. 
 
-
 ## **Convert MSG to OFT**
 
 Converting MSG files to OFT (Outlook Template File) can be essential for creating reusable email templates in Microsoft Outlook. Aspose.Email for .NET provides a way to perform this conversion with minimal code. By utilizing the [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) class, you can convert an MSG file to an OFT format. Here's a code snippet that demonstrates how to achieve this:
 
 1. Create a new [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) object with the sender's email, recipient's email, subject, and body of the email template.
 2. Use the [SaveAsTemplate]() method to save the MapiMessage as an OFT file (OFT Template).
+
 ```cs
 using (MapiMessage mapi = new MapiMessage("test@from.to", "test@to.to", "template subject", "Template body"))
 {
     string oftMapiFileName = "mapiToOft.msg";
-    mapi.SaveAsTemplate(oftMapiFileName);
+    mapi.Save(oftMapiFileName, new MsgSaveOptions(MailMessageSaveType.OutlookTemplateFormat);
 } 
 ```
-
-## **Convert MHTML to OST**
-
-If you need to store and manage email messages within Microsoft Outlook while offline, converting them to OST (Offline Storage Table) format might be useful. For MHTML to OST conversion, Aspose.Email for .NET provides a straightforward method. In a few lines of code, you can load an existing OST file, then a MHTML file, and add it to the target folder. The following code sample shows how to perform this conversion:
-
-1. Use the [PersonalStorage.FromFile](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/fromfile/#fromfile) method to load an existing OST file.
-2. Use the [MapiMessage.Load](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/load/#load_3) method to load the MHTML file. This method reads the content of the MHTML file and converts it to a MapiMessage object.
-3. Locate the target folder within the OST file (e.g., "Inbox") and use the [AddMessage](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/addmessage/) method to add the converted MHTML message to that folder.
-
-
-```cs
-using (var ost = PersonalStorage.FromFile("storage.ost"))
-{
-    // Load the EML file
-    var msg = MapiMessage.Load("message.mhtml", new MhtmlLoadOptions());
-
-    // Add the EML message to the OST file
-    var folderInfo = ost.RootFolder.GetSubFolder("Inbox");
-    folderInfo.AddMessage(msg);
-}
-```
-Apart from the ability to modify or add custom properties, such as custom headers, subject, or body content, to the MHTML file before saving it as an OST message, Aspose.Email also allows adding new attachments or modifying existing ones, setting classification flags, such as read/unread status, importance level, or follow-up flags; preserving the rich HTML formatting of the email content, including styles, images, and embedded resources; creating new folders or organizing messages into existing folders within the OST file to maintain an organized structure.
-
-```cs
-// Load the OST file
-using (var ost = PersonalStorage.FromFile("storage.ost"))
-    {
-    // Load the MHTML file
-    var msg = MapiMessage.Load("message.mhtml", new MhtmlLoadOptions());
-
-    // Customize message properties
-    msg.Subject = "Customized Subject";
-    msg.Headers.Add("X-Custom-Header", "CustomHeaderValue");
-
-    // Add an attachment
-    var attachment = new MapiAttachment("path/to/attachment.txt", "attachment.txt");
-    msg.Attachments.Add(attachment);
-
-    // Set message flags
-    msg.SetMessageFlags(MapiMessageFlags.MSGFLAG_READ); // Mark as read
-    msg.Importance = MapiImportance.High; // Set high importance
-
-    // Get the target folder
-    var folderInfo = ost.RootFolder.GetSubFolder("Inbox");
-
-    // Add the customized message to the OST file
-    folderInfo.AddMessage(msg);
-    }
-```    
-
-## **Convert MHTML to PST**
-
-Converting MHTML files to PST (Personal Storage Table) format is useful for scenarios where you need to store and manage email messages within Microsoft Outlook. Aspose.Email for .NET offers a four-step solution to perform this conversion:
-
-1. Create a new PST file with the [PersonalStorage.Create](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/create/#create_4) method. This method initializes a new PST file with the specified name and file format version.
-2. Create a subfolder within the PST file (e.g., "Inbox") using the AddSubFolder method.
-3. Load the MHTML file using the [MapiMessage.Load](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/load/#load_3) method. This method reads the content of the MHTML file and converts it to a MapiMessage object.
-4. Add the message to the PST file with the [AddMessage](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/addmessage/) method to add the converted MHTML message to the specified folder within the PST file.
-
-```cs
-using (var pst = PersonalStorage.Create("outputFile.pst", FileFormatVersion.Unicode))
-{ 
-    var inbox = pst.RootFolder.AddSubFolder("Inbox");
-    var msg = MapiMessage.Load("sourceFile.mhtml", new MhtmlLoadOptions());
-    inbox.AddMessage(msg);
-}
-```
-For more options to be used while converting MHTML files to PST format see [Convert MHTML to OST](#convert-mhtml-to-ost). 
-
-
-
-## **Convert MSG to VCF**
-
-
-
-
-
-
-
-
-
