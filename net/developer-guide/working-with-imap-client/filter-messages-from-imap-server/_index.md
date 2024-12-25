@@ -111,6 +111,7 @@ queryBuilder.CustomSearch("X-GM-RAW \"has:attachment\"");
 MailQuery mailQuery = queryBuilder.GetQuery();
 ImapMessageInfoCollection messageInfoCollection = imapClient.ListMessages(mailQuery);
 ```
+
 ### **Filter Messages with Paging Support**
 
 The [ImapClient](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/) provides the capability to search for messages from the mailbox and list them with paging support. The following code snippet shows you how to filter messages with paging support.

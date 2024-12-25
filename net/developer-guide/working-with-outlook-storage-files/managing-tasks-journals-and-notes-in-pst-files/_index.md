@@ -20,7 +20,6 @@ The following code snippet shows you how to create a [MapiTask](https://referenc
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-AddMapiTaskToPST-AddMapiTaskToPST.cs" >}}
 
-
 ## **Add MAPI Journal to PST**
 
 Aspose.Email also allows you to add [MapiJournal](https://reference.aspose.com/email/net/aspose.email.mapi/mapijournal/) to the Journal subfolder of a PST file that you have created or loaded. Below are the steps to add [MapiJournal](https://reference.aspose.com/email/net/aspose.email.mapi/mapijournal/) to a PST:
@@ -39,7 +38,6 @@ The following code snippet shows you how to create a [MapiJournal](https://refer
 The following code snippet shows you how to add attachments to [MapiJournal](https://reference.aspose.com/email/net/aspose.email.mapi/mapijournal/).
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-AddAttachmentsToMapiJournal-AddAttachmentsToMapiJournal.cs" >}}
-
 
 ## **Add MAPI Note to PST**
 

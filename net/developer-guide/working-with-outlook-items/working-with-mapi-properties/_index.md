@@ -41,19 +41,6 @@ where the definition of convertDateTime method is as follows:
 The following code snippet shows you how to set additional MAPI properties.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-SetAdditionalMAPIProperties-SetAdditionalMAPIProperties.cs" >}}
-
-## **Reading Named MAPI Properties**
-
-Microsoft Outlook supports adding named MAPI properties to an MSG file. These named MAPI properties are added by the user. You can add a named property, for example, “MyProp”, to an MSG file using Aspose.Email. This article illustrates Aspose.Email's capabilities to:
-
-- [**Accessing and Setting Outlook MAPI Property**](#accessing-and-setting-outlook-mapi-property)
-  - [**Getting MAPI Property using the MAPI Property Tag**](#getting-mapi-property-using-the-mapi-property-tag)
-  - [**Setting MAPI Properties**](#setting-mapi-properties)
-  - [**Some Additional Properties**](#some-additional-properties)
-- [**Reading Named MAPI Properties from Outlook MSG Files**](#reading-named-mapi-properties-from-outlook-msg-files)
-  - [**Read Named MAPI Properties from MSG file**](#read-named-mapi-properties-from-msg-file)
-  - [**Reading Named MAPI Property from Attachment**](#reading-named-mapi-property-from-attachment)
-  - [**Remove Properties from MSGs and Attachments**](#remove-properties-from-msgs-and-attachments)
   
 ### **Read Named MAPI Properties from MSG Files**
 

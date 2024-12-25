@@ -6,12 +6,11 @@ weight: 30
 url: /net/managing-contacts-in-pst-files/
 ---
 
-
 ## **Adding and Saving Contacts**
 
 ### **Add Contacts to PST**
 
-The article [Creating and Managing PST Files](https://docs.aspose.com/email/net/create-and-manage-pst-files/) shows how to create a PST file and add a subfolder to it. With Aspose.Email you can add a MapiContact to the Contacts subfolder of a PST file that you have created or loaded. Below are the steps to add MapiContact to a PST:
+The section [Creating and Managing PST Files](https://docs.aspose.com/email/net/create-and-manage-pst-files/) shows how to create a PST file and add a subfolder to it. With Aspose.Email you can add a MapiContact to the Contacts subfolder of a PST file that you have created or loaded. Below are the steps to add MapiContact to a PST:
 
 1. Create a [MapiContact](https://reference.aspose.com/email/net/aspose.email.mapi/mapicontact/) object.
 2. Set the [MapiContact properties](https://reference.aspose.com/email/net/aspose.email.mapi/mapicontact/) using different constructors and methods.
@@ -117,6 +116,7 @@ The program below loads a PST file from disk and saves all the contacts to vCard
 
 |![todo:image_alt_text](working-with-contacts-in-pst-file_1.png)|
 | :- |
+
 The following code snippet shows you how to export contacts from Outlook PST to vCard (VCF) format.
 
 ```csharp

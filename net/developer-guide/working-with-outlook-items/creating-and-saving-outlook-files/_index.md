@@ -6,14 +6,13 @@ weight: 10
 url: /net/creating-and-saving-outlook-files/
 ---
 
-
 Aspose.Email supports creating Outlook message (MSG) files. This article explains how to:
 
-- Create a message.
-- Create messages with attachments.
-- Create a message with an RTF body.
-- Save a message as a draft.
-- Work with body compression.
+- [**Create and Save Outlook Messages**](#create-and-save-outlook-messages)
+- [**Create MSG Files With Attachments**](#create-msg-files-with-attachments)
+- [**Create MSG Files with RTF Body**](#create-msg-files-with-rtf-body)
+  - [**RTF Compression for MAPI Message Body**](#rtf-compression-for-mapi-message-body)
+- [**Save Message in Draft Status**](#save-message-in-draft-status)
   
 ## **Create and Save Outlook Messages**
 
@@ -55,17 +54,11 @@ The following example creates an MSG file with an RTF body. There is one heading
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-CreatingMSGFilesWithRTFBody-CreatingMSGFilesWithRTFBody.cs" >}}
 
-## **Save Message in Draft Status**
-
-Emails are saved as drafts when someone has started editing them but wants to return to them to complete them later. Aspose.Email supports saving email messages in draft status by setting a message flag. Below is the sample code to save an Outlook email message (MSG) as a draft.
-
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-SavingMessageInDraftStatus-SavingMessageInDraftStatus.cs" >}}
-
-## **RTF Compression for MAPI Message Body**
+### **RTF Compression for MAPI Message Body**
 
 > **_NOTE:_** The compression process can slow down performance when creating messages. By understanding this fact and configuring the compression flag based on specific requirements and compromise between the file size and performance, developers can effectively manage the creation of MSG and PST files when dealing with email messages.
 
-In this section you will learn how to use RTF compression when setting the MAPI message body. RTF compression is intended to reduce the size of a message as well as the resulting PST (Personal Storage Table) files that Microsoft Outlook uses to store e-mail messages and other data. By using RTF compression when configuring the message body, developers can reduce the amount of memory needed to store e-mail messages or optimize network bandwidth when transmitting messages.
+RTF compression is intended to reduce the size of a message as well as the resulting PST (Personal Storage Table) files that Microsoft Outlook uses to store e-mail messages and other data. By using RTF compression when configuring the message body, developers can reduce the amount of memory needed to store e-mail messages or optimize network bandwidth when transmitting messages.
 
 For this purpose, there have been designed two overloaded methods:
 
@@ -90,3 +83,11 @@ var options = new MapiConversionOptions();
 options.UseBodyCompression = true;
 var msg = MapiMessage.FromMailMessage(message, options);
 ```
+
+## **Save Message in Draft Status**
+
+Emails are saved as drafts when someone has started editing them but wants to return to them to complete them later. Aspose.Email supports saving email messages in draft status by setting a message flag. Below is the sample code to save an Outlook email message (MSG) as a draft.
+
+{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-SavingMessageInDraftStatus-SavingMessageInDraftStatus.cs" >}}
+
+

@@ -27,9 +27,10 @@ The following code snippet demonstrates how to obtain identification information
 3. Extract the sequence numbers of the listed messages by using the [SequenceNumber](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapmessageinfo/sequencenumber/) property of each message.
 4. Use the [FetchMessages](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/fetchmessages/#fetchmessages_2) method to retrieve the full details of the messages from the server, using the sequence numbers obtained in the previous step.
 5. Loop through the fetched messages and for each message, retrieve and display the following information:
+
 - The sequence number of the message.
 - The ItemId.SequenceNumber property.
-- +The subject of the message.
+- The subject of the message.
 
 ```cs
 using (var client = new ImapClient(imapHost, port, emailAddress, password, securityOption))
@@ -75,11 +76,11 @@ The IMAP protocol supports listing messages recursively from a mailbox folder. T
 
 {{< gist "aspose-com-gists" "522d47278b8ca448dc1d7eb97193322c" "Examples-CSharp-IMAP-ImapListMessagesWithMultiConnection-1.cs" >}}
 
-{{% alert color="primary" %}} 
+{{% alert color="primary" %}}
 
 Please note that the usage of multiconnection mode does not guarantee performance increase.
 
-{{% /alert %}} 
+{{% /alert %}}
 
 ### **List Messages with Paging Support**
 
@@ -101,9 +102,8 @@ The code sample with steps below will show you how to use the APIs:
 2. Iterate through each message in the messageInfoCollection using a foreach loop.
 3. Call the [ListAttachments()](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/listattachments/#imapclientlistattachments-method) method on the imapClient object, passing the SequenceNumber property of the message object as a parameter. This method will return an ImapAttachmentInfoCollection containing information about the attachments in the message.
 4. Iterate through each attachment in the attachmentInfoCollection using a foreach loop.
-5. Within the inner loop, you can access the information about each attachment using properties of the attachmentInfo object. In this example, the name and size of each attachment are logged to the console using Console.WriteLine().
+5. Within the inner loop, you can access the information about each attachment using properties of the attachmentInfo object.
    
-   Console.WriteLine("Attachment: {0} (size: {1})", attachmentInfo.Name, attachmentInfo.Size);
 ```cs
 var messageInfoCollection = imapClient.ListMessages();
     
@@ -142,10 +142,9 @@ The following example code demonstrates the use of [AscendingSorting](https://r
 
 {{< gist "aspose-com-gists" "522d47278b8ca448dc1d7eb97193322c" "Examples-CSharp-IMAP-ChangeOrderOfEmails-1.cs" >}}
 
-
 ### **Save Messages in MSG Format**
 
-[In the above example](#fetch-messages-from-server-and-save-to-disc), the emails are saved in EML format. To save emails in MSG format, the [ImapClient.FetchMessage()](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/fetchmessage/#fetchmessage/) method needs to be called. It returns the message in an instance of the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class. The [MailMessage.Save()](https://reference.aspose.com/email/net/aspose.email/mailmessage/save/#save/) method can then be called to save the message to MSG. The following code snippet shows you how to save messages in MSG Format.
+To save emails in MSG format, the [ImapClient.FetchMessage()](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/fetchmessage/#fetchmessage/) method needs to be called. It returns the message in an instance of the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class. The [MailMessage.Save()](https://reference.aspose.com/email/net/aspose.email/mailmessage/save/#save/) method can then be called to save the message to MSG. The following code snippet shows you how to save messages in MSG Format.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-IMAP-SavingMessagesFromIMAPServer-SavingMessagesFromIMAPServer.cs" >}}
 
@@ -154,7 +153,6 @@ The following example code demonstrates the use of [AscendingSorting](https://r
 [ImapClient](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/) provides a [FetchMessages](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/fetchmessages/#fetchmessages/) method which accepts iterable of Sequence Numbers or Unique ID and returns a list of [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/). The following code snippet demonstrates the use of the [FetchMessages](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/fetchmessages/#fetchmessages/) method to fetch messages by Sequence Numbers and Unique ID.
 
 {{< gist "aspose-com-gists" "522d47278b8ca448dc1d7eb97193322c" "Examples-CSharp-IMAP-ImapFetchGroupMessages-1.cs" >}}
-
 
 ### **Fetch Folders and Read Messages Recursively**
 

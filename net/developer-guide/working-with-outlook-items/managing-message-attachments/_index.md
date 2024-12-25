@@ -6,7 +6,6 @@ weight: 80
 url: /net/managing-message-attachments/
 ---
 
-
 ## **Handling Attachments in Outlook**
 
 [Creating and Saving Outlook Message (MSG) Files](https://docs.aspose.com/email/net/creating-and-saving-msg-files/) explains how to create and save messages, and how to create MSG files with attachments. This article explains how to manage Microsoft Outlook attachments with Aspose.Email. Attachments from a message file are accessed and saved to disk using the [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) class [Attachments](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessageitembase/attachments/) property. The [Attachments](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessageitembase/attachments/) property is a collection of type [MapiAttachmentCollection](https://reference.aspose.com/email/net/aspose.email.mapi/mapiattachmentcollection/) class.

@@ -6,7 +6,6 @@ weight: 50
 url: /net/managing-calendar-items-in-pst-files/
 ---
 
-
 ## **Add MAPI Calendar to PST**
 
 [Creating and Managing PST Files](https://docs.aspose.com/email/net/create-and-manage-pst-files/) shows how to create a PST file and add a subfolder to it. With Aspose.Email you can add MapiCalendar to the Calendar subfolder of a PST file that you have created or loaded. Below are the steps to add MapiCalendar to a PST:
@@ -35,6 +34,7 @@ The program below loads a PST file from disk and saves all the calendar items in
 
 |![todo:image_alt_text](working-with-calendar-items-in-pst-file_1.png)|
 | :- |
+
 The following code snippet shows you how to export the calendar items from Outlook PST to ICS format.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-SaveCalendarItems-SaveCalendarItems.cs" >}}
@@ -43,7 +43,7 @@ The following code snippet shows you how to export the calendar items from Outlo
 
 The following features are available to save calendar items as ICS preserving their original date and time information:
 
-- [MapiCalendarIcsSaveOptions](https://reference.aspose.com/email/net/aspose.email.mapi/mapicalendaricssaveoptions/) - Allows to specify additional options when saving MapiCalendar to Ics format. 
+- [MapiCalendarIcsSaveOptions](https://reference.aspose.com/email/net/aspose.email.mapi/mapicalendaricssaveoptions/) - Allows to specify additional options when saving MapiCalendar to Ics format.
 
 - [MapiCalendarIcsSaveOptions.KeepOriginalDateTimeStamp](https://reference.aspose.com/email/net/aspose.email.mapi/mapicalendaricssaveoptions/keeporiginaldatetimestamp/) - Allows keep original DateTimeStamp value in output file.
 

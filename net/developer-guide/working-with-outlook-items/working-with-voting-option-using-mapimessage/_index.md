@@ -128,5 +128,3 @@ foreach (var recipient in msg.Recipients)
 - [MapiRecipient](https://reference.aspose.com/email/net/aspose.email.mapi/mapirecipient/#mapirecipient-class): Represents a recipient in the MapiMessage, enabling access to individual response data.
 - *[PR_RECIPIENT_AUTORESPONSE_PROP_RESPONSE](https://reference.aspose.com/email/net/aspose.email.mapi/mapipropertytag/pr_recipient_autoresponse_prop_response/): A property tag that stores the recipient's vote response.
 - [PR_RECIPIENT_TRACKSTATUS_TIME](https://reference.aspose.com/email/net/aspose.email.mapi/mapipropertytag/pr_recipient_trackstatus_time/): A property tag that records the time when the recipient responded.
-
-

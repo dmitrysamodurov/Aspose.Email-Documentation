@@ -6,7 +6,6 @@ weight: 20
 url: /net/managing-messages-in-pst-files/
 ---
 
-
 ## **Get Messages Information from an Outlook PST File**
 
 In [Read PST Files and Retrieve Information](https://docs.aspose.com/email/net/read-pst-files-and-retrieve-information/) article we discussed how to load an Outlook PST file and browse its folders to get the folder names and the number of messages in them. This article explains how to read all the folders and subfolders in the PST file and display the information about messages, for example, subject, sender, and recipients. The Outlook PST file may contain nested folders. To get message information from these, as well as the top-level folders, use a recursive method to read all the folders. The following code snippet shows you how to reads an Outlook PST file and display the folder and message contents recursively.
@@ -74,7 +73,7 @@ private static void DisplayFolderContents(FolderInfo folderInfo, PersonalStorage
 
 ## **Extracting Messages Form PST Files**
 
-This article shows how to read Microsoft Outlook PST files and extract messages. The messages are then saved to a disk in MSG format. 
+This article shows how to read Microsoft Outlook PST files and extract messages. The messages are then saved to a disk in MSG format.
 
 {{% alert %}}
 **Try it out!**
@@ -82,8 +81,9 @@ This article shows how to read Microsoft Outlook PST files and extract messages.
 Run the [ConversationThread](https://github.com/aspose-email/Aspose.Email-for-.NET/tree/master/Sample%20Apps/ConversationThread) simple app project, and explore an interesting usage of Aspose.Email's features to read emails from PST and find conversation threads.
 {{% /alert %}}
 
-The following code snippet shows you how to extract messages from a PST file: 
-- Use a recursive method to browse all the folders (including any nested folders) and call the PersonalStorage.ExtractMessage() method to get Outlook messages into an instance of the [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) class. 
+The following code snippet shows you how to extract messages from a PST file:
+
+- Use a recursive method to browse all the folders (including any nested folders) and call the PersonalStorage.ExtractMessage() method to get Outlook messages into an instance of the [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) class.
 - After that, call the MapiMessage.Save() method to save the message to either a disk or a stream in MSG format.
 
 ```csharp
@@ -147,6 +147,54 @@ private static void ExtractMsgFiles(FolderInfo folderInfo, PersonalStorage pst)
         {
             ExtractMsgFiles(subfolderInfo, pst);
         }
+    }
+}
+```
+
+## **Identifying MAPI Item Types**
+
+The [MapiItemType](https://reference.aspose.com/email/net/aspose.email.mapi/mapiitemtype/) enum represents a MAPI item type that can be explicitly converted into an object of the corresponding class derived from the [IMapiMessageItem](https://reference.aspose.com/email/net/aspose.email.mapi/imapimessageitem/#imapimessageitem-interface)interface. This way users can avoid checking the [MessageClass](https://reference.aspose.com/email/net/aspose.email.mapi/imapimessageitem/messageclass/) property value before message conversion.
+
+The following code sample shows how to define a type for the item to be converted:
+
+```cs
+foreach (var messageInfo in folder.EnumerateMessages())
+{
+    var msg = pst.ExtractMessage(messageInfo);
+
+    switch (msg.SupportedType)
+    {
+        // Non-supported type. MapiMessage cannot be converted to an appropriate item type.
+        // Just use in MSG format.
+        case MapiItemType.None:
+            break;
+        // An email message. Conversion isn't required.
+        case MapiItemType.Message:
+            break;
+        // A contact item. Can be converted to MapiContact.
+        case MapiItemType.Contact:
+            var contact = (MapiContact)msg.ToMapiMessageItem();
+            break;
+        // A calendar item. Can be converted to MapiCalendar.
+        case MapiItemType.Calendar:
+            var calendar = (MapiCalendar)msg.ToMapiMessageItem();
+            break;
+        // A distribution list. Can be converted to MapiDistributionList.
+        case MapiItemType.DistList:
+            var dl = (MapiDistributionList)msg.ToMapiMessageItem();
+            break;
+        // A Journal entry. Can be converted to MapiJournal.
+        case MapiItemType.Journal:
+            var journal = (MapiJournal)msg.ToMapiMessageItem();
+            break;
+        // A StickyNote. Can be converted to MapiNote.
+        case MapiItemType.Note:
+            var note = (MapiNote)msg.ToMapiMessageItem();
+            break;
+        // A Task item. Can be converted to MapiTask.
+        case MapiItemType.Task:
+            var task = (MapiTask)msg.ToMapiMessageItem();
+            break;
     }
 }
 ```
@@ -215,6 +263,7 @@ FolderInfo inbox = personalStorage.RootFolder.GetSubFolder("Inbox");
 // Extracts messages starting from 10th index top and extract total 100 messages
 MessageInfoCollection messages = inbox.GetContents(10, 100);
 ```
+
 ### **Get Total Items Count from PST**
 
 Aspose.Email provides the [GetTotalItemsCount()](https://reference.aspose.com/email/net/aspose.email.storage.pst/messagestore/gettotalitemscount/) method of the [PersonalStorage.Store](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/store/#personalstoragestore-property) property. It returns the total number of message items contained in the PST.
@@ -348,9 +397,6 @@ using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "Out
 The following code snippet shows you how to search for a string in PST with the ignore case parameter.
 
 ```csharp
-// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
-
-File.Delete("CaseSensitivity.pst");
 using (PersonalStorage personalStorage = PersonalStorage.Create("CaseSensitivity.pst", FileFormatVersion.Unicode))
 {
 	FolderInfo folderinfo = personalStorage.CreatePredefinedFolder("Inbox", StandardIpmFolder.Inbox);
@@ -369,8 +415,6 @@ using (PersonalStorage personalStorage = PersonalStorage.Create("CaseSensitivity
 You can use [MailQueryBuilder.Or](https://reference.aspose.com/email/net/aspose.email.tools.search/mailquerybuilder/or/#or) method to find messages with a subject containing at least one of the specified words as shown below:
 
 ```csharp
-// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
-
 var builder1 = new PersonalStorageQueryBuilder();
 builder1.Subject.Contains("Review"); // 'Review' is key word for the search
 
@@ -423,38 +467,6 @@ using(PersonalStorage personalStorage = PersonalStorage.FromFile("test.pst"))
     inbox.MoveSubfolders(deleted);
     subfolder.MoveContents(deleted);
 }
-```
-### **Merge and Split PST Files**
-
-The code sample below describes the process of a file split:
-
-1. It, first, uses the [FromFile](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/fromfile/#fromfile) method of the [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/#personalstorage-class) class to specify the file name.
-
-2. Then, it calls the [StorageProcessedEventHandler](https://reference.aspose.com/email/net/aspose.email.storage.pst/storageprocessedeventhandler/#storageprocessedeventhandler-delegate) delegate to handle an StorageProcessed event.
-
-3. The [StorageProcessingEventArgs]() class provides data for the PersonalStorage.StorageProcessing event. Its [StorageProcessingEventArgs.FileName](https://reference.aspose.com/email/net/aspose.email.storage.pst/storageprocessedeventargs/filename/#storageprocessedeventargsfilename-property) property allows you to retrieve the name of the PST file. For [MergeWith](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/mergewith/#mergewith_1) method it will be a name of the current pst to be merged with the main one, and for [SplitInto](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/splitinto/#splitinto) method it will be a name of the current part.
-
-4. Finally, [SplitInto(long chunkSize, string partFileNamePrefix, string path)](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/splitinto/#splitinto) overload method will launch the splitting of the PST storage into smaller-sized parts. It takes the following parameters:
-
-- **chunkSize**: The approximate size of each chunk in bytes.
-- **partFileNamePrefix**: The prefix to be added to the filename of each part of the PST. If provided, the prefix will be added to the beginning of each file name. If not provided (null or empty), the PST parts will be created without a prefix.
-- **path**: The folder path where the chunks will be created.
-
-The filename of each part follows the template: {prefix}part{number}.pst, where {prefix} represents the filename prefix (if provided), and {number} represents the number of the chunk file.
-
-```cs
-var pst = PersonalStorage.FromFile("sample.pst");
-
-// ...
-
-pst.StorageProcessing += (sender, args) =>
-{
-    Console.WriteLine("Storage processing event raised for file: " + args.FileName);
-};
-
-// ...
-
-pst.SplitInto(5000000, "prefix_", outputFolderPath);
 ```
 
 ### **Update Message Properties**
@@ -535,7 +547,6 @@ private static long GenerateNamedPropertyTag(long index, MapiPropertyType dataTy
 }
 ```
 
-
 ### **Delete Messages**
 
 This articles shows how to Use the [FolderInfo](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/) class to access specific folders in a PST file. To delete messages from the Sent subfolder of a previously loaded or created PST file:
@@ -601,6 +612,7 @@ The [DeleteChildItem()](https://reference.aspose.com/email/net/aspose.email.stor
 FolderInfo someFolder = pst.RootFolder.GetSubFolder("Some folder");
 pst.RootFolder.DeleteChildItem(someFolder.EntryId);
 ```
+
 ### **Delete Items from PST**
 
 Delete items (folders or messages) from a Personal Storage Table (PST) using the unique entryId associated with the item by calling the DeleteItem(string entryId) method of the [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/#personalstorage-class) class.
@@ -616,6 +628,7 @@ pst.DeleteItem(entryId);
 
 // ...
 ```
+
 **Please Note:**
 
 - This method will permanently delete the item from the PST and cannot be undone. Exercise caution when using this method to avoid accidental data loss.
@@ -655,11 +668,38 @@ using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir))
 
 ### **Split into Multiple PSTs**
 
-Aspose.Email API provides the capability to split a single PST file into multiple PST files of the desired file size. 
+Aspose.Email API provides the capability to split a single PST file into multiple PST files of the desired file size.
 
-The following code snippet shows you how to split multiple PSTs.
+The code sample below describes the process of a file split:
 
-{{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-SplitSinglePSTInToMultiplePST-SplitSinglePSTInToMultiplePST.cs" >}}
+1. It, first, uses the [FromFile](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/fromfile/#fromfile) method of the [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/#personalstorage-class) class to specify the file name.
+
+2. Then, it calls the [StorageProcessedEventHandler](https://reference.aspose.com/email/net/aspose.email.storage.pst/storageprocessedeventhandler/#storageprocessedeventhandler-delegate) delegate to handle an StorageProcessed event.
+
+3. The StorageProcessingEventArgs provides data for the PersonalStorage.StorageProcessing event. Its [StorageProcessingEventArgs.FileName](https://reference.aspose.com/email/net/aspose.email.storage.pst/storageprocessedeventargs/filename/#storageprocessedeventargsfilename-property) property allows you to retrieve the name of the PST file. For [MergeWith](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/mergewith/#mergewith_1) method it will be a name of the current pst to be merged with the main one, and for [SplitInto](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/splitinto/#splitinto) method it will be a name of the current part.
+
+4. Finally, [SplitInto(long chunkSize, string partFileNamePrefix, string path)](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/splitinto/#splitinto) overload method will launch the splitting of the PST storage into smaller-sized parts. It takes the following parameters:
+
+- **chunkSize**: The approximate size of each chunk in bytes.
+- **partFileNamePrefix**: The prefix to be added to the filename of each part of the PST. If provided, the prefix will be added to the beginning of each file name. If not provided (null or empty), the PST parts will be created without a prefix.
+- **path**: The folder path where the chunks will be created.
+
+The filename of each part follows the template: {prefix}part{number}.pst, where {prefix} represents the filename prefix (if provided), and {number} represents the number of the chunk file.
+
+```cs
+var pst = PersonalStorage.FromFile("sample.pst");
+
+// ...
+
+pst.StorageProcessing += (sender, args) =>
+{
+    Console.WriteLine("Storage processing event raised for file: " + args.FileName);
+};
+
+// ...
+
+pst.SplitInto(5000000, "prefix_", outputFolderPath);
+```
 
 ### **Split PST Based on Specified Criterion**
 
@@ -688,7 +728,3 @@ Merge and combine multiple email files online into a single one with the free [*
 The following code snippet shows you how to merge folders from another PST.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-MergeFolderFromAnotherPSTFile-MergePSTFolders.cs" >}}
-
-
-
-

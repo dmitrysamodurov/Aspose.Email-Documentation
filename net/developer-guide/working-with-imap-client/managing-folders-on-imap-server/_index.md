@@ -61,5 +61,3 @@ Aspose.Email for .NET allows moving message from one mailbox folder to another u
 Aspose.Email API provides the capability to copy message from one mailbox folder to another. It allows copying a single as well as multiple messages using the [CopyMessage](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/copymessage/#copymessage/) and [CopyMessages](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/copymessages/#copymessages/) methods. The [CopyMessages](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/copymessages/#copymessages/) method provides the capability to copy multiple messages from source folder of a mailbox to the destination mailbox folder. The following code snippet shows you how to copy messages to another mailbox folder.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-IMAP-CopyMultipleMessagesFromOneFoldertoAnother-CopyMultipleMessagesFromOneFoldertoAnother.cs" >}}
-
-

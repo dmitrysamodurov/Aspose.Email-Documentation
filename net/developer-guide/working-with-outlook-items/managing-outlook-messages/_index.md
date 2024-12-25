@@ -6,53 +6,6 @@ weight: 30
 url: /net/managing-outlook-mesages/
 ---
 
-## **Identifying MAPI Item Types**
-
-The [MapiItemType](https://reference.aspose.com/email/net/aspose.email.mapi/mapiitemtype/) enum represents a MAPI item type that can be explicitly converted into an object of the corresponding class derived from the [IMapiMessageItem](https://reference.aspose.com/email/net/aspose.email.mapi/imapimessageitem/#imapimessageitem-interface)interface. This way users can avoid checking the [MessageClass](https://reference.aspose.com/email/net/aspose.email.mapi/imapimessageitem/messageclass/) property value before message conversion.
-
-The following code sample shows how to define a type for the item to be converted:
-
-```cs
-foreach (var messageInfo in folder.EnumerateMessages())
-{
-    var msg = pst.ExtractMessage(messageInfo);
-
-    switch (msg.SupportedType)
-    {
-        // Non-supported type. MapiMessage cannot be converted to an appropriate item type.
-        // Just use in MSG format.
-        case MapiItemType.None:
-            break;
-        // An email message. Conversion isn't required.
-        case MapiItemType.Message:
-            break;
-        // A contact item. Can be converted to MapiContact.
-        case MapiItemType.Contact:
-            var contact = (MapiContact)msg.ToMapiMessageItem();
-            break;
-        // A calendar item. Can be converted to MapiCalendar.
-        case MapiItemType.Calendar:
-            var calendar = (MapiCalendar)msg.ToMapiMessageItem();
-            break;
-        // A distribution list. Can be converted to MapiDistributionList.
-        case MapiItemType.DistList:
-            var dl = (MapiDistributionList)msg.ToMapiMessageItem();
-            break;
-        // A Journal entry. Can be converted to MapiJournal.
-        case MapiItemType.Journal:
-            var journal = (MapiJournal)msg.ToMapiMessageItem();
-            break;
-        // A StickyNote. Can be converted to MapiNote.
-        case MapiItemType.Note:
-            var note = (MapiNote)msg.ToMapiMessageItem();
-            break;
-        // A Task item. Can be converted to MapiTask.
-        case MapiItemType.Task:
-            var task = (MapiTask)msg.ToMapiMessageItem();
-            break;
-    }
-}
-```
 ## **Save Emails as HTML**
 
 Aspose.Email makes it possible to save email resources with relative paths when exporting messages to HTML format. This feature provides more flexibility in how resources are linked in the output HTML file, making it easier to share and display saved emails on different systems. In order to save resources with relative paths, use [HtmlSaveOptions.UseRelativePathToResources](https://reference.aspose.com/email/net/aspose.email/htmlsaveoptions/userelativepathtoresources/) property. The default property value is false (resources are saved with absolute paths). When set to true, resources are saved with relative paths.
@@ -72,6 +25,7 @@ var htmlSaveOptions = new HtmlSaveOptions
 
 msg.Save(Path.Combine("target_files"), htmlSaveOptions);
 ```
+
 In this case, resources will be saved in the [html file name]_files folder, in the same path as the .html file and the HTML will reference the resources via relative paths.
 
 The code sample below demonstrates how to **save with absolute path to resources**:
@@ -87,6 +41,7 @@ var htmlSaveOptions = new HtmlSaveOptions
 
 msg.Save(Path.Combine("target_files"), htmlSaveOptions);
 ```
+
 As in the first case, resources will be saved in the [html file name]_files folder by default, but the HTML will reference resources using absolute paths.
 
 By using the [ResourceHtmlRendering](https://reference.aspose.com/email/net/aspose.email/resourcehtmlrenderingeventargs/) event, you can set custom relative or absolute paths for resources. When customizing paths with the [ResourceHtmlRendering](https://reference.aspose.com/email/net/aspose.email/resourcehtmlrenderingeventargs/) event handler, and since [UseRelativePathToResources](https://reference.aspose.com/email/net/aspose.email/htmlsaveoptions/userelativepathtoresources/) is set to true, you should assign a relative path to the [PathToResourceFile](https://reference.aspose.com/email/net/aspose.email/resourcehtmlrenderingeventargs/pathtoresourcefile/) property to ensure correct referencing.
@@ -114,13 +69,11 @@ htmlSaveOptions.ResourceHtmlRendering += (o, args) =>
 msg.Save(Path.Combine(targetPath, "A Day in the Park.html"), htmlSaveOptions);
 ```
 
-
 ## **Convert MSG to MIME Messages**
 
 Aspose.Email API provides the capability of converting MSG files to MIME messages using the [ToMailMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/tomailmessage/#tomailmessage) method.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-ConvertMSGToMIMEMessage-ConvertMSGToMIMEMessage.cs" >}}
-
 
 ## **Set Timeouts for Message Conversion and Loading**
 
@@ -282,6 +235,7 @@ if (msg.IsSigned)
     var unsignedMsg = msg.RemoveSignature();
 }
 ```
+
 ## **Decrypt MapiMessages with Certificates**
 
 If you have encrypted MAPI messages and need to decrypt them using the private key stored in a certificate, the following features of Aspose.Email can be useful:

@@ -6,22 +6,16 @@ weight: 40
 url: /net/load-and-save-email-message/
 ---
 
-# Load and Save Email Messages
-
 ## **Load Email Message**
 
 ### **Load from EML**
 
-This section describes how to load an EML file into a MailMessage object using the [EmlLoadOptions](https://reference.aspose.com/email/net/aspose.email/emlloadoptions/) class. 
+This section describes how to load an EML file into a MailMessage object using the [EmlLoadOptions](https://reference.aspose.com/email/net/aspose.email/emlloadoptions/) class.
 The EmlLoadOptions class provides various options to customize how the EML file is loaded, such as preserving embedded message formats or controlling TNEF attachment loading behavior.
-
-** Code steps**
 
 1. Initialize an instance of EmlLoadOptions.
 2. Configure the load options as needed.
 3. Use the [MailMessage.Load()](https://reference.aspose.com/email/net/aspose.email/mailmessage/load/#load_3) method to load the EML file with the specified options.
-
-**Code sample**
 
 ```csharp
 using Aspose.Email;
@@ -63,16 +57,12 @@ var msg = MapiMessage.Load(fileName, new EmlLoadOptions() { RemoveSignature = tr
 
 ### **Load from EMLX**
 
-The following section covers loading an EMLX file with the [EmlxLoadOptions](https://reference.aspose.com/email/net/aspose.email/emlxloadoptions/#emlxloadoptions-class) class. 
+The following section covers loading an EMLX file with the [EmlxLoadOptions](https://reference.aspose.com/email/net/aspose.email/emlxloadoptions/#emlxloadoptions-class) class.
 This class provides options similar to EmlLoadOptions, offering control over encoding, signature removal, and more.
-
-**Code steps**
 
 1. Instantiate the EmlxLoadOptions.
 2. Configure properties as necessary.
 3. Use the [MailMessage.Load()](https://reference.aspose.com/email/net/aspose.email/mailmessage/load/#load_3) method to load the EMLX file.
-
-**Code Sample**
 
 ```csharp
 using Aspose.Email;
@@ -101,13 +91,9 @@ var emlx = MailMessage.Load("file.emlx", loadOptions);
 Learn how to load an HTML file into a MailMessage using the [HtmlLoadOptions](https://reference.aspose.com/email/net/aspose.email/htmlloadoptions/#htmlloadoptions-class) class. 
 This class is specifically designed to handle HTML content with options to manage resources and add plain text views.
 
-**Code steps**
-
 1. Initialize an instance of HtmlLoadOptions.
 2. Configure the necessary properties.
 3. Use the [MailMessage.Load()](https://reference.aspose.com/email/net/aspose.email/mailmessage/load/#load_3) method to load the HTML file with the specified options.
-
-**Code sample**
 
 ```csharp
 using Aspose.Email;
@@ -134,16 +120,12 @@ var html = MailMessage.Load("file.html", loadOptions);
 
 ### **Load from MHTML**
 
-This section explains how to load an MHTML file using the [MhtmlLoadOptions](https://reference.aspose.com/email/net/aspose.email/mhtmlloadoptions/#mhtmlloadoptions-class) class. 
+This section explains how to load an MHTML file using the [MhtmlLoadOptions](https://reference.aspose.com/email/net/aspose.email/mhtmlloadoptions/#mhtmlloadoptions-class) class.
 The MhtmlLoadOptions class offers options to manage encoding, preserve embedded message formats, and handle TNEF attachments.
-
-**Code steps**
 
 1. Create an instance of MhtmlLoadOptions.
 2. Configure the desired properties.
 3. Load the MHTML file using the [MailMessage.Load()](https://reference.aspose.com/email/net/aspose.email/mailmessage/load/#load_3) method.
-
-**Code sample**
 
 ```csharp
 using Aspose.Email;
@@ -175,13 +157,9 @@ var mhtml = MailMessage.Load("file.mht", loadOptions);
 This section explains how to load an MSG file into a MailMessage object using the [MsgLoadOptions](https://reference.aspose.com/email/net/aspose.email/msgloadoptions/#msgloadoptions-class) class. 
 The MsgLoadOptions class offers various properties to handle how MSG files are loaded, including options to preserve RTF content or manage TNEF attachments.
 
-**Code steps**
-
 1. Create an instance of MsgLoadOptions.
 2. Set the desired properties to customize loading.
 3. Load the MSG file using the [MailMessage.Load()](https://reference.aspose.com/email/net/aspose.email/mailmessage/load/#load_3) method.
-
-**Code sample**
 
 ```csharp
 using Aspose.Email;
@@ -212,18 +190,13 @@ var msg = MailMessage.Load("file.msg", loadOptions);
 - [RemoveSignature](https://reference.aspose.com/email/net/aspose.email/loadoptions/removesignature/): Decides whether to remove the signature during loading. Default is `false`.
 - [Timeout](https://reference.aspose.com/email/net/aspose.email/msgloadoptions/timeout/): Limits the formatting time in milliseconds during conversion. Default is 3000 ms.
 
-
 ### **Load from TNEF**
 
 Learn how to load a TNEF eml file with the [TnefLoadOptions](https://reference.aspose.com/email/net/aspose.email/tnefloadoptions/#tnefloadoptions-class) class. This class provides options to manage encoding and remove signatures during the loading process.
 
-**Code steps**
-
 1. Instantiate the TnefLoadOptions.
 2. Configure the properties as needed.
 3. Use the [MailMessage.Load()](https://reference.aspose.com/email/net/aspose.email/mailmessage/load/#load_3) method to load the TNEF file.
-
-**Code sample**
 
 ```csharp
 using Aspose.Email;
@@ -247,7 +220,6 @@ var tnef = MailMessage.Load("file.eml", loadOptions);
 - [PreferredTextEncoding](https://reference.aspose.com/email/net/aspose.email/loadoptions/preferredtextencoding/): Sets preferred encoding for message subject and body. Default is `null`.
 - [PreserveEmbeddedMessageFormat](https://reference.aspose.com/email/net/aspose.email/loadoptions/preserveembeddedmessageformat/): Indicates whether to preserve the format of embedded messages. Default is `false`.
 - [RemoveSignature](https://reference.aspose.com/email/net/aspose.email/loadoptions/removesignature/): Specifies whether to remove the signature during loading. Default is `false`.
-
 
 ## **Save and Convert Messages**
 
@@ -310,21 +282,21 @@ using (MailMessage mailMessage = MailMessage.Load(folderPath + "Message.eml"))
 
 The [MhtSaveOptions](https://reference.aspose.com/email/net/aspose.email/mhtsaveoptions/) class provides additional options for saving email messages to MHTML format. The enumerator [MhtFormatOptions](https://reference.aspose.com/email/net/aspose.email/mhtformatoptions/) makes it possible to write additional email information to the output MHTML. The following additional fields can be written:
 
-- WriteHeader – write the email header to the output file.
-- WriteOutlineAttachments – write outline attachments to the output file.
-- WriteCompleteEmailAddress – write the complete email address to the output file.
-- NoEncodeCharacters – no transfer encoding of characters should be used.
-- HideExtraPrintHeader – hide extra print header from the top of the output file.
-- WriteCompleteToEmailAddress – write the complete recipient email address to the output file.
-- WriteCompleteFromEmailAddress – write the complete sender email address to the output file.
-- WriteCompleteCcEmailAddress – write the complete email addresses of any carbon-copied recipients to the output file.
-- WriteCompleteBccEmailAddress – write the complete email address of any blind carbon-copied recipients to the output file.
-- RenderCalendarEvent – write text from the calendar event to the output file.
-- SkipByteOrderMarkInBody – write Byte Order Mark(BOM) bytes to the output file.
-- RenderVCardInfo – write text from VCard AlternativeView to the output file.
-- DisplayAsOutlook – display From header.
-- RenderTaskFields – writes specific Task fields to the output file.
-- None – No setting specified.
+- `WriteHeader` – write the email header to the output file.
+- `WriteOutlineAttachments` – write outline attachments to the output file.
+- `WriteCompleteEmailAddress` – write the complete email address to the output file.
+- `NoEncodeCharacters` – no transfer encoding of characters should be used.
+- `HideExtraPrintHeader` – hide extra print header from the top of the output file.
+- `WriteCompleteToEmailAddress` – write the complete recipient email address to the output file.
+- `WriteCompleteFromEmailAddress` – write the complete sender email address to the output file.
+- `WriteCompleteCcEmailAddress` – write the complete email addresses of any carbon-copied recipients to the output file.
+- `WriteCompleteBccEmailAddress` – write the complete email address of any blind carbon-copied recipients to the output file.
+- `RenderCalendarEvent` – write text from the calendar event to the output file.
+- `SkipByteOrderMarkInBody` – write Byte Order Mark(BOM) bytes to the output file.
+- `RenderVCardInfo` – write text from VCard AlternativeView to the output file.
+- `DisplayAsOutlook` – display From header.
+- `RenderTaskFields` – writes specific Task fields to the output file.
+- `None` – No setting specified.
 
 The following code snippet shows you how to convert EML files to MHTML with optional settings.
 
@@ -350,13 +322,11 @@ The [MhtFormatOptions.RenderCalendarEvent](https://reference.aspose.com/email/ne
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-ChangeFontWhileConvertingToMHT-ChangeFontWhileConvertingToMHT.cs" >}}
 
-
 ### **Save EML to HTML**
 
 The [HtmlSaveOptions](https://reference.aspose.com/email/net/aspose.email/htmlsaveoptions/) class allows you to export the message body to HTML. The following code snippet shows you how to save a message as HTML.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-SaveMessageAsHTML-SaveMessageAsHTML.cs" >}}
-
 
 #### **Save without Embedded Resources**
 
@@ -376,9 +346,6 @@ This conversion is also necessary when emails need to be archived, indexed, or p
 
 1. Create an instance of `MapiConversionOptions` and configure its properties.
 2. Convert the `MailMessage` object to a `MapiMessage` object using the configured conversion options.
-
-
-**Code Sample**
 
 ```csharp
 MailMessage eml = MailMessage.Load("email.eml", new EmlLoadOptions());
@@ -409,7 +376,7 @@ MapiMessage msg = MapiMessage.FromMailMessage(eml, conversionOptions);
   
 - [ForcedRtfBodyForAppointment](https://reference.aspose.com/email/net/aspose.email.mapi/mapiconversionoptions/forcedrtfbodyforappointment/): When set to true, forces the use of RTF body for calendar appointments. This is useful if you want to ensure compatibility with certain mail clients. Default is true.
   
-- [Format](): Specifies the output format for the MSG file. It can be set to either `OutlookMessageFormat.ASCII` or `OutlookMessageFormat.Unicode`, controlling whether the converted MSG should use ASCII or Unicode encoding.
+- [Format](https://reference.aspose.com/email/net/aspose.email.mapi/mapiconversionoptions/format/): Specifies the output format for the MSG file. It can be set to either `OutlookMessageFormat.ASCII` or `OutlookMessageFormat.Unicode`, controlling whether the converted MSG should use ASCII or Unicode encoding.
   
 - [PreserveEmbeddedMessageFormat](https://reference.aspose.com/email/net/aspose.email.mapi/mapiconversionoptions/format/): Determines whether to retain the original EML format of embedded messages during conversion to `MapiMessage`. Setting this to true ensures that embedded emails retain their original structure. Default is false.
   
@@ -422,4 +389,3 @@ MapiMessage msg = MapiMessage.FromMailMessage(eml, conversionOptions);
 - [RemoveSignature](https://reference.aspose.com/email/net/aspose.email.mapi/mapiconversionoptions/removesignature/): Controls whether the digital signature, if present, will be removed from the message during conversion. Default is false, meaning the signature will be kept unless explicitly removed.
   
 - [UseBodyCompression](https://reference.aspose.com/email/net/aspose.email.mapi/mapiconversionoptions/usebodycompression/): Enables RTF body compression if set to true. This can help reduce the size of the MSG file, especially when dealing with large messages with rich formatting.
-

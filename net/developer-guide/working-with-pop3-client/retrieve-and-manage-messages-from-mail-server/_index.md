@@ -31,23 +31,23 @@ The following code snippet shows you how to count the email messages in a mailbo
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-POP3-GetEmailCountIntheMailbox-GetEmailCountIntheMailbox.cs" >}}
 
-Aspose.Email lets developers work with emails in many different ways. For example, they can retrieve header information before deciding whether to download an email. Or they can retrieve emails from a server and save them without parsing them (quicker) or after parsing them (slower). This article shows how to retrieve and convert emails.
+Aspose.Email lets developers work with emails in many different ways. For example, they can retrieve header information before deciding whether to download an email. Or they can retrieve emails from a server and save them without parsing them (quicker) or after parsing them (slower).
 
 ## **Retrieve Email Headers**
 
-Email headers can give us information about an email message that we can use to decide whether or not to retrieve the whole email message. Typically, the header information contains sender, subject, received date, etc. (Email headers are described in detail in [Customizing Email Headers](https://docs.aspose.com/email/net/create-email-messages/#customize-email-headers). That topic is specifically about sending an email with SMTP, but the email header content information remains valid for POP3 emails). The following examples show how to retrieve email headers from a POP3 server by the message sequence number.
+Email headers can give us information about an email message that we can use to decide whether or not to retrieve the whole email message. Typically, the header information contains sender, subject, received date, etc. (Email headers are described in detail in [Customizing Email Headers](https://docs.aspose.com/email/net/create-email-messages/#customize-email-headers). The following examples show how to retrieve email headers from a POP3 server by the message sequence number.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-POP3-RetrievingEmailHeaders-RetrievingEmailHeaders.cs" >}}
 
 ## **Retrieve Email Messages**
 
-The [Pop3Client](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/) class component provides the capability to retrieve email messages from the POP3 server, and parse them into a [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) instance with the help of [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) components. The [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class contains several properties and methods for manipulating email content. By using [FetchMessage](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/fetchmessage/#fetchmessage/) method of the [Pop3Client](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/) class, you can get a [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) instance directly from the POP3 server. The following code snippet shows you how to retrieve a complete email message from the POP3 server.
+The [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class contains several properties and methods for manipulating email content. By using [FetchMessage](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/fetchmessage/#fetchmessage/) method of the [Pop3Client](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/) class, you can get a [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) instance directly from the POP3 server. The following code snippet shows you how to retrieve a complete email message from the POP3 server.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-POP3-RetrievingEmailMessages-RetrievingEmailMessages.cs" >}}
 
 ## **Retrieve Message Summary with Unique Id**
 
-The POP3 Client of the API can retrieve message summary information from the server using the unique id of the message. This provides quick access to the message short information without first retrieving the complete message from the server. The following code snippet shows you how to retrieve message summary information.
+The POP3 Client can retrieve message summary information from the server using the unique id of the message. This provides quick access to the message short information without first retrieving the complete message from the server. The following code snippet shows you how to retrieve message summary information.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-POP3-RetrieveMessageSummaryInformationUsingUniqueId-RetrieveMessageSummaryInformationUsingUniqueId.cs" >}}
 
@@ -57,11 +57,11 @@ The POP3 Client of the API can retrieve message summary information from the ser
 
 {{< gist "aspose-com-gists" "522d47278b8ca448dc1d7eb97193322c" "Examples-CSharp-POP3-Pop3ListMessagesWithMultiConnection-1.cs" >}}
 
-{{% alert color="primary" %}} 
+{{% alert color="primary" %}}
 
 Please note that the usage of multiconnection mode does not guarantee performance increase.
 
-{{% /alert %}} 
+{{% /alert %}}
 
 ## **Fetch Messages from Server and Save to Disc**
 
@@ -82,5 +82,3 @@ The following code snippet uses the [Pop3Client](https://reference.aspose.com/em
 [Pop3Client](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/) provides a [FetchMessages](https://docs.aspose.com/email/net/working-with-messages-from-server/) method which accepts iterable of Sequence Numbers or Unique ID and returns a list of [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/). The following code snippet demonstrates the use of the [FetchMessages](https://docs.aspose.com/email/net/working-with-messages-from-server/) method to fetch messages by Sequence Numbers and Unique ID.
 
 {{< gist "aspose-com-gists" "522d47278b8ca448dc1d7eb97193322c" "Examples-CSharp-POP3-Pop3FetchGroupMessages-1.cs" >}}
-
-

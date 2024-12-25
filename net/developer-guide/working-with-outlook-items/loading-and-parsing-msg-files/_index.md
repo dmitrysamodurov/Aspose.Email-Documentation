@@ -20,11 +20,8 @@ First, learn to load MSG files from file or from stream.
 The following code snippet shows you how to load MSG files.
 
 ```cs
-// The path to the File directory.
-string dataDir = RunExamples.GetDataDir_Outlook();
-
 // Create an instance of MapiMessage from file
-MapiMessage msg = MapiMessage.Load(dataDir + @"message.msg");
+var msg = MapiMessage.Load(@"message.msg");
 
 // Get subject
 Console.WriteLine("Subject:" + msg.Subject);
@@ -39,7 +36,7 @@ Console.WriteLine("Body" + msg.Body);
 Console.WriteLine("Recipient: " + msg.Recipients);
 
 // Get attachments
-foreach (MapiAttachment att in msg.Attachments)
+foreach (var att in msg.Attachments)
 {
     Console.Write("Attachment Name: " + att.FileName);
     Console.Write("Attachment Display Name: " + att.DisplayName);
@@ -50,7 +47,7 @@ The following code example shows how to use MailMessage to load a message in MSG
 
 ```csharp
 
-MailMessage eml = MailMessage.Load("message.msg");
+var eml = MailMessage.Load("message.msg");
 
 ```
 
@@ -60,7 +57,7 @@ To preserve the original format of embedded message attachments, use the [msgLoa
 
 ```csharp
 
-MsgLoadOptions msgLoadOptions = new MsgLoadOptions();
+var msgLoadOptions = new MsgLoadOptions();
 msgLoadOptions.PreserveEmbeddedMessageFormat = true;
 var msg = MailMessage.Load(stream, msgLoadOptions);
 
@@ -72,7 +69,7 @@ The following code snippet shows you how to load file from stream.
 
 ```cs
 // Create an instance of MapiMessage from file
-byte[] bytes = File.ReadAllBytes(dataDir + @"message.msg");
+byte[] bytes = File.ReadAllBytes(@"message.msg");
 
 using (MemoryStream stream = new MemoryStream(bytes))
 {
@@ -91,22 +88,23 @@ using (MemoryStream stream = new MemoryStream(bytes))
 
 }
 ```
+
 ## **Convert EML to MSG While Preserving Embedded EML Format**
 
 EML files can be loaded into [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) class by instantiating a [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) object and passing it to [MapiMessage.FromMailMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/frommailmessage/#frommailmessage/) method. If the EML file contains embedded EML files, use [MapiConversionOptions.PreserveEmbeddedMessageFormat](https://reference.aspose.com/email/net/aspose.email.mapi/mapiconversionoptions/preserveembeddedmessageformat/) to retain the format of embedded EML files. The below code snippet shows how to load EML files into [MapiMessage](https://reference.aspose.com/email/net/aspose.email.mapi/mapimessage/) while preserving the format of embedded EML files.
 
 ```cs
 // Load the EML file into a MailMessage object
-MailMessage mailMessage = MailMessage.Load(emlFilePath);
+var mailMessage = MailMessage.Load(emlFilePath);
 
 // Set conversion options to preserve the format of embedded EML messages
-MapiConversionOptions options = new MapiConversionOptions
+var options = new MapiConversionOptions
     {
         PreserveEmbeddedMessageFormat = true
     };
 
 // Convert MailMessage to MapiMessage, preserving embedded EML files
-MapiMessage mapiMessage = MapiMessage.FromMailMessage(mailMessage, options);
+var mapiMessage = MapiMessage.FromMailMessage(mailMessage, options);
 
 // Save the converted message in MSG format
 mapiMessage.Save(msgFilePath);
@@ -132,9 +130,6 @@ The following sequence of steps serves this purpose:
 1. Loop through the [MapiRecipientCollection](https://reference.aspose.com/email/net/aspose.email.mapi/mapirecipientcollection/) collection to display contents for each [MapiRecipient](https://reference.aspose.com/email/net/aspose.email.mapi/mapirecipient/) object through its public methods.
 
 ```cs
-// The path to the resource directory.
-string dataDir = RunExamples.GetDataDir_Email();
-
 //Instantiate an MSG file to load an MSG file from disk
 var outlookMessageFile = MapiMessage.Load(dataDir + "message.msg");
 //Display sender's name
@@ -163,5 +158,3 @@ foreach (var rcp in outlookMessageFile.Recipients)
 
 Parse email files online with the free [**Aspose.Email Parser App**](https://products.aspose.app/email/parser).
 {{% /alert %}}
-
-

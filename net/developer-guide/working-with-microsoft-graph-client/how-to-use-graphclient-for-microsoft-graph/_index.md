@@ -189,6 +189,7 @@ client.Delete(folderInfo1.ItemId)
 ## **Manage Messages**
 
 MS Graph Client, implemented in Aspose.Email for .NET, provides a set of methods to manage messages and attachments:
+
 * [List](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/listmessages/#listmessages) messages
 * [Fetch](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/fetchmessage/#fetchmessage) message
 * [Create](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/createmessage/#createmessage) message
@@ -199,7 +200,6 @@ MS Graph Client, implemented in Aspose.Email for .NET, provides a set of methods
 * [FetchAttachment](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/fetchattachment/#fetchattachment)
 * [DeleteAttachment](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/deleteattachment/#deleteattachment)
 * [ListAttachments](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/listattachments/#listattachments)
-
 
 ### **List Messages**
 
@@ -255,7 +255,6 @@ The code sample and the steps below demonstrate how to retrieve messages from th
 4. Call the [ListMessages](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/listmessages/#listmessages_1) method on the client object, specifying the folder (Inbox) and the items per page (PageInfo(itemsPerPage)) as parameters. It also passes the query object to apply the unread messages filter.
 The returned PageInfo object (pageInfo) contains the retrieved messages for the current page in the Items property.
 5. Create a loop that continues until the last page is reached (pageInfo.LastPage is false). The retrieved messages are added to the existing messages list using messages.AddRange(pageInfo.Items).
-
 
 ```cs
 //  reading unread messages with paging
@@ -325,6 +324,7 @@ msg.Recipients.Add("sam@to.com", "Sam", MapiRecipientType.MAPI_TO);
 client.CreateMessage(KnownFolders.Inbox, msg);
 
 ```
+
 ### **Send Message**
 
 ```csharp
@@ -342,6 +342,7 @@ msg.SetProperty(KnownPropertyList.SentRepresentingEmailAddress, "John@from.com")
 // send message
 client.Send(msg);
 ```
+
 ### **Send Draft Message**
 
 ```csharp
@@ -382,7 +383,6 @@ graphClient.Send(eml);
 graphClient.Create(KnownFolders.Inbox, eml);
 ```
 
-
 ### **Copy Message**
 
 ```csharp
@@ -390,12 +390,14 @@ graphClient.Create(KnownFolders.Inbox, eml);
 // copy message to Inbox folder
 var copiedMsg = client.CopyMessage(KnownFolders.Inbox, msg.ItemId);
 ```
+
 ### **Move Message**
 
 ```csharp
 // move message to Inbox folder
 var movedMsg = client.MoveMessage(KnownFolders.Inbox, msg.ItemId);
 ```
+
 ### **Manage Attachments**
 
 ```csharp
@@ -417,6 +419,7 @@ client.DeleteAttachment(createdAttachment.ItemId);
 // list the message attachments
 var attachments = client.ListAttachments(messageInfo.ItemId);   
 ```
+
 ## **Manage Calendar Events**
 
 Aspose.Email provides APIs to access, manage, and interact with calendar events. For these purposes, it offers the following methods in the [IGraphClient](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/#igraphclient-interface) interface:
@@ -463,7 +466,9 @@ MapiCalendar updatedCalendarItem = graphClient.UpdateCalendarItem(createdCalenda
 ```
 
 ## **Manage Categories**
+
 To manage categories with MS Graph by Aspose.Email for .NET, use the following methods:
+
 * [CreateCategory](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/createcategory/#createcategory)
 * [FetchCategory](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/fetchcategory/#fetchcategory)
 * [ListCategories](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/listcategories/#listcategories)
@@ -491,6 +496,7 @@ foreach (var cat in categories)
 // delete a category
 client.Delete(fetchedCategory.Id);
 ```
+
 ## **Manage Contacts**
 
 Aspose.Email provides APIs to access, manage, and interact with contact items. For these purposes, it offers the following methods in the [IGraphClient](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/#igraphclient-interface) interface:
@@ -526,6 +532,7 @@ MapiContact updatedContact = graphClient.UpdateContact(createdContact);
 ## **Manage Overrides**
 
 To manage overrides with MS Graph by Aspose.Email for .NET, use the following methods:
+
 * [CreateOrUpdateOverride](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/createorupdateoverride/#createorupdateoverride) 
 * [ListOverrides](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/listoverrides/#listoverrides)
 * [UpdateOverride](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/updateoverride/#updateoverride)
@@ -545,8 +552,11 @@ var updatedOverride = client.UpdateOverride(userOverride);
 // delete override
 client.Delete(updatedOverride.Id);
 ```
+
 ## **Manage Rules**
+
 To manage rules with MS Graph by Aspose.Email for .NET, use the following methods:
+
 * [CreateRule](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/createrule/#createrule)
 * [FetchRule](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/fetchrule/#fetchrule)
 * [UpdateRule](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/updaterule/#updaterule)
@@ -596,6 +606,7 @@ InboxRule PrepareRule(string email, string displayName)
 ## **Manage Notebooks**
 
 To manage notebooks with MS Graph by Aspose.Email for .NET, use the following methods:
+
 * [CreateNotebook](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/createnotebook/#createnotebook)
 * [CopyNotebook](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/copynotebook/#copynotebook)
 * [FetchNotebook](https://reference.aspose.com/email/net/aspose.email.clients.graph/igraphclient/fetchnotebook/#fetchnotebook)

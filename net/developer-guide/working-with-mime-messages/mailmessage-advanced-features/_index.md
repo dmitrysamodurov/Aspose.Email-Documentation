@@ -6,7 +6,6 @@ weight: 60
 url: /net/track-document-conversion-progress/
 ---
 
-
 ## **Track Document Conversion Progress**
 
 Aspose.Email provides the facility to track the document conversion progress. For this, the API provides [SaveOptions.CustomProgressHandler](https://reference.aspose.com/email/net/aspose.email/saveoptions/customprogresshandler/). which represents the method that handles the progress events. The progress event types are represented by the [ProgressEventType](https://reference.aspose.com/email/net/aspose.email/progresseventtype/) enumeration. The [ProgressEventType](https://reference.aspose.com/email/net/aspose.email/progresseventtype/) enumeration has the following members.
@@ -32,12 +31,11 @@ The following code snippet shows you how to use [HyperlinkRenderingCallback](htt
 
 {{< gist "aspose-com-gists" "522d47278b8ca448dc1d7eb97193322c" "Examples-CSharp-Email-CustomHyperlinkRendering-1.cs" >}}
 
-{{% alert color="primary" %}} 
+{{% alert color="primary" %}}
 
 RenderHyperlinkWithHref and RenderHyperlinkWithoutHref methods are intended to demonstrate hyperlink rendering and are not intended for production use.
 
 {{% /alert %}}
-
 
 ## **Display Information in Custom Order in MHTML Files**
 

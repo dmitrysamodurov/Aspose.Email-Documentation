@@ -7,18 +7,19 @@ url: /net/managing-outlook-calendar-items/
 ---
 
 
-Aspose.Email [MapiCalendar](https://reference.aspose.com/email/net/aspose.email.mapi/mapicalendar/) class provides methods and attributes to set various properties of a calendar item. This article provides code samples for:
+Aspose.Email [MapiCalendar](https://reference.aspose.com/email/net/aspose.email.mapi/mapicalendar/) class provides methods and attributes to set various properties of a calendar item. This section provides code samples for:
 
-- [**Working with MapiCalendar**](#working-with-mapicalendar)
-  - [**Creating and Saving Calendar items**](#creating-and-saving-calendar-items)
-  - [**Saving the Calendar item as MSG**](#saving-the-calendar-item-as-msg)
-  - [**Adding display reminder to a Calendar**](#adding-display-reminder-to-a-calendar)
-  - [**Adding audio reminder to a Calendar**](#adding-audio-reminder-to-a-calendar)
-  - [**Add/Retrieve attachments from Calendar files**](#addretrieve-attachments-from-calendar-files)
-  - [**Status of Recipients from a Meeting Request**](#status-of-recipients-from-a-meeting-request)
-  - [**Create MapiCalendarTimeZone from Standard Timezone**](#create-mapicalendartimezone-from-standard-timezone)
-- [**Setting Reminder with the Created Appointment**](#setting-reminder-with-the-created-appointment)
-  - [**Setting a Reminder by Adding Tags**](#setting-a-reminder-by-adding-tags)
+- [**Create and Save Calendar Items**](#create-and-save-calendar-items)
+- [**Save Calendar Items as MSG Files**](#save-calendar-items-as-msg-files)
+- [**Save Product IDs for MAPI Calendar Items to ICS**](#save-product-ids-for-mapi-calendar-items-to-ics)
+- [**Get Total Number of Events**](#get-total-number-of-events)
+- [**Add Display Reminders**](#add-display-reminders)
+- [**Add Audio Reminders**](#add-audio-reminders)
+- [**Add/Retrieve Attachments from Calendar Files**](#addretrieve-attachments-from-calendar-files)
+- [**Check Recipients' Status in Meeting Requests**](#check-recipients-status-in-meeting-requests)
+- [**Create MAPI Calendar TimeZone from Standard Timezone**](#create-mapi-calendar-timezone-from-standard-timezone)
+- [**Set Reminders for Appointments**](#set-reminders-for-appointments)
+  - [**Add Tags to Set Reminders**](#add-tags-to-set-reminders)
 - [**Convert Appointment EML to MSG with HTML Body**](#convert-appointment-eml-to-msg-with-html-body)
   
 ## **Create and Save Calendar Items**
@@ -48,6 +49,7 @@ var icsSaveOptions = new MapiCalendarIcsSaveOptions
 
 mapiCalendar.Save("my.ics", icsSaveOptions);
 ```
+
 ## **Get Total Number of Events**
 
 The CalendarReader class enables handling calendar events effortlessly. The following properties and a method allow you to work with multiple events:

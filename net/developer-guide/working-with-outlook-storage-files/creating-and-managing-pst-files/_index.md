@@ -8,10 +8,6 @@ url: /net/create-and-manage-pst-files/
 
 As well as parsing an existing PST file, Aspose.Email provides the means to create a PST file from scratch. This article demonstrates how to create Outlook PST files and add sub-folders or messages to them.
 
-1. [Creating a new PST file](#creating-a-new-pst-file).
-1. [Changing Container class of a folder](#changing-a-folders-container-class).
-1. [Add Bulk Messages with Improved Performance](#add-bulk-messages-with-improved-performance) 
-
 ## **Creating PST Files**
 
 To create a new PST file on a local disk, you will need to use the [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/) class. With this class, you can create, read, and manipulate PST files in your .NET applications. Create a storage file from scratch with a line of code:
@@ -23,7 +19,7 @@ using var pst = PersonalStorage.Create(path, FileFormatVersion.Unicode);
 
 ## **Add Sub-folders to PST**
 
-Add a sub-folder at the root of the PST file by accessing the Root folder and then calling the [AddSubFolder](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/addsubfolder/#addsubfolder/) method. 
+Add a sub-folder at the root of the PST file by accessing the Root folder and then calling the [AddSubFolder](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/addsubfolder/#addsubfolder/) method.
 
 The following code snippet shows you how to add a subfolder called Inbox:
 
@@ -72,14 +68,15 @@ The key functionality of Microsoft Outlook is managing emails, calendars, tasks,
 
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
-using (PersonalStorage personalStorage = PersonalStorage.Create(dataDir + "Ps1_out.pst", FileFormatVersion.Unicode))
+using (var personalStorage = PersonalStorage.Create(dataDir + "Ps1_out.pst", FileFormatVersion.Unicode))
 {
-    FolderInfo folder = personalStorage.RootFolder.AddSubFolder("Files");
+    var folder = personalStorage.RootFolder.AddSubFolder("Files");
 
     // Add Document.doc file with the "IPM.Document" message class by default.
     folder.AddFile(dataDir + "attachment_1.doc", null);
 }
 ```
+
 ## **Adding Messages to PST Files**
 
 With Aspose.Email you can add messages to subfolders of a PST file that you have created or loaded. This article adds two messages from disk to the Inbox subfolder of a PST. Use the [PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/) and [FolderInfo](https://reference.aspose.com/email/net/aspose.email.storage.pst/folderinfo/) classes to add messages to PST files. To add messages to a PST file Inbox folder:
@@ -92,18 +89,17 @@ The code snippet below shows how to add messages to a PST subfolder called Inbox
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
 // Create new PST            
-PersonalStorage personalStorage = PersonalStorage.Create(dataDir, FileFormatVersion.Unicode);
+var personalStorage = PersonalStorage.Create(dataDir, FileFormatVersion.Unicode);
 
 // Add new folder "Inbox"
 personalStorage.RootFolder.AddSubFolder("Inbox");
 
 // Select the "Inbox" folder
-FolderInfo inboxFolder = personalStorage.RootFolder.GetSubFolder("Inbox");
+var inboxFolder = personalStorage.RootFolder.GetSubFolder("Inbox");
 
 // Add some messages to "Inbox" folder
 inboxFolder.AddMessage(MapiMessage.FromFile(RunExamples.GetDataDir_Outlook() + "MapiMsgWithPoll.msg"));
 ```
-
 
 ### **Add Bulk Messages with Improved Performance**
 
@@ -259,5 +255,3 @@ public class MapiMessageEnumerator : IEnumerator<MapiMessage>
     }
 }
 ```
-
-

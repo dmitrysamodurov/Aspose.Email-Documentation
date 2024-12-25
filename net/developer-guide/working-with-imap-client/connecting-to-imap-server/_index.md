@@ -12,7 +12,6 @@ Aspose.Email's [ImapClient](https://reference.aspose.com/email/net/aspose.email.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-IMAP-RetreivingServerExtensions-RetreivingServerExtensions.cs" >}}
 
-
 ## **Standard IMAP Connection**
 
 The [ImapClient](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/) class allows applications to manage IMAP mailboxes using the IMAP protocol. The [ImapClient](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/) class is used to connect to IMAP mail servers and manage emails in the IMAP email folders. To connect to an IMAP server
@@ -47,7 +46,6 @@ The following code snippet shows how to
 
 1. Set a username, password, and port.
 1. Set security option.
-
 
 ```csharp
 // For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
@@ -140,6 +138,7 @@ else
     Console.WriteLine("No unread messages found");
 }
 ```
+
 ## **CRAM-MD5 Authentication Setup**
 
 For secure authentication and access to the email server, Aspose.Email for .NET offers a CRAM-MD5 authentication method.
@@ -194,9 +193,9 @@ using (ImapClient imapClient = new ImapClient("host", 993, "username", "password
 ```
 
 In case of a specified encryption protocol is not supported in the current version of .NET Framework, the difference in behavior between [SetSupportedEncryptionUnsafe](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/setsupportedencryptionunsafe/#setsupportedencryptionunsafe) method and [SupportedEncryption](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/supportedencryption/) property is the following:
+
 - If [SupportedEncryption](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/supportedencryption/) property is used, the email client downgrades the encryption protocol to a supported level.
 - If [SetSupportedEncryptionUnsafe](https://reference.aspose.com/email/net/aspose.email.clients/emailclient/setsupportedencryptionunsafe/#setsupportedencryptionunsafe) method is used, the email client throws exceptions.
-
 
 ## **Using IMAP IDLE Command**
 
@@ -225,7 +224,6 @@ client.StopMonitoring("Inbox");
 smtpClient.Send(new MailMessage("from@aspose.com", "to@aspose.com", "EMAILNET-34875 - " + Guid.NewGuid(), "EMAILNET-34875 Support for IMAP idle command"));
 manualResetEvent.WaitOne(5000);
 ```
-
 
 The following code sample shows how to sets up **asynchronous** monitoring for new email messages:
 
@@ -259,6 +257,7 @@ void OnNewMessagesCallback(object sender, ImapMonitoringEventArgs successEventAr
     //Use successEventArgs.DeletedMessages to handle deleted messages
 }
 ```
+
 ## **Support for IMAP Extensions**
 
 Aspose.Email API provides support for IMAP extensions. The following IMAP extensions are supported by the API at present. These IMAP extensions are not supported by all servers.

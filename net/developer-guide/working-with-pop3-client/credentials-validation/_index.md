@@ -7,7 +7,7 @@ url: /net/validate-pop3-mail-server-credentials/
 ---
 
 
-The [ValidateCredentials](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/validatecredentials) method of Aspose.Email API makes the validation of mail server credentials possible without sending an email. This method is responsible for verifying the authenticity and validity of the provided email credentials, being used for authentication when connecting to the server.
+The [ValidateCredentials](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/validatecredentials) method makes the validation of mail server credentials possible without sending an email. This method is responsible for verifying the authenticity and validity of the provided email credentials, being used for authentication when connecting to the server.
 
 It verifies that the email credentials, such as username and password, are valid and that it is possible for the client to establish a successful connection to the server. This verification of credentials helps ensure that the client can securely access the email account and perform various operations, such as receiving email.
 

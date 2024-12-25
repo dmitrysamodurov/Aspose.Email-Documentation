@@ -166,6 +166,7 @@ using (ImapClient client = new ImapClient(host, 993, senderEmail, password, Secu
         Console.WriteLine("Operation has been interrupted: " + exception.Message);
 }
 ```
+
 ### **Cancel Asynchronous Operations**
 
 Sometimes you may face the need to stop asynchronous operations. For this purpose our library offers cancellation of asynchronous operations through the use of the CancellationToken parameter. When invoking an asynchronous method that supports cancellation, you can pass a CancellationToken instance as a parameter. The CancellationToken is used to signal and control the cancellation of the operation.

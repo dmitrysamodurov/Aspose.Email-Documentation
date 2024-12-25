@@ -6,7 +6,6 @@ weight: 40
 url: /net/manage-message-flags-on-imap-server/
 ---
 
-
 ## **Set/Change Message Flags**
 
 You can change message flags by setting new ones with the [ChangeMessageFlags()](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapclient/changemessageflags/#changemessageflags/) method. This method takes two parameters.
@@ -23,7 +22,6 @@ The following flags can be set:
 - [Flagged](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapmessageflags/flagged/)
 - [IsRead](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapmessageflags/isread/)
 - [Recent](https://reference.aspose.com/email/net/aspose.email.clients.imap/imapmessageflags/recent/)
-
 
 The following code snippet shows you how to change message flags on an IMAP server with Aspose.Email.
 

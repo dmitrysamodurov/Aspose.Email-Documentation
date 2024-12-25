@@ -6,7 +6,6 @@ weight: 20
 url: /net/manage-email-attachments-and-embedded-objects/
 ---
 
-
 ## **Manage Email Attachments**
 
 An email attachment is a file that is sent along with an email message. The file may be sent as a separate message as well as a part of the message to which it is attached. The [Attachment](https://reference.aspose.com/email/net/aspose.email/attachment/) class is used with the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class. All messages include a body. In addition to the body, you might want to send additional files. These are sent as attachments and are represented as an instance of the [Attachment](https://reference.aspose.com/email/net/aspose.email/attachment/) class. You can send any number of attachments but the size of the attachment is limited by the mail server. Gmail, for example, does not support file sizes greater than 10MB.

@@ -9,11 +9,9 @@ url: /net/create-email-messages/
 
 ## **Create New Email Message**
 
-To create a new email message you can use [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class. The **MailMessage** class also initializes properties of the created email message such as the sender's email address, the recipients' email addresses, the subject of the email, and the email body content in HTML format. 
+To create a new email message you can use [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class. The **MailMessage** class also initializes properties of the created email message such as the sender's email address, the recipients' email addresses, the subject of the email, and the email body content in HTML format.
 
 Consider the following code, with detailed steps, to create a new email message and set its properties.
-
-**Code steps:**
 
 1. Create a new instance of the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class.
 2. Set the [From](https://reference.aspose.com/email/net/aspose.email/mailmessage/from/) property to the email address of the sender.
@@ -21,7 +19,6 @@ Consider the following code, with detailed steps, to create a new email message 
 4. Set the [Subject](https://reference.aspose.com/email/net/aspose.email/mailmessage/subject/) property to the subject of the email.
 5. Set the [HtmlBody](https://reference.aspose.com/email/net/aspose.email/mailmessage/htmlbody/) property to the HTML content of the email body.
 
-**Code sample:**
 
 ```cs
 // Create a new instance of MailMessage class
@@ -48,13 +45,6 @@ var message = new MailMessage
 ```
 
 ## **Set Mail Body**
-
-In this article you will learn how to:
-
-- [set plain text body](#Set-Plain-Text-Body)
-- [set HTML body](#Setting-HTML-Body)
-- [set alternate text](#Setting-Alternate-Text)
-- [specify mail body encoding](#Specifying-Mail-Body-Encoding)
 
 ### **Set Plain Text Body**
 
@@ -91,19 +81,16 @@ An alternate view in an EML file is an additional representation of the email co
 
 Consider the following code with detailed steps to set an alternate text.
 
-**Code steps:**
-
 1. Create an instance of [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class.
 2. Create [AlternateView](https://reference.aspose.com/email/net/aspose.email/alternateview/createalternateviewfromstring/) to view an email message using the content specified in the string.
 3. Add alternate text using [Add](https://reference.aspose.com/email/net/aspose.email/mailmessage/addalternateview/) method of [MailMessage.AlternateViews](https://reference.aspose.com/email/net/aspose.email/mailmessage/alternateviews/) collection.
 
-**Code sample:**
 ```cs
 // Declare message as MailMessage instance
 var eml = new MailMessage();
 
 // Creates AlternateView to view an email message using the content specified in the //string
-AlternateView alternate = AlternateView.CreateAlternateViewFromString("Alternate Text");
+var alternate = AlternateView.CreateAlternateViewFromString("Alternate Text");
 
 // Adding alternate text
  eml.AlternateViews.Add(alternate);
@@ -116,7 +103,6 @@ Aspose.Email uses the [BodyEncoding](https://reference.aspose.com/email/net/asp
 ```cs
 eml.BodyEncoding = Encoding.UTF8;
 ```
-
 
 ## **Specify Multiple Recipients**
 
@@ -158,21 +144,18 @@ var eml = new MailMessage
 
 Along with an email address, a **display name** can be included to identify the sender or recipient of the email. It may include a person's full name, nickname, or other identifier.
 
-When an email message is displayed in an email client or webmail interface, the display name is usually shown alongside the email address, making it easier for the user to identify who the message is from or who it is addressed to. For example, an email address might be "johndoe@example.com," but the display name associated with it could be "John Doe." 
-
+When an email message is displayed in an email client or webmail interface, the display name is usually shown alongside the email address, making it easier for the user to identify who the message is from or who it is addressed to.
 To add display names to email addresses in an email message, consider the following code with detailed steps:
 
-**Code steps:**
-
-1. Load the email message from a file using [MailMessage.Load]() method.
-2. Set the sender of the email using the [From]() property of the eml object by creating a new [MailAddress]() object with the email address and a display name of the sender.
-3. Add a recipient to the email by using the [To]() property of the eml object, if necessary add CC (Carbon Copy) list using the [CC]() property, BCC (Blind Carbon Copy) list using the [Bcc]() property and call the [Add]() method with a new [MailAddress]() object that contains the email address and a display name of the recipient.
+1. Load the email message from a file using `MailMessage.Load` method.
+2. Set the sender of the email using the `From` property of the eml object by creating a new `MailAddress` object with the email address and a display name of the sender.
+3. Add a recipient to the email by using the `To` property of the eml object, if necessary add CC (Carbon Copy) list using the `CC` property, BCC (Blind Carbon Copy) list using the `Bcc` property and call the `Add` method with a new `MailAddress` object that contains the email address and a display name of the recipient.
 
 **Code sample:**
 
 ```cs
 // Load eml from file
-MailMessage eml = MailMessage.Load(Data.Email/"test.eml");
+var eml = MailMessage.Load(Data.Email/"test.eml");
 
 eml.From = new MailAddress("TimothyFairfield@from.com", "Timothy Fairfield");
 
@@ -183,7 +166,6 @@ eml.To.Add(new MailAddress("kyle@to.com", "Kyle Huang"));
 eml.CC.Add(new MailAddress("guangzhou@cc.com", "Guangzhou Team"));
 eml.Bcc.Add(new MailAddress("ahaq@bcc.com", "Ammad ulHaq "));
 ```
-
 
 ## **Set Additional Properties**
 
@@ -286,7 +268,6 @@ catch (Exception ex)
 - The end-user may have that functionality turned off.
 - The end-user may choose not to send one.
 
-
 ## **Customize Email Headers**
 
 Email headers represent an Internet standard and RFC define header fields which are included in Internet email messages. An email header can be specified using the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class. Common header types are defined in the [HeaderType](https://reference.aspose.com/email/net/aspose.email/headertype/) class. It is a sealed class working as a normal enumeration.
@@ -358,7 +339,6 @@ The [Add](https://reference.aspose.com/email/net/aspose.email.mime/headercollect
 eml.Headers.Insert("Received", "Value");
 ```
 
-
 ### **Add Custom Headers**
 
 An email header can be specified using the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class. To specify a **custom header** in an email message, consider the following code sample:
@@ -388,4 +368,3 @@ The following code snippet shows you how to Sign a Message.
 Web-based email clients may not be able to display body contents of a Signed message. This can be taken care of by detaching the certificate before sending it to web-based email clients. The detached flag in the overloaded method of [AttachSignature](https://reference.aspose.com/email/net/aspose.email/mailmessage/attachsignature/#attachsignature/) can be used to achieve this. If set to **true**, the certificate is detached from the email and vice versa. To see Signed Message body in Web-based clients, you need to create [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) with detached signature. The following code snippet shows you how to use detached certificate option.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-SMTP-UsingDetachedCertificate-UsingDetachedCertificate.cs" >}}
-

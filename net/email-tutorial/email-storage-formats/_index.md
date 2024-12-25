@@ -34,28 +34,28 @@ MBOX comes in several variants, each with slight differences in how they handle 
 **Technical Basis for MBOX Format**
 
 **File Structure:**
-  - An MBOX file is a plain text file that contains a series of EML messages.
-  - Each message starts with a "From " line (a space after the word "From") that typically includes the sender's email address and the timestamp when the message was received.
-  - Each message is followed by a blank line to separate it from the next message.
+
+- An MBOX file is a plain text file that contains a series of EML messages.
+- Each message starts with a "From " line (a space after the word "From") that typically includes the sender's email address and the timestamp when the message was received.
+- Each message is followed by a blank line to separate it from the next message.
   
-    **Example:**
-    
-    From user@example.com Fri Jan 01 00:00:00 2021
-    (Headers)
-    
-    (Body)
-    
-    From user2@example.com Fri Jan 01 00:01:00 2021
-    (Headers)
-    
-    (Body)
-    
+**Example:**
+
+```
+From user@example.com Fri Jan 01 00:00:00 2021
+[Headers]
+[Body]
+From user2@example.com Fri Jan 01 00:01:00 2021
+[Headers]
+[Body]
+```
+
 ![todo:image_alt_text](mbox-storage-structure.svg)
 
 ### **PST/OST**
 
 **Personal Storage Table (PST)** and **Offline Storage Table (OST)** are file formats used by Microsoft Outlook to store copies of emails, calendar events, and other items.
- 
+
 **Key Features**
 
 - PST files are used to store personal information and are typically used for archiving older emails and data. Primarily used by home users and small organizations for local storage of email messages, contacts, and calendar events.
@@ -67,7 +67,7 @@ MBOX comes in several variants, each with slight differences in how they handle 
 ### **OLM**
 
 **Outlook for Mac Archive File (OLM)** is a file format used by Microsoft Outlook for Mac to store email messages, calendar events, contacts, tasks, and other items.
- 
+
 **Key Features**
 
 - OLM files are primarily used for archiving and backing up emails and other Outlook items on Mac systems.

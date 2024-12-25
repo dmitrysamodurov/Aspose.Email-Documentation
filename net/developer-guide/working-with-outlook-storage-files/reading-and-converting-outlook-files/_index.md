@@ -6,7 +6,6 @@ weight: 110
 url: /net/reading-and-converting-outlook-files/
 ---
 
-
 ## **Working with OST Files**
 
 Aspose.Email for .NET provides an API for reading Microsoft Outlook OST files. You can load an OST file from a disk or a stream into an instance of the [Aspose.Email.Outlook.Pst.PersonalStorage](https://reference.aspose.com/email/net/aspose.email.storage.pst/personalstorage/) class to access its contents, such as folders, subfolders, and messages. Microsoft Outlook creates a PST file to store emails when using POP3 or IMAP mail servers. In contrast, it creates an OST file when Microsoft Exchange is the mail server. OST files also support larger file sizes than PST files.
@@ -24,7 +23,7 @@ The process for reading an OST file with Aspose.Email is exactly the same as for
 
 Convert emails & message archives online with the free [**Aspose.Email Conversion App**](https://products.aspose.app/email/Conversion).
 {{% /alert %}}
-Aspose.Email makes it possible to convert an OST file to PST with a single line of code. Similarly, the OST file can be created from PST file using the same line of code with the [FileFormat](https://reference.aspose.com/email/net/aspose.email.storage.pst/fileformat/) enumerator. At present, the API supports converting OST formats to PST except 2013/2016/2019/2021 and future versions. The following code snippet shows you how to Convert OST to PST.
+Aspose.Email makes it possible to convert an OST file to PST with a single line of code. Similarly, the OST file can be created from PST file using the same line of code with the [FileFormat](https://reference.aspose.com/email/net/aspose.email.storage.pst/fileformat/) enumerator. At present, the API supports converting OST formats to PST **except 2013/2016/2019/2021 and future versions**. The following code snippet shows you how to Convert OST to PST.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Outlook-PST-ConvertingOSTToPST-ConvertingOSTToPST.cs" >}}
 
@@ -169,6 +168,7 @@ using (var olm = OlmStorage.FromFile(fileName))
     }
 }
 ```
+
 ### **Get or Set the Modified Date of a Message**
 
 The modified date represents the date and time when the OLM message was last modified. You can use the [OlmMessageInfo.ModifiedDate](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmmessageinfo/modifieddate/) property to retrieve or update the modified date value of an OLM message.
@@ -181,6 +181,7 @@ foreach (OlmMessageInfo messageInfo in inboxFolder.EnumerateMessages())
    DateTime modifiedDate = messageInfo.ModifiedDate;
 }
 ```
+
 ### **Extract Emails and Items**
 
 [OlmStorage](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/) class has [ExtractMapiMessage](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/extractmapimessage/) method which allows to extract emails. This method receives an [OlmMessageInfo](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmmessageinfo/) object.
@@ -200,6 +201,7 @@ using (var olm = OlmStorage.FromFile(fileName))
     }
 }
 ```
+
 #### **Using Traversal API**
 
 You can extract all items from an Outlook OLM file as far as possible, without throwing out exceptions, even if some data of the original file is corrupted. To perform this, use [OlmStorage(TraversalExceptionsCallback callback)](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/#constructors) constructor and [Load(string fileName)](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/load/#load_1) method instead of FromFile method. The constructor allows defining a callback method.
@@ -207,6 +209,7 @@ You can extract all items from an Outlook OLM file as far as possible, without t
 ```cs
 using (var olm = new OlmStorage((exception, id) => { /* Exception handling  code. */ }))
 ```
+
 The callback method makes loading and traversal exceptions available.
 
 The [Load](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/load/#load_1) method returns 'true' if the file has been loaded successfully and further traversal is possible. If a file is corrupted and no traversal is possible, 'false' is returned.
@@ -218,7 +221,7 @@ if (olm.Load(fileName))
 The following code snippet and the steps show how to use this API:
 
 1. Create a new instance of the [OlmStorage](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/) class, passing an exception handling callback to handle any exceptions encountered during the process.
-2. Load the OLM file by calling the [Load](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/load/#load_1) method of the OlmStorage instance. 
+2. Load the OLM file by calling the [Load](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/load/#load_1) method of the OlmStorage instance.
 3. If the OLM file is successfully loaded, obtain the folder hierarchy by calling the [GetFolders](https://reference.aspose.com/email/net/aspose.email.storage.olm/olmstorage/getfolders/) method on the OlmStorage instance. This returns a list of OlmFolder objects.
 4. Call the ExtractItems method, passing the OlmStorage instance and the list of OlmFolder objects.
 5. In the ExtractItems method, iterate through each folder in the folders list.
@@ -330,7 +333,6 @@ public static void PrintMessageCount(List<OlmFolder> folders)
   }
 ```
 
-
 ### **Outlook Category Colours Retrieval**
 
 To work with category colors or Outlook item categories stored in OLM files, Aspose.Email offers the following solutions:
@@ -349,11 +351,12 @@ using (var olm = OlmStorage.FromFile("storage.olm"))
     {
         Console.WriteLine($"Category name: {category.Name}");
         
-		//Color is represented as a hexadecimal value: #rrggbb
+        //Color is represented as a hexadecimal value: #rrggbb
         Console.WriteLine($"Category color: {category.Color}");
     }
 }
 ```
+
 The code sample below shows how to get a message category color:
 
 ```cs
@@ -469,4 +472,3 @@ public void AddToPst(FolderInfo pstFolder, OlmFolder olmFolder)
     }
 }
 ```
-

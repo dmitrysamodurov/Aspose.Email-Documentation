@@ -8,7 +8,7 @@ url: /net/email-file-formats/
 
 ## **Most Popular Email File Formats**
 
-### **MSG** 
+### **MSG**
 
 **Microsoft Outlook Message (MSG)** is a proprietary email format used by Microsoft Outlook to store individual email messages. These files contain the email content and metadata such as sender, recipients, subject, and timestamps. They support rich formatting, attachments, and Outlook-specific features like flags, importance, and sensitivity.
 
@@ -31,9 +31,9 @@ Properties organize the message into a hierarchical structure, with top-level pr
 
 **Key features**
 
- - OFT files streamline the creation of repetitive emails by providing pre-designed templates for common scenarios such as newsletters, announcements, or responses.
- - By using OFT templates, organizations ensure consistency in branding, formatting, and messaging across all outgoing communications.
- - Users can customize OFT templates by adding or modifying content before sending, allowing for personalized messages while maintaining standardized formatting.
+- OFT files streamline the creation of repetitive emails by providing pre-designed templates for common scenarios such as newsletters, announcements, or responses.
+- By using OFT templates, organizations ensure consistency in branding, formatting, and messaging across all outgoing communications.
+- Users can customize OFT templates by adding or modifying content before sending, allowing for personalized messages while maintaining standardized formatting.
 
 ### **EML**
 
@@ -51,9 +51,9 @@ The EML file format is inherently linked to the MIME standard, which is a specif
 
 **MIME Structure:**
 
-   - An EML file begins with the header section, containing information such as the From, To, Subject, Date, and other headers. Additional headers might include Content-Type, Content-Transfer-Encoding, and more.
-   - Following the headers, the body of an EML file is presented. This section can contain plain text, HTML, or multipart content allowing for the combination of different types of content within a single message.
-   - An EML file may include attachments encoded in base64, allowing binary data to be transferred via email. These attachments are defined within their own MIME parts with appropriate headers indicating the file type and encoding.
+- An EML file begins with the header section, containing information such as the From, To, Subject, Date, and other headers. Additional headers might include Content-Type, Content-Transfer-Encoding, and more.
+- Following the headers, the body of an EML file is presented. This section can contain plain text, HTML, or multipart content allowing for the combination of different types of content within a single message.
+- An EML file may include attachments encoded in base64, allowing binary data to be transferred via email. These attachments are defined within their own MIME parts with appropriate headers indicating the file type and encoding.
 
 **MIME Types:**
 

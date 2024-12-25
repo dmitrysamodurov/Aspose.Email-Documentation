@@ -8,14 +8,7 @@ url: /net/delete-emails-from-pop3-server/
 
 ## **Deleting Emails from Server**
 
-Aspose.Email is a robust component that allows performing customized operations after certain actions. Aspose.Email supports many events upon which users can perform operations. This feature provides users more control over their application. For example, users can perform their desired actions when:
-
-- All bulk emails have been sent.
-- A message is about to be sent.
-- An email is completely sent.
-- When a recipient is rejected by the SMTP server.
-
-POP3 mailboxes reside on a POP3 server. The email in these mailboxes can be retrieved to your PC by [Pop3Client](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/). The [Pop3Client](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/) class uses POP3 protocol to copy the mail messages from your POP3 mailbox to your PC. Once the mail has been retrieved you do not need to be connected to the internet while it is being read as you could read the retrieved mail on your PC. If you don't need or want a copy of some mail messages kept on the POP3 server, you then delete it. This section shows how to delete emails using [Pop3Client](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/) class.
+The [Pop3Client](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/) class uses POP3 protocol to copy the mail messages from mailbox to your PC. Once the mail has been retrieved you do not need to be connected to the internet while it is being read as you could read the retrieved mail on PC. If you don't need or want a copy of some mail messages kept on the POP3 server, you then delete it. This section shows how to delete emails using [Pop3Client](https://reference.aspose.com/email/net/aspose.email.clients.pop3/pop3client/) class.
 
 ### **Delete Email by Index**
 

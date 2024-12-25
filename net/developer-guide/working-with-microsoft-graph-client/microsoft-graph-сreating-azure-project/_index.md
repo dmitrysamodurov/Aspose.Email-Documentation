@@ -1,13 +1,10 @@
 ---
-title: Microsoft Graph Utility Features
-ArticleTitle: Microsoft Graph Utility Features
+title: Creating a Project in Azure Active Directory Admin Center
+ArticleTitle: Creating a Project in Azure Active Directory Admin Center
 type: docs
 weight: 10
-url: /net/microsoft-graph-utility-features/
+url: /net/microsoft-graph-сreating-azure-project/
 ---
-
-
-## **Creating Project in Azure Active Directory Admin Center**
 
 A Project is to be created on Azure Active Directory admin center for a user having MS Office account.
 
@@ -15,11 +12,11 @@ A Project is to be created on Azure Active Directory admin center for a user hav
 
 Below is a step by step tutorial for creating a project in Azure Active Directory admin center.
 
-#### 1. Go to Azure Active Directory and login using your MS Office credentials.
+#### 1. Go to Azure Active Directory and login using your MS Office credentials
 
 **Azure Active Directory** Link - <https://aad.portal.azure.com/>
 
-#### 2. Create an Azure AD Application in your tenant.
+#### 2. Create an Azure AD Application in your tenant
 
 In the left side pane click the label **Azure Active Directory**. This will open up the blade for Azure Active Directory. In that screen you should see a label **App registrations**. This is the starting point of a registering an Azure AD Application. This blade will allow you to create a new application for Azure AD.
 
@@ -27,7 +24,7 @@ Click on the button **New registration** to create a new application.
 
 ![todo:image_alt_text](microsoft-graph-utility-features_1.png)
 
-#### 3. Now you will see the new application registration blade.
+#### 3. Now you will see the new application registration blade
 
 - **Name** This will be the name of your application.
 - **Supported account types** This section will restrict the access.
@@ -36,14 +33,14 @@ Click **Register** button.
 
 ![todo:image_alt_text](microsoft-graph-utility-features_2.png)
 
-#### 4. You should see the newly registered applications blade.
+#### 4. You should see the newly registered applications blade
 
 - **Application (client) ID** The id of your application.
 - **Directory (tenant) ID** The Azure AD tenant id.
 
 ![todo:image_alt_text](microsoft-graph-utility-features_6.png)
 
-#### 5. Allowing permissions for Microsoft Graph API.
+#### 5. Allowing permissions for Microsoft Graph API
 
 Click on the **API permissions** label.
 
@@ -61,7 +58,7 @@ Click **Grant admin consent** button.
 
 ![todo:image_alt_text](microsoft-graph-utility-features_3.png)
 
-#### 6. Allow public client flows.
+#### 6. Allow public client flows
 
 Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI.
 

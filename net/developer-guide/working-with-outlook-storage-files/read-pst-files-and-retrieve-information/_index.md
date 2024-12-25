@@ -28,7 +28,7 @@ PST/OST files may contain folders which were created by a user. Aspose.Email pro
 
 {{< gist "aspose-com-gists" "522d47278b8ca448dc1d7eb97193322c" "Examples-CSharp-Outlook-PST-GetFoldersCreatedByUserOnly-1.cs" >}}
 
-### **Check if Folder is Predefined** 
+### **Check if Folder is Predefined**
 
 When opening and inspecting the folders within a PST (Personal Storage Table) file, you can check whether each folder is a predefined folder type or a subfolder of a predefined folder type, and obtain the information about each folder.
 
@@ -73,13 +73,12 @@ var folder = pst.RootFolder.GetSubFolder(@"Inbox\Reports\Jan", true, true);
 In this sample, the method will return a ‘Jan’ named folder that is located at the Inbox\Reports\ path relative to the root folder.
 ```
 
-
 ## **RSS Feeds and Searchable Folders**
 
 ### **Standard RSS Feeds Folder in PersonalStorage**
 
 Aspose.Email makes it possible to retrieve a reference to the predefined folder that holds RSS feeds. This could be useful if you want to programmatically access and manipulate the RSS feeds stored in an Outlook PST file.
-Give the value of RssFeeds to the [StandardIpmFolder](https://reference.aspose.com/email/net/aspose.email.storage.pst/standardipmfolder/#standardipmfolder-enumeration) enum.   
+Give the value of RssFeeds to the [StandardIpmFolder](https://reference.aspose.com/email/net/aspose.email.storage.pst/standardipmfolder/#standardipmfolder-enumeration) enum.
 
 The following code example shows how to get an RSS Feeds folder.
 
@@ -122,7 +121,6 @@ using (PersonalStorage pst = PersonalStorage.FromFile("my.pst"))
         }
 ```
 
-
 ### **PST File Traversal API**
 
 The traversal API allows extracting all PST items as far as possible, without throwing out exceptions, even if some data of the original file is corrupted.
@@ -150,9 +148,9 @@ This allows to open and traverse even corrupted PST files without throwing out e
 using (PersonalStorage pst = new PersonalStorage((exception, itemId) => { /* Exception handling  code. */ }))
 {
     if (pst.Load(@"test.pst"))
-	{
-		GetAllMessages(pst, pst.RootFolder);
-	}
+    {
+        GetAllMessages(pst, pst.RootFolder);
+    }
 }
 
 private static void GetAllMessages(PersonalStorage pst, FolderInfo folder)

@@ -6,9 +6,7 @@ weight: 30
 url: /net/extract-email-message-content/
 ---
 
-# Extract Content from Email Message  
-
-## **Displaying Email Information on Screen**
+## **Displaying Email Information**
 
 The [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) represents an email message and allows developers to access email message properties. The header information (discussed in [Extracting Email Headers](https://docs.aspose.com/email/net/extracting-message-contents-from-emails/#extracting-email-headers)) can be extracted and manipulated in different ways. This article explains how to display selected email header information and the email body on screen. To Display Email Information on Screen, follow these steps:
 
@@ -19,12 +17,9 @@ The [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessag
 The following code snippet shows you how to display email information on the screen.
 
 ```csharp
-// For complete examples and data files, please go to https://github.com/aspose-email/Aspose.Email-for-.NET
-// The path to the File directory.
-string dataDir = RunExamples.GetDataDir_Email();
 
 // Create MailMessage instance by loading an Eml file
-MailMessage message = MailMessage.Load(dataDir + "test.eml", new EmlLoadOptions());
+var message = MailMessage.Load("test.eml", new EmlLoadOptions());
 
 // Gets the sender info, recipient info, Subject, htmlbody and textbody
 Console.Write("From:");

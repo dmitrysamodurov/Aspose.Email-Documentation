@@ -77,7 +77,7 @@ The following code snippet shows you how to combine queries with AND.
 
 ### **Combine Queries with OR**
 
-[MailQueryBuilder](https://reference.aspose.com/email/net/aspose.email.tools.search/mailquerybuilder/) provides the [Or()](https://reference.aspose.com/email/net/aspose.email.tools.search/mailquerybuilder/or/#or) method which takes two [MailQuery](https://reference.aspose.com/email/net/aspose.email.tools.search/mailquery/) instances as parameters. It gets the messages that match any of the two conditions specified. The following code snippet shows how to filter messages that either have “test” in the subject or “noreply@host.com” as the sender. The following code snippet shows you how to combine queries with OR.
+[MailQueryBuilder](https://reference.aspose.com/email/net/aspose.email.tools.search/mailquerybuilder/) provides the [Or()](https://reference.aspose.com/email/net/aspose.email.tools.search/mailquerybuilder/or/#or) method which takes two [MailQuery](https://reference.aspose.com/email/net/aspose.email.tools.search/mailquery/) instances as parameters. It gets the messages that match any of the two conditions specified. The following code snippet shows how to filter messages that either have “test” in the subject or "noreply@host.com" as the sender. The following code snippet shows you how to combine queries with OR.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-POP3-BuildComplexQueries-CombiningQueriesWithOR.cs" >}}
 

@@ -6,7 +6,6 @@ weight: 50
 url: /net/utility-features-mailmessage/
 ---
 
-
 ## **Encrypt/Decrypt Messages**
 
 Aspose.Email provides the facility to encrypt and decrypt email messages using the X509Certificates. This article shows how an existing or new message can be loaded and encrypted using [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/). The [Encrypt()](https://reference.aspose.com/email/net/aspose.email/mailmessage/encrypt/#encrypt/) and [Decrypt()](https://reference.aspose.com/email/net/aspose.email/mailmessage/decrypt/#decrypt/) methods return a [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) object for the applied effects and need to be taken care of while encrypting/decrypting messages. Encrypting and decrypting messages involves the following steps:
@@ -89,7 +88,6 @@ foreach (attachment in eml.Attachments)
 It is very common that a message sent to a recipient may bounce for any reason such as an invalid recipient address. Aspose.Email API has the capability to process such a message for checking if it is a bounced email or a regular email message. The [CheckBounced](https://reference.aspose.com/email/net/aspose.email/mailmessage/checkbounced/#checkbounced) method of the [MailMessage](https://reference.aspose.com/email/net/aspose.email/mailmessage/) class returns a valid result if the email message is a bounced email. This article shows the usage of the [BounceResult](https://reference.aspose.com/email/net/aspose.email.bounce/bounceresult/) class that provides the capability of checking if a message is a bounced email. It further gives detailed information about the recipients, action taken and the reason for the notification. The following code snippet shows you how to process bounced messages.
 
 {{< gist "aspose-com-gists" "6e5185a63aec6fd70d83098e82b06a32" "Examples-CSharp-Email-CheckBouncedMessage-CheckBouncedMessage.cs" >}}
-
 
 ## **Bayesian Spam Analyzer**
 

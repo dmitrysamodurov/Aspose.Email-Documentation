@@ -18,6 +18,7 @@ It is possible to create a Distribution list using Aspose.Email API that is a co
 
 The following code snippet shows you how to read a distribution list from a PST.
 
+```csharp
 using Aspose.Email.Storage.Pst;
 using Aspose.Email.Mapi;
 
@@ -43,12 +44,13 @@ using (var pst = PersonalStorage.FromFile("your.pst"))
         }
     }
 }
+```
 
 ### **Update Distribution Lists**
 
 The following code snippet shows you how to update a distribution list in PST.
 
-```cs
+```csharp
 using Aspose.Email.Mapi;
 using Aspose.Email.Storage.Pst;
 

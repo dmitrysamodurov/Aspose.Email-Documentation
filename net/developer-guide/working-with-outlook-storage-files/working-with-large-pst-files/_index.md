@@ -6,11 +6,7 @@ weight: 100
 url: /net/working-with-large-pst-files/
 ---
 
-
-## **Working with Large PST Files**
-
 Performance may be degraded when processing large PST files.
-
 The following solutions will help you improve the performance of your app when processing large storage files.
 
 {{% alert color="primary" %}}
